@@ -1,0 +1,14 @@
+pack_id: uae-v0.1
+jurisdiction: AE
+rules:
+  - id: HEALTH_LOCALISATION_01
+    applies_to: [message_log_transfer]
+    condition: {data_class: health, destination_country_not: AE}
+    verdict: VIOLATION
+    action: BLOCK_PROHIBITED
+    basis: FEDERAL_LAW
+    citation:
+      record_id: UAE-FL-2-2019
+      article: "TODO-verify"
+      quote: "TODO-verbatim"
+    zone: RED
