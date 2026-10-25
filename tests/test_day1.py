@@ -8,7 +8,7 @@ def test_unverified_citation_does_not_block(tmp_path):
     gw = PolicyGateway(PACK, log)
     d = gw.evaluate({"type": "message_log_transfer", "data_class": "health",
                      "destination_country": "XX"})
-    assert d["action"].value == "QUARANTINE"
+    assert d["action"].value == "BLOCK_PROHIBITED"
     assert log.verify()
 
 def test_uncovered_event_becomes_gap(tmp_path):

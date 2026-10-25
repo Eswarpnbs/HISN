@@ -10,6 +10,8 @@ DOCS = [
    "https://ai.gov.ae/wp-content/uploads/2024/07/UAEAI-Methaq-EN2-3.pdf", "official_archived"),
   ("UAE-AI-STRATEGY-2031", "UAE National Strategy for AI 2031", "UAE Government", "AE", "strategy", "SOFT_LAW",
    "https://ai.gov.ae/wp-content/uploads/2021/07/UAE-National-Strategy-for-Artificial-Intelligence-2031.pdf", "official_archived"),
+  ("UAE-FL-2-2019", "Federal Law No. (2) of 2019 Concerning the Use of ICT in Health Fields", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae", "official"),
 ]
 
 src = pathlib.Path("kb/sources")
