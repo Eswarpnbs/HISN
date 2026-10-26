@@ -2,13 +2,17 @@
   record_id: UAE-FL-2-2019
   article: "Article (13)"
   basis: FEDERAL_LAW
-  dimension_ids: [10, 1]
-  metric_ids: [d1_m09, d1_m10]
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10, d10_m06]
+  y3172_nodes: [P, C]
   text: 'It is not permissible to store, process, generate or transform the health data and information outside State -which are related to the health services provided inside State- except in the case where a resolution is issued from the Health Authority in coordination with the Ministry.'
 - clause_id: UAE-FL-2-2019-ART24
   record_id: UAE-FL-2-2019
   article: "Article (24)"
   basis: FEDERAL_LAW
   dimension_ids: [10]
-  metric_ids: []
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P]
   text: 'Whoever violates the provision of Article (13) of this Law shall be punished of a penalty of no less than (500.000) five hundred thousand dirhams and no more than (700.000) seven hundred thousand dirhams.'

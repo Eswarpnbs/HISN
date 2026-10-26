@@ -7,3 +7,8 @@ q = "Can health data be transferred or stored outside the UAE?"
 r = kb.search(query_embedding=embed_texts([q])[0], n_results=3)
 for doc, meta in zip(r["documents"][0], r["metadatas"][0]):
     print("-", meta.get("source_file"), "|", meta.get("article", ""), "|", doc[:120].replace("\n", " "))
+
+print("\n-- ITU search_by_dimension(10) --")
+r = kb.search_by_dimension(query_embedding=embed_texts([q])[0], dimension_id=10, n_results=2)
+for doc, meta in zip(r["documents"][0], r["metadatas"][0]):
+    print("-", meta.get("clause_id"), "|", meta.get("metric_ids"), "|", doc[:80])
