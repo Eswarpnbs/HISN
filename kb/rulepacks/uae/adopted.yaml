@@ -1,0 +1,8 @@
+flags:
+  authenticated_bypass: true
+  require_auth: true
+note: SIMULATION ONLY - adopted candidate provisions after named sign-off
+patches:
+- P-AUTH
+- P-VERIFIED
+signoff_hash: b143d5e494fcb3ced65aa58f2dd00863e5a6c52267ef38bf94b74c1f2ec0009f
