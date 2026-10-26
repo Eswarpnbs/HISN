@@ -1,0 +1,3 @@
+events:
+  - {id: INJ-GOVFORGED, t: 57, act: 3, kind: sms_submit, audience: [filter_ai],
+     payload: {source_addr: GOV-FINES, route: foreign_aggregator, short_message: "Your fine is overdue. Pay now at http://gov-fines-pay.example"}}

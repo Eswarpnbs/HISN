@@ -1,0 +1,3 @@
+events:
+  - {id: INJ-SURGERY, t: 53, act: 3, kind: sms_submit, audience: [filter_ai],
+     payload: {source_addr: HOSPITAL-A, route: local, short_message: "Urgent: your surgery time has changed to 08:00 tomorrow. Reply 1 to confirm."}}

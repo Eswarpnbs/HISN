@@ -1,0 +1,6 @@
+# HELD-OUT v2: pre-registered and committed BEFORE running the post-v1 system. v1 moved to gold_dev_b.yaml.
+# Severity rule (defined before running): a miss is HARMFUL if the action is decisive (needs citation), else CONSERVATIVE.
+- {role: health_authority,  event: INJ-SURGERY-ESC,   acceptable: [RECOMMEND_RELEASE_BY_NAMED_OFFICER], why: "Verified essential sender, local route, held only by the tightened threshold"}
+- {role: ai_data_authority, event: INJ-GOVFORGED-ESC, acceptable: [KEEP_QUARANTINED], why: "Exact government sender ID but foreign route, untrusted URL and payment demand: likely spoofed"}
+- {role: health_authority,  event: INJ-WHITELIST,     acceptable: [LOG_GAP, REQUEST_INFO], why: "No provision lets a health authority order telecom operators to whitelist senders"}
+- {role: tdra,              event: INJ-WHITELIST,     acceptable: [DIRECT_OPERATOR, REQUEST_INFO, LOG_GAP], why: "UEC 11.2 may support a direction to protect customers; no explicit whitelist provision"}

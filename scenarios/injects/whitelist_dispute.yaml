@@ -1,0 +1,4 @@
+events:
+  - {id: INJ-WHITELIST, t: 315, act: 4, kind: override_dispute, audience: [health_authority, tdra],
+     payload: {question: "Can the health authority order operators to whitelist hospital sender IDs so they bypass AI filters?",
+               context: "Genuine surgery and appointment messages were held by the drifted filter"}}
