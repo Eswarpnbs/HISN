@@ -6,7 +6,8 @@ ITU = pathlib.Path(os.environ.get("ITU_DIR", pathlib.Path.home() / "ITUAIReadine
 EVIDENCE_LOG = pathlib.Path("runs/gap_engine.jsonl")
 OVERLAY = pathlib.Path("kb/rulepacks/uae/adopted.yaml")
 
-def tested_combos(log=EVIDENCE_LOG):
+def tested_combos(log=None):
+    log = log or EVIDENCE_LOG
     if not log.exists(): return {}
     out = {}
     for line in log.read_text(encoding="utf-8").splitlines():

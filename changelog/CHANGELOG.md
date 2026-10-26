@@ -78,3 +78,8 @@
 ## v1.7 — 2026-10-27
 - Essential-sender quarantine time limit (15 min): held essential messages go to a second human regardless of the agent's proposal (addresses held-out v2 harmful miss)
 - Named human sign-off: refused without measured gap-engine evidence; approvals sealed in audit chain, recorded in ITU kb_decisions, written to a simulation-only overlay
+
+## v1.7 — 2026-10-27
+- Essential-sender quarantine time limit (15 min): held essential messages go to a second human regardless of the agent's proposal
+- Named human sign-off: refused without measured gap-engine evidence; approvals sealed in audit chain, recorded in ITU kb_decisions, written to simulation-only overlay
+- Demo: P-ROUTE+P-FRAUD refused (untested); P-AUTH+P-VERIFIED approved by synthetic officer
