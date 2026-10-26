@@ -50,3 +50,8 @@
 - Act 4 drift, inject library, judge console
 - HELD-OUT v1 (pre-registered): 3/6 with qwen2.5:7b - 2 harmful (decisive actions grounded in soft law / out-of-mandate sources), 1 conservative miss
 - Dev regression on A3 caught by CONFLICT guard (prompt sensitivity of 7b)
+
+## v1.3 — 2026-10-27
+- Safeguards: soft law can inform, never compel (binding basis required); competence needs a competence norm (ASSIGN_OVERRIDE_AUTHORITY -> logged gap G5)
+- Severity split (harmful vs conservative) defined before held-out v2
+- Held-out v1 moved to dev; held-out v2 pre-registered and committed before running

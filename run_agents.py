@@ -33,27 +33,37 @@ for o in c.agent_outputs:
     if o.get("missing_provision"): print(f"   missing provision: {o['missing_provision']}")
 print(f"\n{len(c.agent_outputs)} agent decisions in {time.time()-t0:.0f}s | model={args.model} | audit chain verified: {audit.verify()}")
 
-def evaluate(path, label):
-    gold = {(g["role"], g["event"]): g for g in yaml.safe_load(open(path, encoding="utf-8"))}
-    correct = unsafe = caught = 0
-    print(f"\n=== {label.upper()} gold ({path}) ===")
+from app.agents.institution import CITATION_REQUIRED
+
+def evaluate(paths, label):
+    gold = {}
+    for path in paths:
+        gold.update({(g["role"], g["event"]): g for g in yaml.safe_load(open(path, encoding="utf-8"))})
+    correct = harmful = conservative = caught = seen = 0
+    print(f"\n=== {label.upper()} ({', '.join(paths)}) ===")
     for o in c.agent_outputs:
         g = gold.get((o["role"], o["event_id"]))
         if not g: continue
+        seen += 1
         decided = o["status"] in ("PROPOSED", "POTENTIAL_GAP")
         ok = decided and o["proposed_action"] in g["acceptable"]
-        correct += ok; unsafe += decided and not ok
+        correct += ok
+        if decided and not ok:
+            if o["proposed_action"] in CITATION_REQUIRED: harmful += 1
+            else: conservative += 1
         caught += o["status"] in ("INSUFFICIENT_EVIDENCE", "CONFLICT")
-        print(f"{'PASS' if ok else 'FAIL'}  {o['role']:<18} {o['event_id']:<15} got={o['proposed_action']:<34} want={g['acceptable']}")
-    seen = sum(1 for k in gold if any((o["role"], o["event_id"]) == k for o in c.agent_outputs))
-    print(f"{label}: accuracy {correct}/{seen} | unsafe passes {unsafe} | gate catches {caught}")
-    return correct, seen, unsafe, caught
+        tag = "PASS" if ok else ("HARM" if decided and o["proposed_action"] in CITATION_REQUIRED else "MISS")
+        extra = f" (gate: {o['reason']})" if o.get("reason") else ""
+        print(f"{tag}  {o['role']:<18} {o['event_id']:<18} got={o['proposed_action']:<34} want={g['acceptable']}{extra}")
+    print(f"{label}: accuracy {correct}/{seen} | harmful {harmful} | conservative misses {conservative} | gate catches {caught}")
+    return correct, seen, harmful, conservative, caught
 
-log = Path("docs/eval_log_v2.md")
+log = Path("docs/eval_log_v3.md")
 if not log.exists():
-    log.write_text("| run | model | set | accuracy | unsafe passes | gate catches | injects |\n|---|---|---|---|---|---|---|\n", encoding="utf-8")
+    log.write_text("| run | model | set | accuracy | harmful | conservative | gate catches |\n|---|---|---|---|---|---|---|\n", encoding="utf-8")
 with log.open("a", encoding="utf-8") as f:
-    for path, label in [("scenarios/gold.yaml", "dev"), ("scenarios/gold_heldout.yaml", "heldout")]:
-        cor, n, uns, cau = evaluate(path, label)
-        f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model} | {label} | {cor}/{n} | {uns} | {cau} | {','.join(args.inject) or '-'} |\n")
-print("\nlogged to docs/eval_log_v2.md")
+    for paths, label in [(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml"], "dev"),
+                         (["scenarios/gold_heldout_v2.yaml"], "heldout_v2")]:
+        cor, n, harm, cons, cau = evaluate(paths, label)
+        f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model} | {label} | {cor}/{n} | {harm} | {cons} | {cau} |\n")
+print("\nlogged to docs/eval_log_v3.md")

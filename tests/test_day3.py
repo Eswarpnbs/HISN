@@ -74,3 +74,23 @@ def test_self_contradiction_becomes_conflict_for_a_human(tmp_path):
                                      "scam_likelihood": "low", "assessment": "routine, low risk"}))
     r = ag.handle(EV, {}, 50)
     assert r["status"] == "CONFLICT" and r["requires_human"] is True and a.verify()
+
+class SoftLawRetriever:
+    def __call__(self, q):
+        return [{"id": "UAE-AI-CHARTER-P6", "text": "Human Oversight", "similarity": 0.7,
+                 "record_id": "UAE-AI-CHARTER-2024", "article": "Principle 6", "basis": "SOFT_LAW"}]
+
+def test_soft_law_cannot_compel(tmp_path):
+    a = AuditLog(tmp_path / "s.jsonl")
+    ag = InstitutionalAgent("tdra", SoftLawRetriever(),
+                            StubLLM({"proposed_action": "DIRECT_OPERATOR", "cited_ids": ["UAE-AI-CHARTER-P6"]}), a)
+    dispute = Event(id="D", t=310, kind="override_dispute", audience=("tdra",), payload={})
+    r = ag.handle(dispute, {}, 310)
+    assert r["status"] == "POTENTIAL_GAP" and r["reason"] == "no_competent_binding_basis" and a.verify()
+
+def test_assigning_authority_without_competence_norm_is_a_gap(tmp_path):
+    a = AuditLog(tmp_path / "c.jsonl")
+    ag = InstitutionalAgent("ai_data_authority", StubRetriever(),
+                            StubLLM({"proposed_action": "ASSIGN_OVERRIDE_AUTHORITY", "cited_ids": ["UAE-FL-2-2019-ART16"]}), a)
+    dispute = Event(id="D", t=310, kind="override_dispute", audience=("ai_data_authority",), payload={})
+    assert ag.handle(dispute, {}, 310)["reason"] == "no_competent_binding_basis"
