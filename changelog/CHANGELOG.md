@@ -42,3 +42,8 @@
 - Agents reach 4/4 vs pre-registered gold on the DEVELOPMENT scenario (5 measured iterations), 0 unsafe passes
 - Self-consistency CONFLICT guard added as a safety net
 - Held-out evaluation pending (Act 4 + injects, gold pre-registered)
+
+## v1.0 — 2026-10-27
+- Agents reach 4/4 vs pre-registered gold on the DEVELOPMENT scenario (5 measured iterations), 0 unsafe passes
+- Self-consistency CONFLICT guard added as a safety net
+- Held-out evaluation pending (Act 4 + injects, gold pre-registered)
