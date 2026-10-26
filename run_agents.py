@@ -33,7 +33,7 @@ for o in c.agent_outputs:
     g = gold.get((o["role"], o["event_id"]))
     if not g: continue
     ok = o["proposed_action"] in g["acceptable"] and o["status"] in ("PROPOSED", "POTENTIAL_GAP")
-    correct += ok; caught += o["status"] == "INSUFFICIENT_EVIDENCE"
+    correct += ok; caught += o["status"] in ("INSUFFICIENT_EVIDENCE", "CONFLICT")
     print(f"{'PASS' if ok else 'FAIL'}  {o['role']:<18} {o['event_id']:<9} got={o['proposed_action']:<36} want={g['acceptable']}")
 print(f"\nAgent accuracy vs gold: {correct}/{len(gold)} | gate rejections: {caught}")
 

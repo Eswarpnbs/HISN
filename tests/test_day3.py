@@ -68,3 +68,9 @@ def test_procedural_action_needs_no_citation_but_decisive_does(tmp_path):
     assert r["status"] == "PROPOSED" and r["procedural"] is True
     ag2, _ = agent(tmp_path, StubLLM({"proposed_action": "KEEP_QUARANTINED", "cited_ids": []}))
     assert ag2.handle(EV, {}, 50)["reason"] == "citation_not_in_evidence"
+
+def test_self_contradiction_becomes_conflict_for_a_human(tmp_path):
+    ag, a = agent(tmp_path, StubLLM({"proposed_action": "KEEP_QUARANTINED", "cited_ids": ["UAE-FL-2-2019-ART16"],
+                                     "scam_likelihood": "low", "assessment": "routine, low risk"}))
+    r = ag.handle(EV, {}, 50)
+    assert r["status"] == "CONFLICT" and r["requires_human"] is True and a.verify()

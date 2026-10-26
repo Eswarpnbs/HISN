@@ -33,3 +33,7 @@
 ## v0.9 — 2026-10-27
 - Decisive vs procedural actions: legal citation required only for decisions affecting a message or data
 - Deterministic retrieval intents per event kind; evidence IDs shown per decision
+
+## v1.0 — 2026-10-27
+- Self-consistency check: action vs the agent's own scam_likelihood rating -> CONFLICT -> named human
+- Eval history: 1/4 -> 2/4 -> 3/4 (7b); unsafe passes tracked per run

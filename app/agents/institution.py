@@ -40,11 +40,11 @@ Mandate: {mandate}
 Rules:
 1. Use ONLY the EVIDENCE provided. Cite evidence by its exact id in "cited_ids". Cite only evidence that is directly relevant to THIS situation. Never invent laws, articles or ids.
 2. Read the FACTS carefully. If the evidence does not cover the situation, choose "LOG_GAP" and describe the missing provision in one sentence.
-3. Your assessment must be consistent with your proposed_action.
+3. Your assessment must be consistent with your proposed_action. Rate scam_likelihood honestly from the FACTS (sender verification, route, URLs, firewall score and threshold).
 4. Decisive actions (RECOMMEND_RELEASE_BY_NAMED_OFFICER, KEEP_QUARANTINED, UPHOLD_BLOCK, DIRECT_OPERATOR) REQUIRE at least one EVIDENCE id in cited_ids.
 5. You only PROPOSE. Allowed proposed_action values for this event: {actions}.
 6. Reply with JSON only:
-{{"assessment": "...", "proposed_action": "...", "cited_ids": ["..."], "missing_provision": null, "uncertainty": "low|medium|high"}}"""
+{{"assessment": "...", "proposed_action": "...", "cited_ids": ["..."], "missing_provision": null, "uncertainty": "low|medium|high", "scam_likelihood": "low|medium|high"}}"""
 
 class InstitutionalAgent:
     def __init__(self, role, retriever, llm, audit, threshold=0.25):
@@ -86,11 +86,17 @@ class InstitutionalAgent:
         else:
             rec.update(status="PROPOSED" if action != "LOG_GAP" else Verdict.POTENTIAL_GAP.value,
                        proposed_action=action, cited_ids=cited)
+        sl = str(out.get("scam_likelihood", "")).lower() or None
+        if rec.get("status") == "PROPOSED" and (
+                (action == "KEEP_QUARANTINED" and sl == "low") or
+                (action == "RECOMMEND_RELEASE_BY_NAMED_OFFICER" and sl == "high")):
+            rec.update(status=Verdict.CONFLICT.value, reason="action_inconsistent_with_own_risk_rating")
+        rec["scam_likelihood"] = sl
         mp = out.get("missing_provision")
         rec.update(assessment=str(out.get("assessment", ""))[:600],
                    missing_provision=None if (not mp or str(mp).upper() in {a.upper() for a in actions}) else mp,
                    uncertainty=out.get("uncertainty"),
-                   requires_human=(rec["proposed_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER"),
+                   requires_human=(rec["proposed_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER" or rec["status"] == "CONFLICT"),
                    procedural=(rec["proposed_action"] not in CITATION_REQUIRED and rec["proposed_action"] != "LOG_GAP"))
         return self._log(rec)
 
