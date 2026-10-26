@@ -33,3 +33,12 @@ class EventBus:
         return [e for e in self._events
                 if e.id in self._released and e.t <= now
                 and (role in e.audience or "all" in e.audience)]
+
+def _inject(self, event):
+    """Add a runtime event (e.g. an escalation) as already released."""
+    self._events.append(event)
+    self._released.add(event.id)
+    self.audit.write({"kind": "event_injected", "event_id": event.id, "t": event.t,
+                      "audience": list(event.audience)})
+
+EventBus.inject = _inject

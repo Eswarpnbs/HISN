@@ -1,0 +1,5 @@
+# Pre-registered expectations, written by the team BEFORE running agents (to be reviewed by domain experts).
+- {role: tdra,              event: A1-E2,     acceptable: [MONITOR, LOG_GAP],     why: "Energy-saving mode delaying OTPs: monitor; no provision links network AI energy modes to essential services"}
+- {role: health_authority,  event: A2-E3,     acceptable: [REFER_TO_TDRA, REQUEST_INFO], why: "Payment complaint suggests an impersonation scam: refer to the telecom regulator"}
+- {role: health_authority,  event: A3-E2-ESC, acceptable: [RECOMMEND_RELEASE_BY_NAMED_OFFICER], why: "Verified essential sender, local route, held only by a tightened threshold: false positive"}
+- {role: ai_data_authority, event: A3-E3,     acceptable: [UPHOLD_BLOCK],         why: "Article 13: no prior resolution for offshore processing"}

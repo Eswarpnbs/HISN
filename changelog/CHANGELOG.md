@@ -24,3 +24,8 @@
 - KB: 7 hash-pinned records, 13 verbatim clauses (TDRA UEC v1.1, PDPL Art.2, Law 2/2019 Art.1/13/16/24, AI Charter P2/P5/P6/P7)
 - Retrieval: 3/3 policy questions return the exact clause at rank 1
 - Gap register G1-G4 (instrument-verified; second pass pending)
+
+## v0.7 — 2026-10-27
+- Agents: actions constrained by event kind; full firewall facts on escalation; clause-first retrieval
+- Pre-registered gold expectations; run reports agent accuracy and gate rejections
+- First live run (7b) exposed relevant-citation and consistency failures; fixes applied
