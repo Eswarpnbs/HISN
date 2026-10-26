@@ -10,9 +10,9 @@ def load_scenario(path):
 class Coordinator:
     """Deterministic MLFO: advances the simulated clock, dispatches released events, delivers each
     event only to the agents in its audience, and routes escalations. gateway=None = ungoverned twin."""
-    def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None):
+    def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None, extra_events=None):
         self.meta, events = load_scenario(scenario_path)
-        self.bus = EventBus(audit); self.bus.load(events)
+        self.bus = EventBus(audit); self.bus.load(list(events) + list(extra_events or []))
         self.audit, self.firewall, self.gateway, self.step = audit, firewall, gateway, step
         self.agents = agents or {}
         self.outcomes, self.agent_outputs = [], []

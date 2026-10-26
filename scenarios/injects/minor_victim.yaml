@@ -1,0 +1,3 @@
+events:
+  - {id: INJ-MINOR, t: 42, act: 2, kind: complaint, audience: [health_authority],
+     payload: {text: "A 15-year-old patient paid a fake appointment fee from a hospital-lookalike SMS", victim_age: 15}}

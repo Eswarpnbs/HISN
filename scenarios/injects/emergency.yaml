@@ -1,0 +1,5 @@
+events:
+  - {id: INJ-EMERG, t: 62, act: 3, kind: emergency_declared, audience: [tdra, ai_data_authority, health_authority],
+     payload: {declared_by: "National emergency authority (synthetic)", reason: "Extreme heat; grid instability"}}
+  - {id: INJ-EMERG-XFER, t: 63, act: 3, kind: data_transfer, audience: [ai_data_authority],
+     payload: {data_class: health, destination_country: XX, reason: "emergency failover after declared emergency"}}

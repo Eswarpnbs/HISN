@@ -1,0 +1,4 @@
+events:
+  - {id: INJ-FORGED, t: 52, act: 3, kind: sms_submit, audience: [filter_ai],
+     payload: {source_addr: HOSPITAL-A, route: foreign_aggregator,
+               short_message: "Final notice: pay your unpaid lab fee now at http://hospital-a-billing.example"}}
