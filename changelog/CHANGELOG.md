@@ -34,17 +34,14 @@
 - Decisive vs procedural actions: legal citation required only for decisions affecting a message or data
 - Deterministic retrieval intents per event kind; evidence IDs shown per decision
 
-## v1.0 — 2026-10-27
+## v0.10 — 2026-10-27
 - Self-consistency check: action vs the agent's own scam_likelihood rating -> CONFLICT -> named human
 - Eval history: 1/4 -> 2/4 -> 3/4 (7b); unsafe passes tracked per run
 
 ## v1.0 — 2026-10-27
-- Agents reach 4/4 vs pre-registered gold on the DEVELOPMENT scenario (5 measured iterations), 0 unsafe passes
-- Self-consistency CONFLICT guard added as a safety net
+- Agents reach 4/4 vs pre-registered gold on the DEVELOPMENT scenario (5 measured iterations), 0 unsafe passes; stable over 3 repeats
+- Self-consistency CONFLICT guard kept as a safety net
 - Held-out evaluation pending (Act 4 + injects, gold pre-registered)
-
-## v1.1 — 2026-10-27
-- Reference-model check: qwen2.5:14b also 4/4 on dev gold, 0 unsafe passes (108s vs 46s for 7b)
 
 ## v1.1 — 2026-10-27
 - Reference-model check: qwen2.5:14b also 4/4 on dev gold, 0 unsafe passes (108s vs 46s for 7b)
