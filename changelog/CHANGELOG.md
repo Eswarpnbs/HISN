@@ -13,3 +13,9 @@
 - ITU-compatible clause metadata: numeric dimension_id, factor, official metric IDs (d10_m10, d10_m06), Y.3172 node tags
 - ITU use-case corpus loaded (kb_usecase: 1779 chunks)
 - Verified: ITU search_by_dimension(10) returns Art.13 and Art.24
+
+## v0.4 — 2026-10-26
+- Event bus: time-gated, role-scoped visibility (tested: no agent sees the future)
+- Deterministic coordinator (MLFO) playing Crisis Exploit Acts 1-3
+- submit_sm-compatible SMS firewall stub; essential senders never silently dropped when governed
+- Governed vs ungoverned twin: first Policy-ON/OFF comparison
