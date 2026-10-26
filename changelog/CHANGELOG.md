@@ -37,3 +37,8 @@
 ## v1.0 — 2026-10-27
 - Self-consistency check: action vs the agent's own scam_likelihood rating -> CONFLICT -> named human
 - Eval history: 1/4 -> 2/4 -> 3/4 (7b); unsafe passes tracked per run
+
+## v1.0 — 2026-10-27
+- Agents reach 4/4 vs pre-registered gold on the DEVELOPMENT scenario (5 measured iterations), 0 unsafe passes
+- Self-consistency CONFLICT guard added as a safety net
+- Held-out evaluation pending (Act 4 + injects, gold pre-registered)
