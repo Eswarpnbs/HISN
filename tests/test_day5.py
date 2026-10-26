@@ -15,3 +15,9 @@ def test_fraud_duty_has_an_access_cost(tmp_path):
     a = AuditLog(tmp_path / "f.jsonl")
     base = metrics(run_battery({}, a)); m = metrics(run_battery({"fraud_duty": True}, a))
     assert m["protection"] > base["protection"] and m["access"] < base["access"]
+
+def test_authentication_enables_both_protection_and_access(tmp_path):
+    a = AuditLog(tmp_path / "v.jsonl")
+    base = metrics(run_battery({}, a))
+    m = metrics(run_battery({"require_auth": True, "authenticated_bypass": True}, a))
+    assert m["protection"] > base["protection"] and m["access"] > base["access"]

@@ -69,3 +69,8 @@
 ## v1.5 — 2026-10-27
 - GAP ENGINE (deterministic, no LLM): loophole hunt over abstract tactic catalogue x filter states; counterfactual provision patches (P-AUTH, P-ROUTE, P-FRAUD + combos) measured by protection/access/MIZAN/officer reviews; load-bearing rule analysis
 - No phishing text generated; comparators marked verify-text; patches await named human sign-off
+
+## v1.6 — 2026-10-27
+- Gap engine findings: P-AUTH closes G2 at zero access cost; blunt P-FRAUD closes G1 but lowers MIZAN (over-blocks legitimate businesses)
+- P-VERIFIED (verified-sender lane) added after baseline revealed access harms; authentication enables both protection and access
+- Load-bearing metric fixed (counts transfers not blocked); Art.13 rule load-bearing; removal is fail-visible (FLAG, not silent allow)

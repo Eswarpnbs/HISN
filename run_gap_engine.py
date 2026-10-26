@@ -49,7 +49,7 @@ SC, REG, PACK = "scenarios/crisis_exploit.yaml", "kb/rulepacks/uae/senders.yaml"
 def offshore_allowed(pack_path):
     a = AuditLog(Path("runs/loadbearing_tmp.jsonl"))
     out = Coordinator(SC, a, SmsFirewall(REG, a), PolicyGateway(pack_path, a), extra_events=load_injects(["emergency"])).run()
-    return sum(1 for o in out if o["kind"] == "data_transfer" and o["action"] == "ALLOW")
+    return sum(1 for o in out if o["kind"] == "data_transfer" and not o["action"].startswith("BLOCK"))
 pack = yaml.safe_load(open(PACK, encoding="utf-8"))
 with_rule = offshore_allowed(PACK)
 for rule in pack["rules"]:
@@ -57,10 +57,11 @@ for rule in pack["rules"]:
     tmp = Path(f"runs/pack_minus_{rule['id']}.yaml"); tmp.write_text(yaml.safe_dump(reduced), encoding="utf-8")
     without = offshore_allowed(tmp)
     lb = without > with_rule
-    print(f"  {rule['id']:<26} ({rule['citation']['article']}): offshore transfers allowed {with_rule} -> {without} when removed "
+    print(f"  {rule['id']:<26} ({rule['citation']['article']}): offshore transfers NOT blocked {with_rule} -> {without} when removed "
           f"=> {'LOAD-BEARING' if lb else 'not load-bearing in this scenario'}")
     audit.write({"kind": "load_bearing", "rule": rule["id"], "allowed_with": with_rule, "allowed_without": without, "load_bearing": lb})
 
+print("  note: without the rule the gateway does not silently allow - it FLAGs the transfer as POTENTIAL_GAP (fail-visible)")
 Path("docs").mkdir(exist_ok=True)
 with open("docs/counterfactual_results.md", "w", encoding="utf-8") as f:
     f.write(f"# Counterfactual policy tests (deterministic, synthetic)\n\nBaseline: protection {base['protection']}%, access {base['access']}%, "

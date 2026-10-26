@@ -54,6 +54,13 @@ class SmsFirewall:
             self.audit.write({"kind": "firewall_decision", "t": now, "source_addr": sender,
                               "governed": self.governed, **rec})
             return rec
+        if essential and self.policy.get("authenticated_bypass") and msg.get("authenticated"):
+            rec = {"action": Action.ALLOW.value, "score": score, "threshold": self.threshold,
+                   "reasons": reasons + ["authenticated_essential_bypass"], "essential_sender": True,
+                   "silent_drop": False, "escalate_to": None}
+            self.audit.write({"kind": "firewall_decision", "t": now, "source_addr": sender,
+                              "governed": self.governed, **rec})
+            return rec
         spam = score >= self.threshold
         silent_drop, escalate_to = False, None
         if not spam:
