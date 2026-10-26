@@ -61,3 +61,7 @@
 - Results (qwen2.5:7b): dev 10/10, 0 harmful; HELD-OUT v2 (pre-registered) 3/4, 1 harmful (genuine urgent surgery SMS kept quarantined)
 - G5 discovered by agents: no instrument assigns authority over operator AI filter changes
 - Next: deterministic quarantine time limit for essential senders (evaluate on new held-out v3)
+
+## v1.4 — 2026-10-27
+- qwen2.5:14b (ITU reference): dev 8/10 (0 harmful, 1 conservative, 1 gate catch); HELD-OUT v2 4/4, 0 harmful
+- 7b shows dev overfitting (10/10 dev vs 3/4 held-out); 14b adopted for final runs, video and booth
