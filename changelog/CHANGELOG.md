@@ -65,3 +65,7 @@
 ## v1.4 — 2026-10-27
 - qwen2.5:14b (ITU reference): dev 8/10 (0 harmful, 1 conservative, 1 gate catch); HELD-OUT v2 4/4, 0 harmful
 - 7b shows dev overfitting (10/10 dev vs 3/4 held-out); 14b adopted for final runs, video and booth
+
+## v1.5 — 2026-10-27
+- GAP ENGINE (deterministic, no LLM): loophole hunt over abstract tactic catalogue x filter states; counterfactual provision patches (P-AUTH, P-ROUTE, P-FRAUD + combos) measured by protection/access/MIZAN/officer reviews; load-bearing rule analysis
+- No phishing text generated; comparators marked verify-text; patches await named human sign-off
