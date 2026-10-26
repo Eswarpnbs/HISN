@@ -19,3 +19,8 @@
 - Deterministic coordinator (MLFO) playing Crisis Exploit Acts 1-3
 - submit_sm-compatible SMS firewall stub; essential senders never silently dropped when governed
 - Governed vs ungoverned twin: first Policy-ON/OFF comparison
+
+## v0.5 — 2026-10-26
+- KB: 7 hash-pinned records, 13 verbatim clauses (TDRA UEC v1.1, PDPL Art.2, Law 2/2019 Art.1/13/16/24, AI Charter P2/P5/P6/P7)
+- Retrieval: 3/3 policy questions return the exact clause at rank 1
+- Gap register G1-G4 (instrument-verified; second pass pending)
