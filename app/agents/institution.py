@@ -25,6 +25,15 @@ ROLE_SPECS = {
         "actions_by_kind": {"data_transfer": ["UPHOLD_BLOCK", "REQUEST_INFO", "LOG_GAP"]}},
 }
 DEFAULT_ACTIONS = ["REQUEST_INFO", "LOG_GAP"]
+# Decisive actions change what happens to a person's message or data: they REQUIRE cited evidence.
+CITATION_REQUIRED = {"RECOMMEND_RELEASE_BY_NAMED_OFFICER", "KEEP_QUARANTINED", "UPHOLD_BLOCK", "DIRECT_OPERATOR"}
+# Deterministic retrieval intents per event kind (what the institution needs to look up).
+QUERY_INTENTS = {
+    "escalation": "availability of health information to the authorised; release of a quarantined essential health message; human oversight of AI decisions",
+    "complaint": "spam reporting facilities and protections for mobile customers; impersonation scam affecting patients",
+    "network_summary": "licensee obligations on network operations and monitoring",
+    "data_transfer": "storing or processing health data and information outside the State",
+}
 
 SYSTEM = """You are the {name} in a governance simulation (synthetic data only).
 Mandate: {mandate}
@@ -32,8 +41,9 @@ Rules:
 1. Use ONLY the EVIDENCE provided. Cite evidence by its exact id in "cited_ids". Cite only evidence that is directly relevant to THIS situation. Never invent laws, articles or ids.
 2. Read the FACTS carefully. If the evidence does not cover the situation, choose "LOG_GAP" and describe the missing provision in one sentence.
 3. Your assessment must be consistent with your proposed_action.
-4. You only PROPOSE. Allowed proposed_action values for this event: {actions}.
-5. Reply with JSON only:
+4. Decisive actions (RECOMMEND_RELEASE_BY_NAMED_OFFICER, KEEP_QUARANTINED, UPHOLD_BLOCK, DIRECT_OPERATOR) REQUIRE at least one EVIDENCE id in cited_ids.
+5. You only PROPOSE. Allowed proposed_action values for this event: {actions}.
+6. Reply with JSON only:
 {{"assessment": "...", "proposed_action": "...", "cited_ids": ["..."], "missing_provision": null, "uncertainty": "low|medium|high"}}"""
 
 class InstitutionalAgent:
@@ -46,7 +56,7 @@ class InstitutionalAgent:
 
     def handle(self, event, outcome, now):
         facts = {"event_kind": event.kind, "payload": event.payload, "system_outcome": outcome}
-        q = f"{event.kind}: {json.dumps(event.payload, ensure_ascii=False)}"
+        q = f"{QUERY_INTENTS.get(event.kind, event.kind)} | {json.dumps(event.payload, ensure_ascii=False)}"
         evidence = self.retriever(q)
         best = max((e["similarity"] for e in evidence), default=0.0)
         actions = self.allowed_actions(event.kind)
@@ -70,7 +80,7 @@ class InstitutionalAgent:
         if action not in actions:
             rec.update(status=Verdict.INSUFFICIENT_EVIDENCE.value,
                        reason=f"action_not_allowed_for_event:{action}", proposed_action="LOG_GAP")
-        elif action != "LOG_GAP" and (not cited or not set(cited) <= allowed_ids):
+        elif (cited and not set(cited) <= allowed_ids) or (action in CITATION_REQUIRED and not cited):
             rec.update(status=Verdict.INSUFFICIENT_EVIDENCE.value, reason="citation_not_in_evidence",
                        proposed_action="LOG_GAP", rejected_citations=sorted(set(cited) - allowed_ids))
         else:
@@ -80,7 +90,8 @@ class InstitutionalAgent:
         rec.update(assessment=str(out.get("assessment", ""))[:600],
                    missing_provision=None if (not mp or str(mp).upper() in {a.upper() for a in actions}) else mp,
                    uncertainty=out.get("uncertainty"),
-                   requires_human=(rec["proposed_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER"))
+                   requires_human=(rec["proposed_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER"),
+                   procedural=(rec["proposed_action"] not in CITATION_REQUIRED and rec["proposed_action"] != "LOG_GAP"))
         return self._log(rec)
 
     def _log(self, rec):

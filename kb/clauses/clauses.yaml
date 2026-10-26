@@ -115,3 +115,30 @@
   metric_ids: [d10_m06]
   y3172_nodes: [P, Sandbox]
   text: 'The UAE places great importance on safety, ensuring that all AI systems comply with the highest safety standards. The country encourages modifying or removing systems that pose risks.'
+- clause_id: UAE-FL-2-2019-ART4
+  record_id: UAE-FL-2-2019
+  article: "Article (4) (list layout reconstructed from PDF extraction)"
+  basis: FEDERAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06, d10_m10]
+  y3172_nodes: [P, D, SINK]
+  text: 'Upon using the information and communication technology in the areas of health, it shall be committed to the following: 1. To keep the confidentiality of health data and information by not allowing to circulate them in cases other than the permitted. 2. To ensure the validity and credibility of the health data and information by keeping their safety from the non-authorised damage, amendment, alteration, deletion or addition. 3. To ensure the availability of health data and information to the authorised thereof and facilitate the access thereto, if needed.'
+- clause_id: UAE-TDRA-UEC-11.2
+  record_id: UAE-TDRA-UEC-2022
+  article: "Clause 11.2"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P, SINK]
+  text: 'Licensees shall provide practical protections for their Mobile Customers from Mobile Spam and shall provide measures and mechanisms to ensure the same.'
+- clause_id: UAE-TDRA-UEC-8.5.3
+  record_id: UAE-TDRA-UEC-2022
+  article: "Clause 8.5 (lead) and 8.5.3 - excerpt"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m05]
+  y3172_nodes: [SINK]
+  text: 'The Licensees shall provide Mobile Customers with information and resources to help them minimize the level and impact of Mobile Spam. These shall include: [...] 8.5.3 the provision of Mobile Spam reporting facilities, including for example, through their respective customer service contacts, websites or by forwarding suspected Mobile Spam to licensees via a "short code".'

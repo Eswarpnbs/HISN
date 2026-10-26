@@ -60,3 +60,11 @@ def test_action_must_fit_event_kind(tmp_path):
                                      "cited_ids": ["UAE-FL-2-2019-ART16"]}))
     complaint = Event(id="C", t=40, kind="complaint", audience=("health_authority",), payload={})
     assert ag.handle(complaint, {}, 40)["reason"].startswith("action_not_allowed_for_event")
+
+def test_procedural_action_needs_no_citation_but_decisive_does(tmp_path):
+    complaint = Event(id="C", t=40, kind="complaint", audience=("health_authority",), payload={})
+    ag, _ = agent(tmp_path, StubLLM({"proposed_action": "REFER_TO_TDRA", "cited_ids": []}))
+    r = ag.handle(complaint, {}, 40)
+    assert r["status"] == "PROPOSED" and r["procedural"] is True
+    ag2, _ = agent(tmp_path, StubLLM({"proposed_action": "KEEP_QUARANTINED", "cited_ids": []}))
+    assert ag2.handle(EV, {}, 50)["reason"] == "citation_not_in_evidence"

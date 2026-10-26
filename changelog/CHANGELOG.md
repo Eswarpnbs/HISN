@@ -29,3 +29,7 @@
 - Agents: actions constrained by event kind; full firewall facts on escalation; clause-first retrieval
 - Pre-registered gold expectations; run reports agent accuracy and gate rejections
 - First live run (7b) exposed relevant-citation and consistency failures; fixes applied
+
+## v0.9 — 2026-10-27
+- Decisive vs procedural actions: legal citation required only for decisions affecting a message or data
+- Deterministic retrieval intents per event kind; evidence IDs shown per decision
