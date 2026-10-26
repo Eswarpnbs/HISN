@@ -29,3 +29,12 @@
   comparator: GDPR vital-interests derogation - verify text
   second_pass: [Ministerial Decision 51/2021 on cases of storing health data outside the State]
   status: instrument_verified
+- id: G5
+  title: No instrument assigns authority to approve, override or require protection in operators' AI filters
+  type: responsibility
+  discovered_by: agents (gate converted ASSIGN_OVERRIDE_AUTHORITY / ORDER_OPERATOR_WHITELIST / DIRECT_OPERATOR without competent binding basis into logged gaps)
+  evidence_runs: [docs/eval_log_v3.md, runs/governed_agents.jsonl]
+  related: [G2]
+  comparator: Singapore SRF allocation of telco duties - verify text
+  second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 3/2003 (Telecom Law) TDRA powers]
+  status: system_discovered

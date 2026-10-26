@@ -55,3 +55,9 @@
 - Safeguards: soft law can inform, never compel (binding basis required); competence needs a competence norm (ASSIGN_OVERRIDE_AUTHORITY -> logged gap G5)
 - Severity split (harmful vs conservative) defined before held-out v2
 - Held-out v1 moved to dev; held-out v2 pre-registered and committed before running
+
+## v1.3 — 2026-10-27
+- Safeguards: binding basis required for decisive actions; competence norm required (no norm -> logged gap)
+- Results (qwen2.5:7b): dev 10/10, 0 harmful; HELD-OUT v2 (pre-registered) 3/4, 1 harmful (genuine urgent surgery SMS kept quarantined)
+- G5 discovered by agents: no instrument assigns authority over operator AI filter changes
+- Next: deterministic quarantine time limit for essential senders (evaluate on new held-out v3)
