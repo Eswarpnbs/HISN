@@ -12,6 +12,10 @@ DOCS = [
    "https://ai.gov.ae/wp-content/uploads/2021/07/UAE-National-Strategy-for-Artificial-Intelligence-2031.pdf", "official_archived"),
   ("UAE-FL-2-2019", "Federal Law No. (2) of 2019 Concerning the Use of ICT in Health Fields", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
    "https://uaelegislation.gov.ae", "official"),
+  ("UAE-TDRA-UEC-2022", "Regulatory Policy: Unsolicited Electronic Communications v1.1", "TDRA", "AE", "regulatory_policy", "REGULATOR_POLICY",
+   "https://tdra.gov.ae/-/media/About/regulations-and-ruling/EN/cellular-phone-spam-regulatory-policy-English.ashx", "official"),
+  ("UAE-PDPL-2021", "Federal Decree-Law No. (45) of 2021 Concerning the Protection of Personal Data", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/en/legislations/1972/download", "official"),
 ]
 
 src = pathlib.Path("kb/sources")

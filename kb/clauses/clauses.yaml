@@ -16,3 +16,102 @@
   metric_ids: [d10_m06]
   y3172_nodes: [P]
   text: 'Whoever violates the provision of Article (13) of this Law shall be punished of a penalty of no less than (500.000) five hundred thousand dirhams and no more than (700.000) seven hundred thousand dirhams.'
+- clause_id: UAE-TDRA-UEC-1.10
+  record_id: UAE-TDRA-UEC-2022
+  article: "Clause 1.10"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m04, d10_m06]
+  y3172_nodes: [P]
+  text: 'Unsolicited Electronic Communications (Spam): means Marketing Electronic Communications sent to a Recipient without obtaining that Recipient’s Consent;'
+- clause_id: UAE-TDRA-UEC-6.1
+  record_id: UAE-TDRA-UEC-2022
+  article: "Clause 6.1"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P, SINK]
+  text: 'Licensees shall be under a full obligation to put in place all practical measures to minimize the transmission of Spam having a UAE Link across their Telecommunications Networks.'
+- clause_id: UAE-TDRA-UEC-11.1
+  record_id: UAE-TDRA-UEC-2022
+  article: "Clause 11.1"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [C, P]
+  text: 'Licensees shall monitor their networks for signs of Mobile Spam and take immediate practical actions to eliminate such Spam.'
+- clause_id: UAE-TDRA-UEC-13
+  record_id: UAE-TDRA-UEC-2022
+  article: "Clause 13 (Exemption of the Government)"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m04]
+  y3172_nodes: [P]
+  text: 'This policy shall not apply to any Mobile Marketing Text Message sent by any government entity except for Charities or any other entity specified by TDRA as required. It shall also not apply to any licensee with respect to the transmission of these Mobile Marketing Text Messages.'
+- clause_id: UAE-PDPL-ART2-2
+  record_id: UAE-PDPL-2021
+  article: "Article (2)(2)(a)-(e)"
+  basis: FEDERAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10, d10_m04]
+  y3172_nodes: [SRC, PP]
+  text: 'Provisions of this Decree by Law shall not apply to the following: a. Government Data b. Governmental entities which control or process Personal Data. c. Personal Data held by the security and judicial authorities d. A Data Subject who processes his/her data for personal purposes. e. Personal Health Data that has legislation regulating its protection and processing.'
+- clause_id: UAE-FL-2-2019-ART1-CIRC
+  record_id: UAE-FL-2-2019
+  article: "Article (1) - Circulation of Health Information"
+  basis: FEDERAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10]
+  y3172_nodes: [C, PP, D]
+  text: 'Circulation of Health Information: Accessing, exchanging, copying, photocopying, transforming, storing, publishing, disclosing or sending the health data and information.'
+- clause_id: UAE-FL-2-2019-ART16
+  record_id: UAE-FL-2-2019
+  article: "Article (16) (list layout reconstructed from PDF extraction)"
+  basis: FEDERAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10, d10_m06]
+  y3172_nodes: [PP, M]
+  text: 'Without violation to any applicable legislations, whoever circulates information related to the patients must keep its confidentiality and not to use them except in the health purposes without written approval from the patient, except in any of the following cases: 1. The health data or information requested by the health insurance companies or any authority funding the health services regarding the health services received by the patient, for the review, approval or verification of the financial entitlements related to such services. 2. Purposes of the scientific and clinical research, provided that not to disclose the identity of the patients and to observe the morals and rules of the scientific researches. 3. To take the preventive and curative procedures related to the public health or to keep the health and safety of the patient or any other person contacting him. 4. Upon a request by the competent judicial authorities. 5. Upon a request by the Health Authority for purposes of monitoring and inspection and keeping the public health.'
+- clause_id: UAE-AI-CHARTER-P5
+  record_id: UAE-AI-CHARTER-2024
+  article: "Principle 5 - Transparency"
+  basis: SOFT_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m07]
+  y3172_nodes: [D, SINK]
+  text: 'Transparency: The UAE seeks to create a clear understanding of AI and how systems operate and make decisions, which helps build trust, enhance responsibility, and accountability in the use of these technologies.'
+- clause_id: UAE-AI-CHARTER-P6
+  record_id: UAE-AI-CHARTER-2024
+  article: "Principle 6 - Human Oversight"
+  basis: SOFT_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P]
+  text: 'Human Oversight: The Charter emphasizes the irreplaceable value of human judgment and human oversight over AI, aligning with ethical values and social standards to correct any errors or biases that may arise.'
+- clause_id: UAE-AI-CHARTER-P7
+  record_id: UAE-AI-CHARTER-2024
+  article: "Principle 7 - Governance and Accountability"
+  basis: SOFT_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m09]
+  y3172_nodes: [P, MLFO]
+  text: 'Governance and Accountability: The UAE adopts a responsible and proactive stance, emphasizing the importance of governance and accountability in AI to ensure the technology is used ethically and transparently.'
+- clause_id: UAE-AI-CHARTER-P2
+  record_id: UAE-AI-CHARTER-2024
+  article: "Principle 2 - Safety (two-column layout; sentence-to-heading alignment checked against page 3)"
+  basis: SOFT_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P, Sandbox]
+  text: 'The UAE places great importance on safety, ensuring that all AI systems comply with the highest safety standards. The country encourages modifying or removing systems that pose risks.'

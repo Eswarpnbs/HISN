@@ -1,0 +1,31 @@
+# HISN gap register. status: instrument_verified -> second_pass_done -> confirmed (or rejected)
+- id: G1
+  title: Telecom filtering duties cover marketing spam, not fraud or impersonation
+  type: legislative_scope
+  evidence: [UAE-TDRA-UEC-1.10, UAE-TDRA-UEC-6.1, UAE-TDRA-UEC-11.1]
+  absence_note: 'The term "fraud" returns zero hits in UEC Policy v1.1 (searched 2026-10-26).'
+  comparator: Singapore Shared Responsibility Framework (telco duties to block unauthorised sender IDs / malicious URLs) - verify text
+  second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 34/2021 (cybercrime), Cabinet Decision 56/2024]
+  status: instrument_verified
+- id: G2
+  title: Government senders lack protected / authenticated-sender status
+  type: responsibility
+  evidence: [UAE-TDRA-UEC-13, UAE-PDPL-ART2-2]
+  comparator: Singapore SMS Sender ID Registry; India TRAI DLT - verify text
+  second_pass: [TDRA sender ID registration rules, digital government messaging standards]
+  status: instrument_verified
+- id: G3
+  title: AI content-scanning of health SMS for fraud lacks an explicit legal basis
+  type: conflicting_objectives
+  evidence: [UAE-FL-2-2019-ART1-CIRC, UAE-FL-2-2019-ART16, UAE-PDPL-ART2-2]
+  absence_note: Article 16 lists five exceptions; telecom fraud filtering is not among them.
+  comparator: GDPR / ePrivacy treatment of spam filtering - verify text
+  second_pass: [Executive Regulation of Federal Law 2/2019, DoH/DHA data standards]
+  status: instrument_verified
+- id: G4
+  title: No emergency fast-path for AI-triggered failover of health data
+  type: conflicting_objectives
+  evidence: [UAE-FL-2-2019-ART13, UAE-FL-2-2019-ART24]
+  comparator: GDPR vital-interests derogation - verify text
+  second_pass: [Ministerial Decision 51/2021 on cases of storing health data outside the State]
+  status: instrument_verified
