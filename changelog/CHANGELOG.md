@@ -45,3 +45,8 @@
 
 ## v1.1 — 2026-10-27
 - Reference-model check: qwen2.5:14b also 4/4 on dev gold, 0 unsafe passes (108s vs 46s for 7b)
+
+## v1.2 — 2026-10-27
+- Act 4 drift, inject library, judge console
+- HELD-OUT v1 (pre-registered): 3/6 with qwen2.5:7b - 2 harmful (decisive actions grounded in soft law / out-of-mandate sources), 1 conservative miss
+- Dev regression on A3 caught by CONFLICT guard (prompt sensitivity of 7b)
