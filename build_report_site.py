@@ -141,7 +141,7 @@ S.append(section("5", "windtunnel", "Test-driven regulation: the regulatory wind
 S.append(section("6", "gaps", "Policy gaps (domain level)",
     table(["Gap", "Description", "Type", "Status", "Evidence"], [[f"<b>{E(g['id'])}</b>", E(g["title"]), E(g["type"]), badge(g["status"].replace("_", " "), "ok" if g["status"] == "confirmed" else "info"),
            f"<span class='small'>{E(', '.join(g.get('evidence', [])) or g.get('discovered_by', ''))}</span>"] for g in GAPS])
-    + details("Show UAE-India comparison", table(["Gap", "UAE", "India", "India clauses", "Note"], [[E(k), E(v["UAE"]["status"]), E(v["IN"]["status"]), E(", ".join(v["IN"]["clauses"])), E(v["IN"].get("note", ""))] for k, v in GM.items()]))))
+    + details("Show UAE-India-Singapore comparison", table(["Gap", "UAE", "India", "Singapore", "Singapore clauses", "Notes"], [[E(k), E(v["UAE"]["status"]), E(v["IN"]["status"]), E(v.get("SG", {}).get("status", "-")), E(", ".join(v.get("SG", {}).get("clauses", []))), E(v.get("SG", {}).get("note", "") or v["IN"].get("note", ""))] for k, v in GM.items()]))))
 S.append(section("7", "evidence", "Evidence base",
     f"<p>{len(MAN)} official instruments (UAE and India) pinned by SHA-256 and {NCL} verbatim clauses, ingested through the ITU AI Readiness reference pipeline. Retrieval on 24 policy questions: Recall@5 {RET[2]}, Recall@1 {RET[0]}, MRR {RET[3]}. "
     f"Network evidence ({NP.get('n_link_days', '-')} real operator link-days, used as proxy): rain raised link-failure risk {NP.get('relative_risk_rain', '-')}x; heat did not ({NP.get('relative_risk_hot', '-')}x).</p>"
