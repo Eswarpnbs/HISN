@@ -1,0 +1,45 @@
+# Testable mechanism vocabulary for the regulatory wind tunnel, with conflicts against verified UAE clauses.
+# Conflict table is hand-authored from verbatim clauses and must be reviewed by a legal expert.
+mechanisms:
+  sender_authentication:
+    description: "Protected (essential) sender IDs are accepted only when authenticated by the registered sender's own account."
+    effect: {firewall_flag: require_auth}
+    closes: [G2]
+    conflicts: []
+  protected_routes_only:
+    description: "Protected sender IDs arriving via unregistered or foreign aggregator routes are rejected."
+    effect: {firewall_flag: protected_routes_only}
+    closes: [G2]
+    conflicts: []
+  fraud_filtering_duty:
+    description: "Operators must filter payment demands from unregistered senders (fraud), not only marketing spam."
+    effect: {firewall_flag: fraud_duty}
+    closes: [G1]
+    conflicts:
+      - {clause: UAE-TDRA-UEC-1.10, type: scope_extension, note: "Spam is defined as marketing communications without consent; a fraud duty goes beyond this definition and needs an amended definition or a new instrument."}
+  verified_sender_lane:
+    description: "Authenticated essential senders bypass content-based scoring."
+    effect: {firewall_flag: authenticated_bypass}
+    requires: [sender_authentication]
+    closes: []
+    conflicts: []
+  content_scanning_health:
+    description: "Operators may scan the content of health-related SMS to detect fraud."
+    effect: {}
+    closes: []
+    conflicts:
+      - {clause: UAE-FL-2-2019-ART16, type: no_listed_exception, note: "Article 16 lists five exceptions to written patient consent; telecom fraud filtering is not among them."}
+      - {clause: UAE-FL-2-2019-ART1-CIRC, type: definition, note: "Sending health information is circulation under Article 1; scanning it falls within the law's scope."}
+  emergency_offshore_exception:
+    description: "During a declared emergency, health message logs may be stored or processed at a backup site outside the State for a limited period."
+    params: {hours: 72}
+    effect: {gateway_overlay: emergency_offshore}
+    closes: [G4]
+    conflicts:
+      - {clause: UAE-FL-2-2019-ART13, type: requires_prior_resolution, compatible_levels: [health_authority_resolution, federal_amendment], note: "Article 13 permits offshore processing only where a resolution is issued by the Health Authority in coordination with the Ministry."}
+  quarantine_time_limit:
+    description: "Essential messages held by a filter must reach a second human reviewer within a time limit."
+    params: {minutes: 15}
+    effect: {sla_minutes: minutes}
+    closes: []
+    conflicts: []
