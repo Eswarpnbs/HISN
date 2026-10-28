@@ -136,3 +136,6 @@
 - Network evidence from Turkcell ITU challenge data (985,308 link-days, proxy): heat RR 0.54, rain RR 4.49
 - Data-driven injects: storm_rainfade (14 failures/3 days) and heatwave_links (13/7 days); Act 1 stressor kept as operator energy-saving decision
 - Raw data not redistributed; aggregate profile + citation only
+
+## v3.0 — 2026-10-28
+- Baselines on qwen2.5:14b (ITU reference): B0 rules 11/14 (3 harmful), B1 LLM-only 7/14 (5 harmful, 18 unsupported citations), B2 RAG-no-gate 8/14 (5 harmful), B3 full HISN 12/14, held-out 4/4, 0 harmful, 0 unsupported, 0 unbound
