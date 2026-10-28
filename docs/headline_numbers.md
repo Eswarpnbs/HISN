@@ -1,12 +1,12 @@
-# Headline numbers (selftest, 2026-10-29 00:38)
+# Headline numbers (selftest, 2026-10-29 01:37)
 
 Every figure in the report traces to a row here.
 
 | figure | value | produced by |
 |---|---|---|
-| Unit tests | 43 passed, 2 warnings | `python -m pytest -q` |
+| Unit tests | 45 passed, 2 warnings | `python -m pytest -q` |
 | Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
-| Hash-pinned records / verbatim clauses | 10 / 25 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
+| Hash-pinned records / verbatim clauses | 13 / 32 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
 | Legitimate essential messages silently lost | ungoverned 3 -> HISN 0 | `twin run (all injects, 15-min limit)` |
 | Offshore health-data transfers not blocked | ungoverned 2 -> HISN 0 | `twin run (all injects)` |
 | Audit chains verify (governed / ungoverned) | True / True | `AuditLog.verify()` |
