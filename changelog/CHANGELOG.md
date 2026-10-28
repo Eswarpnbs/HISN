@@ -121,3 +121,6 @@
 
 ## v2.5 — 2026-10-28
 - Citizen verifier (D11 Inclusion): deterministic verdict, templates in EN/AR/HI/TE/UR/ML with per-language review status; optional English LLM explanation discarded if it contradicts the verdict; message text never logged
+
+## v2.6 — 2026-10-28
+- Synthetic SMS governance dataset (91 rows: 64 malicious, 27 legitimate) with ITU-style metadata.yaml; no personal data; imbalance documented
