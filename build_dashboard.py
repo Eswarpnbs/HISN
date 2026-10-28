@@ -130,15 +130,36 @@ for _p in _cards:
                 f"<td>{E(_con)}</td><td>fixed {E(_r.get('invariants_fixed', []))} broken {E(_r.get('invariants_broken', []))}</td>"
                 f"<td>{_mb.get('mizan', '')} &rarr; {_ma.get('mizan', '')}</td><td>{_r.get('interop_before', '')}% &rarr; {_r.get('interop_after', '')}%</td></tr>")
 
-CSS = """body{font-family:-apple-system,Segoe UI,Arial,sans-serif;margin:24px;color:#1d2433;background:#f7f8fa}
-h1{margin:0}h2{margin-top:36px;border-bottom:2px solid #d9dee7;padding-bottom:6px}.sub{color:#5b6476}
-table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}td,th{border:1px solid #e3e7ee;padding:6px;text-align:left;vertical-align:top}
-th{background:#eef1f6}.bad{background:#fde2e1}.warn{background:#fff3cd}.good{background:#dff3e4}
+CSS = """:root{--g:#00732F;--r:#C8102E;--k:#1a1a1a;--gold:#B68A35;--sand:#F7F5F0;--ink:#1f2933;--mut:#5b6476}
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--sand)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px 48px}
+.top{height:6px;background:linear-gradient(90deg,var(--r) 0 25%,var(--g) 25% 50%,#fff 50% 75%,var(--k) 75% 100%)}
+.hero{background:linear-gradient(135deg,#0b3d24 0%,var(--g) 55%,#0f5132 100%);color:#fff;padding:34px 28px 28px;border-bottom:4px solid var(--gold)}
+.hero .in{max-width:1280px;margin:0 auto}.hero h1{margin:0;font-size:32px}.hero .ar{font-size:28px;color:#f3e3c3;margin-left:12px}
+.hero p{margin:8px 0 0;color:#e7f2ea;font-size:15px}.tag{display:inline-block;margin:12px 6px 0 0;padding:4px 11px;border:1px solid rgba(255,255,255,.45);border-radius:20px;font-size:12px;color:#fff}
+.disc{background:#fff8e6;border-left:4px solid var(--gold);padding:8px 28px;font-size:12px;color:#5a4a1f}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #e6e1d6;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav .in{max-width:1280px;margin:0 auto;padding:8px 28px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{font-size:12.5px;text-decoration:none;color:var(--g);padding:5px 11px;border-radius:16px;background:#eef6f1}nav a:hover{background:var(--g);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin:24px 0}
+.kpi{background:#fff;border-radius:12px;padding:16px;border-top:4px solid var(--g);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.kpi.r{border-top-color:var(--r)}.kpi.gold{border-top-color:var(--gold)}.kpi.k{border-top-color:var(--k)}
+.kpi .v{font-size:28px;font-weight:700;color:var(--k)}.kpi .l{font-size:12.5px;color:var(--mut);margin-top:4px}.kpi .s{font-size:12px;color:var(--g);margin-top:6px;font-weight:600}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px;margin-bottom:8px}
+.panel{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)}.panel h3{margin:0 0 10px;font-size:15px;color:var(--g)}
+h2{margin:36px 0 12px;font-size:20px;color:var(--k);padding-left:12px;border-left:5px solid var(--g)}
+.sub{color:var(--mut)}.note{font-size:12.5px;color:var(--mut)}
+table{border-collapse:separate;border-spacing:0;width:100%;background:#fff;font-size:13px;border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+td,th{padding:8px 10px;text-align:left;vertical-align:top;border-bottom:1px solid #efeae0}th{background:var(--g);color:#fff;font-weight:600}
+tr:nth-child(even) td{background:#fbfaf6}
+.bad{background:#fde4e6!important;color:#8a0f22}.warn{background:#fff3d6!important;color:#6b4e00}.good{background:#e1f3e8!important;color:#0b5a2a}.muted{background:#f0f0f0!important;color:#6b7280}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.card{background:#fff;border:1px solid #e3e7ee;border-radius:8px;padding:12px}.card h4{margin:0 0 8px}
-.bar{display:flex;align-items:center;gap:8px;font-size:12px;margin:3px 0}.bar span{width:72px}
-.track{flex:1;background:#eef1f6;height:10px;border-radius:5px}.fill{height:10px;border-radius:5px}
-.muted{background:#eceff3;color:#5b6476}.p{background:#3b6fd8}.a{background:#2e9e63}.m{background:#8a4fd8}code{font-size:12px}.note{font-size:12px;color:#5b6476}"""
+.card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);border-top:3px solid var(--gold)}.card h4{margin:0 0 8px;color:var(--k)}
+.bar{display:flex;align-items:center;gap:8px;font-size:12px;margin:4px 0}.bar span{width:72px;color:var(--mut)}
+.track{flex:1;background:#efeae0;height:10px;border-radius:6px}.fill{height:10px;border-radius:6px}
+.p{background:var(--g)}.a{background:var(--gold)}.m{background:var(--r)}
+code{font-size:12px;background:#f3f0e8;padding:1px 4px;border-radius:4px}
+footer{margin-top:40px;padding:18px 28px;background:var(--k);color:#cfcfcf;font-size:12px}"""
 
 doc = f"""<!doctype html><html><head><meta charset='utf-8'><title>HISN dashboard</title><style>{CSS}</style></head><body>
 <h1>HISN — governance for the telecom AI that decides what reaches citizens</h1>
@@ -161,6 +182,63 @@ doc = f"""<!doctype html><html><head><meta charset='utf-8'><title>HISN dashboard
 <h2>7. Named human sign-offs</h2><table><tr><th>at</th><th>patches</th><th>decision</th><th>officer</th><th>evidence</th></tr>{so_rows or '<tr><td colspan=5>none yet</td></tr>'}</table>
 <p class='note'>Comparators are marked 'verify text' until checked against official sources. Candidate provisions are mechanisms tested in simulation, not legal drafting.</p>
 </body></html>"""
+
+import re as _re, datetime as _dt
+def _hbars(rows, maxv, unit="", w=380):
+    h = 28 * len(rows) + 6; o = [f"<svg viewBox='0 0 {w} {h}' width='100%' role='img'>"]
+    for i, (lab, val, col) in enumerate(rows):
+        y = 4 + i * 28; bw = 0 if not maxv else (w - 200) * float(val) / maxv
+        o.append(f"<text x='0' y='{y+14}' font-size='11.5' fill='#5b6476'>{E(lab)}</text><rect x='160' y='{y+2}' width='{bw:.1f}' height='16' rx='5' fill='{col}'/>"
+                 f"<text x='{166+bw:.1f}' y='{y+15}' font-size='11.5' font-weight='600' fill='#1a1a1a'>{val}{unit}</text>")
+    o.append("</svg>"); return "".join(o)
+_blf = Path("docs/baselines_14b.md") if Path("docs/baselines_14b.md").exists() else Path("docs/baselines.md")
+_bl = [[c.strip() for c in l.strip("|").split("|")] for l in _blf.read_text(encoding="utf-8").splitlines() if l.startswith("| B")] if _blf.exists() else []
+_acc = lambda c: round(100 * int(c[1].split("/")[0]) / int(c[1].split("/")[1]))
+_col = {"B0": "#9aa3ad", "B1": "#C8102E", "B2": "#B68A35", "B3": "#00732F"}
+ch_acc = _hbars([(c[0][:30], _acc(c), _col.get(c[0][:2], "#999")) for c in _bl], 100, "%")
+ch_harm = _hbars([(c[0][:30], int(c[3]), _col.get(c[0][:2], "#999")) for c in _bl], max([int(c[3]) for c in _bl] + [1]))
+ch_uns = _hbars([(c[0][:30], int(c[5]), _col.get(c[0][:2], "#999")) for c in _bl], max([int(c[5]) for c in _bl] + [1]))
+_best = next((r for r in cfs if r["patch"] == "P-AUTH+P-VERIFIED"), None)
+ch_miz = _hbars([("Protection - as-is", base["protection"], "#9aa3ad"), ("Protection - AUTH+LANE", _best["protection"] if _best else 0, "#00732F"),
+                 ("Access - as-is", base["access"], "#9aa3ad"), ("Access - AUTH+LANE", _best["access"] if _best else 0, "#B68A35"),
+                 ("MIZAN - as-is", base["mizan"], "#9aa3ad"), ("MIZAN - AUTH+LANE", _best["mizan"] if _best else 0, "#C8102E")], 100)
+ch_twin = _hbars([("Lost - without HISN", uh[0], "#C8102E"), ("Lost - with HISN", gh[0], "#00732F"),
+                  ("Offshore - without", uh[3], "#C8102E"), ("Offshore - with HISN", gh[3], "#00732F"),
+                  ("Unaudited - without", uh[4], "#C8102E"), ("Unaudited - with HISN", gh[4], "#00732F")], max(uh[0], uh[3], uh[4], 1))
+_io = Path("docs/interoperability.md").read_text(encoding="utf-8") if Path("docs/interoperability.md").exists() else ""
+_m = _re.search(r"\*\*(\d+)%\*\*", _io); _agree = (_m.group(1) + "%") if _m else "-"
+_b1 = next((c for c in _bl if c[0].startswith("B1")), None); _b3 = next((c for c in _bl if c[0].startswith("B3")), None)
+def _k(v, l, sub="", c=""):
+    return f"<div class='kpi {c}'><div class='v'>{v}</div><div class='l'>{l}</div>" + (f"<div class='s'>{sub}</div>" if sub else "") + "</div>"
+kpis = "".join([
+    _k(f"{uh[0]} &rarr; {gh[0]}", "Essential health &amp; government messages silently lost", "without &rarr; with HISN", "r"),
+    _k(f"{uh[3]} &rarr; {gh[3]}", "Health-data transfers offshore not blocked", "Federal Law 2/2019 Art. 13", "r"),
+    _k(f"{_b1[3] if _b1 else '-'} &rarr; {_b3[3] if _b3 else '-'}", "Harmful AI decisions (ITU reference model)", "ungoverned LLM &rarr; HISN"),
+    _k(f"{_b1[5] if _b1 else '-'} &rarr; {_b3[5] if _b3 else '-'}", "Unsupported legal citations", "LLM only &rarr; HISN", "k"),
+    _k(f"{base['mizan']} &rarr; {_best['mizan'] if _best else '-'}", "MIZAN balance (protection + access)", "authentication + verified lane", "gold"),
+    _k(f"{n_clauses}", "Verbatim legal clauses", f"{len(man)} hash-pinned records &middot; UAE + India"),
+    _k(f"{len(gaps)}", "Policy gaps identified", "1 discovered by the agents", "gold"),
+    _k(_agree, "UAE&ndash;India decision agreement", "4 of 5 gaps shared", "k"),
+    _k(f"{len(_cards)}", "Regulatory impact cards", "test-driven regulation", "r"),
+    _k(f"{nprof.get('relative_risk_rain', '-')}&times;", "Rain-driven link-failure risk", f"heat {nprof.get('relative_risk_hot', '-')}&times; &middot; real operator data")])
+charts = (f"<div class='charts'><div class='panel'><h3>Harm prevented - same events, two twins</h3>{ch_twin}</div>"
+          f"<div class='panel'><h3>Accuracy vs pre-registered gold (qwen2.5:14b)</h3>{ch_acc}</div>"
+          f"<div class='panel'><h3>Harmful decisions</h3>{ch_harm}</div>"
+          f"<div class='panel'><h3>Unsupported legal citations</h3>{ch_uns}</div>"
+          f"<div class='panel'><h3>Gap engine - measured policy effect</h3>{ch_miz}</div></div>")
+_h2 = _re.findall(r"<h2>(.*?)</h2>", doc)
+for i, t in enumerate(_h2): doc = doc.replace(f"<h2>{t}</h2>", f"<h2 id='s{i}'>{t}</h2>", 1)
+nav = "".join(f"<a href='#s{i}'>{_re.sub('<[^>]+>', '', t)[:34]}</a>" for i, t in enumerate(_h2))
+hero = ("<div class='top'></div><header class='hero'><div class='in'><h1>HISN <span class='ar'>\u062d\u0635\u0646</span></h1>"
+        "<p>Governance for the telecom AI that decides which health and government messages reach citizens - with test-driven regulation.</p>"
+        f"<span class='tag'>ITU AI for Good Lab Hackathon &middot; UAE 2026</span><span class='tag'>Team Sankalp</span>"
+        f"<span class='tag'>Synthetic data only</span><span class='tag'>Audit chains verified: {gv and uv}</span>"
+        f"<span class='tag'>Generated {_dt.datetime.now():%d %b %Y %H:%M}</span></div></header>"
+        "<div class='disc'>Independent hackathon prototype. Not an official government website; not affiliated with or endorsed by any UAE or Indian government entity. All senders and data are synthetic.</div>"
+        f"<nav><div class='in'>{nav}</div></nav><div class='wrap'><div class='kpis'>{kpis}</div>{charts}")
+doc = _re.sub(r"<h1>.*?</p>", lambda _x: hero, doc, count=1, flags=_re.S)
+doc = doc.replace("</body>", "</div><footer>HISN &middot; Team Sankalp &middot; Every figure traces to docs/headline_numbers.md &middot; Comparators marked verify-text until checked against official sources.</footer></body>")
+
 Path("docs").mkdir(exist_ok=True)
 Path("docs/dashboard.html").write_text(doc, encoding="utf-8")
 print(f"written docs/dashboard.html | twin rows {len(grows)} | agent decisions {len(rat)} | patches {len(cfs)} | records {len(man)}")

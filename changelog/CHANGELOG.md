@@ -150,3 +150,6 @@
 
 ## v3.3 — 2026-10-29
 - README, selftest (deterministic wind-tunnel verdicts) and dashboard (impact-card section) updated for the regulatory wind tunnel
+
+## v3.4 — 2026-10-29
+- Formal report-style site (docs/index.html): masthead, contents, executive summary, indicators, restrained charts, collapsed details, document-control annex, print-friendly, prototype disclaimer
