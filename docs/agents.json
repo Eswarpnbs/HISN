@@ -1,0 +1,244 @@
+[
+  {
+    "id": "hisn-health-authority",
+    "name": "HISN Health Authority (DoH / DHA) agent",
+    "version": "1.0.0",
+    "type": "institutional agent (retrieve / propose / log gap)",
+    "description": "Protects patients and governs health information under Federal Law No. 2 of 2019. Weighs patient harm from undelivered genuine health messages against scam risk. Quarantined essential health messages may only be released by a named human officer.",
+    "models": [
+      "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
+      "nomic-embed-text (ITU reference ingest)"
+    ],
+    "dataset": "UAE knowledge base: 7 hash-pinned records, 16 verbatim clauses (kb/manifest.csv)",
+    "tools": [
+      "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
+      "propose action",
+      "log gap"
+    ],
+    "event_kinds": [
+      "complaint",
+      "escalation",
+      "override_dispute"
+    ],
+    "actions": [
+      "KEEP_QUARANTINED",
+      "LOG_GAP",
+      "ORDER_OPERATOR_WHITELIST",
+      "RECOMMEND_RELEASE_BY_NAMED_OFFICER",
+      "REFER_TO_TDRA",
+      "REQUEST_INFO"
+    ],
+    "decisive_actions": [
+      "KEEP_QUARANTINED",
+      "ORDER_OPERATOR_WHITELIST",
+      "RECOMMEND_RELEASE_BY_NAMED_OFFICER"
+    ],
+    "competence_norms": {
+      "ORDER_OPERATOR_WHITELIST": [
+        "UAE-TDRA-"
+      ]
+    },
+    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (FEDERAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
+    "mapping": {
+      "y3172_nodes": [
+        "P",
+        "MLFO"
+      ],
+      "readiness": [
+        "D10 AI & Policies (d10_m02, d10_m06, d10_m09)",
+        "D7 Strategy Alignment (d7_m01)"
+      ]
+    },
+    "evaluation": "Pre-registered gold (dev + held-out), see docs/eval_log_v3.md and docs/baselines.md",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-28"
+  },
+  {
+    "id": "hisn-tdra",
+    "name": "HISN TDRA (telecommunications regulator) agent",
+    "version": "1.0.0",
+    "type": "institutional agent (retrieve / propose / log gap)",
+    "description": "Regulates telecom licensees, including their obligations on unsolicited electronic communications and network operations.",
+    "models": [
+      "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
+      "nomic-embed-text (ITU reference ingest)"
+    ],
+    "dataset": "UAE knowledge base: 7 hash-pinned records, 16 verbatim clauses (kb/manifest.csv)",
+    "tools": [
+      "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
+      "propose action",
+      "log gap"
+    ],
+    "event_kinds": [
+      "complaint",
+      "network_summary",
+      "override_dispute"
+    ],
+    "actions": [
+      "ASSIGN_OVERRIDE_AUTHORITY",
+      "DIRECT_OPERATOR",
+      "LOG_GAP",
+      "MONITOR",
+      "REQUEST_INFO"
+    ],
+    "decisive_actions": [
+      "ASSIGN_OVERRIDE_AUTHORITY",
+      "DIRECT_OPERATOR"
+    ],
+    "competence_norms": {
+      "ASSIGN_OVERRIDE_AUTHORITY": "none in UAE pack -> logged gap",
+      "DIRECT_OPERATOR": [
+        "UAE-TDRA-"
+      ]
+    },
+    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (FEDERAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
+    "mapping": {
+      "y3172_nodes": [
+        "P",
+        "MLFO"
+      ],
+      "readiness": [
+        "D10 AI & Policies (d10_m02, d10_m06, d10_m09)",
+        "D7 Strategy Alignment (d7_m01)"
+      ]
+    },
+    "evaluation": "Pre-registered gold (dev + held-out), see docs/eval_log_v3.md and docs/baselines.md",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-28"
+  },
+  {
+    "id": "hisn-ai-data-authority",
+    "name": "HISN Federal Authority for AI and Data agent",
+    "version": "1.0.0",
+    "type": "institutional agent (retrieve / propose / log gap)",
+    "description": "Oversees AI and data governance, digital government and cross-border data questions. Its mandates are transitional since June 2026.",
+    "models": [
+      "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
+      "nomic-embed-text (ITU reference ingest)"
+    ],
+    "dataset": "UAE knowledge base: 7 hash-pinned records, 16 verbatim clauses (kb/manifest.csv)",
+    "tools": [
+      "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
+      "propose action",
+      "log gap"
+    ],
+    "event_kinds": [
+      "data_transfer",
+      "escalation",
+      "override_dispute"
+    ],
+    "actions": [
+      "ASSIGN_OVERRIDE_AUTHORITY",
+      "KEEP_QUARANTINED",
+      "LOG_GAP",
+      "RECOMMEND_RELEASE_BY_NAMED_OFFICER",
+      "REQUEST_INFO",
+      "UPHOLD_BLOCK"
+    ],
+    "decisive_actions": [
+      "ASSIGN_OVERRIDE_AUTHORITY",
+      "KEEP_QUARANTINED",
+      "RECOMMEND_RELEASE_BY_NAMED_OFFICER",
+      "UPHOLD_BLOCK"
+    ],
+    "competence_norms": {
+      "ASSIGN_OVERRIDE_AUTHORITY": "none in UAE pack -> logged gap",
+      "UPHOLD_BLOCK": [
+        "UAE-FL-",
+        "UAE-PDPL-",
+        "UAE-TDRA-"
+      ]
+    },
+    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (FEDERAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
+    "mapping": {
+      "y3172_nodes": [
+        "P",
+        "MLFO"
+      ],
+      "readiness": [
+        "D10 AI & Policies (d10_m02, d10_m06, d10_m09)",
+        "D7 Strategy Alignment (d7_m01)"
+      ]
+    },
+    "evaluation": "Pre-registered gold (dev + held-out), see docs/eval_log_v3.md and docs/baselines.md",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-28"
+  },
+  {
+    "id": "hisn-policy-gateway",
+    "name": "HISN Policy Gateway (deterministic, no LLM)",
+    "version": "1.0.0",
+    "type": "deterministic policy node (Y.3172 P)",
+    "description": "Blocks only on verified verbatim clauses with blocking basis; unverified citations never block; uncovered events become POTENTIAL_GAP (fail-visible).",
+    "models": [],
+    "dataset": "kb/rulepacks/uae/rules.yaml",
+    "tools": [
+      "evaluate event against rule pack"
+    ],
+    "guardrail": "No model in the decision path; foreign comparators and soft law never block.",
+    "mapping": {
+      "y3172_nodes": [
+        "P"
+      ],
+      "readiness": [
+        "D10 (d10_m06 Safety Policies, d10_m10 Data Sovereignty)"
+      ]
+    },
+    "evaluation": "Load-bearing test: removing Art.13 rule unblocks 2 offshore transfers (docs/headline_numbers.md)",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-28"
+  },
+  {
+    "id": "hisn-gap-engine",
+    "name": "HISN Gap Engine (loophole hunt + counterfactual tests)",
+    "version": "1.0.0",
+    "type": "deterministic adversarial search + policy sandbox",
+    "description": "Searches an abstract tactic catalogue for loopholes, re-runs the battery with candidate provisions, measures protection, access and MIZAN.",
+    "models": [],
+    "dataset": "Abstract tactic battery (no phishing text)",
+    "tools": [
+      "run battery",
+      "apply provision patch",
+      "load-bearing rule removal"
+    ],
+    "candidate_provisions": [
+      {
+        "id": "P-AUTH",
+        "mechanism": "Protected (essential) sender IDs accepted only when authenticated by the registered sender",
+        "comparator": "Inspired by Singapore SMS Sender ID Registry (verify text)"
+      },
+      {
+        "id": "P-ROUTE",
+        "mechanism": "Protected sender IDs rejected when arriving via unregistered / foreign aggregator routes",
+        "comparator": "Inspired by Singapore SSIR / India TRAI DLT header registration (verify text)"
+      },
+      {
+        "id": "P-FRAUD",
+        "mechanism": "Operator filtering duty extended from marketing spam to fraud: payment demands from unregistered senders blocked",
+        "comparator": "Inspired by Singapore Shared Responsibility Framework telco duties (verify text)"
+      },
+      {
+        "id": "P-VERIFIED",
+        "mechanism": "Authenticated essential senders bypass content-based scoring (verified-sender lane); added after the baseline revealed access harms",
+        "comparator": "Inspired by registered / verified sender schemes (verify text)"
+      }
+    ],
+    "guardrail": "Placeholder message text only; comparators marked verify-text; every patch awaits named human sign-off; sign-off refused without measured evidence.",
+    "mapping": {
+      "y3172_nodes": [
+        "Sandbox"
+      ],
+      "readiness": [
+        "D10 (d10_m01 Policy Sandbox, d10_m02 Policy Evaluation, d10_m03 Policy Extrapolation)"
+      ]
+    },
+    "evaluation": "docs/counterfactual_results.md",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-28"
+  }
+]

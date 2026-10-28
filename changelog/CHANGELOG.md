@@ -105,3 +105,6 @@
 ## v2.2 — 2026-10-27
 - selftest.py: re-derives every headline number with provenance -> docs/headline_numbers.md
 - setup.sh one-command setup; pinned requirements-lock.txt; README with quick start, results, repo map, limitations
+
+## v2.3 — 2026-10-27
+- Agent cards generated from code (ITU Sandbox catalogue style): 3 institutional agents, policy gateway, gap engine -> docs/agents.json + docs/agent_cards/
