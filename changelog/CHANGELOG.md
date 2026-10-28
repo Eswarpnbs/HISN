@@ -92,3 +92,7 @@
 
 ## v2.0 — 2026-10-27
 - Baselines comparison (B0 rules, B1 LLM-only, B2 RAG no gate, B3 full HISN) on same events and pre-registered gold: accuracy, harmful, out-of-mandate, unsupported citations, decisive actions without binding basis
+
+## v2.0 — 2026-10-27
+- Baselines (7b): B0 rules 11/14 (3 harmful), B1 LLM-only 6/14 (5 harmful, 20 unsupported citations), B2 RAG-no-gate 9/14 (5 harmful), B3 full HISN 13/14 (1 harmful, 0 unsupported, 0 unbound)
+- Finding: an ungoverned LLM performed worse than fixed rules; RAG fixes evidence but not judgment; the gate fixes authority
