@@ -118,3 +118,6 @@
 - India pack: DPDP Act 2023, Telecom Act 2023, TRAI TCCCPR consolidated (3 records, 9 verbatim clauses), NATIONAL_LAW basis
 - Multi-country ingest; India rule pack (DPDP s.16) and route binding (TCCCPR header register)
 - Interop: 56% decision agreement; health-data localisation conflict (UAE block vs India allow); forged senders: UAE human review vs India automatic block; 4 of 5 gaps shared or partial in both
+
+## v2.5 — 2026-10-28
+- Citizen verifier (D11 Inclusion): deterministic verdict, templates in EN/AR/HI/TE/UR/ML with per-language review status; optional English LLM explanation discarded if it contradicts the verdict; message text never logged
