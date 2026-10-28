@@ -1,4 +1,4 @@
-# Headline numbers (selftest, 2026-10-29 01:37)
+# Headline numbers (selftest, 2026-10-29 01:49)
 
 Every figure in the report traces to a row here.
 
@@ -15,8 +15,8 @@ Every figure in the report traces to a row here.
 | P-FRAUD alone MIZAN change | -0.5 | `app/gapengine (deterministic)` |
 | Art.13 rule load-bearing (transfers not blocked when removed) | 2 | `rule-removal re-run` |
 | Retrieval (HISN clause-first) | Recall@1 16/24 | Recall@5 22/24 | `python kb/eval_retrieval.py` |
-| Agents qwen2.5:14b dev (accuracy / harmful) | 8/10 / 0 | `docs/eval_log_v3.md (2026-10-27 00:35)` |
-| Agents qwen2.5:14b heldout_v2 (accuracy / harmful) | 4/4 / 0 | `docs/eval_log_v3.md (2026-10-27 00:35)` |
+| Agents qwen2.5:14b dev (accuracy / harmful) | 9/10 / 0 | `docs/eval_log_v3.md (2026-10-29 01:48)` |
+| Agents qwen2.5:14b heldout_v2 (accuracy / harmful) | 4/4 / 0 | `docs/eval_log_v3.md (2026-10-29 01:48)` |
 | Baseline B0 fixed rules (no AI) | acc 11/14 | harmful 3 | unsupported 0 | `docs/baselines.md` |
 | Baseline B1 LLM only (no KB, no gate) | acc 7/14 | harmful 5 | unsupported 18 | `docs/baselines.md` |
 | Baseline B2 LLM + KB (RAG, no gate) | acc 8/14 | harmful 5 | unsupported 0 | `docs/baselines.md` |

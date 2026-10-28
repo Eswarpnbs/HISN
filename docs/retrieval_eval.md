@@ -1,4 +1,4 @@
-# Retrieval evaluation (2026-10-29 01:37)
+# Retrieval evaluation (2026-10-29 01:49)
 
 26 questions (24 in-corpus, 2 out-of-corpus). nomic-embed-text via ITU pipeline.
 
