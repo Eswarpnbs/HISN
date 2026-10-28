@@ -36,19 +36,39 @@ def fmt(o):
     if o.get("rule_id"): s += f" [{o['rule_id']}]"
     return s
 
+GT = yaml.safe_load(open("scenarios/ground_truth.yaml", encoding="utf-8"))
+
 def cls(o):
     if not o: return ""
-    a = o["action"]
-    if o.get("silent_drop") or (a == "ALLOW" and o.get("kind") == "data_transfer"): return "bad"
-    if a == "BLOCK_PROHIBITED": return "good"
-    if a.startswith("BLOCK") or a in ("QUARANTINE", "SECOND_REVIEW"): return "warn"
+    a, gt = o["action"], GT.get(o["event_id"])
+    if o.get("kind") == "data_transfer":
+        return "good" if a.startswith("BLOCK") else "bad"
+    if gt == "legit":
+        if o.get("silent_drop") or a.startswith("BLOCK"): return "bad"
+        if a in ("QUARANTINE", "SECOND_REVIEW"): return "warn"
+        if a == "ALLOW": return "good"
+    if gt == "malicious":
+        if a == "ALLOW": return "bad"
+        if o.get("silent_drop"): return "muted"
+        if a.startswith("BLOCK"): return "good"
+        if a == "QUARANTINE": return "warn"
+    if a == "SECOND_REVIEW": return "warn"
     return ""
+
+def harms(rows):
+    lost = sum(1 for k, v in GT.items() if v == "legit" and k in rows and (rows[k].get("silent_drop") or rows[k]["action"].startswith("BLOCK")))
+    held = sum(1 for k, v in GT.items() if v == "legit" and k in rows and rows[k]["action"] == "QUARANTINE")
+    scams = sum(1 for k, v in GT.items() if v == "malicious" and k in rows and rows[k]["action"] == "ALLOW")
+    offshore = sum(1 for r in rows.values() if r.get("kind") == "data_transfer" and not r["action"].startswith("BLOCK"))
+    unaudited = sum(1 for r in rows.values() if r.get("silent_drop"))
+    return lost, held, scams, offshore, unaudited
 
 def bar(label, v, c):
     return (f"<div class='bar'><span>{label}</span><div class='track'><div class='fill {c}' style='width:{v}%'></div>"
             f"</div><b>{v}</b></div>")
 
 T = twin(); g, gv, grows = T[True]; u, uv, _ = T[False]
+gh, uh = harms(g), harms(u)
 twin_rows = "".join(
     f"<tr><td>{r['t']}</td><td>{E(r['event_id'])}</td><td>{E(r['kind'])}</td>"
     f"<td class='{cls(u.get(r['event_id']))}'>{E(fmt(u.get(r['event_id'])))}</td><td class='{cls(r)}'>{E(fmt(r))}</td></tr>"
@@ -96,13 +116,14 @@ th{background:#eef1f6}.bad{background:#fde2e1}.warn{background:#fff3cd}.good{bac
 .card{background:#fff;border:1px solid #e3e7ee;border-radius:8px;padding:12px}.card h4{margin:0 0 8px}
 .bar{display:flex;align-items:center;gap:8px;font-size:12px;margin:3px 0}.bar span{width:72px}
 .track{flex:1;background:#eef1f6;height:10px;border-radius:5px}.fill{height:10px;border-radius:5px}
-.p{background:#3b6fd8}.a{background:#2e9e63}.m{background:#8a4fd8}code{font-size:12px}.note{font-size:12px;color:#5b6476}"""
+.muted{background:#eceff3;color:#5b6476}.p{background:#3b6fd8}.a{background:#2e9e63}.m{background:#8a4fd8}code{font-size:12px}.note{font-size:12px;color:#5b6476}"""
 
 doc = f"""<!doctype html><html><head><meta charset='utf-8'><title>HISN dashboard</title><style>{CSS}</style></head><body>
 <h1>HISN — governance for the telecom AI that decides what reaches citizens</h1>
 <p class='sub'>Team Sankalp · ITU AI for Good Lab Hackathon UAE · <b>synthetic data only</b> · generated {datetime.datetime.now():%Y-%m-%d %H:%M}
  · audit chains verified: governed {gv}, ungoverned {uv}</p>
-<h2>1. Same events, two twins</h2><p class='note'>Red = harm without governance · green = evidence-backed block · amber = held for a named human.</p>
+<table style='width:auto;margin-top:12px'><tr><th>Outcome (ground truth hidden from agents)</th><th>UNGOVERNED</th><th>GOVERNED (HISN)</th></tr><tr><td>Legitimate essential messages silently lost</td><td class='bad'>{uh[0]}</td><td class='good'>{gh[0]}</td></tr><tr><td>Legitimate messages held for a named human (not lost)</td><td>{uh[1]}</td><td class='warn'>{gh[1]}</td></tr><tr><td>Scams delivered</td><td>{uh[2]}</td><td>{gh[2]}</td></tr><tr><td>Health data transfers offshore not blocked</td><td class='bad'>{uh[3]}</td><td class='good'>{gh[3]}</td></tr><tr><td>Decisions with no audit trail (silent drops)</td><td class='bad'>{uh[4]}</td><td class='good'>{gh[4]}</td></tr></table>
+<h2>1. Same events, two twins</h2><p class='note'>Red = real harm (legitimate message lost, scam delivered, health data offshore) · green = correct outcome · amber = held for a named human · grey = scam dropped silently, without audit.</p>
 <table><tr><th>t</th><th>event</th><th>kind</th><th>UNGOVERNED</th><th>GOVERNED (HISN)</th></tr>{twin_rows}</table>
 <h2>2. Institutional agents (last run)</h2><p class='note'>Agents propose; deterministic code checks evidence, mandate, binding basis, competence and consistency.</p>
 <table><tr><th>t</th><th>role</th><th>event</th><th>status</th><th>proposed</th><th>cited</th><th>reason / assessment</th></tr>{agent_rows or '<tr><td colspan=7>run run_agents.py first</td></tr>'}</table>

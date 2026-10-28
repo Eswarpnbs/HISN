@@ -86,3 +86,6 @@
 
 ## v1.8 — 2026-10-27
 - Offline single-file dashboard (docs/dashboard.html) generated from real runs: twins, agents, gap engine, evaluation, KB provenance, gap register, sign-offs
+
+## v1.9 — 2026-10-27
+- Dashboard: consequence-based colours using ground-truth labels hidden from agents/firewall; top scoreboard
