@@ -1,0 +1,21 @@
+source: Turkcell ITU AI/ML in 5G Challenge 2021, RLF prediction data (RegionA)
+source_url: https://github.com/Turkcell/ITU-AIMLin5GChallenge-2021
+citation: Aktas S., Alemdar H., Ergut S. (2022) Computers & Electrical Engineering
+  99:107742
+source_archive_sha256: b10ba1f8d298fa8d19e1cc8cfec65ea7556217bf4af90566d673b0e3834cb74c
+licence_note: No explicit licence in source repository; raw data not redistributed
+  - aggregate statistics only.
+proxy_note: Turkish operator microwave backhaul data used as a statistical proxy;
+  not UAE data.
+n_link_days: 985308
+n_failure_link_days: 985
+p_rlf_base: 0.001
+hot_threshold_temp_c: 30.4
+p_rlf_hot: 0.000571
+p_rlf_not_hot: 0.001048
+rain_threshold_mm: 5.0
+p_rlf_rainy: 0.002423
+p_rlf_dry: 0.00054
+relative_risk_hot: 0.54
+relative_risk_rain: 4.49
+median_outage_minutes_on_failure_days: 5.9

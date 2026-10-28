@@ -131,3 +131,8 @@
 ## v2.8 — 2026-10-28
 - Real SMPP 3.4 listener: bind, submit_sm, enquire_link, unbind; GSM/UCS-2; governed firewall on the wire; authentication = bound account authorised for sender ID; quarantine -> Q-ids, block -> 0x45; text never logged
 - Live demo: genuine delivered, exact spoof and lookalike rejected 0x45, Arabic UCS-2 government receipt delivered
+
+## v2.9 — 2026-10-28
+- Network evidence from Turkcell ITU challenge data (985,308 link-days, proxy): heat RR 0.54, rain RR 4.49
+- Data-driven injects: storm_rainfade (14 failures/3 days) and heatwave_links (13/7 days); Act 1 stressor kept as operator energy-saving decision
+- Raw data not redistributed; aggregate profile + citation only
