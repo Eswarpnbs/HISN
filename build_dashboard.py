@@ -117,6 +117,19 @@ bl_rows = md_rows("docs/baselines_14b.md" if Path("docs/baselines_14b.md").exist
 io_rows = md_rows("docs/interoperability.md", "| G")
 nprof = yaml.safe_load(open("kb/rulepacks/network_profile.yaml", encoding="utf-8")) if Path("kb/rulepacks/network_profile.yaml").exists() else {}
 
+
+import json as _json
+_cards = sorted(Path("docs/impact_cards").glob("*.json"))[-6:] if Path("docs/impact_cards").exists() else []
+wt_rows = ""
+for _p in _cards:
+    _r = _json.loads(_p.read_text(encoding="utf-8")); _c = _r.get("compiled", {})
+    _cls = "good" if _r.get("verdict", "").startswith("READY") else "bad"
+    _con = "; ".join(f"{'resolved' if x['resolved_by_level'] else 'UNRESOLVED'} {x['clause']}" for x in _r.get("conflicts", [])) or "none"
+    _mb, _ma = _r.get("metrics_before", {}), _r.get("metrics_after", {})
+    wt_rows += (f"<tr><td>{E(_c.get('draft', '')[:110])}</td><td>{E(_c.get('instrument_level', ''))}</td><td class='{_cls}'>{E(_r.get('verdict', ''))}</td>"
+                f"<td>{E(_con)}</td><td>fixed {E(_r.get('invariants_fixed', []))} broken {E(_r.get('invariants_broken', []))}</td>"
+                f"<td>{_mb.get('mizan', '')} &rarr; {_ma.get('mizan', '')}</td><td>{_r.get('interop_before', '')}% &rarr; {_r.get('interop_after', '')}%</td></tr>")
+
 CSS = """body{font-family:-apple-system,Segoe UI,Arial,sans-serif;margin:24px;color:#1d2433;background:#f7f8fa}
 h1{margin:0}h2{margin-top:36px;border-bottom:2px solid #d9dee7;padding-bottom:6px}.sub{color:#5b6476}
 table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}td,th{border:1px solid #e3e7ee;padding:6px;text-align:left;vertical-align:top}
@@ -139,6 +152,7 @@ doc = f"""<!doctype html><html><head><meta charset='utf-8'><title>HISN dashboard
 <h2>3. Gap engine — loopholes, counterfactuals, load-bearing</h2>
 <p class='note'>MIZAN = average of protection (% malicious stopped) and access (% legitimate delivered immediately). Synthetic battery; shows direction, not real-world magnitude.</p>
 <ul>{loops}</ul><div class='cards'>{gap_cards}</div><ul>{lbs}</ul>
+<h2>3b. Regulatory wind tunnel - test-driven regulation</h2><p class='note'>Each draft rule is tested before issuance: conflicts with verified law (hierarchy of norms), six public-interest invariants, measured effect and UAE-India interoperability. A named human must sign off.</p><table><tr><th>draft</th><th>instrument</th><th>verdict</th><th>conflicts</th><th>invariants</th><th>MIZAN</th><th>UAE-India</th></tr>{wt_rows or '<tr><td colspan=7>run wind_tunnel.py first</td></tr>'}</table>
 <h2>4a. Baselines (qwen2.5:14b, same events, pre-registered gold)</h2><table><tr><th>system</th><th>accuracy</th><th>held-out v2</th><th>harmful</th><th>out-of-mandate</th><th>unsupported citations</th><th>decisive w/o binding basis</th></tr>{bl_rows}</table><h2>4b. UAE-India gap coverage</h2><table><tr><th>gap</th><th>UAE</th><th>India</th><th>India clauses</th><th>note</th></tr>{io_rows}</table><h2>4c. Network evidence (Turkcell ITU challenge data, proxy)</h2><p>Relative risk of link failure: heat {nprof.get('relative_risk_hot')}, rain {nprof.get('relative_risk_rain')} ({nprof.get('n_link_days')} link-days). Heat did not raise failures; rain did.</p>
 <h2>4. Evaluation (pre-registered gold)</h2><table>{ev_rows}</table>
 <h2>5. Knowledge base ({len(man)} hash-pinned records · {n_clauses} verbatim clauses · ITU reference ingest pipeline)</h2>

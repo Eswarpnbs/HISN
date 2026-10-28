@@ -1,10 +1,10 @@
-# Headline numbers (selftest, 2026-10-29 00:19)
+# Headline numbers (selftest, 2026-10-29 00:38)
 
 Every figure in the report traces to a row here.
 
 | figure | value | produced by |
 |---|---|---|
-| Unit tests | 38 passed, 2 warnings | `python -m pytest -q` |
+| Unit tests | 43 passed, 2 warnings | `python -m pytest -q` |
 | Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
 | Hash-pinned records / verbatim clauses | 10 / 25 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
 | Legitimate essential messages silently lost | ungoverned 3 -> HISN 0 | `twin run (all injects, 15-min limit)` |
@@ -24,3 +24,6 @@ Every figure in the report traces to a row here.
 | Network evidence: relative risk heat / rain | 0.54 / 4.49 (985308 link-days, proxy) | `tools/build_rlf_profile.py` |
 | UAE-India decision agreement | 56% | `python run_interop.py` |
 | Citizen verifier languages / reviewed | 6 / 3 | `kb/verifier_templates.yaml` |
+| Wind tunnel: emergency offshore as regulation | DO NOT ISSUE AS DRAFTED | unresolved conflicts 1 | `app/windtunnel (deterministic)` |
+| Wind tunnel: emergency offshore as health_authority_resolution | READY FOR NAMED HUMAN REVIEW | unresolved conflicts 0 | `app/windtunnel (deterministic)` |
+| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3'] broken [] | interop 56->44% | `app/windtunnel (deterministic)` |

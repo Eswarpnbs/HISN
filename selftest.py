@@ -84,6 +84,16 @@ rec("UAE-India decision agreement", f"{m.group(1)}%" if m else "run run_interop.
 tm = yaml.safe_load(open("kb/verifier_templates.yaml", encoding="utf-8"))
 rec("Citizen verifier languages / reviewed", f"{len(tm['languages'])} / {sum(1 for v in tm['review'].values() if v.startswith('reviewed'))}", "kb/verifier_templates.yaml")
 
+
+from app.windtunnel.engine import wind_tunnel as _wt
+def _c(mechs, level): return {"draft": "selftest", "mechanisms": mechs, "instrument_level": level, "untestable_parts": "", "rationale": "", "rejected_ids": [], "warnings": []}
+_em = [{"id": "emergency_offshore_exception", "params": {"hours": 72}}]
+for lvl in ("regulation", "health_authority_resolution"):
+    r = _wt(_c(_em, lvl))
+    rec(f"Wind tunnel: emergency offshore as {lvl}", f"{r['verdict']} | unresolved conflicts {r['unresolved_conflicts']}", "app/windtunnel (deterministic)")
+r = _wt(_c([{"id": "sender_authentication", "params": {}}, {"id": "verified_sender_lane", "params": {}}], "regulation"))
+rec("Wind tunnel: authentication + verified lane", f"{r['verdict']} | fixed {r['invariants_fixed']} broken {r['invariants_broken']} | interop {r['interop_before']}->{r['interop_after']}%", "app/windtunnel (deterministic)")
+
 with open("docs/headline_numbers.md", "w", encoding="utf-8") as f:
     f.write(f"# Headline numbers (selftest, {datetime.datetime.now():%Y-%m-%d %H:%M})\n\nEvery figure in the report traces to a row here.\n\n| figure | value | produced by |\n|---|---|---|\n")
     for n, v, s in rows: f.write(f"| {n} | {v} | `{s}` |\n")

@@ -147,3 +147,6 @@
 - Regulatory wind tunnel: draft -> validated mechanism mapping (human-confirmed) -> conflict scan with hierarchy-of-norms -> 6-invariant regression -> metrics -> interop -> sealed Regulatory Impact Card
 - Demo: emergency offshore exception DO NOT ISSUE as regulation (Art.13 unresolved, I2 fails) vs READY as Health Authority resolution (Art.13 route); authentication + lane READY (I3 fixed, MIZAN 76.7->94.2, reviews 24->0) but lowers UAE-India agreement 56->44%
 - Wind tunnel caught a modelling gap (mandated auth before genuine senders authenticated); scenario genuine messages now marked authenticated
+
+## v3.3 — 2026-10-29
+- README, selftest (deterministic wind-tunnel verdicts) and dashboard (impact-card section) updated for the regulatory wind tunnel

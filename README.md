@@ -9,6 +9,7 @@ AI filters and network AI now decide whether hospital and government messages re
 - a deterministic **policy node** (ITU-T Y.3172 *P*) blocks only on verbatim, hash-pinned UAE legal clauses, and logs a **gap** when no provision exists;
 - **institutional agents** (TDRA, health authority, Federal AI & Data Authority) see only their own events, cite only retrieved evidence, and only propose: fixed code checks evidence, mandate, binding basis, competence and consistency;
 - a **gap engine** finds loopholes over an abstract tactic catalogue, re-runs the scenario with candidate provisions, and measures protection, access and the **MIZAN** balance score;
+- a **regulatory wind tunnel** gives every draft rule a test suite: plain-language draft -> validated mechanism mapping -> conflict scan against verified law (with hierarchy of norms) -> regression tests on public-interest invariants -> sealed Regulatory Impact Card;
 - a **named human** signs off; sign-off is refused without measured evidence and is recorded in ITU's own `kb_decisions` collection.
 
 ## Quick start
@@ -24,12 +25,14 @@ python verify_message.py --sender H0SPITAL-A --text "Pay at http://x.example" --
 python run_smpp.py               # real SMPP 3.4 server (then: python smpp_demo.py in another tab)
 python build_dataset.py          # synthetic SMS dataset in ITU catalogue format
 python export_itu_game.py        # export to ITU AI Readiness Simulation Game formats
+python wind_tunnel.py "During a declared emergency, health message logs may be stored at a backup site abroad for 72 hours." --level regulation   # regulatory impact card
 python selftest.py               # re-derives every headline number -> docs/headline_numbers.md
 python build_dashboard.py && open docs/dashboard.html   # offline single-file dashboard
 ```
 
 ## Headline results (provenance: docs/headline_numbers.md)
 - Baselines on qwen2.5:14b (ITU reference model): an ungoverned LLM scored 7/14 with 18 unsupported legal citations, worse than fixed rules (11/14); RAG without gates 8/14 with 5 harmful decisions; **full HISN 12/14, held-out 4/4, 0 harmful, 0 unsupported citations** (docs/baselines_14b.md).
+- Wind tunnel: the same emergency-offshore draft is DO NOT ISSUE as a regulation (conflicts with Federal Law 2/2019 Art. 13) but READY FOR HUMAN REVIEW as a Health Authority resolution (Art. 13's own route); sender authentication + verified lane fixes the spoofing invariant with no regressions (docs/impact_cards/).
 - Twin: legitimate essential messages silently lost **3 -> 0**; offshore health-data transfers not blocked **2 -> 0**.
 - Gap engine: sender authentication + verified-sender lane raised MIZAN **76.7 -> 94.2**; a blunt fraud duty lowered it.
 - UAE-India: 56% decision agreement; health-data localisation conflict; 4 of 5 gaps shared or partial in both (docs/interoperability.md).
