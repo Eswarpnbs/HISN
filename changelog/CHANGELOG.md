@@ -113,3 +113,8 @@
 - India pack: 3 hash-pinned records (DPDP Act 2023, Telecom Act 2023, TRAI TCCCPR consolidated), 9 verbatim clauses, NATIONAL_LAW basis
 - Multi-country ingest (country from record prefix); India rule pack (DPDP s.16 transfer rule), firewall route binding (TCCCPR header register)
 - run_interop.py: decision agreement, divergences, gap coverage per country -> docs/interoperability.md
+
+## v2.4 — 2026-10-28
+- India pack: DPDP Act 2023, Telecom Act 2023, TRAI TCCCPR consolidated (3 records, 9 verbatim clauses), NATIONAL_LAW basis
+- Multi-country ingest; India rule pack (DPDP s.16) and route binding (TCCCPR header register)
+- Interop: 56% decision agreement; health-data localisation conflict (UAE block vs India allow); forged senders: UAE human review vs India automatic block; 4 of 5 gaps shared or partial in both
