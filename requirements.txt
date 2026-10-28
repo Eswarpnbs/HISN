@@ -1,0 +1,8 @@
+# HISN direct dependencies (exact versions in requirements-lock.txt)
+pyyaml
+pydantic
+pytest
+certifi
+python-pptx
+# ITU AI Readiness reference simulation (ingest pipeline, ChromaDB KB, Ollama client)
+-r ITU_REQUIREMENTS.txt

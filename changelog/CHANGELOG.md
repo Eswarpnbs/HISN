@@ -101,3 +101,7 @@
 - kb/verify.py: all 7 sources verified against manifest hashes
 - Retrieval eval (24 in-corpus + 2 out-of-corpus): Recall@5 22/24, Recall@1 16/24, MRR 0.78
 - Calibration finding: similarity threshold does not transfer across embedding models; ranges overlap; 0.25 threshold not claimed as a safeguard
+
+## v2.2 — 2026-10-27
+- selftest.py: re-derives every headline number with provenance -> docs/headline_numbers.md
+- setup.sh one-command setup; pinned requirements-lock.txt; README with quick start, results, repo map, limitations

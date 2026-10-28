@@ -41,8 +41,6 @@ def score(outputs, gold):
         n += 1
         decided = o["status"] in ("PROPOSED", "POTENTIAL_GAP")
         act = o["proposed_action"]
-        allowed = ROLE_SPECS[o["role"]]["actions_by_kind"].get(o["event_id"] and next(
-            (k for k in ["escalation"] if o["event_id"].endswith("-ESC")), None) or "", None)
         ok = decided and act in g["acceptable"]
         acc += ok
         out_of_mandate = bool(o.get("out_of_mandate"))

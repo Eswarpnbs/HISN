@@ -1,0 +1,23 @@
+# Headline numbers (selftest, 2026-10-28 22:56)
+
+Every figure in the report traces to a row here.
+
+| figure | value | produced by |
+|---|---|---|
+| Unit tests | 27 passed, 2 warnings | `python -m pytest -q` |
+| Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
+| Hash-pinned records / verbatim clauses | 7 / 16 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
+| Legitimate essential messages silently lost | ungoverned 3 -> HISN 0 | `twin run (all injects, 15-min limit)` |
+| Offshore health-data transfers not blocked | ungoverned 2 -> HISN 0 | `twin run (all injects)` |
+| Audit chains verify (governed / ungoverned) | True / True | `AuditLog.verify()` |
+| Gap engine baseline (protection/access/MIZAN) | 86.7/66.7/76.7 | `app/gapengine (deterministic)` |
+| P-AUTH+P-VERIFIED (protection/access/MIZAN) | 96.7/91.7/94.2 | `app/gapengine (deterministic)` |
+| P-FRAUD alone MIZAN change | -0.5 | `app/gapengine (deterministic)` |
+| Art.13 rule load-bearing (transfers not blocked when removed) | 2 | `rule-removal re-run` |
+| Retrieval (HISN clause-first) | Recall@1 16/24 | Recall@5 22/24 | `python kb/eval_retrieval.py` |
+| Agents qwen2.5:14b dev (accuracy / harmful) | 8/10 / 0 | `docs/eval_log_v3.md (2026-10-27 00:35)` |
+| Agents qwen2.5:14b heldout_v2 (accuracy / harmful) | 4/4 / 0 | `docs/eval_log_v3.md (2026-10-27 00:35)` |
+| Baseline B0 fixed rules (no AI) | acc 11/14 | harmful 3 | unsupported 0 | `docs/baselines.md` |
+| Baseline B1 LLM only (no KB, no gate) | acc 6/14 | harmful 5 | unsupported 20 | `docs/baselines.md` |
+| Baseline B2 LLM + KB (RAG, no gate) | acc 9/14 | harmful 5 | unsupported 0 | `docs/baselines.md` |
+| Baseline B3 full HISN (RAG + 5 safeguar | acc 13/14 | harmful 1 | unsupported 0 | `docs/baselines.md` |
