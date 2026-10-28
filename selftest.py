@@ -74,6 +74,16 @@ for l in bl:
     c = [x.strip() for x in l.strip("|").split("|")]
     rec(f"Baseline {c[0][:30]}", f"acc {c[1]} | harmful {c[3]} | unsupported {c[5]}", "docs/baselines.md")
 
+
+import re as _re
+prof = yaml.safe_load(open("kb/rulepacks/network_profile.yaml", encoding="utf-8"))
+rec("Network evidence: relative risk heat / rain", f"{prof['relative_risk_hot']} / {prof['relative_risk_rain']} ({prof['n_link_days']} link-days, proxy)", "tools/build_rlf_profile.py")
+io = Path("docs/interoperability.md").read_text(encoding="utf-8") if Path("docs/interoperability.md").exists() else ""
+m = _re.search(r"\*\*(\d+)%\*\*", io)
+rec("UAE-India decision agreement", f"{m.group(1)}%" if m else "run run_interop.py", "python run_interop.py")
+tm = yaml.safe_load(open("kb/verifier_templates.yaml", encoding="utf-8"))
+rec("Citizen verifier languages / reviewed", f"{len(tm['languages'])} / {sum(1 for v in tm['review'].values() if v.startswith('reviewed'))}", "kb/verifier_templates.yaml")
+
 with open("docs/headline_numbers.md", "w", encoding="utf-8") as f:
     f.write(f"# Headline numbers (selftest, {datetime.datetime.now():%Y-%m-%d %H:%M})\n\nEvery figure in the report traces to a row here.\n\n| figure | value | produced by |\n|---|---|---|\n")
     for n, v, s in rows: f.write(f"| {n} | {v} | `{s}` |\n")

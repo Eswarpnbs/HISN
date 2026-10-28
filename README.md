@@ -19,16 +19,23 @@ python inject_console.py         # judge console: add events or type a custom SM
 python run_agents.py --model qwen2.5:14b   # institutional agents + pre-registered evaluation
 python run_gap_engine.py         # loopholes, counterfactual provisions, load-bearing rules
 python run_baselines.py --model qwen2.5:14b  # rules vs LLM-only vs RAG-no-gate vs full HISN
+python run_interop.py            # UAE vs India rule packs: agreement, divergences, gap coverage
+python verify_message.py --sender H0SPITAL-A --text "Pay at http://x.example" --lang hi   # citizen verifier (6 languages)
+python run_smpp.py               # real SMPP 3.4 server (then: python smpp_demo.py in another tab)
+python build_dataset.py          # synthetic SMS dataset in ITU catalogue format
+python export_itu_game.py        # export to ITU AI Readiness Simulation Game formats
 python selftest.py               # re-derives every headline number -> docs/headline_numbers.md
 python build_dashboard.py && open docs/dashboard.html   # offline single-file dashboard
 ```
 
-## Headline results (see `docs/headline_numbers.md` for provenance)
-- Twin: legitimate essential messages silently lost **3 → 0**; offshore health-data transfers not blocked **2 → 0**.
-- Agents (qwen2.5:14b, ITU reference model): held-out v2 **4/4, 0 harmful**; pre-registered gold committed to git before each run.
-- Baselines: an ungoverned LLM scored worse than fixed rules; RAG fixed citations but not judgment; full HISN was best (`docs/baselines.md`).
-- Gap engine: authenticating essential senders plus a verified-sender lane raised MIZAN **76.7 → 94.2**; a blunt fraud duty lowered it (`docs/counterfactual_results.md`).
-- Gaps G1–G5 (`docs/gap_register.yaml`): four verified within instruments, one discovered by the agents themselves.
+## Headline results (provenance: docs/headline_numbers.md)
+- Baselines on qwen2.5:14b (ITU reference model): an ungoverned LLM scored 7/14 with 18 unsupported legal citations, worse than fixed rules (11/14); RAG without gates 8/14 with 5 harmful decisions; **full HISN 12/14, held-out 4/4, 0 harmful, 0 unsupported citations** (docs/baselines_14b.md).
+- Twin: legitimate essential messages silently lost **3 -> 0**; offshore health-data transfers not blocked **2 -> 0**.
+- Gap engine: sender authentication + verified-sender lane raised MIZAN **76.7 -> 94.2**; a blunt fraud duty lowered it.
+- UAE-India: 56% decision agreement; health-data localisation conflict; 4 of 5 gaps shared or partial in both (docs/interoperability.md).
+- Network evidence: in 985,308 real operator link-days (proxy), heat did not raise link failures (RR 0.54); rain did (RR 4.49).
+- Retrieval: Recall@5 22/24; similarity threshold found not to transfer across embedding models (documented, not claimed).
+- Gaps G1-G5 (docs/gap_register.yaml): four verified within instruments, one discovered by the agents.
 
 ## Repository map
 | path | contents |

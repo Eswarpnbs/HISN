@@ -139,3 +139,6 @@
 
 ## v3.0 — 2026-10-28
 - Baselines on qwen2.5:14b (ITU reference): B0 rules 11/14 (3 harmful), B1 LLM-only 7/14 (5 harmful, 18 unsupported citations), B2 RAG-no-gate 8/14 (5 harmful), B3 full HISN 12/14, held-out 4/4, 0 harmful, 0 unsupported, 0 unbound
+
+## v3.1 — 2026-10-28
+- README, selftest and dashboard updated for all batches (14b baselines, India interop, network evidence, citizen verifier, SMPP, dataset, ITU export)

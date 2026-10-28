@@ -108,6 +108,15 @@ so_rows = "".join(f"<tr><td>{E(r['at'])}</td><td>{E('+'.join(r['patches']))}</td
                   f"<td>{E(r['officer'])} ({E(r['officer_role'])})</td><td>MIZAN {r['evidence']['d_mizan']:+}</td></tr>"
                   for r in jl("runs/signoffs.jsonl", "human_signoff"))
 
+
+def md_rows(path, prefix):
+    if not Path(path).exists(): return ""
+    rows = [l for l in Path(path).read_text(encoding="utf-8").splitlines() if l.startswith(prefix)]
+    return "".join("<tr>" + "".join(f"<td>{E(c.strip())}</td>" for c in l.strip("|").split("|")) + "</tr>" for l in rows)
+bl_rows = md_rows("docs/baselines_14b.md" if Path("docs/baselines_14b.md").exists() else "docs/baselines.md", "| B")
+io_rows = md_rows("docs/interoperability.md", "| G")
+nprof = yaml.safe_load(open("kb/rulepacks/network_profile.yaml", encoding="utf-8")) if Path("kb/rulepacks/network_profile.yaml").exists() else {}
+
 CSS = """body{font-family:-apple-system,Segoe UI,Arial,sans-serif;margin:24px;color:#1d2433;background:#f7f8fa}
 h1{margin:0}h2{margin-top:36px;border-bottom:2px solid #d9dee7;padding-bottom:6px}.sub{color:#5b6476}
 table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}td,th{border:1px solid #e3e7ee;padding:6px;text-align:left;vertical-align:top}
@@ -130,6 +139,7 @@ doc = f"""<!doctype html><html><head><meta charset='utf-8'><title>HISN dashboard
 <h2>3. Gap engine — loopholes, counterfactuals, load-bearing</h2>
 <p class='note'>MIZAN = average of protection (% malicious stopped) and access (% legitimate delivered immediately). Synthetic battery; shows direction, not real-world magnitude.</p>
 <ul>{loops}</ul><div class='cards'>{gap_cards}</div><ul>{lbs}</ul>
+<h2>4a. Baselines (qwen2.5:14b, same events, pre-registered gold)</h2><table><tr><th>system</th><th>accuracy</th><th>held-out v2</th><th>harmful</th><th>out-of-mandate</th><th>unsupported citations</th><th>decisive w/o binding basis</th></tr>{bl_rows}</table><h2>4b. UAE-India gap coverage</h2><table><tr><th>gap</th><th>UAE</th><th>India</th><th>India clauses</th><th>note</th></tr>{io_rows}</table><h2>4c. Network evidence (Turkcell ITU challenge data, proxy)</h2><p>Relative risk of link failure: heat {nprof.get('relative_risk_hot')}, rain {nprof.get('relative_risk_rain')} ({nprof.get('n_link_days')} link-days). Heat did not raise failures; rain did.</p>
 <h2>4. Evaluation (pre-registered gold)</h2><table>{ev_rows}</table>
 <h2>5. Knowledge base ({len(man)} hash-pinned records · {n_clauses} verbatim clauses · ITU reference ingest pipeline)</h2>
 <table><tr><th>record</th><th>title</th><th>issuer</th><th>basis</th><th>verification</th><th>sha256</th></tr>{kb_rows}</table>
