@@ -4,6 +4,8 @@
 Eswar Panchakarla (team leader, engineering) · P. Prudhvi Krishna (knowledge base, policy, report)
 Contact: [add emails] · **Synthetic data only. Fictional senders. No real phishing content is generated.**
 
+**Live report:** https://hisn-report.netlify.app/ (static, synthetic data; live demos run locally or in the ITU Sandbox)
+
 ## What it is
 AI filters and network AI now decide whether hospital and government messages reach citizens. HISN governs those decisions:
 - a deterministic **policy node** (ITU-T Y.3172 *P*) blocks only on verbatim, hash-pinned UAE legal clauses, and logs a **gap** when no provision exists;
