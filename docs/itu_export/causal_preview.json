@@ -1,0 +1,11 @@
+{
+  "note": "Unit impulse on D10 through ITU's CausalGraph: shows WHICH dimensions are reached, not a predicted score change.",
+  "source": "server/game/causal_graph.py (ITU reference code, unmodified)",
+  "downstream_from_D10": {
+    "5": 0.13,
+    "6": 0.013,
+    "7": 0.5,
+    "8": 0.375,
+    "12": 0.125
+  }
+}

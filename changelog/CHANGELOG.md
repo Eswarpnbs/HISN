@@ -124,3 +124,6 @@
 
 ## v2.6 — 2026-10-28
 - Synthetic SMS governance dataset (91 rows: 64 malicious, 27 legitimate) with ITU-style metadata.yaml; no personal data; imbalance documented
+
+## v2.7 — 2026-10-28
+- ITU game export: decisions.json (DecisionRecord fields + evidence), delegate narrative, causal preview via ITU CausalGraph (D10 reaches D7 0.5, D8 0.375, D5 0.13, D12 0.125, D6 0.013)

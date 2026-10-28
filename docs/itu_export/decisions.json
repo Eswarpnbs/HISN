@@ -1,0 +1,22 @@
+[
+  {
+    "id": "hisn-2026-10-27T00:45:44",
+    "session_id": "hisn-export",
+    "delegate_id": "team-sankalp",
+    "country_name": "United Arab Emirates",
+    "decision_text": "APPROVE: candidate provision(s) P-AUTH+P-VERIFIED for governing AI SMS filters that affect essential health and government messages (simulation; comparators pending verification).",
+    "affected_dimensions": "10,13",
+    "timestamp": "2026-10-27T00:45:44",
+    "applied": false,
+    "hisn_evidence": {
+      "protection": 96.7,
+      "access": 91.7,
+      "mizan": 94.2,
+      "d_mizan": 17.5,
+      "loopholes_closed": [
+        "exact_spoof_essential/G2"
+      ]
+    },
+    "hisn_officer": "Synthetic Duty Officer 1 (TDRA policy reviewer (synthetic))"
+  }
+]
