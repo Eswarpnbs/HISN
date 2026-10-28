@@ -96,3 +96,8 @@
 ## v2.0 — 2026-10-27
 - Baselines (7b): B0 rules 11/14 (3 harmful), B1 LLM-only 6/14 (5 harmful, 20 unsupported citations), B2 RAG-no-gate 9/14 (5 harmful), B3 full HISN 13/14 (1 harmful, 0 unsupported, 0 unbound)
 - Finding: an ungoverned LLM performed worse than fixed rules; RAG fixes evidence but not judgment; the gate fixes authority
+
+## v2.1 — 2026-10-27
+- kb/verify.py: all 7 sources verified against manifest hashes
+- Retrieval eval (24 in-corpus + 2 out-of-corpus): Recall@5 22/24, Recall@1 16/24, MRR 0.78
+- Calibration finding: similarity threshold does not transfer across embedding models; ranges overlap; 0.25 threshold not claimed as a safeguard

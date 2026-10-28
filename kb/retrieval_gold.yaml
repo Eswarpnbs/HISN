@@ -1,0 +1,27 @@
+# Retrieval test set. expected: clause IDs, or "RECORD#" meaning any chunk of that record. [] = out-of-corpus (should not match well).
+- {q: "Can health data related to UAE health services be stored or processed outside the State?", expected: [UAE-FL-2-2019-ART13]}
+- {q: "What is the penalty for unlawfully processing health data abroad?", expected: [UAE-FL-2-2019-ART24]}
+- {q: "When may patient information be used without the patient's written consent?", expected: [UAE-FL-2-2019-ART16]}
+- {q: "What does circulation of health information include?", expected: [UAE-FL-2-2019-ART1-CIRC]}
+- {q: "What duties apply to keeping health data available to authorised persons?", expected: [UAE-FL-2-2019-ART4]}
+- {q: "How does the TDRA policy define spam?", expected: [UAE-TDRA-UEC-1.10]}
+- {q: "What must licensees do to minimise spam across their networks?", expected: [UAE-TDRA-UEC-6.1]}
+- {q: "Must operators monitor their networks for mobile spam?", expected: [UAE-TDRA-UEC-11.1]}
+- {q: "What protections must licensees give mobile customers against spam?", expected: [UAE-TDRA-UEC-11.2]}
+- {q: "How can customers report suspected spam messages?", expected: [UAE-TDRA-UEC-8.5.3]}
+- {q: "Does the spam policy apply to marketing messages from government entities?", expected: [UAE-TDRA-UEC-13]}
+- {q: "Does the personal data protection law apply to government entities?", expected: [UAE-PDPL-ART2-2]}
+- {q: "Does the PDPL apply to personal health data?", expected: [UAE-PDPL-ART2-2]}
+- {q: "What does the UAE AI Charter say about human oversight?", expected: [UAE-AI-CHARTER-P6]}
+- {q: "What does the AI Charter say about transparency?", expected: [UAE-AI-CHARTER-P5]}
+- {q: "What does the Charter say about governance and accountability in AI?", expected: [UAE-AI-CHARTER-P7]}
+- {q: "What does the Charter say about AI safety and removing risky systems?", expected: [UAE-AI-CHARTER-P2]}
+- {q: "Who sets the controls for storing health data inside the State?", expected: ["UAE-FL-2-2019#"]}
+- {q: "What are the objectives of the UAE National AI Strategy 2031?", expected: ["UAE-AI-STRATEGY-2031#"]}
+- {q: "What does the Department of Health policy say about AI in healthcare?", expected: ["UAE-DOH-AI-2018#"]}
+- {q: "What does the DoH Responsible AI Standard require for data collection practices?", expected: ["UAE-DOH-RAI-2025#"]}
+- {q: "Can licensees sell tools that harvest electronic addresses?", expected: ["UAE-TDRA-UEC-2022#", UAE-TDRA-UEC-6.1]}
+- {q: "What counts as valid consent of a data subject under the PDPL?", expected: ["UAE-PDPL-2021#"]}
+- {q: "What sanctions can a health authority impose on establishments violating the ICT health law?", expected: ["UAE-FL-2-2019#"]}
+- {q: "What are the UAE rules for licensing autonomous delivery drones?", expected: []}
+- {q: "What is the UAE minimum wage for domestic workers?", expected: []}
