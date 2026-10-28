@@ -1,0 +1,3 @@
+flags: {}
+basis: []
+note: "UAE pack: no built-in sender authentication or route binding found in the verified corpus (see gaps G1, G2)."

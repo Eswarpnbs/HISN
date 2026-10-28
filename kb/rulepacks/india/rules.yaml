@@ -1,0 +1,24 @@
+pack_id: in-v0.1
+jurisdiction: IN
+rules:
+- id: HEALTH_XFER_IN_01
+  applies_to:
+  - message_log_transfer
+  condition:
+    data_class: health
+  verdict: COMPLIANT
+  action: ALLOW
+  basis: NATIONAL_LAW
+  citation:
+    record_id: IN-DPDP-2023
+    article: Section 16
+    quote: (1) The Central Government may, by notification, restrict the transfer
+      of personal data by a Data Fiduciary for processing to such country or territory
+      outside India as may be so notified. (2) Nothing contained in this section shall
+      restrict the applicability of any law for the time being in force in India that
+      provides for a higher degree of protection for or restriction on transfer of
+      personal data by a Data Fiduciary outside India in relation to any personal
+      data or Data Fiduciary or class thereof.
+    note: No country is notified as restricted in this simulation; s.16(2) sector-specific
+      restrictions are not modelled.
+  zone: AUGMENTATION

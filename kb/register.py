@@ -16,6 +16,12 @@ DOCS = [
    "https://tdra.gov.ae/-/media/About/regulations-and-ruling/EN/cellular-phone-spam-regulatory-policy-English.ashx", "official"),
   ("UAE-PDPL-2021", "Federal Decree-Law No. (45) of 2021 Concerning the Protection of Personal Data", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
    "https://uaelegislation.gov.ae/en/legislations/1972/download", "official"),
+  ("IN-DPDP-2023", "Digital Personal Data Protection Act, 2023 (No. 22 of 2023)", "Ministry of Electronics and IT, Government of India", "IN", "national_law", "NATIONAL_LAW",
+   "https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf", "official"),
+  ("IN-TELECOM-ACT-2023", "Telecommunications Act, 2023 (No. 44 of 2023)", "Government of India (Gazette)", "IN", "national_law", "NATIONAL_LAW",
+   "https://egazette.gov.in/WriteReadData/2023/250880.pdf", "official_phased_commencement_verify_sections"),
+  ("IN-TRAI-TCCCPR-CONS", "Telecom Commercial Communications Customer Preference Regulations, 2018 - TRAI consolidated text (reference; gazetted text prevails)", "Telecom Regulatory Authority of India", "IN", "regulation", "REGULATOR_POLICY",
+   "https://www.trai.gov.in/sites/default/files/2026-05/CA_21052026.pdf", "official_consolidated_reference_gazetted_text_prevails"),
 ]
 
 src = pathlib.Path("kb/sources")

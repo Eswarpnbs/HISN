@@ -1,0 +1,4 @@
+# Built-in firewall mechanisms of the India pack (simulation model)
+flags: {protected_routes_only: true}
+basis: [IN-TRAI-HEADER-REGISTER]
+note: "Header registration on a distributed ledger binds a sender ID to its registered sender; a protected ID arriving via an unregistered/foreign route is rejected. A local exact spoof is not modelled as caught."

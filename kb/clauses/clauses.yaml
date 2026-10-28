@@ -142,3 +142,84 @@
   metric_ids: [d10_m05]
   y3172_nodes: [SINK]
   text: 'The Licensees shall provide Mobile Customers with information and resources to help them minimize the level and impact of Mobile Spam. These shall include: [...] 8.5.3 the provision of Mobile Spam reporting facilities, including for example, through their respective customer service contacts, websites or by forwarding suspected Mobile Spam to licensees via a "short code".'
+- clause_id: IN-DPDP-S4-1
+  record_id: IN-DPDP-2023
+  article: "Section 4(1)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10]
+  y3172_nodes: [SRC, PP]
+  text: 'A person may process the personal data of a Data Principal only in accordance with the provisions of this Act and for a lawful purpose,— (a) for which the Data Principal has given her consent; or (b) for certain legitimate uses.'
+- clause_id: IN-DPDP-S7-FGH
+  record_id: IN-DPDP-2023
+  article: "Section 7(f)-(h) (excerpt; s.4(1)(b) refers to these as certain legitimate uses)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10, d10_m06]
+  y3172_nodes: [PP, P]
+  text: '(f) for responding to a medical emergency involving a threat to the life or immediate threat to the health of the Data Principal or any other individual; (g) for taking measures to provide medical treatment or health services to any individual during an epidemic, outbreak of disease, or any other threat to public health; (h) for taking measures to ensure safety of, or provide assistance or services to, any individual during any disaster, or any breakdown of public order.'
+- clause_id: IN-DPDP-S16
+  record_id: IN-DPDP-2023
+  article: "Section 16"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10]
+  y3172_nodes: [C, D]
+  text: '(1) The Central Government may, by notification, restrict the transfer of personal data by a Data Fiduciary for processing to such country or territory outside India as may be so notified. (2) Nothing contained in this section shall restrict the applicability of any law for the time being in force in India that provides for a higher degree of protection for or restriction on transfer of personal data by a Data Fiduciary outside India in relation to any personal data or Data Fiduciary or class thereof.'
+- clause_id: IN-DPDP-S17-2A
+  record_id: IN-DPDP-2023
+  article: "Section 17(2)(a)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m04]
+  y3172_nodes: [P]
+  text: '(2) The provisions of this Act shall not apply in respect of the processing of personal data— (a) by such instrumentality of the State as the Central Government may notify, in the interests of sovereignty and integrity of India, security of the State, friendly relations with foreign States, maintenance of public order or preventing incitement to any cognizable offence relating to any of these, and the processing by the Central Government of any personal data that such instrumentality may furnish to it;'
+- clause_id: IN-TEL-S20-1
+  record_id: IN-TELECOM-ACT-2023
+  article: "Section 20(1) (in-force status: verify commencement notification)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [D, SINK]
+  text: '(1) On the occurrence of any public emergency, including disaster management, or in the interest of public safety, the Central Government or a State Government or any officer specially authorised in this behalf by the Central Government or a State Government, if satisfied that it is necessary or expedient so to do, by notification— (a) take temporary possession of any telecommunication service or telecommunication network from an authorised entity; or (b) provide for appropriate mechanism to ensure that messages of a user or group of users authorised for response and recovery during public emergency are routed on priority.'
+- clause_id: IN-TEL-S28-1
+  record_id: IN-TELECOM-ACT-2023
+  article: "Section 28(1) (in-force status: verify commencement notification)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m04, d10_m06]
+  y3172_nodes: [P]
+  text: 'For the purposes of this section, "specified message" means any message offering, advertising or promoting goods, services, interest in property, business opportunity, employment opportunity or investment opportunity, whether or not— (a) the goods, services, interest, or opportunity are real; or (b) it is lawful to acquire such goods, services, property, interest or take up the opportunity.'
+- clause_id: IN-TEL-S28-2
+  record_id: IN-TELECOM-ACT-2023
+  article: "Section 28(2) (in-force status: verify commencement notification)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m05, d10_m06]
+  y3172_nodes: [SINK]
+  text: '(2) The Central Government may by rules provide for measures for protection of users, in consonance with any regulations notified by the Telecom Regulatory Authority of India from time to time, including measures such as— (a) the prior consent of users for receiving certain specified messages or class of specified messages; (b) the preparation and maintenance of one or more registers, to be called as "Do Not Disturb" register, to ensure that users do not receive specified messages or class of specified messages without prior consent; or (c) the mechanism to enable users to report any malware or specified messages received in contravention of this section.'
+- clause_id: IN-TRAI-HEADER-REGISTER
+  record_id: IN-TRAI-TCCCPR-CONS
+  article: "Regulation 2 - definitions of Header Register and Header Registrar (TRAI consolidated text; gazetted text prevails)"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06, d10_m09]
+  y3172_nodes: [SRC, C, P]
+  text: '“Header Register” means a Distributed Ledger for Header (DL-Header) which keeps records of header(s), its purpose of sending commercial communications and details of sender to whom it is assigned in a safe and secure manner; “Header Registrar” is an authorised entity under relevant regulations responsible for maintaining the header register, header registration facility and header verification facility;'
+- clause_id: IN-TRAI-REG33-1
+  record_id: IN-TRAI-TCCCPR-CONS
+  article: "Regulation 33(1) (TRAI consolidated text; gazetted text prevails)"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P, MLFO]
+  text: '(1)Where the Authority has reason to believe that any registered or unregistered Sender of Commercial Communications has contravened the provisions of these regulations and the Access Provider has not taken action against such Sender as provided under these regulations, the Authority may order or direct the Access Provider to take action against such Sender as per the provisions of the regulations.'

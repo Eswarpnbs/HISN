@@ -108,3 +108,8 @@
 
 ## v2.3 — 2026-10-27
 - Agent cards generated from code (ITU Sandbox catalogue style): 3 institutional agents, policy gateway, gap engine -> docs/agents.json + docs/agent_cards/
+
+## v2.4 — 2026-10-28
+- India pack: 3 hash-pinned records (DPDP Act 2023, Telecom Act 2023, TRAI TCCCPR consolidated), 9 verbatim clauses, NATIONAL_LAW basis
+- Multi-country ingest (country from record prefix); India rule pack (DPDP s.16 transfer rule), firewall route binding (TCCCPR header register)
+- run_interop.py: decision agreement, divergences, gap coverage per country -> docs/interoperability.md

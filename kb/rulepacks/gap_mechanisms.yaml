@@ -1,0 +1,6 @@
+# For each HISN gap: does each country pack contain a mechanism? (none | partial | present) with verified clause IDs.
+G1: {UAE: {status: none, clauses: [UAE-TDRA-UEC-1.10]}, IN: {status: partial, clauses: [IN-TEL-S28-1, IN-TEL-S28-2], note: "specified messages include offers whether or not real; impersonation payment demands not clearly covered"}}
+G2: {UAE: {status: none, clauses: [UAE-TDRA-UEC-13, UAE-PDPL-ART2-2]}, IN: {status: partial, clauses: [IN-TRAI-HEADER-REGISTER, IN-DPDP-S17-2A], note: "header registration binds sender IDs; state instrumentalities can be exempted from DPDP (shared pattern)"}}
+G3: {UAE: {status: none, clauses: [UAE-FL-2-2019-ART16]}, IN: {status: partial, clauses: [IN-DPDP-S4-1, IN-DPDP-S7-FGH], note: "medical emergency / epidemic legitimate uses; telecom fraud filtering not named"}}
+G4: {UAE: {status: none, clauses: [UAE-FL-2-2019-ART13]}, IN: {status: present, clauses: [IN-DPDP-S16, IN-DPDP-S7-FGH, IN-TEL-S20-1], note: "open-by-default transfers; emergency legitimate uses; priority routing for responders"}}
+G5: {UAE: {status: none, clauses: []}, IN: {status: partial, clauses: [IN-TRAI-REG33-1], note: "regulator may direct access providers against senders; not specific to AI filter changes"}}
