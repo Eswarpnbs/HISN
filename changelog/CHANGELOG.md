@@ -89,3 +89,6 @@
 
 ## v1.9 — 2026-10-27
 - Dashboard: consequence-based colours using ground-truth labels hidden from agents/firewall; top scoreboard
+
+## v2.0 — 2026-10-27
+- Baselines comparison (B0 rules, B1 LLM-only, B2 RAG no gate, B3 full HISN) on same events and pre-registered gold: accuracy, harmful, out-of-mandate, unsupported citations, decisive actions without binding basis
