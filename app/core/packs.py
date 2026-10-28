@@ -2,7 +2,7 @@
 import yaml
 from pathlib import Path
 
-PACKS = {"UAE": Path("kb/rulepacks/uae"), "IN": Path("kb/rulepacks/india")}
+PACKS = {"UAE": Path("kb/rulepacks/uae"), "IN": Path("kb/rulepacks/india"), "SG": Path("kb/rulepacks/singapore")}
 
 def pack(country):
     d = PACKS[country]

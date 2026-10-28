@@ -47,6 +47,10 @@ class SmsFirewall:
             forced = "unauthenticated_protected_sender"
         elif essential and self.policy.get("protected_routes_only") and msg.get("route") == "foreign_aggregator":
             forced = "protected_id_on_unregistered_route"
+        elif self.policy.get("all_sender_ids_authorised_routes") and msg.get("route") == "foreign_aggregator" and not sender.isdigit():
+            forced = "sender_id_from_unauthorised_aggregator"
+        elif self.policy.get("malicious_url_db") and any(d in msg.get("short_message", "") for d in self.policy["malicious_url_db"]):
+            forced = "known_malicious_url"
         if forced:
             rec = {"action": Action.BLOCK_OVERRIDABLE.value, "score": 1.0, "threshold": self.threshold,
                    "reasons": reasons + [forced], "essential_sender": essential, "silent_drop": False,

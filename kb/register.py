@@ -22,6 +22,12 @@ DOCS = [
    "https://egazette.gov.in/WriteReadData/2023/250880.pdf", "official_phased_commencement_verify_sections"),
   ("IN-TRAI-TCCCPR-CONS", "Telecom Commercial Communications Customer Preference Regulations, 2018 - TRAI consolidated text (reference; gazetted text prevails)", "Telecom Regulatory Authority of India", "IN", "regulation", "REGULATOR_POLICY",
    "https://www.trai.gov.in/sites/default/files/2026-05/CA_21052026.pdf", "official_consolidated_reference_gazetted_text_prevails"),
+  ("SG-SRF-2024", "Guidelines on Shared Responsibility Framework", "Monetary Authority of Singapore and Infocomm Media Development Authority", "SG", "guidelines", "REGULATOR_POLICY",
+   "https://www.mas.gov.sg/regulation/guidelines/guidelines-on-shared-responsibility-framework", "official"),
+  ("SG-PDPA-2012", "Personal Data Protection Act 2012 (current version as at 29 Oct 2026)", "Republic of Singapore (Singapore Statutes Online)", "SG", "national_law", "NATIONAL_LAW",
+   "https://sso.agc.gov.sg/Act/PDPA2012", "official"),
+  ("SA-CST-SPAM-2018", "Regulation for Reduction of SPAM (2018, draft English translation; Arabic prevails)", "Communications, Space and Technology Commission (CST)", "SA", "regulation", "REGULATOR_POLICY",
+   "https://cst.gov.sa/ar/RulesandSystems/RegulatoryDocuments/ReductionofSPAM/Documents/IT 008 E - Regulation_For_The_Reduction_of_SPAM_Eng.pdf", "historical_draft_translation_possibly_superseded"),
 ]
 
 src = pathlib.Path("kb/sources")

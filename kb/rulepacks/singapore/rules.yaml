@@ -1,0 +1,24 @@
+pack_id: sg-v0.1
+jurisdiction: SG
+rules:
+- id: HEALTH_XFER_SG_01
+  applies_to:
+  - message_log_transfer
+  condition:
+    data_class: health
+  verdict: VIOLATION
+  action: QUARANTINE
+  basis: NATIONAL_LAW
+  zone: AUGMENTATION
+  citation:
+    record_id: SG-PDPA-2012
+    article: Section 26(1)-(2)
+    quote: (1) An organisation must not transfer any personal data to a country or
+      territory outside Singapore except in accordance with requirements prescribed
+      under this Act to ensure that organisations provide a standard of protection
+      to personal data so transferred that is comparable to the protection under this
+      Act. (2) The Commission may, on the application of any organisation, by written
+      notice exempt the organisation from any requirement prescribed pursuant to subsection
+      (1) in respect of any transfer of personal data by that organisation.
+    note: Transfer held until comparable protection is confirmed or a Commission exemption
+      applies.

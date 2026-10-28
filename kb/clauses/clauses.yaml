@@ -223,3 +223,66 @@
   metric_ids: [d10_m06]
   y3172_nodes: [P, MLFO]
   text: '(1)Where the Authority has reason to believe that any registered or unregistered Sender of Commercial Communications has contravened the provisions of these regulations and the Access Provider has not taken action against such Sender as provided under these regulations, the Authority may order or direct the Access Provider to take action against such Sender as per the provisions of the regulations.'
+- clause_id: SG-SRF-SAT-DEF
+  record_id: SG-SRF-2024
+  article: "Definitions - seemingly authorised transaction, limbs (a)-(b)"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P]
+  text: '“seemingly authorised transaction” in relation to any protected account, means any payment transaction which fulfils limbs (a) to (d)— (a) perpetrated through the impersonation of a legitimate business or government entity, e.g., FIs, non-banks and government agencies (“impersonated entity”); (b) the scammer, pretending to be the impersonated entity, uses a digital messaging platform (e.g., SMS, email, WhatsApp, social media platforms) to obtain the account user’s account credentials'
+- clause_id: SG-SRF-5.2.1-2
+  record_id: SG-SRF-2024
+  article: "Paragraphs 5.2.1 and 5.2.2"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [SRC, P]
+  text: '5.2.1 Responsible Telco connects only to authorised aggregators for delivery of Sender ID SMS: The responsible Telco must deliver Sender ID SMS to subscribers only if it is received from authorised aggregators. 5.2.2 Responsible Telco blocks Sender ID SMS which are not from authorised aggregators: The responsible Telco must block Sender ID SMS which are received from sources other than authorised aggregators.'
+- clause_id: SG-SRF-5.2.3
+  record_id: SG-SRF-2024
+  article: "Paragraph 5.2.3"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P]
+  text: '5.2.3 Responsible Telco implements an anti-scam filter over SMS to block SMS containing malicious URLs in designated database: The responsible Telco must implement an anti-scam filter for all SMS that pass through the responsible Telcos’ network, to determine if it contains any URL that matches that of a known malicious URL in a designated database. The requirement covers both Sender ID SMS and SMS carrying either local or overseas telephone numbers, and applies regardless of whether the SMS originates locally or from overseas.'
+- clause_id: SG-SRF-FN9
+  record_id: SG-SRF-2024
+  article: "Footnote 9"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06, d10_m09]
+  y3172_nodes: [SRC, C]
+  text: 'Authorised aggregators are licensed by IMDA to send SMS that bears a Sender ID with an alphanumeric sender ID, or a short code registered with the Singapore SMS Sender ID Registry.'
+- clause_id: SG-SRF-6.4
+  record_id: SG-SRF-2024
+  article: "Paragraph 6.4"
+  basis: REGULATOR_POLICY
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m06]
+  y3172_nodes: [P, MLFO]
+  text: '6.4 The responsible Telco is expected to bear losses arising from a seemingly authorised transaction perpetrated through SMS if: (a) the responsible FI has complied with all of its duties set out in paragraph 4.2 of these Guidelines; and (b) the loss arises from the responsible Telco’s non-compliance with any duty set out in paragraph 5.2 of these Guidelines.'
+- clause_id: SG-PDPA-S26
+  record_id: SG-PDPA-2012
+  article: "Section 26(1)-(2)"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10]
+  y3172_nodes: [C, D]
+  text: '(1) An organisation must not transfer any personal data to a country or territory outside Singapore except in accordance with requirements prescribed under this Act to ensure that organisations provide a standard of protection to personal data so transferred that is comparable to the protection under this Act. (2) The Commission may, on the application of any organisation, by written notice exempt the organisation from any requirement prescribed pursuant to subsection (1) in respect of any transfer of personal data by that organisation.'
+- clause_id: SG-PDPA-SCHED-EMERG
+  record_id: SG-PDPA-2012
+  article: "Schedule (vital interests), paragraph 2 - verify schedule number"
+  basis: NATIONAL_LAW
+  dimension_ids: [10]
+  factor: sandbox
+  metric_ids: [d10_m10, d10_m06]
+  y3172_nodes: [PP, P]
+  text: 'The collection, use or disclosure (as the case may be) of personal data about an individual is necessary to respond to an emergency that threatens the life, health or safety of the individual or another individual.'

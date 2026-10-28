@@ -1,0 +1,6 @@
+# Built-in firewall mechanisms of the Singapore pack (simulation model of SRF paragraphs 5.2.1-5.2.3)
+flags:
+  all_sender_ids_authorised_routes: true
+  malicious_url_db: [pay-portal.example, hospital-a-billing.example]
+basis: [SG-SRF-5.2.1-2, SG-SRF-5.2.3, SG-SRF-FN9]
+note: "All Sender ID SMS must arrive via authorised aggregators. The URL filter matches a designated database of KNOWN malicious URLs; some synthetic scam domains are deliberately absent to model blocklist lag."

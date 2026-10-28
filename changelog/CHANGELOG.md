@@ -153,3 +153,10 @@
 
 ## v3.4 — 2026-10-29
 - Formal report-style site (docs/index.html): masthead, contents, executive summary, indicators, restrained charts, collapsed details, document-control annex, print-friendly, prototype disclaimer
+
+## v3.5 — 2026-10-29
+- Singapore pack: SRF Guidelines (MAS-IMDA) + PDPA 2012 (current), 7 verbatim clauses; route rule for all Sender IDs, known-malicious-URL blocklist (with modelled lag), PDPA s.26 conditional transfer
+- Three transfer models: UAE closed (block), India open (allow), Singapore conditional (hold for comparable protection)
+- New candidate gap G6 (loss allocation when telecom anti-scam duties fail), comparator-discovered from SRF 6.4; UAE absence to confirm
+- Saudi CST 2018 regulation registered as historical (draft translation, possibly superseded): background only
+- run_interop generalised to N countries (pairwise agreement matrix)

@@ -38,3 +38,9 @@
   comparator: Singapore SRF allocation of telco duties - verify text
   second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 3/2003 (Telecom Law) TDRA powers]
   status: system_discovered
+- id: G6
+  title: No allocation of responsibility for consumer losses when telecom anti-scam duties fail
+  type: responsibility
+  discovered_by: comparator (Singapore SRF paragraph 6.4)
+  evidence: [SG-SRF-6.4]
+  status: comparator_discovered_uae_absence_to_confirm
