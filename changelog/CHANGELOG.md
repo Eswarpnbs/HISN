@@ -127,3 +127,7 @@
 
 ## v2.7 — 2026-10-28
 - ITU game export: decisions.json (DecisionRecord fields + evidence), delegate narrative, causal preview via ITU CausalGraph (D10 reaches D7 0.5, D8 0.375, D5 0.13, D12 0.125, D6 0.013)
+
+## v2.8 — 2026-10-28
+- Real SMPP 3.4 listener: bind, submit_sm, enquire_link, unbind; GSM/UCS-2; governed firewall on the wire; authentication = bound account authorised for sender ID; quarantine -> Q-ids, block -> 0x45; text never logged
+- Live demo: genuine delivered, exact spoof and lookalike rejected 0x45, Arabic UCS-2 government receipt delivered

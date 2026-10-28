@@ -1,0 +1,6 @@
+# SYNTHETIC SMPP client accounts for the sandbox demo only (not real credentials).
+# authorised_headers = sender IDs this account may use; a protected ID from any other account is unauthenticated.
+hospital-a-gw: {password: demo1, route: local, authorised_headers: [HOSPITAL-A]}
+gov-gw:        {password: demo2, route: local, authorised_headers: [GOV-FINES]}
+local-agg:     {password: demo3, route: local, authorised_headers: []}
+intl-agg:      {password: demo4, route: foreign_aggregator, authorised_headers: []}
