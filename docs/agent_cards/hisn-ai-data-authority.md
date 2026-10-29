@@ -5,7 +5,7 @@
 Oversees AI and data governance, digital government and cross-border data questions. Its mandates are transitional since June 2026.
 
 - **models**: ["qwen2.5:14b (reference) or qwen2.5:7b via Ollama", "nomic-embed-text (ITU reference ingest)"]
-- **dataset**: UAE knowledge base: 10 hash-pinned records (UAE, India, Singapore), 32 verbatim clauses (kb/manifest.csv)
+- **dataset**: UAE knowledge base: 13 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 32 verbatim clauses (kb/manifest.csv)
 - **tools**: ["retrieve (ITU KnowledgeBase, UAE filter, clause-first)", "propose action", "log gap"]
 - **event kinds**: ["data_transfer", "escalation", "override_dispute"]
 - **actions**: ["ASSIGN_OVERRIDE_AUTHORITY", "KEEP_QUARANTINED", "LOG_GAP", "RECOMMEND_RELEASE_BY_NAMED_OFFICER", "REQUEST_INFO", "UPHOLD_BLOCK"]

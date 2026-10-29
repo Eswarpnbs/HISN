@@ -216,7 +216,7 @@ kpis = "".join([
     _k(f"{_b1[3] if _b1 else '-'} &rarr; {_b3[3] if _b3 else '-'}", "Harmful AI decisions (ITU reference model)", "ungoverned LLM &rarr; HISN"),
     _k(f"{_b1[5] if _b1 else '-'} &rarr; {_b3[5] if _b3 else '-'}", "Unsupported legal citations", "LLM only &rarr; HISN", "k"),
     _k(f"{base['mizan']} &rarr; {_best['mizan'] if _best else '-'}", "MIZAN balance (protection + access)", "authentication + verified lane", "gold"),
-    _k(f"{n_clauses}", "Verbatim legal clauses", f"{len(man)} hash-pinned records &middot; UAE + India"),
+    _k(f"{n_clauses}", "Verbatim legal clauses", f"{len(man)} hash-pinned records &middot; UAE, India, Singapore"),
     _k(f"{len(gaps)}", "Policy gaps identified", "1 discovered by the agents", "gold"),
     _k(_agree, "UAE&ndash;India decision agreement", "4 of 5 gaps shared", "k"),
     _k(f"{len(_cards)}", "Regulatory impact cards", "test-driven regulation", "r"),

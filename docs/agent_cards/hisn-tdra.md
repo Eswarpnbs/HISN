@@ -5,7 +5,7 @@
 Regulates telecom licensees, including their obligations on unsolicited electronic communications and network operations.
 
 - **models**: ["qwen2.5:14b (reference) or qwen2.5:7b via Ollama", "nomic-embed-text (ITU reference ingest)"]
-- **dataset**: UAE knowledge base: 10 hash-pinned records (UAE, India, Singapore), 32 verbatim clauses (kb/manifest.csv)
+- **dataset**: UAE knowledge base: 13 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 32 verbatim clauses (kb/manifest.csv)
 - **tools**: ["retrieve (ITU KnowledgeBase, UAE filter, clause-first)", "propose action", "log gap"]
 - **event kinds**: ["complaint", "network_summary", "override_dispute"]
 - **actions**: ["ASSIGN_OVERRIDE_AUTHORITY", "DIRECT_OPERATOR", "LOG_GAP", "MONITOR", "REQUEST_INFO"]

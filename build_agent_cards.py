@@ -17,7 +17,7 @@ for role, spec in ROLE_SPECS.items():
         "type": "institutional agent (retrieve / propose / log gap)",
         "description": spec["mandate"],
         "models": ["qwen2.5:14b (reference) or qwen2.5:7b via Ollama", "nomic-embed-text (ITU reference ingest)"],
-        "dataset": "UAE knowledge base: 10 hash-pinned records (UAE, India, Singapore), 32 verbatim clauses (kb/manifest.csv)",
+        "dataset": "UAE knowledge base: 13 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 32 verbatim clauses (kb/manifest.csv)",
         "tools": ["retrieve (ITU KnowledgeBase, UAE filter, clause-first)", "propose action", "log gap"],
         "event_kinds": sorted(spec["actions_by_kind"]), "actions": acts,
         "decisive_actions": sorted(a for a in acts if a in CITATION_REQUIRED),
