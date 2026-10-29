@@ -125,7 +125,7 @@
 | Network evidence | `tools/build_rlf_profile.py`, `app/network/act1.py` | Turkcell ITU challenge data (raw data not redistributed); data-driven storm and heatwave injects |
 | Outputs | `build_dashboard.py`, `build_report_site.py`, `build_dataset.py`, `build_agent_cards.py`, `export_itu_game.py`, `selftest.py`, `setup.sh` | Technical dashboard; formal report site (`docs/index.html`); dataset (91 rows, CC-BY-4.0); agent cards; ITU game export; every number re-derived. Report site reads `docs/baselines_14b.md` (keep it in sync with `docs/baselines.md`) |
 | Scenario | `scenarios/crisis_exploit.yaml` + 12 injects (incl. `critical_lab.yaml`, `stat_forged.yaml`); gold: `gold.yaml`, `gold_dev_b.yaml`, `gold_heldout_v2.yaml`, **`gold_heldout_v3.yaml` (pre-registered, commit 516c1e9)**; `ground_truth.yaml` (dashboard only) | Acts 1–4: energy-saving cell sleep → scam wave → panic filter + offshore failover (+ critical lab result held; forged "stat" claim) → 6-month silent drift and override dispute |
-
+| Daily assurance report | `daily_report.py`, `docs/daily_report_{none,adopted}.md` | Regulator's one-page morning report. As-is: 0 of 4 genuine delivered immediately, 4 held, 0 lost. Adopted rules: 4 of 4 delivered immediately, 0 held, 0 lost, scams 5/5 stopped. Filter changes tested before deployment: 0/2 (gap G5) |
 ## 10. Results (reproducible with `python selftest.py`; all re-run at the 2 Nov freeze)
 
 | Area | Result |
