@@ -39,10 +39,12 @@ class Coordinator:
             if self.gateway is None:
                 r = {"action": "ALLOW", "note": "no policy node"}
             else:
-                d = self.gateway.evaluate({"type": "message_log_transfer", **e.payload, "emergency": getattr(self, "emergency", False)})
+                em = getattr(self, "emergency", False)
+                d = self.gateway.evaluate({"type": "message_log_transfer", **e.payload, "emergency": em,
+                                           "emergency_minutes": (now - self.emergency_since) if em else None})
                 r = {"action": d["action"].value, "verdict": d["verdict"].value, "rule_id": d.get("rule_id")}
         elif e.kind == "emergency_declared":
-            self.emergency = True
+            self.emergency, self.emergency_since = True, now
             r = {"action": "OBSERVED"}
         else:
             r = {"action": "OBSERVED"}

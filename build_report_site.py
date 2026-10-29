@@ -136,7 +136,7 @@ def card(r):
             f"<ul class='small'>{con}</ul><div class='small'>Fixes: {E(inv_text(r, r.get('invariants_fixed', [])))}<br>Breaks: {E(inv_text(r, r.get('invariants_broken', [])))}<br>{('Missing prerequisite: ' + E('; '.join(r['missing_prerequisites'])) + '<br>') if r.get('missing_prerequisites') else ''}"
             f"MIZAN {mb.get('mizan', '')} &rarr; {ma.get('mizan', '')} &middot; UAE-India agreement {r.get('interop_before', '')}% &rarr; {r.get('interop_after', '')}%</div></div>")
 S.append(section("5", "windtunnel", "Test-driven regulation: the regulatory wind tunnel",
-    "<p>A draft provision in plain language is mapped onto testable mechanisms (proposed by a model, validated by code, confirmed by a human), checked against verified law including the hierarchy of norms, regression-tested against seven public-interest invariants, and measured. Each result is sealed in the audit chain.</p>"
+    "<p>A draft provision in plain language is mapped onto testable mechanisms (proposed by a model, validated by code, confirmed by a human), checked against verified law including the hierarchy of norms, regression-tested against eight public-interest invariants, and measured. Each result is sealed in the audit chain.</p>"
     + "".join(card(r) for r in CARDS)))
 S.append(section("6", "gaps", "Policy gaps (domain level)",
     table(["Gap", "Description", "Type", "Status", "Evidence"], [[f"<b>{E(g['id'])}</b>", E(g["title"]), E(g["type"]), badge(g["status"].replace("_", " "), "ok" if g["status"] == "confirmed" else "info"),

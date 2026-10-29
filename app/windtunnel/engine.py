@@ -5,6 +5,7 @@ from app.core.audit import AuditLog
 from app.core.firewall import SmsFirewall
 from app.core.gateway import PolicyGateway
 from app.core.coordinator import Coordinator, load_scenario
+from app.core.events import Event
 from app.core.tiers import Tiers
 from app.core.injects import load_injects, available
 from app.core.packs import pack
@@ -33,21 +34,40 @@ def config(compiled):
         if eff.get("tiered_holds"): tiered = True
     return flags, sla, overlay, tiered
 
+HORIZON_HOURS = 72  # a draft with no stated limit is probed here: an exception still open then has no working sunset
+
+def _overlay_hours(overlay):
+    return ((overlay or {}).get("params") or {}).get("hours")
+
+def _overlay_condition(overlay):
+    cond = {"data_class": "health", "emergency": True}
+    if _overlay_hours(overlay): cond["emergency_minutes_max"] = int(_overlay_hours(overlay)) * 60
+    return cond
+
+def _probe(overlay):
+    _, evs = load_scenario(SC)
+    t_em = min(e.t for e in list(evs) + list(load_injects(available())) if e.kind == "emergency_declared")
+    h = _overlay_hours(overlay) or HORIZON_HOURS
+    return Event(id="PROBE-SUNSET", t=t_em + int(h) * 60 + 10, kind="data_transfer", audience=("ai_data_authority",),
+                 payload={"data_class": "health", "destination_country": "XX",
+                          "reason": "probe: transfer after the emergency window"}, act=3)
+
 def pack_with_overlay(overlay, draft, level):
     base = yaml.safe_load(open("kb/rulepacks/uae/rules.yaml", encoding="utf-8"))
     if overlay:
         rule = {"id": "DRAFT_EMERGENCY_OFFSHORE", "applies_to": ["message_log_transfer"],
-                "condition": {"data_class": "health", "emergency": True}, "verdict": "COMPLIANT", "action": "ALLOW",
+                "condition": _overlay_condition(overlay), "verdict": "COMPLIANT", "action": "ALLOW",
                 "basis": "REGULATOR_POLICY", "zone": "AUGMENTATION",
                 "citation": {"record_id": "DRAFT", "article": f"Draft provision ({level})", "quote": draft}}
         base = dict(base, rules=[rule] + base["rules"])
     p = Path(tempfile.mkdtemp()) / "pack.yaml"; p.write_text(yaml.safe_dump(base), encoding="utf-8")
     return str(p)
 
-def run_uae(flags, sla, pack_path, tiers=None):
+def run_uae(flags, sla, pack_path, tiers=None, probe=None):
     a = _tmp()
     out = Coordinator(SC, a, SmsFirewall("kb/rulepacks/uae/senders.yaml", a, policy=flags), PolicyGateway(pack_path, a),
-                      extra_events=load_injects(available()), sla_minutes=sla, tiers=tiers).run()
+                      extra_events=list(load_injects(available())) + ([probe] if probe else []), sla_minutes=sla,
+                      tiers=tiers).run(until=(probe.t + 5) if probe else None)
     return {o["event_id"]: o for o in out}, a.verify()
 
 def run_india():
@@ -79,6 +99,7 @@ def invariants(U, verified, bat, base_bat, level):
     a0, a1 = metrics(base_bat)["access"], metrics(bat)["access"]
     lim = TIERS.max_hold("T1")
     slow = [k for k in t1_ids() if (h := U.get(f"{k}-SLA")) and h["held_minutes"] > lim]
+    pr = U.get("PROBE-SUNSET")
     return [
         {"id": "I1", "text": "No legitimate essential message silently lost or blocked", "pass": not lost, "detail": f"{len(lost)} lost"},
         {"id": "I2", "text": "No offshore health-data transfer without a legal basis of sufficient rank", "pass": rank_ok,
@@ -88,15 +109,18 @@ def invariants(U, verified, bat, base_bat, level):
         {"id": "I5", "text": "All decisions sealed in a verifiable audit chain", "pass": verified, "detail": ""},
         {"id": "I6", "text": "Legitimate access does not regress", "pass": a1 >= a0, "detail": f"access {a0} -> {a1}"},
         {"id": "I7", "text": "Life-critical health messages reach a human within their clinical limit",
-         "pass": not slow, "detail": f"{len(slow)} T1 message(s) waited longer than {lim} min"}]
+         "pass": not slow, "detail": f"{len(slow)} T1 message(s) waited longer than {lim} min"},
+        {"id": "I8", "text": "Emergency exceptions expire (sunset)", "pass": pr is None or pr["action"] != "ALLOW",
+         "detail": "no probe" if pr is None else f"transfer after the emergency window: {pr['action']}"}]
 
 def wind_tunnel(compiled):
     if not compiled["mechanisms"]:
         return {"verdict": "NOT TESTABLE", "reason": "no mechanism in the vocabulary matches this draft", "compiled": compiled}
     flags, sla, overlay, tiered = config(compiled)
-    U0, v0 = run_uae({}, 15, "kb/rulepacks/uae/rules.yaml")
+    probe = _probe(overlay)
+    U0, v0 = run_uae({}, 15, "kb/rulepacks/uae/rules.yaml", probe=probe)
     U1, v1 = run_uae(flags, sla, pack_with_overlay(overlay, compiled["draft"], compiled["instrument_level"]),
-                     TIERS if tiered else None)
+                     TIERS if tiered else None, probe=probe)
     I = run_india()
     b0, b1 = run_battery({}, _tmp()), run_battery(flags, _tmp())
     inv0 = invariants(U0, v0, b0, b0, "unspecified"); inv1 = invariants(U1, v1, b1, b0, compiled["instrument_level"])

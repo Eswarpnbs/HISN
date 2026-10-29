@@ -32,7 +32,7 @@ mechanisms:
       - {clause: UAE-FL-2-2019-ART1-CIRC, type: definition, note: "Sending health information is circulation under Article 1; scanning it falls within the law's scope."}
   emergency_offshore_exception:
     description: "During a declared emergency, health message logs may be stored or processed at a backup site outside the State for a limited period."
-    params: {hours: 72}
+    params: {hours: null}
     effect: {gateway_overlay: emergency_offshore}
     closes: [G4]
     conflicts:

@@ -11,11 +11,17 @@ Classify instrument_level as one of {levels} from the wording (use "unspecified"
 Reply JSON only: {{"mechanisms": [{{"id": "...", "params": {{}}}}], "instrument_level": "...", "untestable_parts": "...", "rationale": "..."}}"""
 
 def _coerce(v, default):
-    try: return type(default)(v)
+    """A parameter the draft does not state keeps its default; a null default means 'not stated' (e.g. no time limit)."""
+    if v is None: return default
+    try: return type(default)(v) if default is not None else int(v)
     except (TypeError, ValueError): return default
 
+def _show_params(p):
+    """Prompt view of parameters; a null default is shown as 'only if stated' so the model does not invent one."""
+    return "{" + ", ".join(f"{k}: {d if d is not None else '<number, only if the draft states it>'}" for k, d in p.items()) + "}"
+
 def compile_draft(text, llm, level_override=None):
-    desc = "\n".join(f"- {k}: {v['description']} params: {v.get('params', {})}" for k, v in VOC.items())
+    desc = "\n".join(f"- {k}: {v['description']} params: {_show_params(v.get('params', {}))}" for k, v in VOC.items())
     out = llm(SYSTEM.format(ids=list(VOC), desc=desc, levels=LEVELS), f"DRAFT PROVISION:\n{text}")
     mechs, rejected = [], []
     for m in out.get("mechanisms", []):

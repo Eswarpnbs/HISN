@@ -1,0 +1,161 @@
+{
+  "verdict": "READY FOR NAMED HUMAN REVIEW",
+  "compiled": {
+    "draft": "During a declared emergency, health message logs may be stored at a backup site abroad for 72 hours.",
+    "mechanisms": [
+      {
+        "id": "emergency_offshore_exception",
+        "params": {
+          "hours": 72
+        }
+      }
+    ],
+    "instrument_level": "health_authority_resolution",
+    "untestable_parts": "",
+    "rationale": "The provision directly maps to the 'emergency_offshore_exception' mechanism with a specified time limit.",
+    "rejected_ids": [],
+    "warnings": []
+  },
+  "conflicts": [
+    {
+      "mechanism": "emergency_offshore_exception",
+      "clause": "UAE-FL-2-2019-ART13",
+      "article": "Article (13)",
+      "type": "requires_prior_resolution",
+      "resolved_by_level": true,
+      "note": "Article 13 permits offshore processing only where a resolution is issued by the Health Authority in coordination with the Ministry.",
+      "verbatim": "It is not permissible to store, process, generate or transform the health data and information outside State -which are related to the health services provided inside State- except in the case where a resolution is issued from the Health Authority in coordination with the Ministr"
+    }
+  ],
+  "unresolved_conflicts": 0,
+  "invariants_before": [
+    {
+      "id": "I1",
+      "text": "No legitimate essential message silently lost or blocked",
+      "pass": true,
+      "detail": "0 lost"
+    },
+    {
+      "id": "I2",
+      "text": "No offshore health-data transfer without a legal basis of sufficient rank",
+      "pass": true,
+      "detail": "0 transfer(s) allowed by the draft; instrument level: unspecified"
+    },
+    {
+      "id": "I3",
+      "text": "Spoofed protected sender IDs are never delivered",
+      "pass": false,
+      "detail": "6 spoof case(s) delivered"
+    },
+    {
+      "id": "I4",
+      "text": "Every policy block cites a verified binding clause",
+      "pass": true,
+      "detail": "3 block(s)"
+    },
+    {
+      "id": "I5",
+      "text": "All decisions sealed in a verifiable audit chain",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "I6",
+      "text": "Legitimate access does not regress",
+      "pass": true,
+      "detail": "access 66.7 -> 66.7"
+    },
+    {
+      "id": "I7",
+      "text": "Life-critical health messages reach a human within their clinical limit",
+      "pass": false,
+      "detail": "1 T1 message(s) waited longer than 5 min"
+    },
+    {
+      "id": "I8",
+      "text": "Emergency exceptions expire (sunset)",
+      "pass": true,
+      "detail": "transfer after the emergency window: BLOCK_PROHIBITED"
+    }
+  ],
+  "invariants_after": [
+    {
+      "id": "I1",
+      "text": "No legitimate essential message silently lost or blocked",
+      "pass": true,
+      "detail": "0 lost"
+    },
+    {
+      "id": "I2",
+      "text": "No offshore health-data transfer without a legal basis of sufficient rank",
+      "pass": true,
+      "detail": "1 transfer(s) allowed by the draft; instrument level: health_authority_resolution"
+    },
+    {
+      "id": "I3",
+      "text": "Spoofed protected sender IDs are never delivered",
+      "pass": false,
+      "detail": "6 spoof case(s) delivered"
+    },
+    {
+      "id": "I4",
+      "text": "Every policy block cites a verified binding clause",
+      "pass": true,
+      "detail": "2 block(s)"
+    },
+    {
+      "id": "I5",
+      "text": "All decisions sealed in a verifiable audit chain",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "I6",
+      "text": "Legitimate access does not regress",
+      "pass": true,
+      "detail": "access 66.7 -> 66.7"
+    },
+    {
+      "id": "I7",
+      "text": "Life-critical health messages reach a human within their clinical limit",
+      "pass": false,
+      "detail": "1 T1 message(s) waited longer than 5 min"
+    },
+    {
+      "id": "I8",
+      "text": "Emergency exceptions expire (sunset)",
+      "pass": true,
+      "detail": "transfer after the emergency window: BLOCK_PROHIBITED"
+    }
+  ],
+  "invariants_fixed": [],
+  "invariants_broken": [],
+  "missing_prerequisites": [],
+  "metrics_before": {
+    "protection": 86.7,
+    "access": 66.7,
+    "mizan": 76.7,
+    "officer_reviews": 24,
+    "n_malicious": 60,
+    "n_legit": 24
+  },
+  "metrics_after": {
+    "protection": 86.7,
+    "access": 66.7,
+    "mizan": 76.7,
+    "officer_reviews": 24,
+    "n_malicious": 60,
+    "n_legit": 24
+  },
+  "closes_gaps": [
+    "G4"
+  ],
+  "interop_before": 55,
+  "interop_after": 64,
+  "settings": {
+    "firewall_flags": {},
+    "sla_minutes": 15,
+    "emergency_overlay": true,
+    "tiered_holds": false
+  }
+}

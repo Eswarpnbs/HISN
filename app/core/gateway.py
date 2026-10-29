@@ -15,6 +15,10 @@ class PolicyGateway:
             if k.endswith("_not"):
                 if event.get(k[:-4]) == v:
                     return False
+            elif k.endswith("_max"):
+                val = event.get(k[:-4])
+                if val is None or val > v:
+                    return False
             elif event.get(k) != v:
                 return False
         return True
