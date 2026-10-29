@@ -1,0 +1,23 @@
+# Clinical criticality tiers for essential health messages.
+# STATUS: provisional, pending clinician review. Times are placeholders, not clinical advice.
+status: provisional_pending_clinician_review
+default_tier: T2
+tiers:
+  T1:
+    name: life_critical
+    fhir_priority: [stat]
+    max_hold_minutes: 5
+    receipt_after_minutes: 10
+    examples: [critical lab value, surgery change, urgent blood or organ call]
+  T2:
+    name: time_sensitive
+    fhir_priority: [asap, urgent]
+    max_hold_minutes: 15
+    receipt_after_minutes: 60
+    examples: [medication recall, vaccine dose due, outbreak advisory]
+  T3:
+    name: routine
+    fhir_priority: [routine]
+    max_hold_minutes: 60
+    receipt_after_minutes: 1440
+    examples: [appointment reminder]

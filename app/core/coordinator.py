@@ -9,14 +9,16 @@ def load_scenario(path):
 
 class Coordinator:
     """Deterministic MLFO: advances the simulated clock, dispatches released events, delivers each
-    event only to the agents in its audience, and routes escalations. gateway=None = ungoverned twin."""
-    def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None, extra_events=None, sla_minutes=None):
+    event only to the agents in its audience, and routes escalations. gateway=None = ungoverned twin.
+    tiers=None keeps the single sla_minutes limit; with tiers, each hold gets its clinical tier's limit."""
+    def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None, extra_events=None,
+                 sla_minutes=None, tiers=None):
         self.meta, events = load_scenario(scenario_path)
         self.bus = EventBus(audit); self.bus.load(list(events) + list(extra_events or []))
         self.audit, self.firewall, self.gateway, self.step = audit, firewall, gateway, step
         self.agents = agents or {}
         self.outcomes, self.agent_outputs = [], []
-        self.sla, self.holds = sla_minutes, []
+        self.sla, self.tiers, self.holds = sla_minutes, tiers, []
 
     def run(self, until=None):
         end, now = (until if until is not None else self.meta.get("duration", 70)), 0
@@ -53,8 +55,15 @@ class Coordinator:
             n_before = len(self.agent_outputs)
             self._deliver(esc, {"action": "ESCALATED", "firewall": r}, now)
             recs = [o.get("proposed_action") for o in self.agent_outputs[n_before:]]
-            if self.sla is not None:
+            if self.sla is not None or self.tiers is not None:
+                tier, why, limit = None, None, self.sla
+                if self.tiers is not None:
+                    tier, why = self.tiers.classify(e.payload)
+                    limit = self.tiers.max_hold(tier)
+                    self.audit.write({"kind": "tier_assigned", "event_id": e.id, "tier": tier,
+                                      "reason": why, "max_hold_minutes": limit})
                 self.holds.append({"event_id": e.id, "t_held": now, "escalated_to": r["escalate_to"],
+                                   "tier": tier, "limit": limit,
                                    "resolved": "release_recommended" if "RECOMMEND_RELEASE_BY_NAMED_OFFICER" in recs else None})
 
     def _deliver(self, e, r, now):
@@ -64,11 +73,12 @@ class Coordinator:
                 self.agent_outputs.append(agent.handle(e, r, now))
 
     def _check_sla(self, now):
-        """Essential messages held beyond the time limit go to a second human, whatever the agent proposed."""
+        """Essential messages held beyond their limit go to a second human, whatever the agent proposed."""
         for h in self.holds:
-            if h["resolved"] is None and now - h["t_held"] >= self.sla:
+            if h["resolved"] is None and now - h["t_held"] >= h["limit"]:
                 h["resolved"] = "sla_second_review"
                 o = {"t": now, "event_id": f"{h['event_id']}-SLA", "kind": "sla_escalation", "act": 0,
-                     "action": "SECOND_REVIEW", "escalate_to": "duty_supervisor", "held_minutes": now - h["t_held"]}
+                     "action": "SECOND_REVIEW", "escalate_to": "duty_supervisor", "held_minutes": now - h["t_held"],
+                     "tier": h.get("tier")}
                 self.audit.write({"kind": "sla_escalation", **o})
                 self.outcomes.append(o)
