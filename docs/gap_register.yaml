@@ -39,8 +39,9 @@
   second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 3/2003 (Telecom Law) TDRA powers]
   status: system_discovered
 - id: G6
-  title: No allocation of responsibility for consumer losses when telecom anti-scam duties fail
+  title: No allocation of scam losses to telecom operators when their anti-scam duties fail (bank-side compensation exists in the UAE)
   type: responsibility
   discovered_by: comparator (Singapore SRF paragraph 6.4)
   evidence: [SG-SRF-6.4]
-  status: comparator_discovered_uae_absence_to_confirm
+  status: comparator_discovered_uae_telecom_side_none
+  note: "UAE bank-side compensation exists (CBUAE Consumer Protection Regulation, Circular 8/2020, cl. 6.2.2.4, as reported; primary text to verify). No telecom-side loss allocation found in the verified corpus."
