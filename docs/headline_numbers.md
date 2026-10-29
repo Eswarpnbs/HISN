@@ -1,13 +1,13 @@
-# Headline numbers (selftest, 2026-10-29 22:46)
+# Headline numbers (selftest, 2026-10-29 23:29)
 
 Every figure in the report traces to a row here.
 
 | figure | value | produced by |
 |---|---|---|
-| Unit tests | 50 passed, 2 warnings | `python -m pytest -q` |
+| Unit tests | 53 passed, 2 warnings | `python -m pytest -q` |
 | Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
 | Hash-pinned records / verbatim clauses | 13 / 32 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
-| Legitimate essential messages silently lost | ungoverned 3 -> HISN 0 | `twin run (all injects, 15-min limit)` |
+| Legitimate essential messages silently lost | ungoverned 4 -> HISN 0 | `twin run (all injects, 15-min limit)` |
 | Offshore health-data transfers not blocked | ungoverned 2 -> HISN 0 | `twin run (all injects)` |
 | Audit chains verify (governed / ungoverned) | True / True | `AuditLog.verify()` |
 | Gap engine baseline (protection/access/MIZAN) | 86.7/66.7/76.7 | `app/gapengine (deterministic)` |
@@ -26,4 +26,4 @@ Every figure in the report traces to a row here.
 | Citizen verifier languages / reviewed | 6 / 3 | `kb/verifier_templates.yaml` |
 | Wind tunnel: emergency offshore as regulation | DO NOT ISSUE AS DRAFTED | unresolved conflicts 1 | `app/windtunnel (deterministic)` |
 | Wind tunnel: emergency offshore as health_authority_resolution | READY FOR NAMED HUMAN REVIEW | unresolved conflicts 0 | `app/windtunnel (deterministic)` |
-| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3'] broken [] | interop 56->44% | `app/windtunnel (deterministic)` |
+| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7'] broken [] | interop 55->45% | `app/windtunnel (deterministic)` |
