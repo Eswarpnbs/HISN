@@ -23,8 +23,9 @@ def load_gold(paths):
     g = {}
     for p in paths: g.update({(x["role"], x["event"]): x for x in yaml.safe_load(open(p, encoding="utf-8"))})
     return g
-ALL = load_gold(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml", "scenarios/gold_heldout_v2.yaml"])
+ALL = load_gold(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml", "scenarios/gold_heldout_v2.yaml", "scenarios/gold_heldout_v3.yaml"])
 HELD = load_gold(["scenarios/gold_heldout_v2.yaml"])
+HELD3 = load_gold(["scenarios/gold_heldout_v3.yaml"])
 
 retr, llm = ItuRetriever(), OllamaLLM(args.model)
 def make(cfg, audit):
@@ -60,14 +61,14 @@ for cfg, label in [("B0", "B0 fixed rules (no AI)"), ("B1", "B1 LLM only (no KB,
     c = Coordinator(SC, audit, SmsFirewall(REG, audit), PolicyGateway(PACK, audit), agents=make(cfg, audit),
                     extra_events=load_injects(available()), sla_minutes=15)
     c.run()
-    a, h = score(c.agent_outputs, ALL), score(c.agent_outputs, HELD)
-    rows.append((label, a, h, round(time.time() - t0)))
+    a, h, h3 = score(c.agent_outputs, ALL), score(c.agent_outputs, HELD), score(c.agent_outputs, HELD3)
+    rows.append((label, a, h, h3, round(time.time() - t0)))
     print(f"{label:<36} all {a['acc']:>5} | held-out v2 {h['acc']:>3} | harmful {a['harmful']} | out-of-mandate {a['out_of_mandate']} "
-          f"| unsupported citations {a['unsupported_citations']} | decisive w/o binding basis {a['decisive_without_binding_basis']} | {rows[-1][3]}s")
+          f"| unsupported citations {a['unsupported_citations']} | decisive w/o binding basis {a['decisive_without_binding_basis']} | held-out v3 {h3['acc']} | {rows[-1][4]}s")
 
 with open("docs/baselines.md", "w", encoding="utf-8") as f:
     f.write(f"# Baselines comparison ({args.model}, {datetime.datetime.now():%Y-%m-%d %H:%M})\n\nSame events, same pre-registered gold "
-            "(dev + held-out v2). Synthetic data.\n\n| system | accuracy (all) | held-out v2 | harmful | out-of-mandate | unsupported citations | decisive w/o binding basis |\n|---|---|---|---|---|---|---|\n")
-    for label, a, h, _ in rows:
-        f.write(f"| {label} | {a['acc']} | {h['acc']} | {a['harmful']} | {a['out_of_mandate']} | {a['unsupported_citations']} | {a['decisive_without_binding_basis']} |\n")
+            "(dev + held-out v2 + held-out v3). Synthetic data.\n\n| system | accuracy (all) | held-out v2 | harmful | out-of-mandate | unsupported citations | decisive w/o binding basis | held-out v3 |\n|---|---|---|---|---|---|---|---|\n")
+    for label, a, h, h3, _ in rows:
+        f.write(f"| {label} | {a['acc']} | {h['acc']} | {a['harmful']} | {a['out_of_mandate']} | {a['unsupported_citations']} | {a['decisive_without_binding_basis']} | {h3['acc']} |\n")
 print("written docs/baselines.md")

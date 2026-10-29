@@ -63,7 +63,8 @@ if not log.exists():
     log.write_text("| run | model | set | accuracy | harmful | conservative | gate catches |\n|---|---|---|---|---|---|---|\n", encoding="utf-8")
 with log.open("a", encoding="utf-8") as f:
     for paths, label in [(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml"], "dev"),
-                         (["scenarios/gold_heldout_v2.yaml"], "heldout_v2")]:
+                         (["scenarios/gold_heldout_v2.yaml"], "heldout_v2"),
+                         (["scenarios/gold_heldout_v3.yaml"], "heldout_v3")]:
         cor, n, harm, cons, cau = evaluate(paths, label)
         f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model} | {label} | {cor}/{n} | {harm} | {cons} | {cau} |\n")
 print("\nlogged to docs/eval_log_v3.md")

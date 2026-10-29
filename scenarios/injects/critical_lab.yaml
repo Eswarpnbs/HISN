@@ -1,0 +1,3 @@
+events:
+  - {id: INJ-CRITLAB, t: 52, act: 3, kind: sms_submit, audience: [filter_ai],
+     payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, priority: stat, short_message: "Urgent: a critical test result needs your attention. Please call your clinic today on the number on your appointment card."}}

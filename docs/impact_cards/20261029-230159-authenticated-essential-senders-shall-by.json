@@ -1,0 +1,143 @@
+{
+  "verdict": "DO NOT ISSUE AS DRAFTED",
+  "compiled": {
+    "draft": "Authenticated essential senders shall bypass content filtering.",
+    "mechanisms": [
+      {
+        "id": "verified_sender_lane",
+        "params": {}
+      }
+    ],
+    "instrument_level": "regulation",
+    "untestable_parts": "",
+    "rationale": "The provision states that authenticated essential senders shall bypass content filtering, which aligns with the 'verified_sender_lane' mechanism.",
+    "rejected_ids": [],
+    "warnings": [
+      "verified_sender_lane presupposes sender_authentication"
+    ]
+  },
+  "conflicts": [],
+  "unresolved_conflicts": 0,
+  "invariants_before": [
+    {
+      "id": "I1",
+      "text": "No legitimate essential message silently lost or blocked",
+      "pass": true,
+      "detail": "0 lost"
+    },
+    {
+      "id": "I2",
+      "text": "No offshore health-data transfer without a legal basis of sufficient rank",
+      "pass": true,
+      "detail": "0 transfer(s) allowed by the draft; instrument level: unspecified"
+    },
+    {
+      "id": "I3",
+      "text": "Spoofed protected sender IDs are never delivered",
+      "pass": false,
+      "detail": "6 spoof case(s) delivered"
+    },
+    {
+      "id": "I4",
+      "text": "Every policy block cites a verified binding clause",
+      "pass": true,
+      "detail": "2 block(s)"
+    },
+    {
+      "id": "I5",
+      "text": "All decisions sealed in a verifiable audit chain",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "I6",
+      "text": "Legitimate access does not regress",
+      "pass": true,
+      "detail": "access 66.7 -> 66.7"
+    },
+    {
+      "id": "I7",
+      "text": "Life-critical health messages reach a human within their clinical limit",
+      "pass": false,
+      "detail": "1 T1 message(s) waited longer than 5 min"
+    }
+  ],
+  "invariants_after": [
+    {
+      "id": "I1",
+      "text": "No legitimate essential message silently lost or blocked",
+      "pass": true,
+      "detail": "0 lost"
+    },
+    {
+      "id": "I2",
+      "text": "No offshore health-data transfer without a legal basis of sufficient rank",
+      "pass": true,
+      "detail": "0 transfer(s) allowed by the draft; instrument level: regulation"
+    },
+    {
+      "id": "I3",
+      "text": "Spoofed protected sender IDs are never delivered",
+      "pass": false,
+      "detail": "6 spoof case(s) delivered"
+    },
+    {
+      "id": "I4",
+      "text": "Every policy block cites a verified binding clause",
+      "pass": true,
+      "detail": "2 block(s)"
+    },
+    {
+      "id": "I5",
+      "text": "All decisions sealed in a verifiable audit chain",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "I6",
+      "text": "Legitimate access does not regress",
+      "pass": true,
+      "detail": "access 66.7 -> 91.7"
+    },
+    {
+      "id": "I7",
+      "text": "Life-critical health messages reach a human within their clinical limit",
+      "pass": true,
+      "detail": "0 T1 message(s) waited longer than 5 min"
+    }
+  ],
+  "invariants_fixed": [
+    "I7"
+  ],
+  "invariants_broken": [],
+  "missing_prerequisites": [
+    "verified_sender_lane presupposes sender_authentication"
+  ],
+  "metrics_before": {
+    "protection": 86.7,
+    "access": 66.7,
+    "mizan": 76.7,
+    "officer_reviews": 24,
+    "n_malicious": 60,
+    "n_legit": 24
+  },
+  "metrics_after": {
+    "protection": 86.7,
+    "access": 91.7,
+    "mizan": 89.2,
+    "officer_reviews": 18,
+    "n_malicious": 60,
+    "n_legit": 24
+  },
+  "closes_gaps": [],
+  "interop_before": 55,
+  "interop_after": 18,
+  "settings": {
+    "firewall_flags": {
+      "authenticated_bypass": true
+    },
+    "sla_minutes": 15,
+    "emergency_overlay": false,
+    "tiered_holds": false
+  }
+}

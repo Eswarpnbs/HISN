@@ -105,9 +105,10 @@ def wind_tunnel(compiled):
     fixed = [b["id"] for a, b in zip(inv0, inv1) if not a["pass"] and b["pass"]]
     unresolved = [c for c in con if not c["resolved_by_level"]]
     m0, m1 = metrics(b0), metrics(b1)
-    verdict = ("DO NOT ISSUE AS DRAFTED" if (unresolved or regress) else "READY FOR NAMED HUMAN REVIEW")
+    missing = compiled.get("warnings", [])  # a mechanism presupposes another the draft does not include
+    verdict = ("DO NOT ISSUE AS DRAFTED" if (unresolved or regress or missing) else "READY FOR NAMED HUMAN REVIEW")
     return {"verdict": verdict, "compiled": compiled, "conflicts": con, "unresolved_conflicts": len(unresolved),
-            "invariants_before": inv0, "invariants_after": inv1, "invariants_fixed": fixed, "invariants_broken": regress,
+            "invariants_before": inv0, "invariants_after": inv1, "invariants_fixed": fixed, "invariants_broken": regress, "missing_prerequisites": missing,
             "metrics_before": m0, "metrics_after": m1,
             "closes_gaps": sorted({g for m in compiled["mechanisms"] for g in VOC[m["id"]].get("closes", [])}),
             "interop_before": agreement(U0, I), "interop_after": agreement(U1, I),

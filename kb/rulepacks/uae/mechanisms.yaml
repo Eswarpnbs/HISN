@@ -18,7 +18,7 @@ mechanisms:
     conflicts:
       - {clause: UAE-TDRA-UEC-1.10, type: scope_extension, note: "Spam is defined as marketing communications without consent; a fraud duty goes beyond this definition and needs an amended definition or a new instrument."}
   verified_sender_lane:
-    description: "Authenticated essential senders bypass content-based scoring."
+    description: "Authenticated essential senders bypass content-based scoring entirely, so their messages are never held by the filter. Use only when the draft says such senders skip or bypass filtering."
     effect: {firewall_flag: authenticated_bypass}
     requires: [sender_authentication]
     closes: []
@@ -38,13 +38,13 @@ mechanisms:
     conflicts:
       - {clause: UAE-FL-2-2019-ART13, type: requires_prior_resolution, compatible_levels: [health_authority_resolution, federal_amendment], note: "Article 13 permits offshore processing only where a resolution is issued by the Health Authority in coordination with the Ministry."}
   quarantine_time_limit:
-    description: "Essential messages held by a filter must reach a second human reviewer within a time limit."
+    description: "One fixed time limit, the same for every held essential message, after which it must reach a second human reviewer. Use when the draft states a single number of minutes for all messages."
     params: {minutes: 15}
     effect: {sla_minutes: minutes}
     closes: []
     conflicts: []
   tiered_hold_limits:
-    description: "Essential health messages held by a filter must reach a second human reviewer within the time limit of their clinical tier, as declared by the authenticated sender (FHIR priority)."
+    description: "Different time limits by clinical urgency (life-critical, time-sensitive, routine): a held health message must reach a second human reviewer within the limit of its clinical tier, as declared by the authenticated sender (FHIR priority). Use when the draft mentions clinical tiers, life-critical messages, urgency or priority."
     params: {}
     effect: {tiered_holds: true}
     closes: []

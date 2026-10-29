@@ -6,3 +6,5 @@ A4-E2: legit
 INJ-FORGED: malicious
 INJ-SURGERY: legit
 INJ-GOVFORGED: malicious
+INJ-CRITLAB: legit
+INJ-STATFORGED: malicious
