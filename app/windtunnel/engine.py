@@ -4,7 +4,8 @@ from pathlib import Path
 from app.core.audit import AuditLog
 from app.core.firewall import SmsFirewall
 from app.core.gateway import PolicyGateway
-from app.core.coordinator import Coordinator
+from app.core.coordinator import Coordinator, load_scenario
+from app.core.tiers import Tiers
 from app.core.injects import load_injects, available
 from app.core.packs import pack
 from app.gapengine.engine import run_battery, metrics, loopholes
@@ -14,15 +15,23 @@ SC = "scenarios/crisis_exploit.yaml"
 CLAUSES = {c["clause_id"]: c for c in yaml.safe_load(open("kb/clauses/clauses.yaml", encoding="utf-8"))}
 GT = yaml.safe_load(open("scenarios/ground_truth.yaml", encoding="utf-8"))
 _tmp = lambda: AuditLog(Path(tempfile.mkdtemp()) / "a.jsonl")
+TIERS = Tiers()
+
+def t1_ids():
+    """Messages whose authenticated sender declared a life-critical (T1) priority."""
+    _, evs = load_scenario(SC)
+    return [e.id for e in list(evs) + list(load_injects(available()))
+            if e.kind == "sms_submit" and TIERS.classify(e.payload)[0] == "T1"]
 
 def config(compiled):
-    flags, sla, overlay = {}, 15, None
+    flags, sla, overlay, tiered = {}, 15, None, False
     for m in compiled["mechanisms"]:
         eff = VOC[m["id"]].get("effect", {})
         if "firewall_flag" in eff: flags[eff["firewall_flag"]] = True
         if "sla_minutes" in eff: sla = int(m["params"].get("minutes", 15))
         if eff.get("gateway_overlay") == "emergency_offshore": overlay = m
-    return flags, sla, overlay
+        if eff.get("tiered_holds"): tiered = True
+    return flags, sla, overlay, tiered
 
 def pack_with_overlay(overlay, draft, level):
     base = yaml.safe_load(open("kb/rulepacks/uae/rules.yaml", encoding="utf-8"))
@@ -35,10 +44,10 @@ def pack_with_overlay(overlay, draft, level):
     p = Path(tempfile.mkdtemp()) / "pack.yaml"; p.write_text(yaml.safe_dump(base), encoding="utf-8")
     return str(p)
 
-def run_uae(flags, sla, pack_path):
+def run_uae(flags, sla, pack_path, tiers=None):
     a = _tmp()
     out = Coordinator(SC, a, SmsFirewall("kb/rulepacks/uae/senders.yaml", a, policy=flags), PolicyGateway(pack_path, a),
-                      extra_events=load_injects(available()), sla_minutes=sla).run()
+                      extra_events=load_injects(available()), sla_minutes=sla, tiers=tiers).run()
     return {o["event_id"]: o for o in out}, a.verify()
 
 def run_india():
@@ -68,6 +77,8 @@ def invariants(U, verified, bat, base_bat, level):
     spoof = sum(len(v) for k, v in loopholes(bat).items() if k[0] == "exact_spoof_essential")
     blocks = [o for o in U.values() if o.get("kind") == "data_transfer" and o["action"].startswith("BLOCK")]
     a0, a1 = metrics(base_bat)["access"], metrics(bat)["access"]
+    lim = TIERS.max_hold("T1")
+    slow = [k for k in t1_ids() if (h := U.get(f"{k}-SLA")) and h["held_minutes"] > lim]
     return [
         {"id": "I1", "text": "No legitimate essential message silently lost or blocked", "pass": not lost, "detail": f"{len(lost)} lost"},
         {"id": "I2", "text": "No offshore health-data transfer without a legal basis of sufficient rank", "pass": rank_ok,
@@ -75,14 +86,17 @@ def invariants(U, verified, bat, base_bat, level):
         {"id": "I3", "text": "Spoofed protected sender IDs are never delivered", "pass": spoof == 0, "detail": f"{spoof} spoof case(s) delivered"},
         {"id": "I4", "text": "Every policy block cites a verified binding clause", "pass": all(o.get("rule_id") for o in blocks), "detail": f"{len(blocks)} block(s)"},
         {"id": "I5", "text": "All decisions sealed in a verifiable audit chain", "pass": verified, "detail": ""},
-        {"id": "I6", "text": "Legitimate access does not regress", "pass": a1 >= a0, "detail": f"access {a0} -> {a1}"}]
+        {"id": "I6", "text": "Legitimate access does not regress", "pass": a1 >= a0, "detail": f"access {a0} -> {a1}"},
+        {"id": "I7", "text": "Life-critical health messages reach a human within their clinical limit",
+         "pass": not slow, "detail": f"{len(slow)} T1 message(s) waited longer than {lim} min"}]
 
 def wind_tunnel(compiled):
     if not compiled["mechanisms"]:
         return {"verdict": "NOT TESTABLE", "reason": "no mechanism in the vocabulary matches this draft", "compiled": compiled}
-    flags, sla, overlay = config(compiled)
+    flags, sla, overlay, tiered = config(compiled)
     U0, v0 = run_uae({}, 15, "kb/rulepacks/uae/rules.yaml")
-    U1, v1 = run_uae(flags, sla, pack_with_overlay(overlay, compiled["draft"], compiled["instrument_level"]))
+    U1, v1 = run_uae(flags, sla, pack_with_overlay(overlay, compiled["draft"], compiled["instrument_level"]),
+                     TIERS if tiered else None)
     I = run_india()
     b0, b1 = run_battery({}, _tmp()), run_battery(flags, _tmp())
     inv0 = invariants(U0, v0, b0, b0, "unspecified"); inv1 = invariants(U1, v1, b1, b0, compiled["instrument_level"])
@@ -97,4 +111,4 @@ def wind_tunnel(compiled):
             "metrics_before": m0, "metrics_after": m1,
             "closes_gaps": sorted({g for m in compiled["mechanisms"] for g in VOC[m["id"]].get("closes", [])}),
             "interop_before": agreement(U0, I), "interop_after": agreement(U1, I),
-            "settings": {"firewall_flags": flags, "sla_minutes": sla, "emergency_overlay": bool(overlay)}}
+            "settings": {"firewall_flags": flags, "sla_minutes": sla, "emergency_overlay": bool(overlay), "tiered_holds": tiered}}

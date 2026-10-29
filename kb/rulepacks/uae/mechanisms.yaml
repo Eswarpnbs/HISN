@@ -43,3 +43,9 @@ mechanisms:
     effect: {sla_minutes: minutes}
     closes: []
     conflicts: []
+  tiered_hold_limits:
+    description: "Essential health messages held by a filter must reach a second human reviewer within the time limit of their clinical tier, as declared by the authenticated sender (FHIR priority)."
+    params: {}
+    effect: {tiered_holds: true}
+    closes: []
+    conflicts: []
