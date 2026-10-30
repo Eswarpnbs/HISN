@@ -301,3 +301,35 @@
   - C
   - P
   text: '“Government Message or Government Voice Call” means any message sent or voice call made on the directions of – (a) the Central Government or the State Government or any body established under the Constitution; or (b) the Authority or by an agency expressly authorized for the purpose by the Authority: Provided that such messages are sent or voice calls are made through the DLT platform. Explanation: There shall not be any requirement of seeking Consent for receipt of these communications nor shall there be any option in the Preference Register to block such communications;'
+- clause_id: UAE-TELECOM-ART12
+  record_id: UAE-TELECOM-2003
+  article: Article (12)
+  basis: FEDERAL_LAW
+  dimension_ids: &id001
+  - 10
+  factor: sandbox
+  metric_ids: &id002
+  - d10_m10
+  - d10_m06
+  y3172_nodes: &id003
+  - P
+  - C
+  text: The Authority is responsible for overseeing the telecommunications sector and Licensees in accordance with this Decree-Law and its implementing regulations and the directives issued by the High Committee.
+- clause_id: UAE-TELECOM-ART14-3
+  record_id: UAE-TELECOM-2003
+  article: Article (14), item 3 (matters on which the Authority is solely responsible for issuing regulations, directives, decisions and guidelines)
+  basis: FEDERAL_LAW
+  dimension_ids: *id001
+  factor: sandbox
+  metric_ids: *id002
+  y3172_nodes: *id003
+  text: Terms and standards of services provided to subscribers by Licensees including, quality assurance standards for services and terms regarding the provision of services and the resolution of subscribers' complaints and disputes, subscriber information access, use of information by subscribers and subscriber billing.
+- clause_id: UAE-CYBER-ART40
+  record_id: UAE-CYBERCRIME-2021
+  article: Article (40) Internet Fraud
+  basis: FEDERAL_LAW
+  dimension_ids: *id001
+  factor: sandbox
+  metric_ids: *id002
+  y3172_nodes: *id003
+  text: Whoever illegally seizes for himself or for third parties a movable asset, a benefit or a document or signs this document through the use of any of the fraud techniques, or through taking an alias or false impersonation through the information network, IS or any ITE shall be punished with imprisonment for at least one year and/ or a fine of not less than (AED 250,000) two hundred fifty thousand dirhams or more than (AED 1,000,000) one million dirhams.

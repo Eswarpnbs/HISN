@@ -2,7 +2,7 @@
 - id: G1
   title: Telecom filtering duties cover marketing spam, not fraud or impersonation
   type: legislative_scope
-  evidence: [UAE-TDRA-UEC-1.10, UAE-TDRA-UEC-6.1, UAE-TDRA-UEC-11.1]
+  evidence: [UAE-TDRA-UEC-1.10, UAE-TDRA-UEC-6.1, UAE-TDRA-UEC-11.1, UAE-CYBER-ART40]
   absence_note: 'The term "fraud" returns zero hits in UEC Policy v1.1 (searched 2026-10-26).'
   comparator: Singapore Shared Responsibility Framework (telco duties to block unauthorised sender IDs / malicious URLs) - verify text
   second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 34/2021 (cybercrime), Cabinet Decision 56/2024]
@@ -38,6 +38,7 @@
   comparator: Singapore SRF allocation of telco duties - verify text
   second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 3/2003 (Telecom Law) TDRA powers]
   status: system_discovered
+  note: "Competence exists in law: the Authority is solely responsible for subscriber service standards (UAE-TELECOM-ART14-3), but no instrument exercises it for operators' AI filter changes."
 - id: G6
   title: No allocation of scam losses to telecom operators when their anti-scam duties fail (bank-side compensation exists in the UAE)
   type: responsibility
