@@ -18,7 +18,7 @@ print(f"\nQuestion ({a.country}): {a.question}\nStatus: {r['status']}\n\n{r['ans
 if r["cited_ids"]:
     print("Cited (retrieved, verified):")
     for c in r["cited_ids"]:
-        print(f"  [{c}] {ev[c]['article']} ({ev[c]['basis']}{', binding' if c in r['binding_ids'] else ', not binding'})")
+        print(f"  [{c}] {ev[c]['article'] or 'document passage'} ({ev[c]['basis']}{', binding' if c in r['binding_ids'] else ', not binding'})")
 if r["rejected_citations"]:
     print(f"Rejected citations (not retrieved): {r['rejected_citations']}")
 if r["related_gaps"]:
