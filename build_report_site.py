@@ -144,7 +144,7 @@ S.append(section("6", "gaps", "Policy gaps (domain level)",
            f"<span class='small'>{E(', '.join(g.get('evidence', [])) or g.get('discovered_by', ''))}</span>"] for g in GAPS])
     + details("Show UAE-India-Singapore comparison", table(["Gap", "UAE", "India", "Singapore", "Singapore clauses", "Notes"], [[E(k), E(v["UAE"]["status"]), E(v["IN"]["status"]), E(v.get("SG", {}).get("status", "-")), E(", ".join(v.get("SG", {}).get("clauses", []))), E(v.get("SG", {}).get("note", "") or v["IN"].get("note", ""))] for k, v in GM.items()]))))
 S.append(section("7", "evidence", "Evidence base",
-    f"<p>{len(MAN)} records (official instruments from the UAE, India and Singapore, plus one Saudi historical draft) pinned by SHA-256 and {NCL} verbatim clauses, ingested through the ITU AI Readiness reference pipeline. Retrieval on 24 policy questions: Recall@5 {RET[2]}, Recall@1 {RET[0]}, MRR {RET[3]}. "
+    f"<p>{len(MAN)} records (official instruments from the UAE, India and Singapore, plus one Saudi historical draft) pinned by SHA-256 and {NCL} verbatim clauses, ingested through the ITU AI Readiness reference pipeline. Retrieval on 46 answerable policy questions (50 with out-of-corpus checks): Recall@5 {RET[2]}, Recall@1 {RET[0]}, MRR {RET[3]}. "
     f"Network evidence ({NP.get('n_link_days', '-')} real operator link-days, used as proxy): rain raised link-failure risk {NP.get('relative_risk_rain', '-')}x; heat did not ({NP.get('relative_risk_hot', '-')}x).</p>"
     + details("Show knowledge-base records", table(["Record", "Title", "Issuer", "Basis", "Verification", "SHA-256"],
               [[E(m["record_id"]), E(m["title"]), E(m["issuer"]), E(m["basis"]), E(m["verification"]), f"<code>{E(m['sha256'][:12])}</code>"] for m in MAN]))))
