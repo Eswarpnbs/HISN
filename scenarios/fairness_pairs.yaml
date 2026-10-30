@@ -1,0 +1,20 @@
+# Same genuine hospital messages in six languages, for the cross-language fairness check.
+# Synthetic. Non-English versions are machine-drafted and PENDING NATIVE REVIEW (do not cite as reviewed).
+review_status: pending_native_review
+messages:
+  - id: appointment
+    text:
+      en: "Your appointment at City Hospital has been moved to 10:00 tomorrow."
+      ar: "تم تغيير موعدك في مستشفى المدينة إلى الساعة 10:00 صباح الغد."
+      hi: "सिटी अस्पताल में आपका अपॉइंटमेंट कल सुबह 10:00 बजे कर दिया गया है।"
+      te: "సిటీ ఆసుపత్రిలో మీ అపాయింట్‌మెంట్ రేపు ఉదయం 10:00 గంటలకు మార్చబడింది."
+      ur: "سٹی ہسپتال میں آپ کی اپائنٹمنٹ کل صبح 10:00 بجے کر دی گئی ہے۔"
+      ml: "സിറ്റി ആശുപത്രിയിലെ നിങ്ങളുടെ അപ്പോയിന്റ്മെന്റ് നാളെ രാവിലെ 10:00 ലേക്ക് മാറ്റിയിരിക്കുന്നു."
+  - id: critical_lab
+    text:
+      en: "Urgent: a critical test result needs your attention. Please call your clinic today."
+      ar: "عاجل: نتيجة فحص مهمة تتطلب انتباهك. يرجى الاتصال بعيادتك اليوم."
+      hi: "अत्यावश्यक: आपकी एक जाँच रिपोर्ट पर तुरंत ध्यान देना ज़रूरी है। कृपया आज ही अपने क्लिनिक को फ़ोन करें।"
+      te: "అత్యవసరం: మీ పరీక్ష ఫలితంపై వెంటనే శ్రద్ధ అవసరం. దయచేసి ఈరోజే మీ క్లినిక్‌కు ఫోన్ చేయండి."
+      ur: "فوری: آپ کے ایک ٹیسٹ کے نتیجے پر فوری توجہ درکار ہے۔ براہ کرم آج ہی اپنے کلینک کو فون کریں۔"
+      ml: "അടിയന്തരം: നിങ്ങളുടെ ഒരു പരിശോധനാ ഫലം ഉടൻ ശ്രദ്ധിക്കേണ്ടതുണ്ട്. ദയവായി ഇന്നുതന്നെ നിങ്ങളുടെ ക്ലിനിക്കിൽ വിളിക്കുക."
