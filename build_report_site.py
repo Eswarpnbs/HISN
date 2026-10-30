@@ -79,6 +79,7 @@ def bars(rows, maxv, unit="", w=600):
 legend = lambda a, b: f"<div class='legend'><span class='sw g0'></span>{a}<span class='sw g1'></span>{b}</div>"
 details = lambda s, inner: f"<details><summary>{E(s)}</summary>{inner}</details>"
 badge = lambda t, k: f"<span class='badge {k}'>{E(t)}</span>"
+from app.core.stats import with_ci
 def table(head, rows):
     return ("<table><thead><tr>" + "".join(f"<th>{E(h)}</th>" for h in head) + "</tr></thead><tbody>"
             + "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows) + "</tbody></table>")
@@ -120,7 +121,7 @@ S.append(section("4", "agents", "Governed institutional agents",
     "<p>TDRA, the Health Authority and the Federal AI &amp; Data Authority propose actions; fixed code accepts a proposal only with retrieved evidence, within mandate, fitted to the event, on a binding and competent legal basis, and consistent with the agent's own risk rating.</p>"
     + "<h3>Accuracy against pre-registered expectations (qwen2.5:14b)</h3>" + bars([(c[0][:34], acc(c), c[0].startswith("B3")) for c in BL], 100, "%")
     + "<h3>Harmful decisions</h3>" + bars([(c[0][:34], int(c[3]), c[0].startswith("B3")) for c in BL], max([int(c[3]) for c in BL] + [1]))
-    + details("Show baseline comparison", table(["System", "Accuracy", "Held-out v2", "Harmful", "Out of mandate", "Unsupported citations", "Decisive w/o binding basis", "Held-out v3"], [[E(x) for x in c] for c in BL]))
+    + details("Show baseline comparison", table(["System", "Accuracy", "Held-out v2", "Harmful", "Out of mandate", "Unsupported citations", "Decisive w/o binding basis", "Held-out v3"], [[E(with_ci(x)) if i in (1, 2, 7) else E(x) for i, x in enumerate(c)] for c in BL]))
     + details("Show agent decisions (latest run)", table(["Time", "Authority", "Event", "Status", "Proposed", "Cited"],
               [[r["t"], E(r["role"]), E(r["event_id"]), E(r["status"]), E(r["proposed_action"]), f"<span class='small'>{E(', '.join(r.get('cited_ids', [])))}</span>"] for r in AGENTS]))))
 LEVEL_NAMES = {"regulation": "Regulation", "health_authority_resolution": "Health Authority resolution",
@@ -148,7 +149,7 @@ S.append(section("7", "evidence", "Evidence base",
     + details("Show knowledge-base records", table(["Record", "Title", "Issuer", "Basis", "Verification", "SHA-256"],
               [[E(m["record_id"]), E(m["title"]), E(m["issuer"]), E(m["basis"]), E(m["verification"]), f"<code>{E(m['sha256'][:12])}</code>"] for m in MAN]))))
 S.append(section("8", "limits", "Method and limitations",
-    "<ul><li>Synthetic data and scoring weights: results show direction, not real-world magnitudes.</li><li>Pre-registered expectations committed to version control before each held-out run; a smaller model overfitted the development set, the reference model did not.</li>"
+    "<ul><li>Synthetic data and scoring weights: results show direction, not real-world magnitudes.</li><li>Accuracies are shown with 95% Wilson confidence intervals; with samples this small the intervals are wide.</li><li>Pre-registered expectations committed to version control before each held-out run; a smaller model overfitted the development set, the reference model did not.</li>"
     "<li>A similarity threshold copied from the ITU reference agent did not transfer to this embedding model and is not claimed as a safeguard.</li><li>Comparator texts and the wind tunnel's conflict table require legal review; India institutional agents are future work.</li>"
     "<li>This is a sandbox prototype for pre-issuance testing, not a production system.</li></ul>"))
 S.append(section("A", "annex", "Annex: sign-off record and document control",

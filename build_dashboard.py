@@ -113,7 +113,12 @@ def md_rows(path, prefix):
     if not Path(path).exists(): return ""
     rows = [l for l in Path(path).read_text(encoding="utf-8").splitlines() if l.startswith(prefix)]
     return "".join("<tr>" + "".join(f"<td>{E(c.strip())}</td>" for c in l.strip("|").split("|")) + "</tr>" for l in rows)
-bl_rows = md_rows("docs/baselines_14b.md" if Path("docs/baselines_14b.md").exists() else "docs/baselines.md", "| B")
+from app.core.stats import with_ci
+def bl_md_rows(path):
+    if not Path(path).exists(): return ""
+    rows = [[c.strip() for c in l.strip("|").split("|")] for l in Path(path).read_text(encoding="utf-8").splitlines() if l.startswith("| B")]
+    return "".join("<tr>" + "".join(f"<td>{E(with_ci(c) if i in (1, 2, 7) else c)}</td>" for i, c in enumerate(r)) + "</tr>" for r in rows)
+bl_rows = bl_md_rows("docs/baselines_14b.md" if Path("docs/baselines_14b.md").exists() else "docs/baselines.md")
 io_rows = md_rows("docs/interoperability.md", "| G")
 nprof = yaml.safe_load(open("kb/rulepacks/network_profile.yaml", encoding="utf-8")) if Path("kb/rulepacks/network_profile.yaml").exists() else {}
 

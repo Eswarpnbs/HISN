@@ -14,6 +14,7 @@ from app.gapengine.engine import run_battery, metrics
 ap = argparse.ArgumentParser(); ap.add_argument("--full", action="store_true"); args = ap.parse_args()
 SC, REG, PACK = "scenarios/crisis_exploit.yaml", "kb/rulepacks/uae/senders.yaml", "kb/rulepacks/uae/rules.yaml"
 rows = []
+from app.core.stats import with_ci
 def rec(name, value, source):
     rows.append((name, value, source)); print(f"{name:<52} {str(value):<34} <- {source}")
 def tmp_audit(): return AuditLog(Path(tempfile.mkdtemp()) / "a.jsonl")
@@ -68,11 +69,11 @@ for label in ("dev", "heldout_v2", "heldout_v3"):
     last = [l for l in ev if f"| {label} |" in l]
     if last:
         c = [x.strip() for x in last[-1].strip("|").split("|")]
-        rec(f"Agents qwen2.5:14b {label} (accuracy / harmful)", f"{c[3]} / {c[4]}", f"docs/eval_log_v3.md ({c[0]})")
+        rec(f"Agents qwen2.5:14b {label} (accuracy / harmful)", f"{with_ci(c[3])} / {c[4]}", f"docs/eval_log_v3.md ({c[0]})")
 bl = [l for l in Path("docs/baselines.md").read_text(encoding="utf-8").splitlines() if l.startswith("| B")] if Path("docs/baselines.md").exists() else []
 for l in bl:
     c = [x.strip() for x in l.strip("|").split("|")]
-    rec(f"Baseline {c[0][:30]}", f"acc {c[1]} | held-out v2 {c[2]}" + (f" | held-out v3 {c[7]}" if len(c) > 7 else "") + f" | harmful {c[3]} | unsupported {c[5]}", "docs/baselines.md")
+    rec(f"Baseline {c[0][:30]}", f"acc {with_ci(c[1])} | held-out v2 {with_ci(c[2])}" + (f" | held-out v3 {with_ci(c[7])}" if len(c) > 7 else "") + f" | harmful {c[3]} | unsupported {c[5]}", "docs/baselines.md")
 
 
 import re as _re
