@@ -20,9 +20,10 @@ def card(path, d, r):
             for i in r.get("invariants_after", [])]
     if rows:
         L += ["", "| Invariant | | Before | After | Detail |", "|---|---|---|---|---|"] + rows
+        L += ["", "_Only a change from PASS to FAIL counts against the draft. FAIL to FAIL rows are existing gaps under current rules, not caused by this draft._"]
     if "metrics_before" in r:
         m0, m1 = r["metrics_before"], r["metrics_after"]
-        L += ["", "Measured effect: " + " | ".join(f"{k} {m0[k]} -> {m1[k]}" for k in m0 if k in m1),
+        L += ["", "Measured effect: " + " | ".join(f"{k} {m0[k]} -> {m1[k]}" for k in ("protection", "access", "mizan", "officer_reviews") if k in m0 and k in m1),
               f"UAE-India decision agreement: {r.get('interop_before')}% -> {r.get('interop_after')}%"]
     return ok, L
 
