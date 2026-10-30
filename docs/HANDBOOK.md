@@ -110,6 +110,8 @@
 **Not fully addressed in any country: G3 and G5**, the candidates for international standards work. Standards gap: no declared autonomy level for telecom AI agents.
 **Report idea:** present each gap as a chain: gap → verbatim evidence → draft fix → wind-tunnel test → measured effect.
 
+**Global examples:** `docs/global_examples.yaml`, verified from official sources on 30 Oct 2026: Australia (C661:2022 scam code, SMS Sender ID Register, Scams Prevention Framework) and EU (ePrivacy derogation for content scanning, GDPR Art. 49).
+
 ## 9. System built (55 tests)
 
 | Component | Files | What it does |
@@ -127,6 +129,7 @@
 | Scenario | `scenarios/crisis_exploit.yaml` + 12 injects (incl. `critical_lab.yaml`, `stat_forged.yaml`); gold: `gold.yaml`, `gold_dev_b.yaml`, `gold_heldout_v2.yaml`, **`gold_heldout_v3.yaml` (pre-registered, commit 516c1e9)**; `ground_truth.yaml` (dashboard only) | Acts 1–4: energy-saving cell sleep → scam wave → panic filter + offshore failover (+ critical lab result held; forged "stat" claim) → 6-month silent drift and override dispute |
 | Daily assurance report | `daily_report.py`, `docs/daily_report_{none,adopted}.md` | Regulator's one-page morning report. As-is: 0 of 4 genuine delivered immediately, 4 held, 0 lost. Adopted rules: 4 of 4 delivered immediately, 0 held, 0 lost, scams 5/5 stopped. Filter changes tested before deployment: 0/2 (gap G5) |
 | Fairness check | `tools/fairness_check.py`, `scenarios/fairness_pairs.yaml` (non-English pending native review), `docs/fairness_check.md` | Same genuine message, 6 languages, 4 policy states. Today's rules after panic/drift: English critical message held, the 5 other languages delivered (content scoring reads only English). HISN-recommended rules: equal in all 6 (identity-based, language-neutral) |
+| Filter-change gate | `app/core/fairness.py`, `tools/filter_change_check.py` | Pre-deployment language-parity check for operator filter changes (gap G5 made operational). Both scenario changes (A3-E1 at 0.2, A4-E1 at 0.15) → DO NOT DEPLOY under today's rules; DEPLOY under HISN-recommended rules. Shown in the daily report |
 
 ## 10. Results (reproducible with `python selftest.py`; all re-run at the 2 Nov freeze)
 
