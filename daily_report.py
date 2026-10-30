@@ -9,6 +9,7 @@ from app.core.gateway import PolicyGateway
 from app.core.coordinator import Coordinator
 from app.core.injects import load_injects, available
 from app.core.tiers import Tiers
+from app.core.fairness import check_change
 
 import argparse
 ap = argparse.ArgumentParser(); ap.add_argument("--policy", default="none", choices=["none", "adopted"])
@@ -68,9 +69,11 @@ L += [f"| {h['event']} | {'yes' if h['legit'] else 'no'} | {h['tier']} | {h['aut
 L += ["", "## Offshore transfers", "", "| Event | Decision | Legal basis |", "|---|---|---|"]
 L += [f"| {o['event_id']} | {o['action']} | {o.get('rule_id') or '-'} |" for o in transfers]
 L += ["", "## Operator filter changes", "",
-      "Every change below was applied without any record that it was tested before deployment, and no instrument assigns authority to approve it (gap G5).", "",
-      "| Event | Effect |", "|---|---|"]
-L += [f"| {o['event_id']} | {o['action']} |" for o in filter_changes]
+      "Every change below was applied without any record that it was tested before deployment, and no instrument assigns authority to approve it (gap G5). The last column shows what HISN's pre-deployment check would have said.", "",
+      "| Event | New threshold | Effect | HISN pre-deployment check (language parity) |", "|---|---|---|---|"]
+EVS = {e["id"]: e for e in yaml.safe_load(open(SC, encoding="utf-8"))["events"]}
+L += [f"| {o['event_id']} | {EVS[o['event_id']]['payload']['threshold']} | {o['action']} | "
+      f"{check_change(FLAGS, EVS[o['event_id']]['payload']['threshold'])['verdict']} |" for o in filter_changes]
 L += ["", "## Draft rules tested before issuance (wind tunnel)", "", "| Draft | Instrument | Verdict |", "|---|---|---|"]
 L += [f"| {d} | {lvl} | {v} |" for d, lvl, v in cards]
 if spoofs_delivered:
