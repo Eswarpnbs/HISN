@@ -105,7 +105,7 @@
 | **G3** | AI scanning of health SMS for fraud lacks an explicit legal basis | Law 2/2019 Art. 1, Art. 16 | none / partial / partial |
 | **G4** | No emergency fast-path for AI-triggered failover of health data | Art. 13, Art. 24 | none / present / present |
 | **G5** | No instrument assigns authority over operators' AI filter changes | **agent-discovered** (gate) | none / partial / partial |
-| **G6** | No loss allocation when telecom anti-scam duties fail | comparator-discovered (SG SRF 6.4); **UAE absence to confirm** | none / none / present |
+| **G6** | No allocation of scam losses to **telecom operators** when their anti-scam duties fail | comparator-discovered (SG SRF 6.4); UAE bank-side compensation exists (CBUAE CPR 8/2020 cl. 6.2.2.4, primary text to verify) | none (telecom) / none / present |
 
 **Not fully addressed in any country: G3 and G5**, the candidates for international standards work. Standards gap: no declared autonomy level for telecom AI agents.
 **Report idea:** present each gap as a chain: gap → verbatim evidence → draft fix → wind-tunnel test → measured effect.
