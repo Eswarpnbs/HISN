@@ -1,0 +1,58 @@
+# Global policy examples per gap (domain-level). Not part of the hash-pinned knowledge base.
+# status: verified_official = checked on an official source; verify_before_use = do not cite until checked.
+examples:
+- gap: G1
+  jurisdiction: Australia
+  instrument: Scams Prevention Framework Act 2025
+  summary: Places scam prevention obligations on banks, telecommunications providers and digital platforms, with consequences for non-compliance.
+  url: https://www.afca.org.au/about-afca/scams-prevention-framework
+  status: verified_official
+  checked: '2026-10-30'
+- gap: G1
+  jurisdiction: Australia
+  instrument: Reducing Scam Calls and Scam Short Messages code (Telecommunications Act 1997)
+  summary: Mandatory telco code with enforceable duties to detect and block scam calls and texts.
+  url: https://www.jacmac.com.au/insights/scams-prevention-framework/
+  status: verify_before_use
+  to_verify: official code name and number on acma.gov.au
+  checked: '2026-10-30'
+- gap: G2
+  jurisdiction: Australia
+  instrument: SMS Sender ID Register (commenced 1 July 2026)
+  summary: Registered sender IDs, including government agencies, keep their name; unregistered sender IDs must be labelled 'Unverified' by the carrier; penalties up to AUD 250,000 per contravention.
+  url: https://www.acma.gov.au/articles/2026-06/sms-sender-id-register-goes-live-help-protect-australians-scams
+  status: verified_official
+  checked: '2026-10-30'
+  note: Australia labels rather than blocks unregistered sender IDs.
+- gap: G3
+  jurisdiction: European Union
+  instrument: Regulation (EU) 2021/1232 (temporary derogation from the ePrivacy Directive)
+  summary: A specific, purpose-limited, temporary legal basis was needed for providers to voluntarily scan private communications (for child sexual abuse material only); Parliament rejected its extension
+    and it expired after 3 April 2026.
+  url: https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1896266
+  status: verified_official
+  checked: '2026-10-30'
+  to_verify: status of the mid-2026 reinstatement on EUR-Lex
+- gap: G4
+  jurisdiction: European Union
+  instrument: GDPR Article 49(1)(f); EDPB Guidelines 2/2018
+  summary: Transfers abroad may rely on vital interests when the person cannot consent, but derogations are a last resort for specific, occasional situations, not systematic or repetitive transfers.
+  url: https://www.edpb.europa.eu/sites/edpb/files/files/file1/edpb_guidelines_2_2018_derogations_en.pdf
+  status: verified_official
+  checked: '2026-10-30'
+  note: Covers individual emergencies, not systematic AI-triggered failover.
+- gap: G5
+  jurisdiction: none found
+  instrument: '-'
+  summary: No instrument assigning authority to approve or override operators' AI filter changes was found in the jurisdictions examined (Australia, European Union).
+  url: '-'
+  status: not_found_in_jurisdictions_examined
+  checked: '2026-10-30'
+- gap: G6
+  jurisdiction: Australia
+  instrument: Scams Prevention Framework; Australian Scams Ombudsman (AFCA) from 31 March 2027
+  summary: Telcos are within the framework's complaint and redress pathway; compensation is linked to breach of obligations rather than mandatory in every case.
+  url: https://www.afca.org.au/about-afca/scams-prevention-framework
+  status: verified_official
+  checked: '2026-10-30'
+  to_verify: compensation mechanics (statement of compliance) against the Act text

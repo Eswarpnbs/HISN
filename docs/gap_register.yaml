@@ -23,7 +23,7 @@
   second_pass: [Executive Regulation of Federal Law 2/2019, DoH/DHA data standards]
   status: instrument_verified
 - id: G4
-  title: No emergency fast-path for AI-triggered failover of health data
+  title: No emergency path for systematic, AI-triggered failover of health data (existing derogations cover individual, occasional emergencies)
   type: conflicting_objectives
   evidence: [UAE-FL-2-2019-ART13, UAE-FL-2-2019-ART24]
   comparator: GDPR vital-interests derogation - verify text
