@@ -1,0 +1,28 @@
+name: Regulatory wind tunnel
+on:
+  pull_request:
+    paths: ["drafts/**"]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  test-draft-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml pydantic
+      - name: Test changed draft rules before issuance
+        run: |
+          FILES=$(git diff --name-only --diff-filter=AM origin/${{ github.base_ref }}...HEAD -- 'drafts/*.yaml' | tr '\n' ' ')
+          python tools/wind_tunnel_ci.py $FILES --out wt_report.md
+      - name: Post the impact card on the pull request
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f wt_report.md ] && gh pr comment ${{ github.event.pull_request.number }} --body-file wt_report.md || echo "no report"

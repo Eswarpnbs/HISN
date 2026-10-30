@@ -1,0 +1,6 @@
+# Draft rule under review. The mechanism mapping below was confirmed by a named human.
+draft: "During a declared emergency, health message logs may be stored at a backup site abroad for 72 hours."
+instrument_level: health_authority_resolution
+mechanisms:
+  - {id: emergency_offshore_exception, params: {hours: 72}}
+confirmed_by: "Synthetic reviewer (Team Sankalp)"

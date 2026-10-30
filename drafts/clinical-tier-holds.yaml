@@ -1,0 +1,6 @@
+# Draft rule under review. The mechanism mapping below was confirmed by a named human.
+draft: "Life-critical health messages held by a filter must reach a second human reviewer within the deadline of their clinical tier, as declared by the authenticated sender."
+instrument_level: regulation
+mechanisms:
+  - {id: tiered_hold_limits}
+confirmed_by: "Synthetic reviewer (Team Sankalp)"
