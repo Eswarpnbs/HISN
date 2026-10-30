@@ -1,6 +1,8 @@
 import yaml
 from .events import Event, EventBus
 
+REFERRALS = {"REFER_TO_TDRA": "tdra"}  # proposed action -> receiving institution
+
 def load_scenario(path):
     data = yaml.safe_load(open(path, encoding="utf-8"))
     evs = [Event(id=e["id"], t=int(e["t"]), kind=e["kind"], audience=tuple(e["audience"]),
@@ -12,13 +14,14 @@ class Coordinator:
     event only to the agents in its audience, and routes escalations. gateway=None = ungoverned twin.
     tiers=None keeps the single sla_minutes limit; with tiers, each hold gets its clinical tier's limit."""
     def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None, extra_events=None,
-                 sla_minutes=None, tiers=None):
+                 sla_minutes=None, tiers=None, route_referrals=False):
         self.meta, events = load_scenario(scenario_path)
         self.bus = EventBus(audit); self.bus.load(list(events) + list(extra_events or []))
         self.audit, self.firewall, self.gateway, self.step = audit, firewall, gateway, step
         self.agents = agents or {}
         self.outcomes, self.agent_outputs = [], []
         self.sla, self.tiers, self.holds = sla_minutes, tiers, []
+        self.route_referrals = route_referrals
 
     def run(self, until=None):
         end, now = (until if until is not None else self.meta.get("duration", 70)), 0
@@ -72,7 +75,24 @@ class Coordinator:
         for role in e.audience:
             agent = self.agents.get(role)
             if agent:
-                self.agent_outputs.append(agent.handle(e, r, now))
+                out = agent.handle(e, r, now)
+                self.agent_outputs.append(out)
+                if self.route_referrals:
+                    self._route_referral(e, out, now)
+
+    def _route_referral(self, e, out, now):
+        """Coordination protocol: a proposed referral is delivered once to the receiving institution (no re-referral)."""
+        target = REFERRALS.get((out or {}).get("proposed_action"))
+        if not target or e.kind == "referral" or (out or {}).get("status") != "PROPOSED" or target not in self.agents:
+            return
+        ref = Event(id=f"{e.id}-REF", t=now, kind="referral", audience=(target,),
+                    payload={**e.payload, "original_event": e.id, "original_kind": e.kind, "referred_by": out.get("role"),
+                             "referral_reason": str(out.get("assessment", ""))[:300],
+                             "referrer_cited_ids": out.get("cited_ids", [])}, act=e.act)
+        self.audit.write({"kind": "referral_routed", "event_id": ref.id, "from": out.get("role"), "to": target,
+                          "original_event": e.id})
+        self.bus.inject(ref)
+        self._deliver(ref, {"action": "REFERRED", "from": out.get("role")}, now)
 
     def _check_sla(self, now):
         """Essential messages held beyond their limit go to a second human, whatever the agent proposed."""

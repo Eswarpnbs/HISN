@@ -19,6 +19,7 @@ ROLE_SPECS = {
         "actions_by_kind": {
             "network_summary": ["MONITOR", "REQUEST_INFO", "LOG_GAP"],
             "complaint": ["DIRECT_OPERATOR", "REQUEST_INFO", "LOG_GAP"],
+            "referral": ["DIRECT_OPERATOR", "REQUEST_INFO", "LOG_GAP"],
             "override_dispute": ["DIRECT_OPERATOR", "ASSIGN_OVERRIDE_AUTHORITY", "REQUEST_INFO", "LOG_GAP"]}},
     "ai_data_authority": {
         "name": "Federal Authority for AI and Data",
@@ -47,6 +48,7 @@ QUERY_INTENTS = {
     "escalation": "availability of health information to the authorised; release of a quarantined essential health message; human oversight of AI decisions",
     "complaint": "spam reporting facilities and protections for mobile customers; impersonation scam affecting patients",
     "network_summary": "licensee obligations on network operations and monitoring",
+    "referral": "licensee obligations to protect customers from spam and impersonation scams; directions to telecom operators",
     "data_transfer": "storing or processing health data and information outside the State",
     "override_dispute": "authority to approve or override changes to operator AI filtering; notification duties for filter changes",
     "emergency_declared": "emergency declaration powers; exceptions for health data and telecommunications during emergencies",
