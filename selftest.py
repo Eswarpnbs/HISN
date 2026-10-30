@@ -64,7 +64,7 @@ except Exception as ex:
     rec("Retrieval", f"not run ({type(ex).__name__}: is Ollama running?)", "python kb/eval_retrieval.py")
 
 ev = [l for l in Path("docs/eval_log_v3.md").read_text(encoding="utf-8").splitlines() if "qwen2.5:14b" in l] if Path("docs/eval_log_v3.md").exists() else []
-for label in ("dev", "heldout_v2"):
+for label in ("dev", "heldout_v2", "heldout_v3"):
     last = [l for l in ev if f"| {label} |" in l]
     if last:
         c = [x.strip() for x in last[-1].strip("|").split("|")]
@@ -72,7 +72,7 @@ for label in ("dev", "heldout_v2"):
 bl = [l for l in Path("docs/baselines.md").read_text(encoding="utf-8").splitlines() if l.startswith("| B")] if Path("docs/baselines.md").exists() else []
 for l in bl:
     c = [x.strip() for x in l.strip("|").split("|")]
-    rec(f"Baseline {c[0][:30]}", f"acc {c[1]} | harmful {c[3]} | unsupported {c[5]}", "docs/baselines.md")
+    rec(f"Baseline {c[0][:30]}", f"acc {c[1]} | held-out v2 {c[2]}" + (f" | held-out v3 {c[7]}" if len(c) > 7 else "") + f" | harmful {c[3]} | unsupported {c[5]}", "docs/baselines.md")
 
 
 import re as _re

@@ -100,7 +100,7 @@ acc = lambda c: round(100 * int(c[1].split("/")[0]) / int(c[1].split("/")[1]))
 b1, b3, b0 = B.get("B1"), B.get("B3"), B.get("B0")
 findings = [
     f"Without governance, <b>{HU['lost']}</b> genuine health and government messages were silently lost and <b>{HU['off']}</b> health-data transfers left the country. With HISN: <b>{HG['lost']}</b> and <b>{HG['off']}</b>; held messages reach a named human, then a second reviewer within 15 minutes.",
-    f"On ITU's reference model, an ungoverned LLM scored <b>{b1[1] if b1 else '-'}</b> with <b>{b1[5] if b1 else '-'}</b> unsupported legal citations, below fixed rules ({b0[1] if b0 else '-'}). HISN scored <b>{b3[1] if b3 else '-'}</b> (held-out {b3[2] if b3 else '-'}) with <b>zero</b> harmful decisions.",
+    f"On ITU's reference model, an ungoverned LLM scored <b>{b1[1] if b1 else '-'}</b> with <b>{b1[5] if b1 else '-'}</b> unsupported legal citations, below fixed rules ({b0[1] if b0 else '-'}). HISN scored <b>{b3[1] if b3 else '-'}</b> (held-out v2 {b3[2] if b3 else '-'}{(', v3 ' + b3[7]) if b3 and len(b3) > 7 else ''}) with <b>zero</b> harmful decisions.",
     f"Testing candidate rules: sender authentication with a verified-sender lane raised the MIZAN balance from <b>{BASE['mizan']}</b> to <b>{BEST['mizan']}</b>; a blunt fraud duty lowered it ({FRAUD['mizan']}), over-blocking legitimate businesses.",
     "The regulatory wind tunnel tests draft rules before issuance: the same emergency-offshore provision is <b>rejected as a regulation</b> (conflicts with Federal Law No. 2 of 2019, Art. 13) and <b>compatible as a Health Authority resolution</b>, the route Article 13 itself provides.",
     f"<b>{len(GAPS)}</b> domain-level policy gaps were identified, one discovered by the agents; four are shared or only partly addressed in India (UAE-India decision agreement {AGREE})."]
@@ -120,7 +120,7 @@ S.append(section("4", "agents", "Governed institutional agents",
     "<p>TDRA, the Health Authority and the Federal AI &amp; Data Authority propose actions; fixed code accepts a proposal only with retrieved evidence, within mandate, fitted to the event, on a binding and competent legal basis, and consistent with the agent's own risk rating.</p>"
     + "<h3>Accuracy against pre-registered expectations (qwen2.5:14b)</h3>" + bars([(c[0][:34], acc(c), c[0].startswith("B3")) for c in BL], 100, "%")
     + "<h3>Harmful decisions</h3>" + bars([(c[0][:34], int(c[3]), c[0].startswith("B3")) for c in BL], max([int(c[3]) for c in BL] + [1]))
-    + details("Show baseline comparison", table(["System", "Accuracy", "Held-out", "Harmful", "Out of mandate", "Unsupported citations", "Decisive w/o binding basis"], [[E(x) for x in c] for c in BL]))
+    + details("Show baseline comparison", table(["System", "Accuracy", "Held-out v2", "Harmful", "Out of mandate", "Unsupported citations", "Decisive w/o binding basis", "Held-out v3"], [[E(x) for x in c] for c in BL]))
     + details("Show agent decisions (latest run)", table(["Time", "Authority", "Event", "Status", "Proposed", "Cited"],
               [[r["t"], E(r["role"]), E(r["event_id"]), E(r["status"]), E(r["proposed_action"]), f"<span class='small'>{E(', '.join(r.get('cited_ids', [])))}</span>"] for r in AGENTS]))))
 LEVEL_NAMES = {"regulation": "Regulation", "health_authority_resolution": "Health Authority resolution",
