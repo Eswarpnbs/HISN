@@ -279,7 +279,7 @@
   text: '(1) An organisation must not transfer any personal data to a country or territory outside Singapore except in accordance with requirements prescribed under this Act to ensure that organisations provide a standard of protection to personal data so transferred that is comparable to the protection under this Act. (2) The Commission may, on the application of any organisation, by written notice exempt the organisation from any requirement prescribed pursuant to subsection (1) in respect of any transfer of personal data by that organisation.'
 - clause_id: SG-PDPA-SCHED-EMERG
   record_id: SG-PDPA-2012
-  article: "Schedule (vital interests), paragraph 2 - verify schedule number"
+  article: "First Schedule, Part 1, paragraph 2 (vital interests: emergency threatening life, health or safety)"
   basis: NATIONAL_LAW
   dimension_ids: [10]
   factor: sandbox
