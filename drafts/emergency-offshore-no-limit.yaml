@@ -1,0 +1,5 @@
+draft: "During a declared emergency, health message logs may be stored at a backup site abroad."
+instrument_level: health_authority_resolution
+mechanisms:
+  - {id: emergency_offshore_exception}
+confirmed_by: "Synthetic reviewer"
