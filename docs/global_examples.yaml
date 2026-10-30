@@ -10,11 +10,11 @@ examples:
   checked: '2026-10-30'
 - gap: G1
   jurisdiction: Australia
-  instrument: Reducing Scam Calls and Scam Short Messages code (Telecommunications Act 1997)
-  summary: Mandatory telco code with enforceable duties to detect and block scam calls and texts.
-  url: https://www.jacmac.com.au/insights/scams-prevention-framework/
-  status: verify_before_use
-  to_verify: official code name and number on acma.gov.au
+  instrument: Industry Code C661:2022 Reducing Scam Calls and Scam SMs (registered by the ACMA under Part 6 of the Telecommunications Act 1997)
+  summary: Obliges carriers and carriage service providers to protect consumers from scam harms and disrupt scam activity, including reporting scam calls and SMS blocked to the ACMA; enforced through ACMA
+    directions to comply.
+  url: https://www.acma.gov.au/sites/default/files/2025-08/TeleSign%20-%20Investigation%20report%20-%20Reducing%20Scams%20Code%20-%209%20April%202025.pdf
+  status: verified_official
   checked: '2026-10-30'
 - gap: G2
   jurisdiction: Australia
@@ -26,13 +26,16 @@ examples:
   note: Australia labels rather than blocks unregistered sender IDs.
 - gap: G3
   jurisdiction: European Union
-  instrument: Regulation (EU) 2021/1232 (temporary derogation from the ePrivacy Directive)
+  instrument: Regulation (EU) 2021/1232; reinstated in 2026 (reported as Regulation (EU) 2026/1881), applying until 3 April 2028
   summary: A specific, purpose-limited, temporary legal basis was needed for providers to voluntarily scan private communications (for child sexual abuse material only); Parliament rejected its extension
-    and it expired after 3 April 2026.
+    and it expired after 3 April 2026. After a gap of several months, the Council gave final approval to reinstating it on 23 July 2026; the reinstated version excludes end-to-end encrypted communications.
   url: https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1896266
   status: verified_official
   checked: '2026-10-30'
-  to_verify: status of the mid-2026 reinstatement on EUR-Lex
+  to_verify: regulation number 2026/1881 on EUR-Lex (minor)
+  url2: https://www.consilium.europa.eu/en/press/press-releases/2026/07/23/fighting-child-sexual-abuse-online-interim-measure-protecting-children-now-reinstated/
+  design_principles: Processing only where strictly necessary and proportionate; text-scanning technologies may detect patterns but must not be able to deduce the substance of communications (European Parliament
+    position).
 - gap: G4
   jurisdiction: European Union
   instrument: GDPR Article 49(1)(f); EDPB Guidelines 2/2018
@@ -42,17 +45,20 @@ examples:
   checked: '2026-10-30'
   note: Covers individual emergencies, not systematic AI-triggered failover.
 - gap: G5
-  jurisdiction: none found
-  instrument: '-'
-  summary: No instrument assigning authority to approve or override operators' AI filter changes was found in the jurisdictions examined (Australia, European Union).
-  url: '-'
-  status: not_found_in_jurisdictions_examined
+  jurisdiction: Australia (partial); European Union (none found)
+  instrument: Industry Code C661:2022 Reducing Scam Calls and Scam SMs
+  summary: 'Oversees filter outcomes: blocked scam calls and SMS are reported to the ACMA, and alleged scam SMS with alphanumeric sender IDs found not to be scams are shared with other providers and the
+    ACMA. No instrument found that assigns authority to approve or override operators'' filter changes before deployment.'
+  url: https://www.acma.gov.au/sites/default/files/2025-08/TeleSign%20-%20Investigation%20report%20-%20Reducing%20Scams%20Code%20-%209%20April%202025.pdf
+  status: verified_official
   checked: '2026-10-30'
+  rating: partial
 - gap: G6
   jurisdiction: Australia
   instrument: Scams Prevention Framework; Australian Scams Ombudsman (AFCA) from 31 March 2027
-  summary: Telcos are within the framework's complaint and redress pathway; compensation is linked to breach of obligations rather than mandatory in every case.
+  summary: Telcos are within the framework; consumers can seek compensation where businesses have not met their obligations (compliance-linked, not automatic). Australian Scams Ombudsman (AFCA) from 31
+    March 2027.
   url: https://www.afca.org.au/about-afca/scams-prevention-framework
   status: verified_official
   checked: '2026-10-30'
-  to_verify: compensation mechanics (statement of compliance) against the Act text
+  url2: https://treasury.gov.au/sites/default/files/2025-01/p2025-623966.pdf
