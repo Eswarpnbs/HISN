@@ -286,3 +286,18 @@
   metric_ids: [d10_m10, d10_m06]
   y3172_nodes: [PP, P]
   text: 'The collection, use or disclosure (as the case may be) of personal data about an individual is necessary to respond to an emergency that threatens the life, health or safety of the individual or another individual.'
+- clause_id: IN-TRAI-GOVMSG
+  record_id: IN-TRAI-TCCCPR-CONS
+  article: 'Regulation 2, definition (za): Government Message (as amended 2025)'
+  basis: REGULATOR_POLICY
+  dimension_ids:
+  - 10
+  factor: sandbox
+  metric_ids:
+  - d10_m06
+  - d10_m09
+  y3172_nodes:
+  - SRC
+  - C
+  - P
+  text: '“Government Message or Government Voice Call” means any message sent or voice call made on the directions of – (a) the Central Government or the State Government or any body established under the Constitution; or (b) the Authority or by an agency expressly authorized for the purpose by the Authority: Provided that such messages are sent or voice calls are made through the DLT platform. Explanation: There shall not be any requirement of seeking Consent for receipt of these communications nor shall there be any option in the Preference Register to block such communications;'
