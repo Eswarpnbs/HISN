@@ -47,3 +47,13 @@
   evidence: [SG-SRF-6.4]
   status: comparator_discovered_uae_telecom_side_none
   note: "UAE bank-side compensation exists (CBUAE Consumer Protection Regulation, Circular 8/2020, Art. 6, cl. 6.2.2.4; verified on the CBUAE Rulebook, 30 Oct 2026). No telecom-side loss allocation found in the verified corpus."
+- id: G7
+  title: Essential-sender recognition does not cross borders
+  type: coordination
+  evidence:
+  - IN-TRAI-GOVMSG
+  - UAE-TDRA-UEC-8.8
+  comparator: India identifies government messages domestically (DLT, -G suffix); no instrument in the verified corpus (UAE, India, Singapore) recognises foreign essential senders.
+  second_pass: true
+  status: system_discovered
+  note: A genuine foreign essential sender arrives like a spoofed one (foreign route, unauthenticated, unknown to the registry). Sender authentication fixes this only for senders the destination country knows. No global example found; an open question for international coordination. Measured in simulation; needs expert review. Domain-level finding, not a national recommendation.

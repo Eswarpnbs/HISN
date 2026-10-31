@@ -162,6 +162,7 @@ S.append(section("7", "standards", "Standards alignment and global evidence",
     + f"<h3>What-if simulated timeline (Readiness Report 2.0, Dimension 10)</h3><p>Under current rules, {E(_WI)} "
       "Both filter changes made in the scenario (0.20 and 0.15) fall outside that range; under the tested rule set every threshold meets every target. "
       f"<a href='{GH}docs/what_if_none.md'>Full table</a>.</p>"
+    + f"<h3>Across borders (gap G7)</h3><p>The same critical lab message from an Indian essential sender is blocked by the UAE filter after the panic threshold, even under the tested rule set, while the domestic hospital's is delivered: recognition stops at the border. <a href='{GH}docs/cross_border.md'>Measured card</a>.</p>"
     + f"<p>Further reading: <a href='{GH}docs/case_brief_filter_threshold.md'>governance case brief</a> &middot; "
       f"<a href='{GH}docs/y3172_mapping.md'>Y.3172 nine-node mapping</a> &middot; <a href='{GH}docs/readiness_mapping.md'>Readiness 2.0 mapping</a> &middot; "
       f"<a href='{GH}open_kb/'>open knowledge-base contribution</a> &middot; <a href='{GH}docs/agent_cards/'>agent cards</a></p>"))

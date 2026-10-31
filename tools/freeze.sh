@@ -17,6 +17,7 @@ python daily_report.py --policy none && python daily_report.py --policy adopted
 python tools/fairness_check.py
 python tools/filter_change_check.py --threshold 0.2 && python tools/filter_change_check.py --threshold 0.15
 python tools/what_if.py --policy none && python tools/what_if.py --policy adopted
+python tools/cross_border.py
 python tools/automation_report.py && python tools/build_datasheet.py
 python build_agent_cards.py && python tools/build_kb_package.py
 python build_dashboard.py && python build_report_site.py
