@@ -15,7 +15,7 @@ def states():
     adopted = yaml.safe_load(open("kb/rulepacks/uae/adopted.yaml", encoding="utf-8"))["flags"]
     panic, drift = ev["A3-E1"]["payload"]["threshold"], ev["A4-E1"]["payload"]["threshold"]
     return [("today's rules, normal", {}, None), ("today's rules, after panic (Act 3)", {}, panic),
-            ("today's rules, after drift (Act 4)", {}, drift), ("HISN-recommended rules, after panic", adopted, panic)]
+            ("today's rules, after drift (Act 4)", {}, drift), ("tested rule set (authentication + verified lane), after panic", adopted, panic)]
 
 def run():
     pairs = yaml.safe_load(open("scenarios/fairness_pairs.yaml", encoding="utf-8"))

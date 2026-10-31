@@ -30,7 +30,7 @@ if r["verdict"] != "NOT TESTABLE":
     L += [f"- {b['id']} {b['text']}: {ok(a_['pass'])} -> {ok(b['pass'])} {('(' + b['detail'] + ')') if b['detail'] else ''}"
           for a_, b in zip(r["invariants_before"], r["invariants_after"])]
     L += ["", f"Warnings: {'; '.join(c['warnings']) or 'none'} | Not testable here: {c['untestable_parts'] or 'none'}"]
-L += ["", "_Simulation-based pre-issuance test. Conflict table hand-authored from verified clauses; requires legal review. A named human must sign off before any use._"]
+L += ["", "_Simulation-based pre-issuance test. Conflict table hand-authored from verified clauses; requires legal review. A named human must sign off before any use. Drafts are illustrative and demonstrate the method; HISN makes no national recommendations._"]
 slug = re.sub(r"[^a-z0-9]+", "-", a.draft.lower())[:40].strip("-")
 stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 md = Path(f"docs/impact_cards/{stamp}-{slug}.md"); md.write_text("\n".join(L) + "\n", encoding="utf-8")

@@ -1,5 +1,5 @@
 # Essential Message Assurance Report
-_Synthetic scenario day · generated 2026-10-30 00:33 · UAE rules with HISN-recommended rules (adopted), clinical tiers on (provisional)_
+_Synthetic scenario day · generated 2026-10-31 21:10 · UAE rules with the tested rule set (sender authentication + verified lane), clinical tiers on (provisional)_
 
 ## Headline
 
@@ -29,12 +29,12 @@ _Synthetic scenario day · generated 2026-10-30 00:33 · UAE rules with HISN-rec
 
 ## Operator filter changes
 
-Every change below was applied without any record that it was tested before deployment, and no instrument assigns authority to approve it (gap G5).
+Every change below was applied without any record that it was tested before deployment, and no instrument assigns authority to approve it (gap G5). The last column shows what HISN's pre-deployment check would have said.
 
-| Event | Effect |
-|---|---|
-| A3-E1 | APPLIED |
-| A4-E1 | APPLIED |
+| Event | New threshold | Effect | HISN pre-deployment check (language parity) |
+|---|---|---|---|
+| A3-E1 | 0.2 | APPLIED | DEPLOY |
+| A4-E1 | 0.15 | APPLIED | DEPLOY |
 
 ## Draft rules tested before issuance (wind tunnel)
 

@@ -23,7 +23,7 @@ Same genuine message from an authenticated hospital, six languages, four policy 
 | appointment | delivered (0.00) | delivered (0.00) | delivered (0.00) | delivered (0.00) | delivered (0.00) | delivered (0.00) | yes |
 | critical_lab | held (0.25) | delivered (0.00) | delivered (0.00) | delivered (0.00) | delivered (0.00) | delivered (0.00) | **NO** |
 
-## HISN-recommended rules, after panic
+## tested rule set (authentication + verified lane), after panic
 
 | Message | en | ar | hi | te | ur | ml | Equal? |
 |---|---|---|---|---|---|---|---|

@@ -10,7 +10,7 @@ ap.add_argument("--policy", default="none", choices=["none", "adopted"]); a = ap
 flags = yaml.safe_load(open("kb/rulepacks/uae/adopted.yaml", encoding="utf-8"))["flags"] if a.policy == "adopted" else {}
 r = check_change(flags, a.threshold)
 word = {"ALLOW": "delivered", "QUARANTINE": "held"}
-print(f"Proposed filter threshold {a.threshold} under {'today' if a.policy == 'none' else 'HISN-recommended'} rules: {r['verdict']}")
+print(f"Proposed filter threshold {a.threshold} under {'current rules' if a.policy == 'none' else 'the tested rule set (authentication + verified lane)'}: {r['verdict']}")
 for mid, acts in r["results"].items():
     print(f"  {mid:<14} " + "  ".join(f"{l}:{word.get(acts[l], acts[l].lower())}" for l in LANGS)
           + f"  [{'UNEQUAL' if mid in r['unequal'] else 'equal'}]")

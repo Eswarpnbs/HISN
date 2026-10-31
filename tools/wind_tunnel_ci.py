@@ -42,7 +42,7 @@ def main():
         else:
             ok, L = card(f, d, wind_tunnel(comp))
         all_ok = all_ok and ok; out += L + [""]
-    out.append("_Simulation-based pre-issuance test on synthetic data. Conflict table hand-authored; requires legal review. A named human must sign off before any use._")
+    out.append("_Simulation-based pre-issuance test on synthetic data. Conflict table hand-authored; requires legal review. A named human must sign off before any use. Drafts are illustrative and demonstrate the method; HISN makes no national recommendations._")
     text = "\n".join(out); Path(a.out).write_text(text, encoding="utf-8"); print(text)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh: fh.write(text + "\n")

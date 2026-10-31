@@ -51,7 +51,7 @@ for p in sorted(Path("docs/impact_cards").glob("*.json")):
 verified = a.verify()
 
 L = [f"# Essential Message Assurance Report",
-     f"_Synthetic scenario day · generated {datetime.datetime.now():%Y-%m-%d %H:%M} · UAE rules {'as-is' if POLICY == 'none' else 'with HISN-recommended rules (adopted)'}, clinical tiers on (provisional)_", "",
+     f"_Synthetic scenario day · generated {datetime.datetime.now():%Y-%m-%d %H:%M} · UAE rules {'as-is' if POLICY == 'none' else 'with the tested rule set (sender authentication + verified lane)'}, clinical tiers on (provisional)_", "",
      "## Headline", "",
      "| Indicator | Value | Target |", "|---|---|---|",
      f"| Genuine essential messages | {len(legit)} | |",
