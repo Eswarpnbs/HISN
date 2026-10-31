@@ -62,6 +62,7 @@ L = [f"# Essential Message Assurance Report",
      f"| Scam / spoof messages stopped | {len(spoofs_stopped)}/{len(bad)} | all |",
      f"| Offshore health-data transfers blocked | {sum(o['action'].startswith('BLOCK') for o in transfers)}/{len(transfers)} | all, unless a valid resolution applies |",
      f"| Operator filter changes with a pre-deployment test on record | 0/{len(filter_changes)} | all |",
+     f"| Filter changes violating declared Y.3173 automation levels (no named approval) | {sum(1 for o in filter_changes if o.get('automation_violation'))}/{len(filter_changes)} | 0 |",
      f"| Audit chain verified | {'yes' if verified else '**NO**'} | yes |", "",
      "## Held messages", "",
      "| Message | Genuine? | Tier | Held for | Limit (min) | Second review after (min) | Within limit |", "|---|---|---|---|---|---|---|"]

@@ -91,12 +91,14 @@ cards += [
 ]
 _IO = {"hisn-policy-gateway": ("event (message metadata or data transfer)", "verdict and action with cited rule"),
        "hisn-gap-engine": ("abstract tactic battery; candidate patches", "loopholes, counterfactual metrics, load-bearing rules")}
+from app.core.automation import load as _load_levels
+_LEVELS = _load_levels()
 for _c in cards:
     _c.setdefault("author", AUTHOR)
     _c.setdefault("runtime_environment", RUNTIME)
     _c.setdefault("inputs", _IO.get(_c["id"], ("event addressed to this institution; retrieved evidence",))[0])
     _c.setdefault("outputs", _IO.get(_c["id"], ("", "proposed action with cited clause IDs, or a logged gap"))[1])
-    _c.setdefault("automation_level", "to be declared per ITU-T Y.3173")
+    _comp = {"hisn-tdra": "institutional_agents", "hisn-health-authority": "institutional_agents", "hisn-ai-data-authority": "institutional_agents", "hisn-policy-gateway": "policy_gateway", "hisn-gap-engine": "gap_engine", "hisn-policy-adviser": "policy_adviser", "hisn-coordinator": "coordinator", "hisn-wind-tunnel": "wind_tunnel"}.get(_c["id"]); _c["automation_level"] = (_LEVELS[_comp]["label"] + " (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)") if _comp in _LEVELS else "not assessed"
     _c["metadata_standard"] = "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
 Path("docs/agents.json").write_text(json.dumps(cards, indent=2, ensure_ascii=False), encoding="utf-8")
 for c in cards:

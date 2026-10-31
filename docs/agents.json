@@ -57,7 +57,7 @@
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
     "inputs": "event addressed to this institution; retrieved evidence",
     "outputs": "proposed action with cited clause IDs, or a logged gap",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L0 Manual network operation (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -118,7 +118,7 @@
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
     "inputs": "event addressed to this institution; retrieved evidence",
     "outputs": "proposed action with cited clause IDs, or a logged gap",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L0 Manual network operation (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -183,7 +183,7 @@
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
     "inputs": "event addressed to this institution; retrieved evidence",
     "outputs": "proposed action with cited clause IDs, or a logged gap",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L0 Manual network operation (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -214,7 +214,7 @@
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
     "inputs": "event (message metadata or data transfer)",
     "outputs": "verdict and action with cited rule",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L2 Preliminary intelligence (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -269,7 +269,7 @@
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
     "inputs": "abstract tactic battery; candidate patches",
     "outputs": "loopholes, counterfactual metrics, load-bearing rules",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L0 Manual network operation (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -306,7 +306,7 @@
     "added": "2026-10-31",
     "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L0 Manual network operation (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -341,7 +341,7 @@
     "added": "2026-10-31",
     "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L2 Preliminary intelligence (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
@@ -380,7 +380,7 @@
     "added": "2026-10-31",
     "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
     "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
-    "automation_level": "to be declared per ITU-T Y.3173",
+    "automation_level": "L0 Manual network operation (ITU-T Y.3173; per-dimension levels in docs/automation_levels.md)",
     "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   }
 ]
