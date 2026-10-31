@@ -10,10 +10,11 @@
 - id: G2
   title: Government senders lack protected / authenticated-sender status
   type: responsibility
-  evidence: [UAE-TDRA-UEC-13, UAE-PDPL-ART2-2]
+  evidence: [UAE-TDRA-UEC-13, UAE-PDPL-ART2-2, UAE-TDRA-UEC-8.8]
   comparator: Singapore SMS Sender ID Registry; India TRAI DLT - verify text
   second_pass: [TDRA sender ID registration rules, digital government messaging standards]
   status: instrument_verified
+  note: "Sender identity is regulated only for marketing senders (AD-XXXX label, UAE-TDRA-UEC-8.8); no instrument in the verified corpus authenticates or protects government or health senders. Operator-level sender-ID registration is reported in practice (industry sources, not verified)."
 - id: G3
   title: AI content-scanning of health SMS for fraud lacks an explicit legal basis
   type: conflicting_objectives

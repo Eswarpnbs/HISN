@@ -333,3 +333,15 @@
   metric_ids: *id002
   y3172_nodes: *id003
   text: Whoever illegally seizes for himself or for third parties a movable asset, a benefit or a document or signs this document through the use of any of the fraud techniques, or through taking an alias or false impersonation through the information network, IS or any ITE shall be punished with imprisonment for at least one year and/ or a fine of not less than (AED 250,000) two hundred fifty thousand dirhams or more than (AED 1,000,000) one million dirhams.
+- clause_id: UAE-TDRA-UEC-8.8
+  record_id: UAE-TDRA-UEC-2022
+  article: Clause 8.8 (marketing sender label AD-XXXX)
+  basis: REGULATOR_POLICY
+  dimension_ids:
+  - 10
+  factor: sandbox
+  metric_ids:
+  - d10_m04
+  y3172_nodes:
+  - P
+  text: Licensees shall specially classify Marketing Text Messages in their systems where the name of the sender of Marketing Text Messages sent to a Mobile Customer must include the code (AD-XXXX) followed by the name of the Marketing Text Message sender.
