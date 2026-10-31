@@ -143,12 +143,34 @@ S.append(section("6", "gaps", "Policy gaps (domain level)",
     table(["Gap", "Description", "Type", "Status", "Evidence"], [[f"<b>{E(g['id'])}</b>", E(g["title"]), E(g["type"]), badge(g["status"].replace("_", " "), "ok" if g["status"] == "confirmed" else "info"),
            f"<span class='small'>{E(', '.join(g.get('evidence', [])) or g.get('discovered_by', ''))}</span>"] for g in GAPS])
     + details("Show UAE-India-Singapore comparison", table(["Gap", "UAE", "India", "Singapore", "Singapore clauses", "Notes"], [[E(k), E(v["UAE"]["status"]), E(v["IN"]["status"]), E(v.get("SG", {}).get("status", "-")), E(", ".join(v.get("SG", {}).get("clauses", []))), E(v.get("SG", {}).get("note", "") or v["IN"].get("note", ""))] for k, v in GM.items()]))))
-S.append(section("7", "evidence", "Evidence base",
+import yaml as _yaml
+from app.core.automation import load as _lvl
+GH = "https://github.com/Eswarpnbs/HISN/blob/main/"
+_GX = [e for e in _yaml.safe_load(open("docs/global_examples.yaml", encoding="utf-8"))["examples"] if e["status"] == "verified_official"]
+_WIF = Path("docs/what_if_none.md")
+_WI = next((l.replace("**Conclusion:**", "").strip() for l in _WIF.read_text(encoding="utf-8").splitlines() if l.startswith("**Conclusion:**")), "") if _WIF.exists() else ""
+S.append(section("7", "standards", "Standards alignment and global evidence",
+    "<p>Gaps are domain-level: national instruments are evidence, and verified global examples show how others addressed each gap. "
+    "HISN makes no country-specific recommendations; AI only validates impact, humans confirm and decide (Readiness Report 2.0, FAQ 7).</p>"
+    + "<h3>Verified global policy examples</h3>"
+    + table(["Gap", "Jurisdiction", "Instrument", "Source"],
+            [[E(e["gap"]), E(e["jurisdiction"]), E(e["instrument"]),
+              (f"<a href='{E(e['url'])}'>official source</a>" if str(e["url"]).startswith("http") else "-")] for e in _GX])
+    + "<h3>ITU-T Y.3173 automation levels (computed by the standard's method)</h3>"
+    + table(["Component", "Overall level"], [[E(c["name"]), E(c["label"])] for c in _lvl().values()])
+    + "<p class='small'>Language-model components analyse but never act (L0); network functions run at L2 under human-defined rules. Team declaration using the Y.3173 method, not a certified assessment.</p>"
+    + f"<h3>What-if simulated timeline (Readiness Report 2.0, Dimension 10)</h3><p>Under current rules, {E(_WI)} "
+      "Both filter changes made in the scenario (0.20 and 0.15) fall outside that range; under the tested rule set every threshold meets every target. "
+      f"<a href='{GH}docs/what_if_none.md'>Full table</a>.</p>"
+    + f"<p>Further reading: <a href='{GH}docs/case_brief_filter_threshold.md'>governance case brief</a> &middot; "
+      f"<a href='{GH}docs/y3172_mapping.md'>Y.3172 nine-node mapping</a> &middot; <a href='{GH}docs/readiness_mapping.md'>Readiness 2.0 mapping</a> &middot; "
+      f"<a href='{GH}open_kb/'>open knowledge-base contribution</a> &middot; <a href='{GH}docs/agent_cards/'>agent cards</a></p>"))
+S.append(section("8", "evidence", "Evidence base",
     f"<p>{len(MAN)} records (official instruments from the UAE, India and Singapore, plus one Saudi historical draft) pinned by SHA-256 and {NCL} verbatim clauses, ingested through the ITU AI Readiness reference pipeline. Retrieval on 46 answerable policy questions (50 with out-of-corpus checks): Recall@5 {RET[2]}, Recall@1 {RET[0]}, MRR {RET[3]}. "
     f"Network evidence ({NP.get('n_link_days', '-')} real operator link-days, used as proxy): rain raised link-failure risk {NP.get('relative_risk_rain', '-')}x; heat did not ({NP.get('relative_risk_hot', '-')}x).</p>"
     + details("Show knowledge-base records", table(["Record", "Title", "Issuer", "Basis", "Verification", "SHA-256"],
               [[E(m["record_id"]), E(m["title"]), E(m["issuer"]), E(m["basis"]), E(m["verification"]), f"<code>{E(m['sha256'][:12])}</code>"] for m in MAN]))))
-S.append(section("8", "limits", "Method and limitations",
+S.append(section("9", "limits", "Method and limitations",
     "<ul><li>Synthetic data and scoring weights: results show direction, not real-world magnitudes.</li><li>Accuracies are shown with 95% Wilson confidence intervals; with samples this small the intervals are wide.</li><li>Pre-registered expectations committed to version control before each held-out run; a smaller model overfitted the development set, the reference model did not.</li>"
     "<li>A similarity threshold copied from the ITU reference agent did not transfer to this embedding model and is not claimed as a safeguard.</li><li>Comparator texts and the wind tunnel's conflict table require legal review; India institutional agents are future work.</li>"
     "<li>This is a sandbox prototype for pre-issuance testing, not a production system.</li></ul>"))
@@ -182,7 +204,7 @@ details{margin:10px 0;border:1px solid var(--line);border-radius:4px;padding:0 1
 footer{border-top:1px solid var(--line);margin-top:30px}footer .in{max-width:1180px;margin:0 auto;padding:16px 28px;font-size:11.5px;color:var(--mut)}
 @media print{aside,.crumb{display:none}.layout{display:block}details{border:none}}@media (max-width:900px){.layout{grid-template-columns:1fr}aside{display:none}.tiles{grid-template-columns:repeat(2,1fr)}}"""
 toc = "".join(f"<a href='#{sid}'>{t}</a>" for sid, t in [("summary", "1. Executive summary"), ("indicators", "2. Key indicators"), ("twin", "3. Policy-ON vs OFF"), ("agents", "4. Governed agents"),
-              ("windtunnel", "5. Regulatory wind tunnel"), ("gaps", "6. Policy gaps"), ("evidence", "7. Evidence base"), ("limits", "8. Method and limitations"), ("annex", "Annex")])
+              ("windtunnel", "5. Regulatory wind tunnel"), ("gaps", "6. Policy gaps"), ("standards", "7. Standards and global evidence"), ("evidence", "8. Evidence base"), ("limits", "9. Method and limitations"), ("annex", "Annex")])
 page = (f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>HISN Regulatory Assurance Report</title><style>{CSS}</style></head><body>"
         f"<div class='mast'><div class='in'><div class='brand'>HISN <span style='font-weight:400;color:#9A7B3C'>\u062d\u0635\u0646</span><small>Regulatory Assurance Report</small></div>"
         f"<div class='meta'>Ref. HISN-UAE-2026-001 &middot; {E(VERSION)}<br>{NOW:%d %B %Y}</div></div></div><div class='rule'></div>"
