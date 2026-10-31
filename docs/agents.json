@@ -9,7 +9,7 @@
       "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "UAE knowledge base: 13 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 32 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
       "propose action",
@@ -52,7 +52,13 @@
     "evaluation": "Pre-registered gold (dev + held-out), see docs/eval_log_v3.md and docs/baselines.md",
     "data": "Synthetic only",
     "licence": "Apache-2.0",
-    "added": "2026-10-29"
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "inputs": "event addressed to this institution; retrieved evidence",
+    "outputs": "proposed action with cited clause IDs, or a logged gap",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
     "id": "hisn-tdra",
@@ -64,7 +70,7 @@
       "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "UAE knowledge base: 13 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 32 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
       "propose action",
@@ -73,7 +79,8 @@
     "event_kinds": [
       "complaint",
       "network_summary",
-      "override_dispute"
+      "override_dispute",
+      "referral"
     ],
     "actions": [
       "ASSIGN_OVERRIDE_AUTHORITY",
@@ -106,7 +113,13 @@
     "evaluation": "Pre-registered gold (dev + held-out), see docs/eval_log_v3.md and docs/baselines.md",
     "data": "Synthetic only",
     "licence": "Apache-2.0",
-    "added": "2026-10-29"
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "inputs": "event addressed to this institution; retrieved evidence",
+    "outputs": "proposed action with cited clause IDs, or a logged gap",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
     "id": "hisn-ai-data-authority",
@@ -118,7 +131,7 @@
       "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "UAE knowledge base: 13 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 32 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
       "propose action",
@@ -165,7 +178,13 @@
     "evaluation": "Pre-registered gold (dev + held-out), see docs/eval_log_v3.md and docs/baselines.md",
     "data": "Synthetic only",
     "licence": "Apache-2.0",
-    "added": "2026-10-29"
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "inputs": "event addressed to this institution; retrieved evidence",
+    "outputs": "proposed action with cited clause IDs, or a logged gap",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
     "id": "hisn-policy-gateway",
@@ -190,7 +209,13 @@
     "evaluation": "Load-bearing test: removing Art.13 rule unblocks 2 offshore transfers (docs/headline_numbers.md)",
     "data": "Synthetic only",
     "licence": "Apache-2.0",
-    "added": "2026-10-29"
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "inputs": "event (message metadata or data transfer)",
+    "outputs": "verdict and action with cited rule",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   },
   {
     "id": "hisn-gap-engine",
@@ -239,6 +264,123 @@
     "evaluation": "docs/counterfactual_results.md",
     "data": "Synthetic only",
     "licence": "Apache-2.0",
-    "added": "2026-10-29"
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "inputs": "abstract tactic battery; candidate patches",
+    "outputs": "loopholes, counterfactual metrics, load-bearing rules",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
+  },
+  {
+    "id": "hisn-policy-adviser",
+    "name": "HISN Policy and Legal Adviser agent",
+    "version": "1.0.0",
+    "type": "policy and legal adviser agent (query, answer with citations)",
+    "description": "Answers legal questions about the scenario from retrieved, verified evidence only, for the UAE, India or Singapore.",
+    "models": [
+      "qwen2.5:14b via Ollama",
+      "nomic-embed-text (ITU reference ingest)"
+    ],
+    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "tools": [
+      "retrieve (clause-first)",
+      "answer",
+      "link related gaps and verified global examples"
+    ],
+    "guardrail": "Invented citations withheld; soft-law-only answers reported as no binding basis; never makes policy (Readiness Report 2.0 FAQ 7); every answer sealed in the audit chain.",
+    "inputs": "natural-language question; country (UAE / IN / SG)",
+    "outputs": "answer; status (binding basis / no binding basis / citation rejected); cited clause IDs with articles; related gaps; verified global examples with URLs",
+    "mapping": {
+      "y3172_nodes": [
+        "M",
+        "P"
+      ],
+      "readiness": [
+        "D10 (d10_m07 Explainability Metrics)"
+      ]
+    },
+    "evaluation": "tests/test_adviser.py; live answers for UAE and India logged in runs/adviser.jsonl",
+    "data": "Synthetic scenario; public legal texts",
+    "licence": "Apache-2.0",
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
+  },
+  {
+    "id": "hisn-coordinator",
+    "name": "HISN Coordinator (MLFO, deterministic, no LLM)",
+    "version": "1.0.0",
+    "type": "machine learning function orchestrator (Y.3172 MLFO)",
+    "description": "Advances the simulated clock, releases time-gated role-scoped events, routes escalations, routes referrals once between authorities (audited), enforces clinical-tier second review and emergency age.",
+    "models": [],
+    "dataset": "scenarios/crisis_exploit.yaml and scenarios/injects/",
+    "tools": [
+      "dispatch events",
+      "route escalation",
+      "route referral",
+      "second review",
+      "emergency state"
+    ],
+    "guardrail": "Pre-agreed rules only; no re-referral; essential messages never silently dropped.",
+    "inputs": "scenario events and injects; firewall, gateway and agent outputs",
+    "outputs": "outcomes per event; holds with tier and limit; referral and escalation records in the audit chain",
+    "mapping": {
+      "y3172_nodes": [
+        "MLFO"
+      ],
+      "readiness": [
+        "D7 (d7_m01 Coordination Level)"
+      ]
+    },
+    "evaluation": "tests/test_referrals.py, tests/test_tiers.py",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
+  },
+  {
+    "id": "hisn-wind-tunnel",
+    "name": "HISN Regulatory Wind Tunnel (policy sandbox)",
+    "version": "1.0.0",
+    "type": "regulatory sandbox (deterministic; a model only proposes the mechanism mapping, a human confirms)",
+    "description": "Tests a draft rule before issuance against verified law (hierarchy of norms), eight public-interest invariants, measured effect and UAE-India interoperability; runs in CI on pull requests.",
+    "models": [
+      "qwen2.5:14b (mapping proposal only; skipped in CI where the human-confirmed mapping is in the draft file)"
+    ],
+    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "tools": [
+      "compile draft",
+      "conflict scan",
+      "invariants I1-I8",
+      "metrics",
+      "interop",
+      "impact card"
+    ],
+    "guardrail": "Illustrative drafts only; no national recommendations; AI validates impact, humans decide (Report 2.0 FAQ 7); missing prerequisites refused.",
+    "inputs": "draft text; instrument level; human-confirmed mechanisms",
+    "outputs": "verdict; conflicts; invariants before and after; measured effect; interoperability; sealed impact card",
+    "mapping": {
+      "y3172_nodes": [
+        "Sandbox",
+        "P"
+      ],
+      "readiness": [
+        "D10 (d10_m01 Policy Sandbox, d10_m02 Policy Evaluation, d10_m03 Policy Extrapolation)"
+      ]
+    },
+    "evaluation": "tests/test_sunset.py, tests/test_confirmed.py; CI pull request #1 refused automatically",
+    "data": "Synthetic only",
+    "licence": "Apache-2.0",
+    "added": "2026-10-31",
+    "author": "Team Sankalp (Eswar Panchakarla, P. Prudhvi Krishna)",
+    "runtime_environment": "Python 3.10+, local Ollama (qwen2.5:14b, nomic-embed-text), fully offline; ITU AI Readiness reference ingest pipeline",
+    "automation_level": "to be declared per ITU-T Y.3173",
+    "metadata_standard": "Fields follow ITU-T Y.3176 ML model metadata (author, licence, name, version, description, inputs, outputs, runtime environment)"
   }
 ]
