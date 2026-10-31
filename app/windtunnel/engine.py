@@ -1,5 +1,5 @@
 """Regulatory wind tunnel: test a compiled draft against existing law, invariants, the gap battery and the India pack."""
-import tempfile, yaml
+import csv, tempfile, yaml
 from pathlib import Path
 from app.core.audit import AuditLog
 from app.core.firewall import SmsFirewall
@@ -16,6 +16,7 @@ SC = "scenarios/crisis_exploit.yaml"
 CLAUSES = {c["clause_id"]: c for c in yaml.safe_load(open("kb/clauses/clauses.yaml", encoding="utf-8"))}
 GT = yaml.safe_load(open("scenarios/ground_truth.yaml", encoding="utf-8"))
 _tmp = lambda: AuditLog(Path(tempfile.mkdtemp()) / "a.jsonl")
+URLS = {m["record_id"]: m["url"] for m in csv.DictReader(open("kb/manifest.csv", encoding="utf-8"))}
 TIERS = Tiers()
 
 def t1_ids():
@@ -85,7 +86,7 @@ def conflicts(compiled):
     for m in compiled["mechanisms"]:
         for c in VOC[m["id"]].get("conflicts", []):
             cl = CLAUSES.get(c["clause"], {})
-            out.append({"mechanism": m["id"], "clause": c["clause"], "article": cl.get("article"), "type": c["type"],
+            out.append({"mechanism": m["id"], "clause": c["clause"], "article": cl.get("article"), "type": c["type"], "url": URLS.get(cl.get("record_id"), ""),
                         "resolved_by_level": compiled["instrument_level"] in c.get("compatible_levels", []),
                         "note": c["note"], "verbatim": cl.get("text", "")[:280]})
     return out

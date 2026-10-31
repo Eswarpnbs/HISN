@@ -12,7 +12,7 @@ def card(path, d, r):
          f"Instrument: `{d.get('instrument_level', 'unspecified')}` | Mapping confirmed by: {d.get('confirmed_by', '(not stated)')}", ""]
     if r.get("reason"): L += [f"Reason: {r['reason']}", ""]
     for c in r.get("conflicts", []):
-        L.append(f"- Conflict with **{c['clause']}** ({c.get('article') or ''}): {'resolved' if c['resolved_by_level'] else '**unresolved**'}. {c['note']}")
+        L.append(f"- Conflict with **{c['clause']}** ({c.get('article') or ''}): {'resolved' if c['resolved_by_level'] else '**unresolved**'}. {c['note']}" + (f" [Source]({c['url']})" if c.get('url') else ""))
     for w in r.get("missing_prerequisites", []):
         L.append(f"- **Missing prerequisite:** {w}")
     inv0 = {i["id"]: i for i in r.get("invariants_before", [])}

@@ -11,7 +11,7 @@ DOCS = [
   ("UAE-AI-STRATEGY-2031", "UAE National Strategy for AI 2031", "UAE Government", "AE", "strategy", "SOFT_LAW",
    "https://ai.gov.ae/wp-content/uploads/2021/07/UAE-National-Strategy-for-Artificial-Intelligence-2031.pdf", "official_archived"),
   ("UAE-FL-2-2019", "Federal Law No. (2) of 2019 Concerning the Use of ICT in Health Fields", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
-   "https://uaelegislation.gov.ae", "official"),
+   "https://uaelegislation.gov.ae/en/legislations/1209", "official"),
   ("UAE-TELECOM-2003", "Federal Decree-Law No. (3) of 2003 Regulating Telecommunications (as amended)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
    "https://uaelegislation.gov.ae/en/legislations/1132", "official"),
   ("UAE-CYBERCRIME-2021", "Federal Decree-Law No. (34) of 2021 on Countering Rumors and Cybercrimes (as amended)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",

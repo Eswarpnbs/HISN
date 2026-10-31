@@ -1,7 +1,7 @@
 """Policy and legal adviser: answers a question using only retrieved, verified evidence. Deterministic code checks that
 every citation was retrieved and that a binding-basis claim rests on a binding source; otherwise it reports no binding
 basis and points to the related gap and its verified global examples."""
-import yaml
+import csv, yaml
 from .institution import BINDING
 
 SYSTEM = """You are a policy and legal adviser in a governance simulation (synthetic data only).
@@ -23,6 +23,7 @@ class PolicyAdviser:
     def __init__(self, retriever, llm, audit):
         self.retriever, self.llm, self.audit = retriever, llm, audit
         self.gaps, self.examples = _gaps(), _examples()
+        self.urls = {m["record_id"]: m["url"] for m in csv.DictReader(open("kb/manifest.csv", encoding="utf-8"))}
 
     def answer(self, question):
         evidence = self.retriever(question)
@@ -48,7 +49,7 @@ class PolicyAdviser:
                "cited_ids": valid, "binding_ids": binding, "rejected_citations": rejected, "related_gaps": gaps,
                "global_examples": [{"gap": e["gap"], "jurisdiction": e["jurisdiction"], "instrument": e["instrument"],
                                     "url": e["url"]} for e in examples],
-               "evidence": [{"id": e["id"], "article": e["article"], "basis": e["basis"], "similarity": e["similarity"]}
+               "evidence": [{"id": e["id"], "article": e["article"], "basis": e["basis"], "similarity": e["similarity"], "url": self.urls.get(e.get("record_id"), "")}
                             for e in evidence],
                "uncertainty": out.get("uncertainty")}
         self.audit.write({"kind": "adviser_answer", **rec})
