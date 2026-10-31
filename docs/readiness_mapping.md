@@ -35,3 +35,22 @@
 | d13_m07 | Uptime | Daily essential-message assurance (0 silently lost) |
 | d13_m08 | Area Coverage | Act 1 cell sleep scenario |
 | d13_m09 | Network Quality | Rain and heat link-failure risk from real operator data |
+
+## Metrics named in the text of ITU AI Readiness Report 2.0 (January 2026)
+
+Metrics described in the report's text, separate from the metric IDs in ITU's dimensions.json above.
+
+| Report 2.0 metric (dimension) | HISN evidence | Where |
+|---|---|---|
+| Levels of automation [Y.3173] (Digital Infrastructure) | Levels computed by the Y.3173 method: network functions L2; agents, adviser, wind tunnel, gap engine L0 | docs/automation_levels.md |
+| Sandbox for policy interventions with a simulated timeline (Dim. 10, User story 2) | Regulatory wind tunnel; what-if replay per filter threshold with targets and gaps | app/windtunnel/, docs/what_if_none.md |
+| Policies on the AI lifecycle incl. upgrade (Dim. 10) | Missing upgrade policy = gap G5; the filter-change gate is a working one | docs/gap_register.yaml, tools/filter_change_check.py |
+| Policy inputs from case briefs (Dim. 10) | One-page brief on the filter-threshold lesson | docs/case_brief_filter_threshold.md |
+| Accountability of final decisions remains with humans (Dim. 10) | Named-human release, second review, sign-off refused without evidence | app/core/coordinator.py, signoff.py |
+| Data sovereignty metrics (Dim. 10) | Offshore health-data transfers blocked under Art. 13; sunset test I8 | app/core/gateway.py, app/windtunnel/ |
+| Inference-to-action latency (Dim. 9) | Held message reaches a human within 5 / 15 / 60 minutes; invariant I7 | app/core/tiers.py |
+| Bias audits; bias documentation; corrective mechanisms (Data governance) | Fairness check; dataset datasheet; filter-change gate | docs/fairness_check.md, docs/datasheet_sms_dataset.md |
+| Local data share (Data representativeness) | 0% local, 100% synthetic, stated openly | docs/datasheet_sms_dataset.md |
+| Language repository as branches of one template (Dim. 11) | One template in 6 languages; non-English pending native review | scenarios/fairness_pairs.yaml |
+| Model and dataset metadata (Dim. 1) | Agent cards with ITU-T Y.3176 fields; Gebru-style datasheet | docs/agent_cards/, docs/datasheet_sms_dataset.md |
+| Uptime (Dim. 13) | Daily essential-message assurance: 0 silently lost | docs/daily_report_none.md |

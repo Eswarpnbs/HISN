@@ -1,0 +1,49 @@
+# HISN gap register. status: instrument_verified -> second_pass_done -> confirmed (or rejected)
+- id: G1
+  title: Telecom filtering duties cover marketing spam, not fraud or impersonation
+  type: legislative_scope
+  evidence: [UAE-TDRA-UEC-1.10, UAE-TDRA-UEC-6.1, UAE-TDRA-UEC-11.1, UAE-CYBER-ART40]
+  absence_note: 'The term "fraud" returns zero hits in UEC Policy v1.1 (searched 2026-10-26).'
+  comparator: Singapore Shared Responsibility Framework (telco duties to block unauthorised sender IDs / malicious URLs) - verify text
+  second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 34/2021 (cybercrime), Cabinet Decision 56/2024]
+  status: instrument_verified
+- id: G2
+  title: Government senders lack protected / authenticated-sender status
+  type: responsibility
+  evidence: [UAE-TDRA-UEC-13, UAE-PDPL-ART2-2, UAE-TDRA-UEC-8.8]
+  comparator: Singapore SMS Sender ID Registry; India TRAI DLT - verify text
+  second_pass: [TDRA sender ID registration rules, digital government messaging standards]
+  status: instrument_verified
+  note: "Sender identity is regulated only for marketing senders (AD-XXXX label, UAE-TDRA-UEC-8.8); no instrument in the verified corpus authenticates or protects government or health senders. Operator-level sender-ID registration is reported in practice (industry sources, not verified)."
+- id: G3
+  title: AI content-scanning of health SMS for fraud lacks an explicit legal basis
+  type: conflicting_objectives
+  evidence: [UAE-FL-2-2019-ART1-CIRC, UAE-FL-2-2019-ART16, UAE-PDPL-ART2-2]
+  absence_note: Article 16 lists five exceptions; telecom fraud filtering is not among them.
+  comparator: GDPR / ePrivacy treatment of spam filtering - verify text
+  second_pass: [Executive Regulation of Federal Law 2/2019, DoH/DHA data standards]
+  status: instrument_verified
+- id: G4
+  title: No emergency path for systematic, AI-triggered failover of health data (existing derogations cover individual, occasional emergencies)
+  type: conflicting_objectives
+  evidence: [UAE-FL-2-2019-ART13, UAE-FL-2-2019-ART24]
+  comparator: GDPR vital-interests derogation - verify text
+  second_pass: [Ministerial Decision 51/2021 on cases of storing health data outside the State]
+  status: instrument_verified
+- id: G5
+  title: No instrument assigns authority to approve, override or require protection in operators' AI filters
+  type: responsibility
+  discovered_by: agents (gate converted ASSIGN_OVERRIDE_AUTHORITY / ORDER_OPERATOR_WHITELIST / DIRECT_OPERATOR without competent binding basis into logged gaps)
+  evidence_runs: [docs/eval_log_v3.md, runs/governed_agents.jsonl]
+  related: [G2]
+  comparator: Singapore SRF allocation of telco duties - verify text
+  second_pass: [TDRA Consumer Protection Regulation, Federal Decree-Law 3/2003 (Telecom Law) TDRA powers]
+  status: system_discovered
+  note: "Where regulators hold general powers over subscriber service standards, those powers are not applied to AI filter changes (evidence: UAE-TELECOM-ART14-3)."
+- id: G6
+  title: No allocation of scam losses to telecom operators when their anti-scam duties fail (bank-side compensation exists in the UAE)
+  type: responsibility
+  discovered_by: comparator (Singapore SRF paragraph 6.4)
+  evidence: [SG-SRF-6.4]
+  status: comparator_discovered_uae_telecom_side_none
+  note: "UAE bank-side compensation exists (CBUAE Consumer Protection Regulation, Circular 8/2020, Art. 6, cl. 6.2.2.4; verified on the CBUAE Rulebook, 30 Oct 2026). No telecom-side loss allocation found in the verified corpus."

@@ -1,0 +1,60 @@
+# Declared ITU-T Y.3173 network intelligence capability levels (Table 7-1) for each HISN component.
+# Overall levels are COMPUTED by app/core/automation.py from Table 7-2 and clause 7.2, never typed by hand.
+source: "Rec. ITU-T Y.3173 (02/2020), clauses 7.1-7.2, Tables 7-1 and 7-2"
+components:
+  filter_ai:
+    name: "Operator SMS filter AI (as modelled)"
+    action_implementation: {level: "System", why: "Delivers, holds or blocks every message automatically in all scenarios."}
+    data_collection: {level: "Human and System", why: "Collects message metadata automatically according to rules defined by humans."}
+    analysis: {level: "Human and System", why: "Scores messages automatically according to rules defined by humans (keyword, route and URL rules)."}
+    decision: {level: "Human and System", why: "Applies thresholds defined by humans."}
+    demand_mapping: {level: "Human", why: "Threshold changes are set by operations teams; HISN requires a named approval for each change."}
+  network_ai:
+    name: "Network energy-saving AI (Act 1, as modelled)"
+    action_implementation: {level: "System", why: "Puts cells into energy-saving sleep automatically."}
+    data_collection: {level: "Human and System", why: "Collects network KPIs automatically according to rules defined by humans."}
+    analysis: {level: "Human and System", why: "Analyses KPIs according to rules defined by humans."}
+    decision: {level: "Human and System", why: "Triggers energy-saving mode according to rules defined by humans."}
+    demand_mapping: {level: "Human", why: "Energy-saving targets are set by operations teams."}
+  institutional_agents:
+    name: "TDRA, Health Authority and AI & Data Authority agents"
+    action_implementation: {level: "Human", why: "Agents only propose; every action is executed by deterministic code or a named human."}
+    data_collection: {level: "Human and System", why: "Receive only events routed to their role and retrieve evidence by human-defined intents."}
+    analysis: {level: "System", why: "Language-model analysis uses learned rules, not human-written ones."}
+    decision: {level: "Human", why: "Decisive actions need a named human; deterministic gates can only downgrade a proposal to a logged gap."}
+    demand_mapping: {level: "Human", why: "Mandates and allowed actions are written by humans."}
+  policy_adviser:
+    name: "Policy and legal adviser agent"
+    action_implementation: {level: "Human", why: "Answers only; never acts."}
+    data_collection: {level: "Human and System", why: "Retrieves evidence automatically from a human-curated knowledge base."}
+    analysis: {level: "System", why: "Language-model analysis uses learned rules."}
+    decision: {level: "Human", why: "Answers inform; humans decide (Readiness Report 2.0 FAQ 7)."}
+    demand_mapping: {level: "Human", why: "Questions are posed by humans."}
+  policy_gateway:
+    name: "Deterministic policy gateway (Y.3172 P)"
+    action_implementation: {level: "System", why: "Blocks or allows data transfers automatically in all scenarios."}
+    data_collection: {level: "Human and System", why: "Receives event fields defined by humans."}
+    analysis: {level: "Human and System", why: "Matches events against a human-authored, verified rule pack."}
+    decision: {level: "Human and System", why: "Decides by rules defined by humans."}
+    demand_mapping: {level: "Human", why: "Rules are authored and verified by humans."}
+  coordinator:
+    name: "Coordinator (Y.3172 MLFO)"
+    action_implementation: {level: "System", why: "Routes events, escalations and referrals automatically."}
+    data_collection: {level: "Human and System", why: "Releases events according to human-defined timing and audiences."}
+    analysis: {level: "Human and System", why: "Applies pre-agreed rules."}
+    decision: {level: "Human and System", why: "Tier limits and routing rules are defined by humans."}
+    demand_mapping: {level: "Human", why: "Scenario and rules are written by humans."}
+  wind_tunnel:
+    name: "Regulatory wind tunnel"
+    action_implementation: {level: "Human", why: "Nothing is issued without named human sign-off."}
+    data_collection: {level: "Human and System", why: "Runs the human-defined scenario and battery."}
+    analysis: {level: "Human and System", why: "Deterministic invariants and conflict table defined by humans."}
+    decision: {level: "Human and System", why: "Verdict computed by human-defined rules."}
+    demand_mapping: {level: "Human and System", why: "A model proposes the mechanism mapping from a human-defined vocabulary; a human confirms it."}
+  gap_engine:
+    name: "Gap engine"
+    action_implementation: {level: "Human", why: "Patches are adopted only with named sign-off."}
+    data_collection: {level: "Human and System", why: "Runs a human-defined abstract tactic battery."}
+    analysis: {level: "Human and System", why: "Measures effects with human-defined metrics."}
+    decision: {level: "Human and System", why: "Flags loopholes by human-defined criteria."}
+    demand_mapping: {level: "Human", why: "Candidate patches are written by humans."}
