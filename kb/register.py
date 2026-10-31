@@ -31,7 +31,7 @@ DOCS = [
   ("SG-PDPA-2012", "Personal Data Protection Act 2012 (current version as at 29 Oct 2026)", "Republic of Singapore (Singapore Statutes Online)", "SG", "national_law", "NATIONAL_LAW",
    "https://sso.agc.gov.sg/Act/PDPA2012", "official"),
   ("SA-CST-SPAM-2018", "Regulation for Reduction of SPAM (2018, draft English translation; Arabic prevails)", "Communications, Space and Technology Commission (CST)", "SA", "regulation", "REGULATOR_POLICY",
-   "https://cst.gov.sa/ar/RulesandSystems/RegulatoryDocuments/ReductionofSPAM/Documents/IT 008 E - Regulation_For_The_Reduction_of_SPAM_Eng.pdf", "historical_draft_translation_possibly_superseded"),
+   "https://cst.gov.sa/ar/RulesandSystems/RegulatoryDocuments/ReductionofSPAM/Documents/IT%20008%20E%20-%20Regulation_For_The_Reduction_of_SPAM_Eng.pdf", "historical_draft_translation_possibly_superseded"),
 ]
 
 src = pathlib.Path("kb/sources")
