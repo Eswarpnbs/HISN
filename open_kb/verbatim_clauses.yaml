@@ -1,291 +1,433 @@
 - clause_id: UAE-FL-2-2019-ART13
   record_id: UAE-FL-2-2019
-  article: "Article (13)"
+  article: Article (13)
   basis: FEDERAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10, d10_m06]
-  y3172_nodes: [P, C]
-  text: 'It is not permissible to store, process, generate or transform the health data and information outside State -which are related to the health services provided inside State- except in the case where a resolution is issued from the Health Authority in coordination with the Ministry.'
+  metric_ids:
+  - d10_m10
+  - d10_m06
+  y3172_nodes:
+  - P
+  - C
+  text: It is not permissible to store, process, generate or transform the health data and information outside State -which are related to the health services provided inside State- except in the case where a resolution is issued from the Health Authority in coordination with the Ministry.
+  ar_text: المادة (13) تخزين ونقل البيانات والمعلومات الصحية خارج الدولة لا يجوز تخزين أو معالجة أو توليد أو نقل البيانات والمعلومات الصحية خارج الدولة والمتعلقة بالخدمات الصحية المقدمة داخل الدولة، باستثناء الحالات التي يصدر بها قرار من الجهة الصحية بالتنسيق مع الوزارة.
+  ar_source: https://uaelegislation.gov.ae/ar/legislations/1209
+  ar_method: OCR (Apple Vision) of the official Arabic PDF, cross-checked against the PDF text layer and against the verified English clause (article, structure, figures); native review pending
 - clause_id: UAE-FL-2-2019-ART24
   record_id: UAE-FL-2-2019
-  article: "Article (24)"
+  article: Article (24)
   basis: FEDERAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P]
-  text: 'Whoever violates the provision of Article (13) of this Law shall be punished of a penalty of no less than (500.000) five hundred thousand dirhams and no more than (700.000) seven hundred thousand dirhams.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  text: Whoever violates the provision of Article (13) of this Law shall be punished of a penalty of no less than (500.000) five hundred thousand dirhams and no more than (700.000) seven hundred thousand dirhams.
+  ar_text: المادة (24) عقوبة مخالفة أحكام المادة (13) يعاقب بالغرامة التي لا تقل عن (500.000) خمسمائة ألف درهم ولا تزيد على (700.000) سبعمائة ألف درهم كل من يخالف حكم المادة (13) من هذا القانون.
+  ar_source: https://uaelegislation.gov.ae/ar/legislations/1209
+  ar_method: OCR (Apple Vision) of the official Arabic PDF, cross-checked against the PDF text layer and against the verified English clause (article, structure, figures); native review pending
 - clause_id: UAE-TDRA-UEC-1.10
   record_id: UAE-TDRA-UEC-2022
-  article: "Clause 1.10"
+  article: Clause 1.10
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m04, d10_m06]
-  y3172_nodes: [P]
+  metric_ids:
+  - d10_m04
+  - d10_m06
+  y3172_nodes:
+  - P
   text: 'Unsolicited Electronic Communications (Spam): means Marketing Electronic Communications sent to a Recipient without obtaining that Recipient’s Consent;'
 - clause_id: UAE-TDRA-UEC-6.1
   record_id: UAE-TDRA-UEC-2022
-  article: "Clause 6.1"
+  article: Clause 6.1
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P, SINK]
-  text: 'Licensees shall be under a full obligation to put in place all practical measures to minimize the transmission of Spam having a UAE Link across their Telecommunications Networks.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  - SINK
+  text: Licensees shall be under a full obligation to put in place all practical measures to minimize the transmission of Spam having a UAE Link across their Telecommunications Networks.
 - clause_id: UAE-TDRA-UEC-11.1
   record_id: UAE-TDRA-UEC-2022
-  article: "Clause 11.1"
+  article: Clause 11.1
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [C, P]
-  text: 'Licensees shall monitor their networks for signs of Mobile Spam and take immediate practical actions to eliminate such Spam.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - C
+  - P
+  text: Licensees shall monitor their networks for signs of Mobile Spam and take immediate practical actions to eliminate such Spam.
 - clause_id: UAE-TDRA-UEC-13
   record_id: UAE-TDRA-UEC-2022
-  article: "Clause 13 (Exemption of the Government)"
+  article: Clause 13 (Exemption of the Government)
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m04]
-  y3172_nodes: [P]
-  text: 'This policy shall not apply to any Mobile Marketing Text Message sent by any government entity except for Charities or any other entity specified by TDRA as required. It shall also not apply to any licensee with respect to the transmission of these Mobile Marketing Text Messages.'
+  metric_ids:
+  - d10_m04
+  y3172_nodes:
+  - P
+  text: This policy shall not apply to any Mobile Marketing Text Message sent by any government entity except for Charities or any other entity specified by TDRA as required. It shall also not apply to any licensee with respect to the transmission of these Mobile Marketing Text Messages.
 - clause_id: UAE-PDPL-ART2-2
   record_id: UAE-PDPL-2021
-  article: "Article (2)(2)(a)-(e)"
+  article: Article (2)(2)(a)-(e)
   basis: FEDERAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10, d10_m04]
-  y3172_nodes: [SRC, PP]
+  metric_ids:
+  - d10_m10
+  - d10_m04
+  y3172_nodes:
+  - SRC
+  - PP
   text: 'Provisions of this Decree by Law shall not apply to the following: a. Government Data b. Governmental entities which control or process Personal Data. c. Personal Data held by the security and judicial authorities d. A Data Subject who processes his/her data for personal purposes. e. Personal Health Data that has legislation regulating its protection and processing.'
 - clause_id: UAE-FL-2-2019-ART1-CIRC
   record_id: UAE-FL-2-2019
-  article: "Article (1) - Circulation of Health Information"
+  article: Article (1) - Circulation of Health Information
   basis: FEDERAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10]
-  y3172_nodes: [C, PP, D]
+  metric_ids:
+  - d10_m10
+  y3172_nodes:
+  - C
+  - PP
+  - D
   text: 'Circulation of Health Information: Accessing, exchanging, copying, photocopying, transforming, storing, publishing, disclosing or sending the health data and information.'
 - clause_id: UAE-FL-2-2019-ART16
   record_id: UAE-FL-2-2019
-  article: "Article (16) (list layout reconstructed from PDF extraction)"
+  article: Article (16) (list layout reconstructed from PDF extraction)
   basis: FEDERAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10, d10_m06]
-  y3172_nodes: [PP, M]
-  text: 'Without violation to any applicable legislations, whoever circulates information related to the patients must keep its confidentiality and not to use them except in the health purposes without written approval from the patient, except in any of the following cases: 1. The health data or information requested by the health insurance companies or any authority funding the health services regarding the health services received by the patient, for the review, approval or verification of the financial entitlements related to such services. 2. Purposes of the scientific and clinical research, provided that not to disclose the identity of the patients and to observe the morals and rules of the scientific researches. 3. To take the preventive and curative procedures related to the public health or to keep the health and safety of the patient or any other person contacting him. 4. Upon a request by the competent judicial authorities. 5. Upon a request by the Health Authority for purposes of monitoring and inspection and keeping the public health.'
+  metric_ids:
+  - d10_m10
+  - d10_m06
+  y3172_nodes:
+  - PP
+  - M
+  text: 'Without violation to any applicable legislations, whoever circulates information related to the patients must keep its confidentiality and not to use them except in the health purposes without written approval from the patient, except in any of the following cases: 1. The health data or information requested by the health insurance companies or any authority funding the health services regarding the health services received by the patient, for the review, approval or verification of the financial entitlements related to such services. 2. Purposes of the scientific and clinical research, provided that not to disclose the identity of the patients and to observe the morals and rules of the scientific researches. 3. To take the preventive and curative procedures related to the public health or to keep the health and safety of the patient or any other person contacting him. 4. Upon a request by the competent judicial authorities. 5. Upon a request by the Health Authority for purposes
+    of monitoring and inspection and keeping the public health.'
+  ar_text: 'المادة (16) سرية المعلومات الخاصة بالمرضى والاستثناء منها دون الإخلال بأية تشريعات سارية، يجب على كل من يتداول المعلومات الخاصة بالمرضى المحافظة على سريتها، وعدم استخدامها لغير الأغراض الصحية، دون موافقة خطية من المريض، باستثناء أي من الحالات الآتية: 1. البيانات أو المعلومات الصحية التي تطلبها شركات التأمين الصحي أو أية جهة ممولة للخدمات الصحية فيما يتعلق بالخدمات الصحية التي يتلقاها المريض، لأغراض المراجعة أو الموافقة أو التحقق من الاستحقاقات المالية المتعلقة بتلك الخدمات. 2. أغراض البحث العلمي والسريري، بشرط عدم الكشف عن هوية المرضى ومراعاة الأخلاقيات والقواعد الخاصة بالبحوث العلمية. 3. اتخاذ الإجراءات الوقائية والعلاجية المتعلقة بالصحة العامة أو للحفاظ على صحة وسلامة المريض أو أي شخص آخر على اتصال به. 4. بناء على طلب الجهات القضائية المختصة. 5. بناء على طلب الجهة الصحية لأغراض الرقابة والتفتيش والمحافظة على الصحة العامة.'
+  ar_source: https://uaelegislation.gov.ae/ar/legislations/1209
+  ar_method: OCR (Apple Vision) of the official Arabic PDF, cross-checked against the PDF text layer and against the verified English clause (article, structure, figures); native review pending
 - clause_id: UAE-AI-CHARTER-P5
   record_id: UAE-AI-CHARTER-2024
-  article: "Principle 5 - Transparency"
+  article: Principle 5 - Transparency
   basis: SOFT_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m07]
-  y3172_nodes: [D, SINK]
+  metric_ids:
+  - d10_m07
+  y3172_nodes:
+  - D
+  - SINK
   text: 'Transparency: The UAE seeks to create a clear understanding of AI and how systems operate and make decisions, which helps build trust, enhance responsibility, and accountability in the use of these technologies.'
 - clause_id: UAE-AI-CHARTER-P6
   record_id: UAE-AI-CHARTER-2024
-  article: "Principle 6 - Human Oversight"
+  article: Principle 6 - Human Oversight
   basis: SOFT_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P]
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
   text: 'Human Oversight: The Charter emphasizes the irreplaceable value of human judgment and human oversight over AI, aligning with ethical values and social standards to correct any errors or biases that may arise.'
 - clause_id: UAE-AI-CHARTER-P7
   record_id: UAE-AI-CHARTER-2024
-  article: "Principle 7 - Governance and Accountability"
+  article: Principle 7 - Governance and Accountability
   basis: SOFT_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m09]
-  y3172_nodes: [P, MLFO]
+  metric_ids:
+  - d10_m09
+  y3172_nodes:
+  - P
+  - MLFO
   text: 'Governance and Accountability: The UAE adopts a responsible and proactive stance, emphasizing the importance of governance and accountability in AI to ensure the technology is used ethically and transparently.'
 - clause_id: UAE-AI-CHARTER-P2
   record_id: UAE-AI-CHARTER-2024
-  article: "Principle 2 - Safety (two-column layout; sentence-to-heading alignment checked against page 3)"
+  article: Principle 2 - Safety (two-column layout; sentence-to-heading alignment checked against page 3)
   basis: SOFT_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P, Sandbox]
-  text: 'The UAE places great importance on safety, ensuring that all AI systems comply with the highest safety standards. The country encourages modifying or removing systems that pose risks.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  - Sandbox
+  text: The UAE places great importance on safety, ensuring that all AI systems comply with the highest safety standards. The country encourages modifying or removing systems that pose risks.
 - clause_id: UAE-FL-2-2019-ART4
   record_id: UAE-FL-2-2019
-  article: "Article (4) (list layout reconstructed from PDF extraction)"
+  article: Article (4) (list layout reconstructed from PDF extraction)
   basis: FEDERAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06, d10_m10]
-  y3172_nodes: [P, D, SINK]
+  metric_ids:
+  - d10_m06
+  - d10_m10
+  y3172_nodes:
+  - P
+  - D
+  - SINK
   text: 'Upon using the information and communication technology in the areas of health, it shall be committed to the following: 1. To keep the confidentiality of health data and information by not allowing to circulate them in cases other than the permitted. 2. To ensure the validity and credibility of the health data and information by keeping their safety from the non-authorised damage, amendment, alteration, deletion or addition. 3. To ensure the availability of health data and information to the authorised thereof and facilitate the access thereto, if needed.'
 - clause_id: UAE-TDRA-UEC-11.2
   record_id: UAE-TDRA-UEC-2022
-  article: "Clause 11.2"
+  article: Clause 11.2
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P, SINK]
-  text: 'Licensees shall provide practical protections for their Mobile Customers from Mobile Spam and shall provide measures and mechanisms to ensure the same.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  - SINK
+  text: Licensees shall provide practical protections for their Mobile Customers from Mobile Spam and shall provide measures and mechanisms to ensure the same.
 - clause_id: UAE-TDRA-UEC-8.5.3
   record_id: UAE-TDRA-UEC-2022
-  article: "Clause 8.5 (lead) and 8.5.3 - excerpt"
+  article: Clause 8.5 (lead) and 8.5.3 - excerpt
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m05]
-  y3172_nodes: [SINK]
+  metric_ids:
+  - d10_m05
+  y3172_nodes:
+  - SINK
   text: 'The Licensees shall provide Mobile Customers with information and resources to help them minimize the level and impact of Mobile Spam. These shall include: [...] 8.5.3 the provision of Mobile Spam reporting facilities, including for example, through their respective customer service contacts, websites or by forwarding suspected Mobile Spam to licensees via a "short code".'
 - clause_id: IN-DPDP-S4-1
   record_id: IN-DPDP-2023
-  article: "Section 4(1)"
+  article: Section 4(1)
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10]
-  y3172_nodes: [SRC, PP]
-  text: 'A person may process the personal data of a Data Principal only in accordance with the provisions of this Act and for a lawful purpose,— (a) for which the Data Principal has given her consent; or (b) for certain legitimate uses.'
+  metric_ids:
+  - d10_m10
+  y3172_nodes:
+  - SRC
+  - PP
+  text: A person may process the personal data of a Data Principal only in accordance with the provisions of this Act and for a lawful purpose,— (a) for which the Data Principal has given her consent; or (b) for certain legitimate uses.
 - clause_id: IN-DPDP-S7-FGH
   record_id: IN-DPDP-2023
-  article: "Section 7(f)-(h) (excerpt; s.4(1)(b) refers to these as certain legitimate uses)"
+  article: Section 7(f)-(h) (excerpt; s.4(1)(b) refers to these as certain legitimate uses)
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10, d10_m06]
-  y3172_nodes: [PP, P]
-  text: '(f) for responding to a medical emergency involving a threat to the life or immediate threat to the health of the Data Principal or any other individual; (g) for taking measures to provide medical treatment or health services to any individual during an epidemic, outbreak of disease, or any other threat to public health; (h) for taking measures to ensure safety of, or provide assistance or services to, any individual during any disaster, or any breakdown of public order.'
+  metric_ids:
+  - d10_m10
+  - d10_m06
+  y3172_nodes:
+  - PP
+  - P
+  text: (f) for responding to a medical emergency involving a threat to the life or immediate threat to the health of the Data Principal or any other individual; (g) for taking measures to provide medical treatment or health services to any individual during an epidemic, outbreak of disease, or any other threat to public health; (h) for taking measures to ensure safety of, or provide assistance or services to, any individual during any disaster, or any breakdown of public order.
 - clause_id: IN-DPDP-S16
   record_id: IN-DPDP-2023
-  article: "Section 16"
+  article: Section 16
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10]
-  y3172_nodes: [C, D]
-  text: '(1) The Central Government may, by notification, restrict the transfer of personal data by a Data Fiduciary for processing to such country or territory outside India as may be so notified. (2) Nothing contained in this section shall restrict the applicability of any law for the time being in force in India that provides for a higher degree of protection for or restriction on transfer of personal data by a Data Fiduciary outside India in relation to any personal data or Data Fiduciary or class thereof.'
+  metric_ids:
+  - d10_m10
+  y3172_nodes:
+  - C
+  - D
+  text: (1) The Central Government may, by notification, restrict the transfer of personal data by a Data Fiduciary for processing to such country or territory outside India as may be so notified. (2) Nothing contained in this section shall restrict the applicability of any law for the time being in force in India that provides for a higher degree of protection for or restriction on transfer of personal data by a Data Fiduciary outside India in relation to any personal data or Data Fiduciary or class thereof.
 - clause_id: IN-DPDP-S17-2A
   record_id: IN-DPDP-2023
-  article: "Section 17(2)(a)"
+  article: Section 17(2)(a)
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m04]
-  y3172_nodes: [P]
-  text: '(2) The provisions of this Act shall not apply in respect of the processing of personal data— (a) by such instrumentality of the State as the Central Government may notify, in the interests of sovereignty and integrity of India, security of the State, friendly relations with foreign States, maintenance of public order or preventing incitement to any cognizable offence relating to any of these, and the processing by the Central Government of any personal data that such instrumentality may furnish to it;'
+  metric_ids:
+  - d10_m04
+  y3172_nodes:
+  - P
+  text: (2) The provisions of this Act shall not apply in respect of the processing of personal data— (a) by such instrumentality of the State as the Central Government may notify, in the interests of sovereignty and integrity of India, security of the State, friendly relations with foreign States, maintenance of public order or preventing incitement to any cognizable offence relating to any of these, and the processing by the Central Government of any personal data that such instrumentality may furnish to it;
 - clause_id: IN-TEL-S20-1
   record_id: IN-TELECOM-ACT-2023
-  article: "Section 20(1) (in-force status: verify commencement notification)"
+  article: 'Section 20(1) (in-force status: verify commencement notification)'
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [D, SINK]
-  text: '(1) On the occurrence of any public emergency, including disaster management, or in the interest of public safety, the Central Government or a State Government or any officer specially authorised in this behalf by the Central Government or a State Government, if satisfied that it is necessary or expedient so to do, by notification— (a) take temporary possession of any telecommunication service or telecommunication network from an authorised entity; or (b) provide for appropriate mechanism to ensure that messages of a user or group of users authorised for response and recovery during public emergency are routed on priority.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - D
+  - SINK
+  text: (1) On the occurrence of any public emergency, including disaster management, or in the interest of public safety, the Central Government or a State Government or any officer specially authorised in this behalf by the Central Government or a State Government, if satisfied that it is necessary or expedient so to do, by notification— (a) take temporary possession of any telecommunication service or telecommunication network from an authorised entity; or (b) provide for appropriate mechanism to ensure that messages of a user or group of users authorised for response and recovery during public emergency are routed on priority.
 - clause_id: IN-TEL-S28-1
   record_id: IN-TELECOM-ACT-2023
-  article: "Section 28(1) (in-force status: verify commencement notification)"
+  article: 'Section 28(1) (in-force status: verify commencement notification)'
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m04, d10_m06]
-  y3172_nodes: [P]
-  text: 'For the purposes of this section, "specified message" means any message offering, advertising or promoting goods, services, interest in property, business opportunity, employment opportunity or investment opportunity, whether or not— (a) the goods, services, interest, or opportunity are real; or (b) it is lawful to acquire such goods, services, property, interest or take up the opportunity.'
+  metric_ids:
+  - d10_m04
+  - d10_m06
+  y3172_nodes:
+  - P
+  text: For the purposes of this section, "specified message" means any message offering, advertising or promoting goods, services, interest in property, business opportunity, employment opportunity or investment opportunity, whether or not— (a) the goods, services, interest, or opportunity are real; or (b) it is lawful to acquire such goods, services, property, interest or take up the opportunity.
 - clause_id: IN-TEL-S28-2
   record_id: IN-TELECOM-ACT-2023
-  article: "Section 28(2) (in-force status: verify commencement notification)"
+  article: 'Section 28(2) (in-force status: verify commencement notification)'
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m05, d10_m06]
-  y3172_nodes: [SINK]
-  text: '(2) The Central Government may by rules provide for measures for protection of users, in consonance with any regulations notified by the Telecom Regulatory Authority of India from time to time, including measures such as— (a) the prior consent of users for receiving certain specified messages or class of specified messages; (b) the preparation and maintenance of one or more registers, to be called as "Do Not Disturb" register, to ensure that users do not receive specified messages or class of specified messages without prior consent; or (c) the mechanism to enable users to report any malware or specified messages received in contravention of this section.'
+  metric_ids:
+  - d10_m05
+  - d10_m06
+  y3172_nodes:
+  - SINK
+  text: (2) The Central Government may by rules provide for measures for protection of users, in consonance with any regulations notified by the Telecom Regulatory Authority of India from time to time, including measures such as— (a) the prior consent of users for receiving certain specified messages or class of specified messages; (b) the preparation and maintenance of one or more registers, to be called as "Do Not Disturb" register, to ensure that users do not receive specified messages or class of specified messages without prior consent; or (c) the mechanism to enable users to report any malware or specified messages received in contravention of this section.
 - clause_id: IN-TRAI-HEADER-REGISTER
   record_id: IN-TRAI-TCCCPR-CONS
-  article: "Regulation 2 - definitions of Header Register and Header Registrar (TRAI consolidated text; gazetted text prevails)"
+  article: Regulation 2 - definitions of Header Register and Header Registrar (TRAI consolidated text; gazetted text prevails)
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06, d10_m09]
-  y3172_nodes: [SRC, C, P]
-  text: '“Header Register” means a Distributed Ledger for Header (DL-Header) which keeps records of header(s), its purpose of sending commercial communications and details of sender to whom it is assigned in a safe and secure manner; “Header Registrar” is an authorised entity under relevant regulations responsible for maintaining the header register, header registration facility and header verification facility;'
+  metric_ids:
+  - d10_m06
+  - d10_m09
+  y3172_nodes:
+  - SRC
+  - C
+  - P
+  text: “Header Register” means a Distributed Ledger for Header (DL-Header) which keeps records of header(s), its purpose of sending commercial communications and details of sender to whom it is assigned in a safe and secure manner; “Header Registrar” is an authorised entity under relevant regulations responsible for maintaining the header register, header registration facility and header verification facility;
 - clause_id: IN-TRAI-REG33-1
   record_id: IN-TRAI-TCCCPR-CONS
-  article: "Regulation 33(1) (TRAI consolidated text; gazetted text prevails)"
+  article: Regulation 33(1) (TRAI consolidated text; gazetted text prevails)
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P, MLFO]
-  text: '(1)Where the Authority has reason to believe that any registered or unregistered Sender of Commercial Communications has contravened the provisions of these regulations and the Access Provider has not taken action against such Sender as provided under these regulations, the Authority may order or direct the Access Provider to take action against such Sender as per the provisions of the regulations.'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  - MLFO
+  text: (1)Where the Authority has reason to believe that any registered or unregistered Sender of Commercial Communications has contravened the provisions of these regulations and the Access Provider has not taken action against such Sender as provided under these regulations, the Authority may order or direct the Access Provider to take action against such Sender as per the provisions of the regulations.
 - clause_id: SG-SRF-SAT-DEF
   record_id: SG-SRF-2024
-  article: "Definitions - seemingly authorised transaction, limbs (a)-(b)"
+  article: Definitions - seemingly authorised transaction, limbs (a)-(b)
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P]
-  text: '“seemingly authorised transaction” in relation to any protected account, means any payment transaction which fulfils limbs (a) to (d)— (a) perpetrated through the impersonation of a legitimate business or government entity, e.g., FIs, non-banks and government agencies (“impersonated entity”); (b) the scammer, pretending to be the impersonated entity, uses a digital messaging platform (e.g., SMS, email, WhatsApp, social media platforms) to obtain the account user’s account credentials'
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  text: “seemingly authorised transaction” in relation to any protected account, means any payment transaction which fulfils limbs (a) to (d)— (a) perpetrated through the impersonation of a legitimate business or government entity, e.g., FIs, non-banks and government agencies (“impersonated entity”); (b) the scammer, pretending to be the impersonated entity, uses a digital messaging platform (e.g., SMS, email, WhatsApp, social media platforms) to obtain the account user’s account credentials
 - clause_id: SG-SRF-5.2.1-2
   record_id: SG-SRF-2024
-  article: "Paragraphs 5.2.1 and 5.2.2"
+  article: Paragraphs 5.2.1 and 5.2.2
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [SRC, P]
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - SRC
+  - P
   text: '5.2.1 Responsible Telco connects only to authorised aggregators for delivery of Sender ID SMS: The responsible Telco must deliver Sender ID SMS to subscribers only if it is received from authorised aggregators. 5.2.2 Responsible Telco blocks Sender ID SMS which are not from authorised aggregators: The responsible Telco must block Sender ID SMS which are received from sources other than authorised aggregators.'
 - clause_id: SG-SRF-5.2.3
   record_id: SG-SRF-2024
-  article: "Paragraph 5.2.3"
+  article: Paragraph 5.2.3
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P]
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
   text: '5.2.3 Responsible Telco implements an anti-scam filter over SMS to block SMS containing malicious URLs in designated database: The responsible Telco must implement an anti-scam filter for all SMS that pass through the responsible Telcos’ network, to determine if it contains any URL that matches that of a known malicious URL in a designated database. The requirement covers both Sender ID SMS and SMS carrying either local or overseas telephone numbers, and applies regardless of whether the SMS originates locally or from overseas.'
 - clause_id: SG-SRF-FN9
   record_id: SG-SRF-2024
-  article: "Footnote 9"
+  article: Footnote 9
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06, d10_m09]
-  y3172_nodes: [SRC, C]
-  text: 'Authorised aggregators are licensed by IMDA to send SMS that bears a Sender ID with an alphanumeric sender ID, or a short code registered with the Singapore SMS Sender ID Registry.'
+  metric_ids:
+  - d10_m06
+  - d10_m09
+  y3172_nodes:
+  - SRC
+  - C
+  text: Authorised aggregators are licensed by IMDA to send SMS that bears a Sender ID with an alphanumeric sender ID, or a short code registered with the Singapore SMS Sender ID Registry.
 - clause_id: SG-SRF-6.4
   record_id: SG-SRF-2024
-  article: "Paragraph 6.4"
+  article: Paragraph 6.4
   basis: REGULATOR_POLICY
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m06]
-  y3172_nodes: [P, MLFO]
+  metric_ids:
+  - d10_m06
+  y3172_nodes:
+  - P
+  - MLFO
   text: '6.4 The responsible Telco is expected to bear losses arising from a seemingly authorised transaction perpetrated through SMS if: (a) the responsible FI has complied with all of its duties set out in paragraph 4.2 of these Guidelines; and (b) the loss arises from the responsible Telco’s non-compliance with any duty set out in paragraph 5.2 of these Guidelines.'
 - clause_id: SG-PDPA-S26
   record_id: SG-PDPA-2012
-  article: "Section 26(1)-(2)"
+  article: Section 26(1)-(2)
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10]
-  y3172_nodes: [C, D]
-  text: '(1) An organisation must not transfer any personal data to a country or territory outside Singapore except in accordance with requirements prescribed under this Act to ensure that organisations provide a standard of protection to personal data so transferred that is comparable to the protection under this Act. (2) The Commission may, on the application of any organisation, by written notice exempt the organisation from any requirement prescribed pursuant to subsection (1) in respect of any transfer of personal data by that organisation.'
+  metric_ids:
+  - d10_m10
+  y3172_nodes:
+  - C
+  - D
+  text: (1) An organisation must not transfer any personal data to a country or territory outside Singapore except in accordance with requirements prescribed under this Act to ensure that organisations provide a standard of protection to personal data so transferred that is comparable to the protection under this Act. (2) The Commission may, on the application of any organisation, by written notice exempt the organisation from any requirement prescribed pursuant to subsection (1) in respect of any transfer of personal data by that organisation.
 - clause_id: SG-PDPA-SCHED-EMERG
   record_id: SG-PDPA-2012
-  article: "First Schedule, Part 1, paragraph 2 (vital interests: emergency threatening life, health or safety)"
+  article: 'First Schedule, Part 1, paragraph 2 (vital interests: emergency threatening life, health or safety)'
   basis: NATIONAL_LAW
-  dimension_ids: [10]
+  dimension_ids:
+  - 10
   factor: sandbox
-  metric_ids: [d10_m10, d10_m06]
-  y3172_nodes: [PP, P]
-  text: 'The collection, use or disclosure (as the case may be) of personal data about an individual is necessary to respond to an emergency that threatens the life, health or safety of the individual or another individual.'
+  metric_ids:
+  - d10_m10
+  - d10_m06
+  y3172_nodes:
+  - PP
+  - P
+  text: The collection, use or disclosure (as the case may be) of personal data about an individual is necessary to respond to an emergency that threatens the life, health or safety of the individual or another individual.
 - clause_id: IN-TRAI-GOVMSG
   record_id: IN-TRAI-TCCCPR-CONS
   article: 'Regulation 2, definition (za): Government Message (as amended 2025)'
@@ -324,6 +466,9 @@
   metric_ids: *id002
   y3172_nodes: *id003
   text: Terms and standards of services provided to subscribers by Licensees including, quality assurance standards for services and terms regarding the provision of services and the resolution of subscribers' complaints and disputes, subscriber information access, use of information by subscribers and subscriber billing.
+  ar_text: 3. شروط ومستوى ونطاق الخدمات التي يقدمها المرخص لهم للمشتركين والخدمات الشمولية والخدمات الطارئة، بما في ذلك معايير جودة الخدمات المقدمة وشروط تقديم الخدمات والفصل في شكاوى المشتركين والنزاعات وتزويد المشتركين بالمعلومات واستخدام المعلومات الخاصة بالمشتركين وتزويدهم بالفواتير.
+  ar_source: https://uaelegislation.gov.ae/ar/legislations/1132
+  ar_method: OCR (Apple Vision) of the official Arabic PDF, cross-checked against the PDF text layer and against the verified English clause (article, structure, figures); native review pending
 - clause_id: UAE-CYBER-ART40
   record_id: UAE-CYBERCRIME-2021
   article: Article (40) Internet Fraud
@@ -345,3 +490,17 @@
   y3172_nodes:
   - P
   text: Licensees shall specially classify Marketing Text Messages in their systems where the name of the sender of Marketing Text Messages sent to a Mobile Customer must include the code (AD-XXXX) followed by the name of the Marketing Text Message sender.
+- clause_id: UAE-CABRES-32-2020-ART6-3
+  record_id: UAE-CABRES-32-2020
+  article: Article (6), clause 3 (emergency access to one patient's file)
+  basis: CABINET_RESOLUTION
+  dimension_ids:
+  - 10
+  factor: sandbox
+  metric_ids:
+  - d10_m10
+  - d10_m06
+  y3172_nodes:
+  - P
+  - C
+  text: In case of an emergency and if the patient's consent cannot be obtained, health care providers may examine the patient's file for health care purposes and shall provide reasons for examination.

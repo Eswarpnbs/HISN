@@ -1,16 +1,16 @@
 # Essential Message Assurance Report
-_Synthetic scenario day · generated 2026-11-01 10:53 · UAE rules as-is, clinical tiers on (provisional)_
+_Synthetic scenario day · generated 2026-11-01 23:35 · UAE rules as-is, clinical tiers on (provisional)_
 
 ## Headline
 
 | Indicator | Value | Target |
 |---|---|---|
-| Genuine essential messages | 4 | |
+| Genuine essential messages | 10 | |
 | Delivered immediately | 0 | |
-| Held for a named human | 4 | |
+| Held for a named human | 10 | |
 | **Silently lost** | **0** | **0** |
-| Held messages that reached second review within their clinical limit | 7/7 | all |
-| Scam / spoof messages stopped | 5/5 | all |
+| Held messages that reached second review within their clinical limit | 20/20 | all |
+| Scam / spoof messages stopped | 12/12 | all |
 | Offshore health-data transfers blocked | 2/2 | all, unless a valid resolution applies |
 | Operator filter changes with a pre-deployment test on record | 0/2 | all |
 | Filter changes violating declared Y.3173 automation levels (no named approval) | 2/2 | 0 |
@@ -25,7 +25,20 @@ _Synthetic scenario day · generated 2026-11-01 10:53 · UAE rules as-is, clinic
 | INJ-FORGED | no | T2 | health_authority | 15 | 15 | yes |
 | INJ-STATFORGED | no | T2 | health_authority | 15 | 15 | yes |
 | INJ-SURGERY | yes | T2 | health_authority | 15 | 15 | yes |
+| P-CRITLAB-1 | yes | T1 | health_authority | 5 | 5 | yes |
+| P-CRITLAB-2 | yes | T1 | health_authority | 5 | 5 | yes |
+| P-FORGED-1 | no | T2 | health_authority | 15 | 15 | yes |
+| P-FORGED-2 | no | T2 | health_authority | 15 | 15 | yes |
+| V4-GOVSPOOF-LOCAL | no | T2 | ai_data_authority | 15 | 15 | yes |
 | INJ-GOVFORGED | no | T2 | ai_data_authority | 15 | 15 | yes |
+| P-GOVFORGED-1 | no | T2 | ai_data_authority | 15 | 15 | yes |
+| V4-VACCINE | yes | T2 | health_authority | 15 | 15 | yes |
+| P-GOVFORGED-2 | no | T2 | ai_data_authority | 15 | 15 | yes |
+| V4-REFUND | yes | T2 | ai_data_authority | 15 | 15 | yes |
+| V4-NOURL-SPOOF | no | T2 | health_authority | 15 | 15 | yes |
+| V4-STAT-ROUTINE | yes | T1 | health_authority | 5 | 5 | yes |
+| V4-STATSPOOF-NOURL | no | T2 | health_authority | 15 | 15 | yes |
+| V4-GOVGENUINE-DRIFT | yes | T2 | ai_data_authority | 15 | 15 | yes |
 | A4-E2 | yes | T2 | ai_data_authority | 15 | 15 | yes |
 
 ## Offshore transfers

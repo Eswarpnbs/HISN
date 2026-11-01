@@ -5,7 +5,7 @@
 Answers legal questions about the scenario from retrieved, verified evidence only, for the UAE, India or Singapore.
 
 - **models**: ["qwen2.5:14b via Ollama", "nomic-embed-text (ITU reference ingest)"]
-- **dataset**: HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)
+- **dataset**: HISN knowledge base: 16 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 38 verbatim clauses (kb/manifest.csv)
 - **tools**: ["retrieve (clause-first)", "answer", "link related gaps and verified global examples"]
 - **guardrail**: Invented citations withheld; soft-law-only answers reported as no binding basis; never makes policy (Readiness Report 2.0 FAQ 7); every answer sealed in the audit chain.
 - **mapping**: {"y3172_nodes": ["M", "P"], "readiness": ["D10 (d10_m07 Explainability Metrics)"]}

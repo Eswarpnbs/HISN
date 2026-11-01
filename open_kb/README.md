@@ -6,8 +6,8 @@ for the leadership and coordination of the AI for Good Lab Hackathon (UAE editio
 **Domain:** governance of telecom AI that filters essential health and government messages (telecom, healthcare, public services).
 
 ## Contents
-- `records_manifest.csv`: 15 official instruments (?: 15) with official URLs and SHA-256 of the pinned source files
-- `verbatim_clauses.yaml`: 37 provisions, each verified verbatim against its pinned source, with article, legal basis, Y.3172 nodes and Readiness metric IDs
+- `records_manifest.csv`: 16 official instruments (?: 16) with official URLs and SHA-256 of the pinned source files
+- `verbatim_clauses.yaml`: 38 provisions, each verified verbatim against its pinned source, with article, legal basis, Y.3172 nodes and Readiness metric IDs
 - `gap_register.yaml`, `gap_coverage_by_country.yaml`, `global_examples.yaml`: domain-level policy gaps with evidence, country coverage and verified global examples
 - `retrieval_test_questions.yaml`: 50 pre-registered retrieval questions (46 answerable, 4 out-of-corpus)
 - `automation_levels_y3173.yaml`: declared ITU-T Y.3173 capability levels per component

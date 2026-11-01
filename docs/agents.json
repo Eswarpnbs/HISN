@@ -9,7 +9,7 @@
       "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 16 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 38 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
       "propose action",
@@ -38,7 +38,7 @@
         "UAE-TDRA-"
       ]
     },
-    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
+    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (CABINET_RESOLUTION, FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
     "mapping": {
       "y3172_nodes": [
         "P",
@@ -70,7 +70,7 @@
       "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 16 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 38 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
       "propose action",
@@ -99,7 +99,7 @@
         "UAE-TDRA-"
       ]
     },
-    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
+    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (CABINET_RESOLUTION, FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
     "mapping": {
       "y3172_nodes": [
         "P",
@@ -131,7 +131,7 @@
       "qwen2.5:14b (reference) or qwen2.5:7b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 16 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 38 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (ITU KnowledgeBase, UAE filter, clause-first)",
       "propose action",
@@ -164,7 +164,7 @@
         "UAE-TDRA-"
       ]
     },
-    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
+    "guardrail": "Evidence-or-gap: cites only retrieved evidence; decisive actions need a binding source (CABINET_RESOLUTION, FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY) within competence; actions limited by mandate and event kind; self-consistency check (action vs own scam-likelihood rating -> CONFLICT -> named human); proposes only; every decision sealed in a SHA-256 hash-chained log.",
     "mapping": {
       "y3172_nodes": [
         "P",
@@ -282,7 +282,7 @@
       "qwen2.5:14b via Ollama",
       "nomic-embed-text (ITU reference ingest)"
     ],
-    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 16 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 38 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "retrieve (clause-first)",
       "answer",
@@ -349,15 +349,15 @@
     "name": "HISN Regulatory Wind Tunnel (policy sandbox)",
     "version": "1.0.0",
     "type": "regulatory sandbox (deterministic; a model only proposes the mechanism mapping, a human confirms)",
-    "description": "Tests a draft rule before issuance against verified law (hierarchy of norms), eight public-interest invariants, measured effect and UAE-India interoperability; runs in CI on pull requests.",
+    "description": "Tests a draft rule before issuance against verified law (hierarchy of norms), nine public-interest invariants, measured effect and UAE-India interoperability; runs in CI on pull requests.",
     "models": [
       "qwen2.5:14b (mapping proposal only; skipped in CI where the human-confirmed mapping is in the draft file)"
     ],
-    "dataset": "HISN knowledge base: 15 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 37 verbatim clauses (kb/manifest.csv)",
+    "dataset": "HISN knowledge base: 16 hash-pinned records (UAE, India, Singapore; 1 Saudi historical draft), 38 verbatim clauses (kb/manifest.csv)",
     "tools": [
       "compile draft",
       "conflict scan",
-      "invariants I1-I8",
+      "invariants I1-I9",
       "metrics",
       "interop",
       "impact card"
