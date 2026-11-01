@@ -1,0 +1,37 @@
+# PUBLIC-WARNING TEST SET: pre-registered, committed BEFORE any run. Each item is a SYNTHETIC message modelled on a scam
+# pattern that UAE authorities publicly warned about (source given). Fictional senders, reserved .example domains.
+# Expected outcomes fixed in advance: scams must NOT be delivered; genuine messages must NOT be lost (blocked or dropped).
+items:
+  - {id: PW-RTA-FINE, label: scam, claims: GOV-FINES, route: foreign_aggregator,
+     pattern: "Fake traffic-fine payment message (Dubai RTA warning)",
+     source: "https://gulfnews.com/uae/new-dh500-dubai-scam-alert-for-unpaid-traffic-fines-rta-warns-1.500418185",
+     en: "Unpaid traffic fine of AED 500. Pay within 24 hours to avoid extra penalties: http://rta-fine-pay.example",
+     ar: "مخالفة مرورية غير مدفوعة بقيمة 500 درهم. ادفع خلال 24 ساعة لتجنب غرامات إضافية: http://rta-fine-pay.example"}
+  - {id: PW-CUSTOMS, label: scam, claims: GOV-FINES, route: local,
+     pattern: "Fake customs or shipping message asking to update delivery details and pay (Abu Dhabi Customs warning)",
+     source: "https://gulfbusiness.com/en/2026/cybersecurity/cybersecurity-firm-warns-of-fake-emergency-emails-targeting-residents/",
+     en: "Your shipment is held at customs. Update your delivery details and pay the fee: http://customs-release.example",
+     ar: "شحنتك محتجزة لدى الجمارك. حدّث بيانات التوصيل وادفع الرسوم: http://customs-release.example"}
+  - {id: PW-EMERGENCY-REG, label: scam, claims: HOSPITAL-A, route: local,
+     pattern: "Fake mandatory registration for state support or insurance coverage (Ministry of Interior warning; warned as email, tested as SMS)",
+     source: "https://gulfbusiness.com/en/2026/cybersecurity/cybersecurity-firm-warns-of-fake-emergency-emails-targeting-residents/",
+     en: "Mandatory registration: complete your health coverage form today to keep your insurance: http://coverage-form.example",
+     ar: "تسجيل إلزامي: أكمل نموذج التغطية الصحية اليوم للحفاظ على تأمينك: http://coverage-form.example"}
+  - {id: PW-NOLINK-GOV, label: scam, claims: GOV-FINES, route: local,
+     pattern: "Impersonation of a government entity asking for personal details, no link (Cyber Security Council warning)",
+     source: "https://www.khaleejtimes.com/uae/cyber-security-council-warns-rise-fraudulent-messages",
+     en: "Official notice: reply with your Emirates ID number to verify your record.",
+     ar: "إشعار رسمي: أرسل رقم هويتك الإماراتية للتحقق من سجلك."}
+  - {id: PW-EVENT, label: scam, claims: EVENT-INFO, route: foreign_aggregator,
+     pattern: "Fake event-prize message with a link, NOT claiming a government sender (Cyber Security Council GITEX warning)",
+     source: "https://gulfnews.com/uae/people/uae-cybersecurity-council-warns-of-fake-gitex-messages-targeting-smartphone-users-1.500311337",
+     en: "Congratulations! You won a free event pass. Claim it now: http://event-pass-prize.example",
+     ar: "مبروك! ربحت تذكرة مجانية للفعالية. اطلبها الآن: http://event-pass-prize.example"}
+  - {id: PW-GENUINE-FINE, label: genuine, claims: GOV-FINES, route: local, authenticated: true,
+     pattern: "Genuine counterpart: payment confirmation from the authenticated fines sender",
+     en: "Your traffic fine payment was received. Reference 5521.",
+     ar: "تم استلام دفعة مخالفتك المرورية. المرجع 5521."}
+  - {id: PW-GENUINE-HEALTH, label: genuine, claims: HOSPITAL-A, route: local, authenticated: true, priority: stat,
+     pattern: "Genuine counterpart: urgent health message from the authenticated hospital",
+     en: "Urgent: please call your clinic today about your recent test.",
+     ar: "عاجل: يرجى الاتصال بعيادتك اليوم بخصوص فحصك الأخير."}
