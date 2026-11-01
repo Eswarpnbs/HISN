@@ -8,8 +8,9 @@ exec > >(tee "$LOG") 2>&1
 echo "== freeze run $(date) on commit $(git rev-parse --short HEAD)"
 [ -z "$(git status --porcelain)" ] || { echo "Uncommitted changes: commit first"; exit 1; }
 python -m pytest -q
-python kb/verify.py
+python tools/verify_all.py
 python run_agents.py --model qwen2.5:14b
+python tools/stability.py --runs 3 --include-current
 python run_baselines.py --model qwen2.5:14b && cp docs/baselines.md docs/baselines_14b.md
 python selftest.py
 python kb/eval_retrieval.py

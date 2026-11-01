@@ -58,6 +58,14 @@ Source PDFs are **not redistributed**. `kb/manifest.csv` lists each official URL
 ## Limitations (honest)
 Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Comparator texts are marked "verify text" until checked. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
 
+## Verify our claims yourself
+
+```bash
+python tools/verify_all.py
+```
+
+Checks, without trusting us: every source file against its pinned SHA-256; every verbatim clause against its source PDF (normalisation rules printed); every audit-log hash chain; that each held-out gold file was committed before its first scored result (git history); and the open knowledge-base checksums.
+
 ## Key documents
 
 | Document | What it shows |
