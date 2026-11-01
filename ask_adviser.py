@@ -20,6 +20,7 @@ if r["cited_ids"]:
     for c in r["cited_ids"]:
         print(f"  [{c}] {ev[c]['article'] or 'document passage'} ({ev[c]['basis']}{', binding' if c in r['binding_ids'] else ', not binding'})")
         if ev[c].get("url"): print(f"      source: {ev[c]['url']}")
+        if (_t := next((x.get("ar_text") for x in __import__("yaml").safe_load(open("kb/clauses/clauses.yaml", encoding="utf-8")) if x["clause_id"] == c), None)): print(f"      ar: {_t[:160]}")
 if r["rejected_citations"]:
     print(f"Rejected citations (not retrieved): {r['rejected_citations']}")
 if r["related_gaps"]:
