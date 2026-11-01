@@ -45,7 +45,7 @@
 | **Samaam** | 3rd | 403 gateway, FHIR/DICOM, offline, one-command run, only 3 evidenced dimensions, radiologist review changed the design |
 | **Netaxis** (Build-a-thon 5.0) | 1st | Agents propose, code decides; time-gated events; forged-input tests; non-AI baselines; honest about limits |
 
-**HISN's differentiators:** ready-to-run multi-agent, multi-country policy error exercise; regulatory wind tunnel with 8 invariants (incl. clinical limit and sunset), running as **law as a pull request** in CI; audited referral protocol between authorities; policy and legal adviser agent; gap register with verified global examples from 5 jurisdictions; cross-language fairness check and pre-deployment filter-change gate; daily assurance report; real SMPP server with accountable receipts; FHIR clinical priority; real operator network data; pre-registered held-out tests; four-way baselines; Wilson CIs.
+**HISN's differentiators:** ready-to-run multi-agent, multi-country policy error exercise; regulatory wind tunnel with 9 invariants (incl. clinical limit and sunset), running as **law as a pull request** in CI; audited referral protocol between authorities; policy and legal adviser agent; gap register with verified global examples from 5 jurisdictions; cross-language fairness check and pre-deployment filter-change gate; daily assurance report; real SMPP server with accountable receipts; FHIR clinical priority; real operator network data; pre-registered held-out tests; four-way baselines; Wilson CIs.
 
 ## 4. ITU reference code (CrashingGuru/ITUAIReadiness/simulation)
 
@@ -124,7 +124,7 @@
 | **Policy and legal adviser** | `app/agents/adviser.py`, `ask_adviser.py --country UAE/IN/SG` | Answers legal questions from retrieved evidence only; invented citations withheld; soft-law-only = no binding basis; related gaps with verified global examples; audited |
 | Clinical tiers (**provisional**) | `kb/rulepacks/uae/health_tiers.yaml`, `app/core/tiers.py`, `app/fhir.py` | T1 5/10 min · T2 15/60 · T3 60/1440; priority declared by the authenticated sender (FHIR or SMPP `priority_flag`) |
 | Gap engine | `app/gapengine/*`, `run_gap_engine.py`, `signoff.py` | Tactic battery; P-AUTH, P-ROUTE, P-FRAUD, P-VERIFIED; MIZAN; load-bearing analysis |
-| **Wind tunnel** | `app/windtunnel/*`, `wind_tunnel.py`, `kb/rulepacks/uae/mechanisms.yaml` | Draft → mechanisms (human-confirmed) → conflicts → **8 invariants (I1–I8)** → metrics → interop → impact card; missing prerequisite → DO NOT ISSUE; `hours` unstated = no limit |
+| **Wind tunnel** | `app/windtunnel/*`, `wind_tunnel.py`, `kb/rulepacks/uae/mechanisms.yaml` | Draft → mechanisms (human-confirmed) → conflicts → **9 invariants (I1–I9)** → metrics → interop → impact card; missing prerequisite → DO NOT ISSUE; `hours` unstated = no limit |
 | **Law as a pull request** | `drafts/*.yaml`, `app/windtunnel/confirmed.py`, `tools/wind_tunnel_ci.py`, `.github/workflows/wind-tunnel.yml` | Draft rules proposed as pull requests; CI runs the wind tunnel and posts the impact card; check fails on DO NOT ISSUE (closed PR #1 = evidence) |
 | Multi-country | `kb/rulepacks/{uae,india,singapore}`, `run_interop.py` | Rule packs; pairwise agreement |
 | Citizen verifier | `app/verifier.py`, `verify_message.py`, `kb/verifier_templates.yaml` | 6 languages (EN/HI/TE reviewed; **Arabic pending**) |
