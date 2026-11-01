@@ -2,5 +2,8 @@
 essential_senders:
   - {sender_id: HOSPITAL-A, category: health,     escalation_role: health_authority}
   - {sender_id: GOV-FINES,  category: government, escalation_role: ai_data_authority}
+  - {sender_id: GOV-ID,    category: government, escalation_role: ai_data_authority}
+  - {sender_id: GOV-TOLL,  category: government, escalation_role: ai_data_authority}
+  - {sender_id: GOV-POST,  category: government, escalation_role: ai_data_authority}
 trusted_domains: [hospital-a.example, gov-fines.example]
 suspicious_keywords: [pay, unpaid, fine, rescheduled, verify, urgent]

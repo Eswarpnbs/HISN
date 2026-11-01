@@ -1,0 +1,49 @@
+# PUBLIC-WARNING TEST SET v2: pre-registered, committed BEFORE any run. Synthetic messages modelled on scam patterns that
+# UAE authorities publicly warned about (source given). Fictional senders (GOV-ID, GOV-TOLL, GOV-POST are synthetic analogues
+# of an identity authority, a toll operator and a postal service; BANK-A is deliberately NOT a registered essential sender,
+# to test HISN's scope boundary). Reserved .example domains.
+# Expected outcomes fixed in advance: scams must NOT be delivered; genuine messages must NOT be lost.
+items:
+  - {id: PW2-TOLL-FINE, label: scam, claims: GOV-TOLL, route: local,
+     pattern: "Tiny toll-gate fine with a card-details link (UAE Public Prosecution investigation: 35 reports, 29 in Dubai)",
+     source: "https://www.khaleejtimes.com/uae/crime/dh4-traffic-fine-cross-emirate-fraud-network-busted-over-fake-sms-scam",
+     en: "Unpaid toll gate fine of AED 4. Settle it now to avoid penalties: http://toll-fine-settle.example",
+     ar: "غرامة بوابة رسوم غير مدفوعة بقيمة 4 دراهم. سددها الآن لتجنب الغرامات: http://toll-fine-settle.example"}
+  - {id: PW2-TOLL-RECHARGE, label: scam, claims: GOV-TOLL, route: foreign_aggregator,
+     pattern: "Toll account recharge phishing (toll operator advisory)",
+     source: "https://gulfnews.com/living-in-uae/safety-security/stay-vigilant-11-common-scams-exposed-by-uae-authorities-1.1732026136912",
+     en: "Your toll account balance is low. Recharge now to avoid fines: http://toll-recharge.example",
+     ar: "رصيد حساب الرسوم منخفض. أعد الشحن الآن لتجنب المخالفات: http://toll-recharge.example"}
+  - {id: PW2-POST-FEE, label: scam, claims: GOV-POST, route: foreign_aggregator,
+     pattern: "Fake postal delivery asking for a small customs fee (postal service warning: it only sends SMS from its registered account)",
+     source: "https://www.khaleejtimes.com/life-and-living/uae-scam-alert-residents-warned-against-fake-delivery-messages-from-emirates-post",
+     en: "Your parcel is on hold. Pay the customs fee of AED 12 to release it: http://parcel-release.example",
+     ar: "طردك معلّق. ادفع رسوم الجمارك البالغة 12 درهماً لإطلاقه: http://parcel-release.example"}
+  - {id: PW2-ID-BLOCKED, label: scam, claims: GOV-ID, route: local,
+     pattern: "No-link request for a UAE PASS / OTP code, claiming the ID is blocked (identity authority warning, 30 Apr 2026: staff never ask for codes)",
+     source: "https://gulfnews.com/uae/government/uae-warns-against-phone-scams-fake-websites-impersonating-icp-logo-1.500524560",
+     en: "Your Emirates ID is blocked. Reply with the UAE PASS code you just received to unblock it.",
+     ar: "هويتك الإماراتية محظورة. أرسل رمز الهوية الرقمية الذي وصلك للتو لإلغاء الحظر."}
+  - {id: PW2-VISA-EXPIRY, label: scam, claims: GOV-ID, route: foreign_aggregator,
+     pattern: "Visa or ID problem with a link and a deportation or fine threat (government impersonation reported in the UAE)",
+     source: "https://www.khaleejtimes.com/business/scam-alert-recognise-and-avoid-government-impersonation-frauds",
+     en: "Your residence visa expires today. Renew now to avoid a fine: http://visa-renew-now.example",
+     ar: "تنتهي تأشيرة إقامتك اليوم. جدّدها الآن لتجنب الغرامة: http://visa-renew-now.example"}
+  - {id: PW2-POLICE-FINE, label: scam, claims: GOV-FINES, route: local,
+     pattern: "Fake police fine with a payment link (police warnings)",
+     source: "https://gulfnews.com/living-in-uae/safety-security/stay-vigilant-11-common-scams-exposed-by-uae-authorities-1.1732026136912",
+     en: "Police notice: you have an unpaid fine. Pay within 24 hours: http://police-fine-pay.example",
+     ar: "إشعار من الشرطة: لديك مخالفة غير مدفوعة. ادفع خلال 24 ساعة: http://police-fine-pay.example"}
+  - {id: PW2-BANK-OTP, label: scam, claims: BANK-A, route: local,
+     pattern: "Bank OTP request, no link (police warnings: never share an OTP). OUT OF HISN SCOPE: banks are not essential senders here",
+     source: "https://www.khaleejtimes.com/uae/fraud-rises-uae-holidaymakers-targeted-fake-offers-ai-scams",
+     en: "Your bank card is suspended. Reply with the OTP we just sent to reactivate it.",
+     ar: "تم إيقاف بطاقتك المصرفية. أرسل رمز التحقق الذي أرسلناه لإعادة تفعيلها."}
+  - {id: PW2-GENUINE-POST, label: genuine, claims: GOV-POST, route: local, authenticated: true,
+     pattern: "Genuine counterpart: delivery notice from the authenticated postal service",
+     en: "Your parcel 4471 is out for delivery today.",
+     ar: "طردك رقم 4471 في طريقه للتوصيل اليوم."}
+  - {id: PW2-GENUINE-ID, label: genuine, claims: GOV-ID, route: local, authenticated: true,
+     pattern: "Genuine counterpart: visa reminder from the authenticated identity authority, no link",
+     en: "Reminder: your residence visa expires in 30 days. Renew through the official app.",
+     ar: "تذكير: تنتهي تأشيرة إقامتك خلال 30 يوماً. جدّدها عبر التطبيق الرسمي."}
