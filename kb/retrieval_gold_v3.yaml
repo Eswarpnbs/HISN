@@ -1,0 +1,18 @@
+# Retrieval test v3: PRE-REGISTERED and committed BEFORE any hybrid-retrieval code was written.
+# Phrased as an official would ask, not in the law's own words. expected: clause IDs, or "RECORD#" = any chunk of
+# that record. [] = out-of-corpus (should not match well). 12 answerable, 3 out-of-corpus.
+- {q: "If a hospital's servers fail, can patient records be moved to a cloud abroad for a few days?", expected: ["UAE-FL-2-2019-ART13"]}
+- {q: "How large is the fine for keeping UAE patients' health data overseas without permission?", expected: ["UAE-FL-2-2019-ART24"]}
+- {q: "Can a doctor open a patient's medical file without consent during an emergency?", expected: ["UAE-CABRES-32-2020-ART6-3"]}
+- {q: "What must the sender name of a promotional text message include in the UAE?", expected: ["UAE-TDRA-UEC-8.8"]}
+- {q: "Which authority supervises telecom licensees in the UAE?", expected: ["UAE-TELECOM-ART12"]}
+- {q: "Who sets the standards of service that telecom subscribers receive?", expected: ["UAE-TELECOM-ART14-3"]}
+- {q: "Is impersonating someone online to obtain money a crime in the UAE?", expected: ["UAE-CYBERCRIME-2021#"]}
+- {q: "How can a recipient tell that a text message in India comes from the government?", expected: ["IN-TRAI-GOVMSG"]}
+- {q: "Can personal data be processed in India without consent during a medical emergency?", expected: ["IN-DPDP-S7-FGH"]}
+- {q: "Who bears the loss from a phishing SMS in Singapore if the telco failed its duties?", expected: ["SG-SRF-6.4"]}
+- {q: "Must Singapore telcos check links in text messages against a list of malicious URLs?", expected: ["SG-SRF-5.2.3"]}
+- {q: "Can the Indian government order priority routing of messages during a public emergency?", expected: ["IN-TEL-S20-1"]}
+- {q: "What is the corporate tax rate in the UAE?", expected: []}
+- {q: "Which frequency bands are allocated to 6G in the UAE?", expected: []}
+- {q: "What are the visa requirements for nurses moving to Dubai?", expected: []}
