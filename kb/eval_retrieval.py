@@ -4,7 +4,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from app.agents.retriever import ItuRetriever
 
 gold = yaml.safe_load(open("kb/retrieval_gold.yaml", encoding="utf-8"))
-r = ItuRetriever(k_clause=3, k_doc=5)
+r = ItuRetriever(k_clause=3, k_doc=5, hybrid=False)
 
 def plain(q, k=5):
     res = r.kb.search(query_embedding=r.embed([q])[0], n_results=k, where={"country": r.country})
@@ -25,9 +25,10 @@ def hit(e, expected, lenient=False):
         return True
     return lenient and any(x in CLAUSE_TEXT and CLAUSE_TEXT[x] in _norm(e.get("text", "")) for x in expected)
 
-def evaluate(fn, name, lenient=False):
-    rec = {1: 0, 3: 0, 5: 0}; mrr = 0.0; inq = [g for g in gold if g["expected"]]; neg = []
-    for g in gold:
+def evaluate(fn, name, lenient=False, gold_set=None):
+    G = gold_set if gold_set is not None else gold
+    rec = {1: 0, 3: 0, 5: 0}; mrr = 0.0; inq = [g for g in G if g["expected"]]; neg = []
+    for g in G:
         ranked = fn(g["q"])
         if not g["expected"]:
             neg.append(ranked[0]["similarity"] if ranked else 0); continue
@@ -40,6 +41,19 @@ def evaluate(fn, name, lenient=False):
     print(line); return line
 
 lines = [evaluate(plain, "plain ITU search"), evaluate(plain, "plain, passage contains clause", lenient=True), evaluate(clause_first, "HISN clause-first")]
+rh = ItuRetriever(k_clause=3, k_doc=5, hybrid=True)
+lines.append(evaluate(lambda q: rh(q)[:5], "HISN hybrid (v2, not independent)"))
+v3 = yaml.safe_load(open("kb/retrieval_gold_v3.yaml", encoding="utf-8"))
+CN = {"UAE": "United Arab Emirates", "IN": "India", "SG": "Singapore"}
+cty = {g["q"]: (CN.get(g["expected"][0].split("-")[0], CN["UAE"]) if g["expected"] else CN["UAE"]) for g in v3}
+RS = {c: (ItuRetriever(country=c, k_clause=3, k_doc=5, hybrid=False), ItuRetriever(country=c, k_clause=3, k_doc=5, hybrid=True)) for c in set(cty.values())}
+print("\n--- v3 (pre-registered, independent; country from expected-clause prefix) ---")
+l_cf = evaluate(lambda q: RS[cty[q]][0](q)[:5], "v3 HISN clause-first", gold_set=v3)
+l_hy = evaluate(lambda q: RS[cty[q]][1](q)[:5], "v3 HISN hybrid", gold_set=v3)
+r5 = lambda l: int(l.split("Recall@5 ")[1].split("/")[0])
+verdict = ("ADOPT hybrid as default (v3 Recall@5 %d >= %d)" if r5(l_hy) >= r5(l_cf) else "KEEP clause-first (v3 Recall@5 hybrid %d < %d)") % (r5(l_hy), r5(l_cf))
+print("Decision (docs/retrieval_decision_rule.md):", verdict)
+lines += [l_cf, l_hy, "Decision: " + verdict]
 with open("docs/retrieval_eval.md", "w", encoding="utf-8") as f:
     f.write(f"# Retrieval evaluation ({datetime.datetime.now():%Y-%m-%d %H:%M})\n\n{len(gold)} questions "
             f"({sum(1 for g in gold if g['expected'])} in-corpus, {sum(1 for g in gold if not g['expected'])} out-of-corpus). nomic-embed-text via ITU pipeline.\n\n")
