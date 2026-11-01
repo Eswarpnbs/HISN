@@ -3,7 +3,7 @@ review:
   en: reviewed_by_team
   hi: reviewed_by_Eswar_2026-10-28
   te: reviewed_by_Eswar_2026-10-28
-  ar: machine_drafted_unreviewed
+  ar: ai_reviewed_2026-11-01_native_pending
   ur: machine_drafted_unreviewed
   ml: machine_drafted_unreviewed
 languages:
@@ -14,9 +14,9 @@ languages:
     FOOTER: "This check is automated and may be wrong. Report suspicious messages to your telecom operator."
   ar:
     SUSPECTED_SCAM: "تحذير: لا يبدو أن هذه الرسالة من {sender}. قد تكون احتيالاً. لا تدفع ولا ترد ولا تضغط على أي رابط."
-    LIKELY_GENUINE: "يبدو أن هذه الرسالة من المرسل المسجل {sender}. إذا طُلب منك الدفع، تحقق عبر التطبيق أو الموقع الرسمي للمرسل."
-    UNDER_REVIEW: "لم نتمكن من التحقق من هذه الرسالة. لا تدفع ولا تضغط على أي رابط حتى تتأكد من {sender} عبر تطبيقه أو موقعه الرسمي."
-    FOOTER: "هذا الفحص آلي وقد يخطئ. أبلغ مزوّد خدمة الاتصالات عن الرسائل المشبوهة."
+    LIKELY_GENUINE: "يبدو أن هذه الرسالة من المرسل المسجل {sender}. إذا كانت تطلب الدفع، تحقق عبر التطبيق أو الموقع الرسمي للمرسل."
+    UNDER_REVIEW: "لم نتمكن من التحقق من هذه الرسالة. لا تدفع ولا تضغط على أي رابط حتى تتحقق منها لدى {sender} عبر تطبيقه أو موقعه الرسمي."
+    FOOTER: "هذا الفحص آلي وقد يخطئ. أبلغ مزوّد خدمة الاتصالات الخاص بك عن الرسائل المشبوهة."
   hi:
     SUSPECTED_SCAM: "चेतावनी: यह संदेश {sender} की ओर से नहीं लगता। यह धोखाधड़ी हो सकती है। कोई भुगतान न करें, जवाब न दें और किसी लिंक पर क्लिक न करें।"
     LIKELY_GENUINE: "यह संदेश पंजीकृत प्रेषक {sender} की ओर से लगता है। यदि इसमें भुगतान माँगा गया है, तो प्रेषक के आधिकारिक ऐप या वेबसाइट से पुष्टि करें।"
