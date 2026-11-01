@@ -14,6 +14,7 @@ python tools/stability.py --runs 3 --include-current
 python run_baselines.py --model qwen2.5:14b && cp docs/baselines.md docs/baselines_14b.md
 python selftest.py
 python kb/eval_retrieval.py
+python tools/headline_extra.py
 python daily_report.py --policy none && python daily_report.py --policy adopted
 python tools/fairness_check.py
 python tools/filter_change_check.py --threshold 0.2 && python tools/filter_change_check.py --threshold 0.15
