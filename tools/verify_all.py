@@ -67,6 +67,15 @@ for gold, label in [("scenarios/gold_heldout_v2.yaml", "heldout_v2"), ("scenario
     if g is None: report(f"Pre-registration {label}", False, "gold file not committed"); continue
     report(f"Pre-registration {label}: gold committed before first scored result", s is None or g < s,
            "not yet scored" if s is None else f"gold {g} < first result {s}")
+def committed_before(test_file, result_file):
+    t = subprocess.run(["git", "log", "--format=%ct", "--reverse", "--", test_file], capture_output=True, text=True).stdout.split()
+    r = subprocess.run(["git", "log", "--format=%ct", "--reverse", "--", result_file], capture_output=True, text=True).stdout.split()
+    return (int(t[0]) if t else None), (int(r[0]) if r else None)
+for test_file, result_file, label in [("scenarios/public_warnings.yaml", "docs/public_warnings.md", "public-warning test set"),
+                                      ("kb/retrieval_gold_v3.yaml", "docs/retrieval_decision_rule.md", "retrieval v3 questions")]:
+    t, r = committed_before(test_file, result_file)
+    report(f"Pre-registration {label}: test committed before its results", t is not None and (r is None or t <= r),
+           "test not committed" if t is None else ("no results yet" if r is None else f"test {t} <= results {r}"))
 
 # 5 open_kb checksums
 sums = Path("open_kb/SHA256SUMS")
