@@ -8,7 +8,8 @@ from app.core.firewall import SmsFirewall
 from app.core.packs import pack
 
 def run(log=Path("runs/public_warnings.jsonl")):
-    items = yaml.safe_load(open("scenarios/public_warnings.yaml", encoding="utf-8"))["items"]
+    items = [it for f in sorted(Path("scenarios").glob("public_warnings*.yaml"))
+             for it in yaml.safe_load(open(f, encoding="utf-8"))["items"]]
     log.parent.mkdir(exist_ok=True); log.unlink(missing_ok=True); a = AuditLog(log)
     p = pack("UAE"); adopted = yaml.safe_load(open("kb/rulepacks/uae/adopted.yaml", encoding="utf-8"))["flags"]
     conds = [("Current rules, normal", p["firewall_flags"], None), ("Current rules, after panic (0.20)", p["firewall_flags"], 0.2),
@@ -33,7 +34,7 @@ def main():
     r = run(); rows = r["rows"]
     conds = list(dict.fromkeys(x["condition"] for x in rows))
     L = ["# Public-warning test set (pre-registered)", "",
-         "_Synthetic messages modelled on scams that UAE authorities publicly warned about (sources in scenarios/public_warnings.yaml), "
+         "_Synthetic messages modelled on scams that UAE authorities publicly warned about (sources in scenarios/public_warnings*.yaml), "
          "in English and Arabic. Expected outcomes fixed before running: scams not delivered; genuine messages not lost._", "",
          "| Condition | Scams stopped | Genuine not lost | Meets expectation |", "|---|---|---|---|"]
     for c in conds:

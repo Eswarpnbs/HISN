@@ -1,12 +1,12 @@
 # Public-warning test set (pre-registered)
 
-_Synthetic messages modelled on scams that UAE authorities publicly warned about (sources in scenarios/public_warnings.yaml), in English and Arabic. Expected outcomes fixed before running: scams not delivered; genuine messages not lost._
+_Synthetic messages modelled on scams that UAE authorities publicly warned about (sources in scenarios/public_warnings*.yaml), in English and Arabic. Expected outcomes fixed before running: scams not delivered; genuine messages not lost._
 
 | Condition | Scams stopped | Genuine not lost | Meets expectation |
 |---|---|---|---|
-| Current rules, normal | 5/10 | 4/4 | **9/14** |
-| Current rules, after panic (0.20) | 9/10 | 4/4 | **13/14** |
-| Tested rule set, after panic (0.20) | 10/10 | 4/4 | **14/14** |
+| Current rules, normal | 15/24 | 8/8 | **23/32** |
+| Current rules, after panic (0.20) | 19/24 | 8/8 | **27/32** |
+| Tested rule set, after panic (0.20) | 22/24 | 8/8 | **30/32** |
 
 ## Every message
 
@@ -19,6 +19,15 @@ _Synthetic messages modelled on scams that UAE authorities publicly warned about
 | PW-EVENT | not delivered | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
 | PW-GENUINE-FINE | not lost | ALLOW / ALLOW | QUARANTINE / ALLOW | ALLOW / ALLOW |
 | PW-GENUINE-HEALTH | not lost | ALLOW / ALLOW | QUARANTINE / ALLOW | ALLOW / ALLOW |
+| PW2-TOLL-FINE | not delivered | QUARANTINE / QUARANTINE | QUARANTINE / QUARANTINE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
+| PW2-TOLL-RECHARGE | not delivered | QUARANTINE / QUARANTINE | QUARANTINE / QUARANTINE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
+| PW2-POST-FEE | not delivered | QUARANTINE / QUARANTINE | QUARANTINE / QUARANTINE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
+| PW2-ID-BLOCKED | not delivered | **ALLOW** / **ALLOW** | **ALLOW** / **ALLOW** | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
+| PW2-VISA-EXPIRY | not delivered | QUARANTINE / QUARANTINE | QUARANTINE / QUARANTINE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
+| PW2-POLICE-FINE | not delivered | QUARANTINE / QUARANTINE | QUARANTINE / QUARANTINE | BLOCK_OVERRIDABLE / BLOCK_OVERRIDABLE |
+| PW2-BANK-OTP | not delivered | **ALLOW** / **ALLOW** | **ALLOW** / **ALLOW** | **ALLOW** / **ALLOW** |
+| PW2-GENUINE-POST | not lost | ALLOW / ALLOW | ALLOW / ALLOW | ALLOW / ALLOW |
+| PW2-GENUINE-ID | not lost | ALLOW / ALLOW | ALLOW / ALLOW | ALLOW / ALLOW |
 
 Bold = did not meet the pre-registered expectation.
 

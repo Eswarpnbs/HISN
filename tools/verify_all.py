@@ -72,6 +72,7 @@ def committed_before(test_file, result_file):
     r = subprocess.run(["git", "log", "--format=%ct", "--reverse", "--", result_file], capture_output=True, text=True).stdout.split()
     return (int(t[0]) if t else None), (int(r[0]) if r else None)
 for test_file, result_file, label in [("scenarios/public_warnings.yaml", "docs/public_warnings.md", "public-warning test set"),
+                                      ("scenarios/public_warnings_v2.yaml", "docs/public_warnings.md", "public-warning test set v2"),
                                       ("kb/retrieval_gold_v3.yaml", "docs/retrieval_decision_rule.md", "retrieval v3 questions")]:
     t, r = committed_before(test_file, result_file)
     report(f"Pre-registration {label}: test committed before its results", t is not None and (r is None or t <= r),
