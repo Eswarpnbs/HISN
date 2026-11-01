@@ -1,6 +1,6 @@
 # HISN Policy Gateway (deterministic, no LLM)
 
-**id** `hisn-policy-gateway` · **version** 1.0.0 · **type** deterministic policy node (Y.3172 P) · **added** 2026-10-31
+**id** `hisn-policy-gateway` · **version** 1.0.0 · **type** deterministic policy node (Y.3172 P) · **added** 2026-11-01
 
 Blocks only on verified verbatim clauses with blocking basis; unverified citations never block; uncovered events become POTENTIAL_GAP (fail-visible).
 

@@ -1,6 +1,6 @@
 # HISN TDRA (telecommunications regulator) agent
 
-**id** `hisn-tdra` · **version** 1.0.0 · **type** institutional agent (retrieve / propose / log gap) · **added** 2026-10-31
+**id** `hisn-tdra` · **version** 1.0.0 · **type** institutional agent (retrieve / propose / log gap) · **added** 2026-11-01
 
 Regulates telecom licensees, including their obligations on unsolicited electronic communications and network operations.
 

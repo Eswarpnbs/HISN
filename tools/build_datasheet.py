@@ -4,7 +4,7 @@ import csv, re, sys, yaml
 from collections import Counter
 from pathlib import Path
 
-csv_path = next(Path(".").glob("**/hisn_synthetic_sms.csv"), None)
+csv_path = next(Path("datasets").glob("**/hisn_synthetic_sms.csv"), None)
 if csv_path is None or ".venv" in str(csv_path):
     sys.exit("hisn_synthetic_sms.csv not found: run python build_dataset.py first")
 rows = list(csv.DictReader(open(csv_path, encoding="utf-8")))

@@ -1,6 +1,6 @@
 # HISN Gap Engine (loophole hunt + counterfactual tests)
 
-**id** `hisn-gap-engine` · **version** 1.0.0 · **type** deterministic adversarial search + policy sandbox · **added** 2026-10-31
+**id** `hisn-gap-engine` · **version** 1.0.0 · **type** deterministic adversarial search + policy sandbox · **added** 2026-11-01
 
 Searches an abstract tactic catalogue for loopholes, re-runs the battery with candidate provisions, measures protection, access and MIZAN.
 

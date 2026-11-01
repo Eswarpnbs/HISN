@@ -1,6 +1,6 @@
 # HISN Coordinator (MLFO, deterministic, no LLM)
 
-**id** `hisn-coordinator` · **version** 1.0.0 · **type** machine learning function orchestrator (Y.3172 MLFO) · **added** 2026-10-31
+**id** `hisn-coordinator` · **version** 1.0.0 · **type** machine learning function orchestrator (Y.3172 MLFO) · **added** 2026-11-01
 
 Advances the simulated clock, releases time-gated role-scoped events, routes escalations, routes referrals once between authorities (audited), enforces clinical-tier second review and emergency age.
 

@@ -1,6 +1,6 @@
 # HISN Policy and Legal Adviser agent
 
-**id** `hisn-policy-adviser` · **version** 1.0.0 · **type** policy and legal adviser agent (query, answer with citations) · **added** 2026-10-31
+**id** `hisn-policy-adviser` · **version** 1.0.0 · **type** policy and legal adviser agent (query, answer with citations) · **added** 2026-11-01
 
 Answers legal questions about the scenario from retrieved, verified evidence only, for the UAE, India or Singapore.
 

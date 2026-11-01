@@ -1,5 +1,5 @@
 # Essential Message Assurance Report
-_Synthetic scenario day · generated 2026-10-31 21:10 · UAE rules with the tested rule set (sender authentication + verified lane), clinical tiers on (provisional)_
+_Synthetic scenario day · generated 2026-11-01 10:53 · UAE rules with the tested rule set (sender authentication + verified lane), clinical tiers on (provisional)_
 
 ## Headline
 
@@ -13,6 +13,7 @@ _Synthetic scenario day · generated 2026-10-31 21:10 · UAE rules with the test
 | Scam / spoof messages stopped | 5/5 | all |
 | Offshore health-data transfers blocked | 2/2 | all, unless a valid resolution applies |
 | Operator filter changes with a pre-deployment test on record | 0/2 | all |
+| Filter changes violating declared Y.3173 automation levels (no named approval) | 2/2 | 0 |
 | Audit chain verified | yes | yes |
 
 ## Held messages

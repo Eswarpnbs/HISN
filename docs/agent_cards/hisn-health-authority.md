@@ -1,6 +1,6 @@
 # HISN Health Authority (DoH / DHA) agent
 
-**id** `hisn-health-authority` · **version** 1.0.0 · **type** institutional agent (retrieve / propose / log gap) · **added** 2026-10-31
+**id** `hisn-health-authority` · **version** 1.0.0 · **type** institutional agent (retrieve / propose / log gap) · **added** 2026-11-01
 
 Protects patients and governs health information under Federal Law No. 2 of 2019. Weighs patient harm from undelivered genuine health messages against scam risk. Quarantined essential health messages may only be released by a named human officer.
 

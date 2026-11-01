@@ -1,6 +1,6 @@
 # HISN Regulatory Wind Tunnel (policy sandbox)
 
-**id** `hisn-wind-tunnel` · **version** 1.0.0 · **type** regulatory sandbox (deterministic; a model only proposes the mechanism mapping, a human confirms) · **added** 2026-10-31
+**id** `hisn-wind-tunnel` · **version** 1.0.0 · **type** regulatory sandbox (deterministic; a model only proposes the mechanism mapping, a human confirms) · **added** 2026-11-01
 
 Tests a draft rule before issuance against verified law (hierarchy of norms), eight public-interest invariants, measured effect and UAE-India interoperability; runs in CI on pull requests.
 

@@ -1,6 +1,6 @@
 # HISN Federal Authority for AI and Data agent
 
-**id** `hisn-ai-data-authority` · **version** 1.0.0 · **type** institutional agent (retrieve / propose / log gap) · **added** 2026-10-31
+**id** `hisn-ai-data-authority` · **version** 1.0.0 · **type** institutional agent (retrieve / propose / log gap) · **added** 2026-11-01
 
 Oversees AI and data governance, digital government and cross-border data questions. Its mandates are transitional since June 2026.
 
