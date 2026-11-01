@@ -1,0 +1,94 @@
+# HELD-OUT v4 events (synthetic, fictional senders, reserved .example domains). Gold in scenarios/gold_heldout_v4.yaml.
+events:
+- id: V4-GOVSPOOF-LOCAL
+  t: 56
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Unpaid fine reminder. Pay today at http://gov-fines-pay.example
+- id: V4-VACCINE
+  t: 57
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    authenticated: true
+    short_message: Please verify your child's vaccination appointment next Tuesday. Reply 1 to confirm.
+- id: V4-REFUND
+  t: 58
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    authenticated: true
+    short_message: Your traffic fine was refunded to your account. Reference 4410. No action needed.
+- id: V4-NOURL-SPOOF
+  t: 59
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: 'Urgent: reply with your ID number to verify your hospital record.'
+- id: V4-STAT-ROUTINE
+  t: 301
+  act: 4
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    authenticated: true
+    priority: stat
+    short_message: Your test result is available. Please verify your contact details at your next visit.
+- id: V4-STATSPOOF-NOURL
+  t: 302
+  act: 4
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: foreign_aggregator
+    priority: stat
+    short_message: 'Urgent: reply with your ID number to verify your test result.'
+- id: V4-GOVGENUINE-DRIFT
+  t: 303
+  act: 4
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    authenticated: true
+    short_message: 'Reminder: please verify your vehicle registration renewal date in your account.'
+- id: V4-GOVMSG-COMPLAINT
+  t: 306
+  act: 4
+  kind: complaint
+  audience:
+  - health_authority
+  payload:
+    text: A patient reports receiving a fake government fine SMS asking for payment through a link
+- id: V4-BILLING-COMPLAINT
+  t: 307
+  act: 4
+  kind: complaint
+  audience:
+  - health_authority
+  payload:
+    text: A patient complains that their mobile data bill doubled after a network upgrade

@@ -8,3 +8,16 @@ INJ-SURGERY: legit
 INJ-GOVFORGED: malicious
 INJ-CRITLAB: legit
 INJ-STATFORGED: malicious
+V4-GOVSPOOF-LOCAL: malicious
+V4-VACCINE: legit
+V4-REFUND: legit
+V4-NOURL-SPOOF: malicious
+V4-STAT-ROUTINE: legit
+V4-STATSPOOF-NOURL: malicious
+V4-GOVGENUINE-DRIFT: legit
+P-CRITLAB-1: legit
+P-CRITLAB-2: legit
+P-FORGED-1: malicious
+P-FORGED-2: malicious
+P-GOVFORGED-1: malicious
+P-GOVFORGED-2: malicious

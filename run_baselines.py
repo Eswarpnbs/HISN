@@ -23,7 +23,7 @@ def load_gold(paths):
     g = {}
     for p in paths: g.update({(x["role"], x["event"]): x for x in yaml.safe_load(open(p, encoding="utf-8"))})
     return g
-ALL = load_gold(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml", "scenarios/gold_heldout_v2.yaml", "scenarios/gold_heldout_v3.yaml"])
+ALL = load_gold(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml", "scenarios/gold_heldout_v2.yaml", "scenarios/gold_heldout_v3.yaml", "scenarios/gold_heldout_v4.yaml", "scenarios/gold_paraphrase.yaml"])
 HELD = load_gold(["scenarios/gold_heldout_v2.yaml"])
 HELD3 = load_gold(["scenarios/gold_heldout_v3.yaml"])
 
