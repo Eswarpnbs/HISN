@@ -1,0 +1,7 @@
+# Draft rule under review. The mechanism mapping below was confirmed by a named human.
+draft: "Messages that claim an essential government or health sender must be authenticated; authenticated essential senders are delivered through a verified lane that does not depend on message content or language."
+instrument_level: regulation
+mechanisms:
+  - {id: sender_authentication}
+  - {id: verified_sender_lane}
+confirmed_by: "Synthetic reviewer (Team Sankalp)"
