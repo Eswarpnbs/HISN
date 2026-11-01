@@ -18,10 +18,10 @@ bad = [m["record_id"] for m in man if not Path(f"kb/sources/{m['record_id']}.pdf
 report(f"Source files match pinned SHA-256 ({len(man)} records)", not bad, ", ".join(bad))
 
 # 2 every clause verbatim in its source
-RULES = ["ligatures expanded (fi, fl, ff; the AI Charter font's Th ligature extracted as U+0457)",
+RULES = ["ligatures expanded (fi, fl, ff; the AI Charter font's Th ligature extracted as U+0407 or U+0457)",
          "whitespace before punctuation removed", "footnote numbers attached to the end of a word removed",
          "a clause containing [...] must have every segment verbatim and in order"]
-LIG = {"\ufb01": "fi", "\ufb02": "fl", "\ufb00": "ff", "\u0457": "th"}
+LIG = {"\ufb01": "fi", "\ufb02": "fl", "\ufb00": "ff", "\u0457": "th", "\u0407": "th"}
 def norm(s):
     s = (s or "").replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"')
     for k, v in LIG.items(): s = s.replace(k, v)
