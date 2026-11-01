@@ -12,6 +12,7 @@ python tools/verify_all.py
 python run_agents.py --model qwen2.5:14b
 python tools/stability.py --runs 3 --include-current
 python run_baselines.py --model qwen2.5:14b && cp docs/baselines.md docs/baselines_14b.md
+python tools/llm_contribution.py
 python selftest.py
 python kb/eval_retrieval.py
 python tools/headline_extra.py

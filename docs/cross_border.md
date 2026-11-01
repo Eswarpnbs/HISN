@@ -1,6 +1,6 @@
 # Cross-border essential message (gap G7)
 
-_Does essential-sender recognition survive a border? Synthetic, fictional senders; a person on a UAE number reached through an international A2P route (roaming not modelled). Domain-level finding, not a national recommendation._
+_Does essential-sender recognition survive a border? Realistic senders: a home-country public-health authority or an embassy reaching its nationals on local numbers (how often this happens is not documented). Synthetic, fictional senders; a person on a UAE number reached through an international A2P route (roaming not modelled). Domain-level finding, not a national recommendation._
 
 ## At the origin (India): a legal finding
 A government message is sent only via DLT and is identifiable by its -G header suffix: **IN-TRAI-GOVMSG** (Regulation 2, definition (za): Government Message (as amended 2025)), [official source](https://www.trai.gov.in/sites/default/files/2026-05/CA_21052026.pdf). This protects it from customer opt-outs (the Preference Register); protection from operator AI filtering is not addressed.

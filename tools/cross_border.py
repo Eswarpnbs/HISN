@@ -45,7 +45,7 @@ def main():
     def cite(cid):
         c = CL[cid]; return f"**{cid}** ({c.get('article', '')}), [official source]({URL.get(c['record_id'], '')})"
     L = ["# Cross-border essential message (gap G7)", "",
-         "_Does essential-sender recognition survive a border? Synthetic, fictional senders; a person on a UAE number reached through an "
+         "_Does essential-sender recognition survive a border? Realistic senders: a home-country public-health authority or an embassy reaching its nationals on local numbers (how often this happens is not documented). Synthetic, fictional senders; a person on a UAE number reached through an "
          "international A2P route (roaming not modelled). Domain-level finding, not a national recommendation._", "",
          "## At the origin (India): a legal finding",
          f"A government message is sent only via DLT and is identifiable by its -G header suffix: {cite('IN-TRAI-GOVMSG')}. "
