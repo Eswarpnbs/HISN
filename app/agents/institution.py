@@ -34,7 +34,7 @@ DEFAULT_ACTIONS = ["REQUEST_INFO", "LOG_GAP"]
 CITATION_REQUIRED = {"RECOMMEND_RELEASE_BY_NAMED_OFFICER", "KEEP_QUARANTINED", "UPHOLD_BLOCK", "DIRECT_OPERATOR",
                      "ASSIGN_OVERRIDE_AUTHORITY", "ORDER_OPERATOR_WHITELIST"}
 # Soft law can inform, never compel: decisive actions need at least one binding source.
-BINDING = {"FEDERAL_LAW", "NATIONAL_LAW", "REGULATOR_POLICY"}
+BINDING = {"FEDERAL_LAW", "NATIONAL_LAW", "REGULATOR_POLICY", "CABINET_RESOLUTION"}
 # Competence needs a competence norm: which instruments can ground each decisive action.
 # None = any binding source; () = no competence norm exists in this rule pack -> always a logged gap.
 COMPETENT_SOURCES = {

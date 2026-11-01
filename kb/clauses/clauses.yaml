@@ -345,3 +345,17 @@
   y3172_nodes:
   - P
   text: Licensees shall specially classify Marketing Text Messages in their systems where the name of the sender of Marketing Text Messages sent to a Mobile Customer must include the code (AD-XXXX) followed by the name of the Marketing Text Message sender.
+- clause_id: UAE-CABRES-32-2020-ART6-3
+  record_id: UAE-CABRES-32-2020
+  article: Article (6), clause 3 (emergency access to one patient's file)
+  basis: CABINET_RESOLUTION
+  dimension_ids:
+  - 10
+  factor: sandbox
+  metric_ids:
+  - d10_m10
+  - d10_m06
+  y3172_nodes:
+  - P
+  - C
+  text: In case of an emergency and if the patient's consent cannot be obtained, health care providers may examine the patient's file for health care purposes and shall provide reasons for examination.
