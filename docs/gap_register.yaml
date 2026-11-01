@@ -56,4 +56,4 @@
   comparator: India identifies government messages domestically (DLT, -G suffix); no instrument in the verified corpus (UAE, India, Singapore) recognises foreign essential senders.
   second_pass: true
   status: system_discovered
-  note: A genuine foreign essential sender arrives like a spoofed one (foreign route, unauthenticated, unknown to the registry). Sender authentication fixes this only for senders the destination country knows. No global example found; an open question for international coordination. Measured in simulation; needs expert review. Domain-level finding, not a national recommendation.
+  note: A genuine foreign essential sender arrives like a spoofed one (foreign route, unauthenticated, unknown to the registry). Sender authentication fixes this only for senders the destination country knows. Global example (partial) - Singapore's registry admits overseas senders only via a Singapore entity, and its protection applies to Singapore numbers only; no mutual recognition found. An open question for international coordination. Measured in simulation; needs expert review. Domain-level finding, not a national recommendation.
