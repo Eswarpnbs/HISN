@@ -91,7 +91,9 @@ def conflicts(compiled):
                         "note": c["note"], "verbatim": cl.get("text", "")[:280]})
     return out
 
-def invariants(U, verified, bat, base_bat, level):
+def invariants(U, verified, bat, base_bat, level, flags=None):
+    from app.core.fairness import check_change
+    lang = check_change(flags or {}, 0.2)
     lost = [k for k, v in GT.items() if v == "legit" and k in U and (U[k].get("silent_drop") or U[k]["action"].startswith("BLOCK"))]
     draft_offshore = [k for k, o in U.items() if o.get("rule_id") == "DRAFT_EMERGENCY_OFFSHORE"]
     rank_ok = not draft_offshore or level in ("health_authority_resolution", "federal_amendment")
@@ -112,7 +114,9 @@ def invariants(U, verified, bat, base_bat, level):
         {"id": "I7", "text": "Life-critical health messages reach a human within their clinical limit",
          "pass": not slow, "detail": f"{len(slow)} T1 message(s) waited longer than {lim} min"},
         {"id": "I8", "text": "Emergency exceptions expire (sunset)", "pass": pr is None or pr["action"] != "ALLOW",
-         "detail": "no probe" if pr is None else f"transfer after the emergency window: {pr['action']}"}]
+         "detail": "no probe" if pr is None else f"transfer after the emergency window: {pr['action']}"},
+        {"id": "I9", "text": "Protection does not depend on the language of the message", "pass": lang["verdict"] == "DEPLOY",
+         "detail": f"at the panic threshold 0.20: {len(lang['unequal'])} genuine and {len(lang['scam_gaps'])} scam language gap(s)"}]
 
 def wind_tunnel(compiled):
     if not compiled["mechanisms"]:
@@ -124,7 +128,7 @@ def wind_tunnel(compiled):
                      TIERS if tiered else None, probe=probe)
     I = run_india()
     b0, b1 = run_battery({}, _tmp()), run_battery(flags, _tmp())
-    inv0 = invariants(U0, v0, b0, b0, "unspecified"); inv1 = invariants(U1, v1, b1, b0, compiled["instrument_level"])
+    inv0 = invariants(U0, v0, b0, b0, "unspecified", {}); inv1 = invariants(U1, v1, b1, b0, compiled["instrument_level"], flags)
     con = conflicts(compiled)
     regress = [b["id"] for a, b in zip(inv0, inv1) if a["pass"] and not b["pass"]]
     fixed = [b["id"] for a, b in zip(inv0, inv1) if not a["pass"] and b["pass"]]

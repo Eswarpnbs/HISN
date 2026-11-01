@@ -17,4 +17,9 @@ for mid, acts in r["results"].items():
 if r["unequal"]:
     print("Reason: identical genuine messages would be treated differently by language. "
           "Review before deployment (gap G5: no instrument assigns authority to approve this change).")
+for name, v in r["scam_results"].items():
+    print(f"  scam: {name:<62} en:{v['en']:<18} ar:{v['ar']:<18} {'[LANGUAGE GAP]' if v['gap'] else '[equal]'}")
+if r["scam_gaps"]:
+    print("Reason: the same scam would be stopped in one language and delivered in another (wind-tunnel invariant I9).")
+
 sys.exit(1 if r["unequal"] else 0)

@@ -6,24 +6,24 @@ _Each row replays the full crisis timeline as if the operator had set the filter
 
 | Threshold | Genuine delivered | Held for a human | Lost | Scams stopped | T1 within limit | Languages equal | Gap to target |
 |---|---|---|---|---|---|---|---|
-| 0.10 | 0/4 | 4 | **0** | 5/5 | yes | **no** | unequal by language |
-| 0.15 | 0/4 | 4 | **0** | 5/5 | yes | **no** | unequal by language |
-| 0.20 | 0/4 | 4 | **0** | 5/5 | yes | **no** | unequal by language |
-| 0.25 | 0/4 | 4 | **0** | 5/5 | yes | **no** | unequal by language |
-| 0.30 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
-| 0.40 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
+| 0.10 | 0/10 | 10 | **0** | 12/12 | yes | **no** | unequal by language |
+| 0.15 | 0/10 | 10 | **0** | 12/12 | yes | **no** | unequal by language |
+| 0.20 | 0/10 | 10 | **0** | 12/12 | yes | **no** | unequal by language |
+| 0.25 | 0/10 | 10 | **0** | 12/12 | yes | **no** | unequal by language |
+| 0.30 | 10/10 | 0 | **0** | 11/12 | yes | yes | scams delivered |
+| 0.40 | 10/10 | 0 | **0** | 11/12 | yes | yes | scams delivered |
 
 ## Simulated timeline: genuine messages held, by act
 
 | Threshold | Act 3 | Act 4 |
 |---|---|---|
-| 0.10 | 3 | 1 |
-| 0.15 | 3 | 1 |
-| 0.20 | 3 | 1 |
-| 0.25 | 3 | 1 |
+| 0.10 | 7 | 3 |
+| 0.15 | 7 | 3 |
+| 0.20 | 7 | 3 |
+| 0.25 | 7 | 3 |
 | 0.30 | 0 | 0 |
 | 0.40 | 0 | 0 |
 
-**Conclusion:** thresholds meeting every target: 0.30, 0.40.
+**Conclusion:** no threshold meets every target under these rules; the gap is structural, not a tuning problem.
 
 _Audit chains verified for all runs: True._

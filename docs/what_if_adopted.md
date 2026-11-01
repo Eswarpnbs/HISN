@@ -6,12 +6,12 @@ _Each row replays the full crisis timeline as if the operator had set the filter
 
 | Threshold | Genuine delivered | Held for a human | Lost | Scams stopped | T1 within limit | Languages equal | Gap to target |
 |---|---|---|---|---|---|---|---|
-| 0.10 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
-| 0.15 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
-| 0.20 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
-| 0.25 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
-| 0.30 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
-| 0.40 | 4/4 | 0 | **0** | 5/5 | yes | yes | none |
+| 0.10 | 10/10 | 0 | **0** | 12/12 | yes | yes | none |
+| 0.15 | 10/10 | 0 | **0** | 12/12 | yes | yes | none |
+| 0.20 | 10/10 | 0 | **0** | 12/12 | yes | yes | none |
+| 0.25 | 10/10 | 0 | **0** | 12/12 | yes | yes | none |
+| 0.30 | 10/10 | 0 | **0** | 12/12 | yes | yes | none |
+| 0.40 | 10/10 | 0 | **0** | 12/12 | yes | yes | none |
 
 ## Simulated timeline: genuine messages held, by act
 
