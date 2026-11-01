@@ -13,8 +13,12 @@ conflicts = [r for r in recs if r.get("status") == "CONFLICT"]
 nonsms = [r for r in recs if not str(r["event_id"]).endswith("-ESC")]
 bl = Path("docs/baselines.md").read_text(encoding="utf-8") if Path("docs/baselines.md").exists() else ""
 def grab(label, field):
-    m = re.search(rf"{re.escape(label)}.*?{field} (\d+)", bl)
-    return m.group(1) if m else "?"
+    rows = [[c.strip() for c in l.strip().strip("|").split("|")] for l in bl.splitlines() if l.strip().startswith("|")]
+    if not rows: return "?"
+    head = rows[0]
+    if field not in head: return "?"
+    row = next((r for r in rows[2:] if r and r[0].startswith(label)), None)
+    return row[head.index(field)] if row else "?"
 L = ["# What the language model adds, and what code guarantees", "",
      f"_From runs/governed_agents.jsonl ({len(recs)} agent decisions) and docs/baselines.md._", "",
      "| The language model contributes | Deterministic code guarantees |", "|---|---|",

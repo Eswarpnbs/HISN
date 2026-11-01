@@ -4,10 +4,10 @@ _From runs/governed_agents.jsonl (23 agent decisions) and docs/baselines.md._
 
 | The language model contributes | Deterministic code guarantees |
 |---|---|
-| Reads unstructured events that fixed rules cannot parse: 16 decisions on complaints, disputes, referrals and emergencies | No decisive action without a binding, competent source: HISN ? vs fixed rules ? |
-| Finds gaps and states the missing provision in words: 6 gap logs | No invented citations: HISN ? vs LLM alone ? |
+| Reads unstructured events that fixed rules cannot parse: 16 decisions on complaints, disputes, referrals and emergencies | No decisive action without a binding, competent source: HISN 0 vs fixed rules 9 |
+| Finds gaps and states the missing provision in words: 6 gap logs | No invented citations: HISN 0 vs LLM alone 19 |
 | Proposes referrals and actions with reasons a human can review | Contradictions caught and sent to a named human: 2 (model fooled, decision not acted on) |
-| | Harmful decisions: HISN ? vs fixed rules ? vs LLM alone ? |
+| | Harmful decisions: HISN 0 vs fixed rules 4 vs LLM alone 6 |
 
 ## Gaps the model found, in its own words
 
