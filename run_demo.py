@@ -12,7 +12,7 @@ def run(governed):
     if p.exists(): p.unlink()
     audit = AuditLog(p)
     gw = PolicyGateway(PACK, audit) if governed else None
-    return Coordinator(SC, audit, SmsFirewall(REG, audit, governed=governed), gw, enforce_levels=True).run(), audit
+    return Coordinator(SC, audit, SmsFirewall(REG, audit, governed=governed), gw, enforce_levels=governed).run(), audit
 
 def fmt(o):
     s = o["action"]
