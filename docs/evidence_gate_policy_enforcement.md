@@ -13,7 +13,8 @@ The release/keep-quarantined actions for essential health messages now require U
 At construction time, every rule in the configured policy pack must resolve to:
 - an existing `clause_id` in `kb/clauses/clauses.yaml`;
 - the same `record_id` in the clause and `kb/manifest.csv`;
-- the same article label; and
+- a source record marked `in_force`;
+- the same article label and legal basis in both clause and manifest; and
 - an exact normalized match between the rule quote and the clause text.
 
 The source record must carry a 64-character SHA-256 value in the manifest. That hash is attached to the decision citation for traceability. This startup check validates the pack-to-KB link; it does not independently re-download or re-hash the original source PDF.
@@ -36,6 +37,6 @@ Run from the repository root:
 python -m unittest discover -s tests -p 'test_governance_gates.py' -v
 ```
 
-The tests cover default fail-closed behavior, rejection of legacy name-only approval, acceptance only through an injected verifier, fail-closed behavior if verification raises an error, exact clause/manifest linkage, deterministic blocking under the cited federal-law rule, and rejection of a modified rule quote.
+The tests cover default fail-closed behavior, rejection of legacy name-only approval, acceptance only through an injected verifier, fail-closed behavior if verification raises an error, exact clause/manifest linkage, deterministic blocking under the cited federal-law rule, and rejection of modified quotes and basis mismatches.
 
 These tests have been added but were not executed in the remote GitHub editing session. Re-run them locally/CI before relying on the patch or using it in a judging demo.
