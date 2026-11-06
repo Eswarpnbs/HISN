@@ -75,6 +75,17 @@ class GovernanceGateTests(unittest.TestCase):
         self.assertEqual(outcomes[0]["action"], "APPLIED")
         self.assertEqual(firewall.threshold, 0.2)
 
+    def test_verifier_error_fails_closed(self):
+        def broken_verifier(approval, event):
+            raise RuntimeError("identity service unavailable")
+
+        outcomes, audit, firewall = self._coordinator({
+            "threshold": 0.2, "approval": {"officer": "someone"},
+        }, verifier=broken_verifier)
+        self.assertEqual(outcomes[0]["action"], "HELD_FOR_APPROVAL")
+        self.assertEqual(firewall.threshold, 0.5)
+        self.assertTrue(any(r["kind"] == "approval_verification_error" for r in audit.records))
+
     def test_gateway_accepts_exact_clause_and_manifest_reference(self):
         gateway = PolicyGateway("kb/rulepacks/uae/rules.yaml", AuditStub())
         citation = gateway.pack["rules"][0]["citation"]
