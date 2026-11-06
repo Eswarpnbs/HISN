@@ -38,6 +38,8 @@ BINDING = {"FEDERAL_LAW", "NATIONAL_LAW", "REGULATOR_POLICY", "CABINET_RESOLUTIO
 # Competence needs a competence norm: which instruments can ground each decisive action.
 # None = any binding source; () = no competence norm exists in this rule pack -> always a logged gap.
 COMPETENT_SOURCES = {
+    "RECOMMEND_RELEASE_BY_NAMED_OFFICER": ("UAE-FL-", "UAE-CABRES-"),
+    "KEEP_QUARANTINED": ("UAE-FL-", "UAE-CABRES-"),
     "DIRECT_OPERATOR": ("UAE-TDRA-",),
     "ORDER_OPERATOR_WHITELIST": ("UAE-TDRA-",),
     "ASSIGN_OVERRIDE_AUTHORITY": (),
@@ -61,7 +63,7 @@ Rules:
 1. Use ONLY the EVIDENCE provided. Cite evidence by its exact id in "cited_ids". Cite only evidence that is directly relevant to THIS situation. Never invent laws, articles or ids.
 2. Read the FACTS carefully. If the evidence does not cover the situation, choose "LOG_GAP" and describe the missing provision in one sentence.
 3. Your assessment must be consistent with your proposed_action. Rate scam_likelihood honestly from the FACTS (sender verification, route, URLs, firewall score and threshold).
-4. Decisive actions (RECOMMEND_RELEASE_BY_NAMED_OFFICER, KEEP_QUARANTINED, UPHOLD_BLOCK, DIRECT_OPERATOR, ASSIGN_OVERRIDE_AUTHORITY, ORDER_OPERATOR_WHITELIST) REQUIRE at least one EVIDENCE id in cited_ids, and at least one cited source must be binding (FEDERAL_LAW or REGULATOR_POLICY) and within your competence. SOFT_LAW can inform but never alone justify a decisive action.
+4. Decisive actions (RECOMMEND_RELEASE_BY_NAMED_OFFICER, KEEP_QUARANTINED, UPHOLD_BLOCK, DIRECT_OPERATOR, ASSIGN_OVERRIDE_AUTHORITY, ORDER_OPERATOR_WHITELIST) REQUIRE at least one EVIDENCE id in cited_ids, and at least one cited source must be binding (FEDERAL_LAW, NATIONAL_LAW, REGULATOR_POLICY or CABINET_RESOLUTION) and within your competence. SOFT_LAW can inform but never alone justify a decisive action.
 5. You only PROPOSE. Allowed proposed_action values for this event: {actions}.
 6. Reply with JSON only:
 {{"assessment": "...", "proposed_action": "...", "cited_ids": ["..."], "missing_provision": null, "uncertainty": "low|medium|high", "scam_likelihood": "low|medium|high"}}"""
@@ -109,6 +111,7 @@ class InstitutionalAgent:
         if rec.get("status") == "PROPOSED" and action in CITATION_REQUIRED:
             prefixes = COMPETENT_SOURCES.get(action)
             grounded = [e for e in evidence if e["id"] in cited and e.get("basis") in BINDING
+                        and e.get("record_id") and e.get("article") and str(e.get("text", "")).strip()
                         and (prefixes is None or str(e.get("record_id") or "").startswith(prefixes))]
             if not grounded:
                 rec.update(status=Verdict.POTENTIAL_GAP.value, reason="no_competent_binding_basis",
