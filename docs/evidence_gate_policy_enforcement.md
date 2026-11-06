@@ -36,6 +36,6 @@ Run from the repository root:
 python -m unittest discover -s tests -p 'test_governance_gates.py' -v
 ```
 
-The tests cover default fail-closed behavior, rejection of legacy name-only approval, acceptance only through an injected verifier, exact clause/manifest linkage, deterministic blocking under the cited federal-law rule, and rejection of a modified rule quote.
+The tests cover default fail-closed behavior, rejection of legacy name-only approval, acceptance only through an injected verifier, fail-closed behavior if verification raises an error, exact clause/manifest linkage, deterministic blocking under the cited federal-law rule, and rejection of a modified rule quote.
 
 These tests have been added but were not executed in the remote GitHub editing session. Re-run them locally/CI before relying on the patch or using it in a judging demo.
