@@ -7,6 +7,8 @@ import yaml
 
 from app.core.coordinator import Coordinator
 from app.core.gateway import PolicyGateway
+from app.core.events import Event
+from app.agents.institution import InstitutionalAgent
 
 
 class AuditStub:
@@ -85,6 +87,40 @@ class GovernanceGateTests(unittest.TestCase):
         self.assertEqual(outcomes[0]["action"], "HELD_FOR_APPROVAL")
         self.assertEqual(firewall.threshold, 0.5)
         self.assertTrue(any(r["kind"] == "approval_verification_error" for r in audit.records))
+
+    def _agent_proposal(self, verbatim):
+        audit = AuditStub()
+        evidence = [{
+            "id": "UAE-FL-2-2019-ART13", "similarity": 0.95,
+            "basis": "FEDERAL_LAW", "record_id": "UAE-FL-2-2019",
+            "article": "Article (13)", "text": "Exact retrieved clause text",
+            "verbatim": verbatim,
+        }]
+        agent = InstitutionalAgent(
+            "health_authority",
+            retriever=lambda query: evidence,
+            llm=lambda system, user: {
+                "proposed_action": "RECOMMEND_RELEASE_BY_NAMED_OFFICER",
+                "cited_ids": ["UAE-FL-2-2019-ART13"],
+                "assessment": "Evidence supports human review.",
+                "missing_provision": None, "uncertainty": "medium",
+                "scam_likelihood": "medium",
+            },
+            audit=audit,
+        )
+        event = Event("HEALTH-ESC", 0, "escalation", ("health_authority",), {})
+        return agent.handle(event, {"action": "ESCALATED"}, 0)
+
+    def test_decisive_agent_proposal_requires_verbatim_clause(self):
+        result = self._agent_proposal(verbatim=False)
+        self.assertEqual(result["status"], "POTENTIAL_GAP")
+        self.assertEqual(result["proposed_action"], "LOG_GAP")
+        self.assertEqual(result["reason"], "no_competent_binding_basis")
+
+    def test_verbatim_binding_clause_can_ground_agent_proposal(self):
+        result = self._agent_proposal(verbatim=True)
+        self.assertEqual(result["status"], "PROPOSED")
+        self.assertEqual(result["proposed_action"], "RECOMMEND_RELEASE_BY_NAMED_OFFICER")
 
     def test_gateway_accepts_exact_clause_and_manifest_reference(self):
         gateway = PolicyGateway("kb/rulepacks/uae/rules.yaml", AuditStub())
