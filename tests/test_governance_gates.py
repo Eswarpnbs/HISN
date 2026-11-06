@@ -80,6 +80,12 @@ class GovernanceGateTests(unittest.TestCase):
         citation = gateway.pack["rules"][0]["citation"]
         self.assertEqual(citation["clause_id"], "UAE-FL-2-2019-ART13")
         self.assertEqual(len(citation["source_sha256"]), 64)
+        decision = gateway.evaluate({
+            "type": "message_log_transfer", "data_class": "health",
+            "destination_country": "XX",
+        })
+        self.assertEqual(decision["action"].value, "BLOCK_PROHIBITED")
+        self.assertEqual(decision["verdict"].value, "VIOLATION")
 
     def test_gateway_rejects_modified_rule_quote(self):
         with open("kb/rulepacks/uae/rules.yaml", encoding="utf-8") as f:
