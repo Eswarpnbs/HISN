@@ -14,7 +14,7 @@ class Coordinator:
     event only to the agents in its audience, and routes escalations. gateway=None = ungoverned twin.
     tiers=None keeps the single sla_minutes limit; with tiers, each hold gets its clinical tier's limit."""
     def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None, extra_events=None,
-                 sla_minutes=None, tiers=None, route_referrals=False, enforce_levels=False):
+                 sla_minutes=None, tiers=None, route_referrals=False, enforce_levels=True, approval_verifier=None):
         self.meta, events = load_scenario(scenario_path)
         self.bus = EventBus(audit); self.bus.load(list(events) + list(extra_events or []))
         self.audit, self.firewall, self.gateway, self.step = audit, firewall, gateway, step
@@ -22,6 +22,7 @@ class Coordinator:
         self.outcomes, self.agent_outputs = [], []
         self.sla, self.tiers, self.holds = sla_minutes, tiers, []
         self.route_referrals, self.enforce_levels = route_referrals, enforce_levels
+        self.approval_verifier = approval_verifier
 
     def run(self, until=None):
         end, now = (until if until is not None else self.meta.get("duration", 70)), 0
@@ -36,18 +37,29 @@ class Coordinator:
         if e.kind == "sms_submit":
             r = self.firewall.process(e.payload, now=now)
         elif e.kind == "filter_policy":
-            # ITU-T Y.3173: the filter's demand mapping is declared "Human" (kb/automation_levels.yaml),
-            # so every threshold change needs a named approval. Monitored always; enforced only if enforce_levels.
-            approved = e.payload.get("approved_by")
+            # ITU-T Y.3173: demand mapping is Human-controlled. A name supplied in the
+            # event payload is not authentication; apply only when a trusted verifier accepts
+            # the approval record. With no verifier configured, the safe outcome is HOLD.
+            approval = e.payload.get("approval")
+            approved = bool(
+                self.approval_verifier
+                and isinstance(approval, dict)
+                and self.approval_verifier(approval, e)
+            )
             if not approved:
                 self.audit.write({"kind": "automation_level_violation", "event_id": e.id, "component": "filter_ai",
-                                  "dimension": "demand_mapping", "declared": "Human (named approval)",
-                                  "observed": "change applied without a named approval record"})
+                                  "dimension": "demand_mapping", "declared": "Human (verified approval)",
+                                  "observed": "no verifiable approval record; threshold change held"})
             if self.enforce_levels and not approved:
                 r = {"action": "HELD_FOR_APPROVAL", "automation_violation": True}
+            elif not approved:
+                self.audit.write({"kind": "unverified_policy_change_override", "event_id": e.id,
+                                  "component": "filter_ai", "threshold": e.payload.get("threshold")})
+                self.firewall.set_threshold(e.payload["threshold"], e.payload.get("reason", ""))
+                r = {"action": "APPLIED_UNVERIFIED", "automation_violation": True}
             else:
                 self.firewall.set_threshold(e.payload["threshold"], e.payload.get("reason", ""))
-                r = {"action": "APPLIED", **({} if approved else {"automation_violation": True})}
+                r = {"action": "APPLIED", "approved_by": approval.get("officer")}
         elif e.kind == "data_transfer":
             if self.gateway is None:
                 r = {"action": "ALLOW", "note": "no policy node"}
