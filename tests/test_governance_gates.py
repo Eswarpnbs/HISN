@@ -98,6 +98,16 @@ class GovernanceGateTests(unittest.TestCase):
         self.assertEqual(decision["action"].value, "BLOCK_PROHIBITED")
         self.assertEqual(decision["verdict"].value, "VIOLATION")
 
+    def test_gateway_rejects_rule_basis_mismatch(self):
+        with open("kb/rulepacks/uae/rules.yaml", encoding="utf-8") as f:
+            pack = yaml.safe_load(f)
+        pack["rules"][0]["basis"] = "SOFT_LAW"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "rules.yaml"
+            path.write_text(yaml.safe_dump(pack), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "rule_basis_does_not_match"):
+                PolicyGateway(str(path), AuditStub())
+
     def test_gateway_rejects_modified_rule_quote(self):
         with open("kb/rulepacks/uae/rules.yaml", encoding="utf-8") as f:
             pack = yaml.safe_load(f)
