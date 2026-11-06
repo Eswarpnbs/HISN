@@ -8,6 +8,7 @@ rules:
     action: BLOCK_PROHIBITED
     basis: FEDERAL_LAW
     citation:
+      clause_id: UAE-FL-2-2019-ART13
       record_id: UAE-FL-2-2019
       article: "Article (13)"
       quote: 'It is not permissible to store, process, generate or transform the health data and information outside State -which are related to the health services provided inside State- except in the case where a resolution is issued from the Health Authority in coordination with the Ministry.'
