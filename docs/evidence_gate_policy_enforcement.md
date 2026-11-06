@@ -4,7 +4,7 @@ This change hardens two control points in the HISN simulation.
 
 ## 1. Evidence gate for institutional-agent proposals
 
-Institutional agents remain advisory: they propose; they do not execute operator or regulator actions. Decisive proposals must cite evidence IDs returned by the retriever and must be grounded in a binding instrument within the role/action competence map. A decisive proposal without that basis is converted to `LOG_GAP` and recorded as a potential gap.
+Institutional agents remain advisory: they propose; they do not execute operator or regulator actions. Decisive proposals must cite evidence IDs returned by the retriever and must be grounded in a retrieved verbatim clause (not a general document chunk), a binding instrument, and the role/action competence map. A decisive proposal without that basis is converted to `LOG_GAP` and recorded as a potential gap.
 
 The release/keep-quarantined actions for essential health messages now require UAE health-law or health-executive-regulation evidence. This is a deliberately narrow competence rule, not a claim that every possible health decision is covered by the current corpus.
 
@@ -37,6 +37,6 @@ Run from the repository root:
 python -m unittest discover -s tests -p 'test_governance_gates.py' -v
 ```
 
-The tests cover default fail-closed behavior, rejection of legacy name-only approval, acceptance only through an injected verifier, fail-closed behavior if verification raises an error, exact clause/manifest linkage, deterministic blocking under the cited federal-law rule, and rejection of modified quotes and basis mismatches.
+The tests cover default fail-closed behavior, rejection of legacy name-only approval, acceptance only through an injected verifier, fail-closed behavior if verification raises an error, rejection of non-verbatim evidence for decisive agent proposals, exact clause/manifest linkage, deterministic blocking under the cited federal-law rule, and rejection of modified quotes and basis mismatches.
 
 These tests have been added but were not executed in the remote GitHub editing session. Re-run them locally/CI before relying on the patch or using it in a judging demo.
