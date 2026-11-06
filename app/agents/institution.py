@@ -111,6 +111,7 @@ class InstitutionalAgent:
         if rec.get("status") == "PROPOSED" and action in CITATION_REQUIRED:
             prefixes = COMPETENT_SOURCES.get(action)
             grounded = [e for e in evidence if e["id"] in cited and e.get("basis") in BINDING
+                        and e.get("verbatim") is True
                         and e.get("record_id") and e.get("article") and str(e.get("text", "")).strip()
                         and (prefixes is None or str(e.get("record_id") or "").startswith(prefixes))]
             if not grounded:
