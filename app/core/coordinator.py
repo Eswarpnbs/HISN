@@ -41,11 +41,13 @@ class Coordinator:
             # event payload is not authentication; apply only when a trusted verifier accepts
             # the approval record. With no verifier configured, the safe outcome is HOLD.
             approval = e.payload.get("approval")
-            approved = bool(
-                self.approval_verifier
-                and isinstance(approval, dict)
-                and self.approval_verifier(approval, e)
-            )
+            approved = False
+            if self.approval_verifier and isinstance(approval, dict):
+                try:
+                    approved = bool(self.approval_verifier(approval, e))
+                except Exception as exc:
+                    self.audit.write({"kind": "approval_verification_error", "event_id": e.id,
+                                      "component": "filter_ai", "error_type": type(exc).__name__})
             if not approved:
                 self.audit.write({"kind": "automation_level_violation", "event_id": e.id, "component": "filter_ai",
                                   "dimension": "demand_mapping", "declared": "Human (verified approval)",
