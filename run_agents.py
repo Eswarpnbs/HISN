@@ -22,7 +22,8 @@ if p.exists(): p.unlink()
 audit, retr, llm = AuditLog(p), ItuRetriever(), OllamaLLM(args.model)
 agents = {r: InstitutionalAgent(r, retr, llm, audit) for r in ["health_authority", "tdra", "ai_data_authority"]}
 c = Coordinator(SC, audit, SmsFirewall(REG, audit, governed=True), PolicyGateway(PACK, audit),
-                agents=agents, extra_events=load_injects(args.inject), route_referrals=True)
+                agents=agents, extra_events=load_injects(args.inject), route_referrals=True,
+                enforce_levels=True, approval_verifier=None
 t0 = time.time(); c.run()
 for o in c.agent_outputs:
     print(f"\n[t={o['t']:>3}] {o['role']:<18} event={o['event_id']:<15} sim={o['best_similarity']}")
