@@ -44,9 +44,15 @@ class PolicyGateway:
                 errors.append("source_record_missing_from_manifest")
             elif not re.fullmatch(r"[0-9a-fA-F]{64}", str(source.get("sha256", ""))):
                 errors.append("source_record_hash_missing_or_invalid")
+            elif source.get("status") != "in_force":
+                errors.append("source_record_not_marked_in_force")
+            if source and source.get("basis") != rule.get("basis"):
+                errors.append("rule_basis_does_not_match_manifest")
             if clause is not None:
                 if clause.get("record_id") != record_id:
                     errors.append("citation_record_id_mismatch")
+                if clause.get("basis") != rule.get("basis"):
+                    errors.append("rule_basis_does_not_match_clause")
                 if _norm_text(clause.get("article")) != _norm_text(citation.get("article")):
                     errors.append("citation_article_mismatch")
                 if _norm_text(clause.get("text")) != _norm_text(citation.get("quote")):
