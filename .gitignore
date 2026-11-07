@@ -4,3 +4,7 @@ __pycache__/
 kb/sources/*.pdf
 runs/
 kb/sources/ocr/
+
+# local-only
+docs/HANDBOOK.md
+tools/patch_*.py
