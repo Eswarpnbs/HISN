@@ -32,15 +32,18 @@ python selftest.py               # re-derives every headline number -> docs/head
 python build_dashboard.py && open docs/dashboard.html   # offline single-file dashboard
 ```
 
-## Headline results (provenance: docs/headline_numbers.md)
-- Baselines on qwen2.5:14b (ITU reference model): an ungoverned LLM scored 7/14 with 18 unsupported legal citations, worse than fixed rules (11/14); RAG without gates 8/14 with 5 harmful decisions; **full HISN 12/14, held-out 4/4, 0 harmful, 0 unsupported citations** (docs/baselines_14b.md).
-- Wind tunnel: the same emergency-offshore draft is DO NOT ISSUE as a regulation (conflicts with Federal Law 2/2019 Art. 13) but READY FOR HUMAN REVIEW as a Health Authority resolution (Art. 13's own route); sender authentication + verified lane fixes the spoofing invariant with no regressions (docs/impact_cards/).
-- Twin: legitimate essential messages silently lost **3 -> 0**; offshore health-data transfers not blocked **2 -> 0**.
-- Gap engine: sender authentication + verified-sender lane raised MIZAN **76.7 -> 94.2**; a blunt fraud duty lowered it.
-- UAE-India: 56% decision agreement; health-data localisation conflict; 4 of 5 gaps shared or partial in both (docs/interoperability.md).
-- Network evidence: in 985,308 real operator link-days (proxy), heat did not raise link failures (RR 0.54); rain did (RR 4.49).
-- Retrieval: Recall@5 22/24; similarity threshold found not to transfer across embedding models (documented, not claimed).
-- Gaps G1-G5 (docs/gap_register.yaml): four verified within instruments, one discovered by the agents.
+## Headline results (provenance: docs/headline_numbers.md; re-derived by `python selftest.py`)
+- **Twin run (same events, with and without HISN):** legitimate essential messages silently lost **10 -> 0**; offshore health-data transfers not blocked **2 -> 0**.
+- **Baselines on 33 gold items (qwen2.5:14b, ITU reference model):** an LLM without knowledge base or gate scored 16/33 with 10 harmful decisions and 41 unsupported legal citations; fixed rules 23/33 with 10 harmful; RAG without gates 23/33 with 9 harmful; **full HISN 26/33 with 1 harmful decision and 0 unsupported citations** (docs/baselines.md). Accuracy intervals overlap (62-89% vs 53-83%), so we claim a difference in harm and citation support, not in accuracy.
+- **Development vs held-out:** development set 9/10. Pre-registered held-out sets (gold committed before any scored run, checked by `tools/verify_all.py`): v2 4/4, v3 1/2, v4 6/9, paraphrase 6/8; combined 17/23 (95% interval about 54-87%). These sets are small.
+- **Known failure (held-out v4):** all three errors were spoofed messages. For an unauthenticated message claiming to be a hospital and asking for an ID number, the agent recommended release by a named officer, which our pre-registered severity rule counts as harmful (the one harmful decision above). A second spoof was caught by the deterministic gate, and a third got a request for more information. The model relied on surface cues (no link, local route) that do not prove sender identity. A release recommendation only records a request for a named human; the prototype does not release messages on an agent's recommendation. We did not tune on the held-out set.
+- **Stability:** agent decisions were identical across repeated runs (44/44).
+- **Wind tunnel:** the same emergency-offshore draft is DO NOT ISSUE AS DRAFTED as a regulation (conflicts with Federal Law 2/2019 Art. 13) but READY FOR NAMED HUMAN REVIEW as a Health Authority resolution; sender authentication + verified lane fixes spoofing invariants I3, I7 and I9 with no regressions (docs/impact_cards/).
+- **Gap engine:** sender authentication + verified-sender lane raised the MIZAN balance score 76.7 -> 94.2; a blunt fraud duty lowered it by 0.5.
+- **UAE-India:** 56% decision agreement; the health-data localisation conflict is documented (docs/interoperability.md).
+- **Network evidence:** in 985,308 operator link-days (proxy), heat did not raise link failures (RR 0.54); rain did (RR 4.49).
+- **Retrieval:** hybrid retrieval is the default, adopted under a decision rule committed before running (pre-registered v3 set: Recall@5 11/12 hybrid vs 10/12 clause-first). On the 46-question set, clause-first scored Recall@1 21/46 and Recall@5 41/46.
+- **Gaps:** see docs/gap_register.yaml for the current list and evidence status of each.
 
 ## Repository map
 | path | contents |
