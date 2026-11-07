@@ -1,24 +1,79 @@
-# HISN — governance for the telecom AI that decides what reaches citizens
+# HISN — the law layer and last mile for agentic government
 
-**Team Sankalp** · ITU AI for Good Lab Hackathon (UAE) · Telecommunications + Healthcare + Public services
-Eswar Panchakarla (team leader, engineering) · P. Prudhvi Krishna (knowledge base, policy, report)
-Contact: Eswar Panchakarla, eswarpnbs@gmail.com (Team Sankalp) · **Synthetic data only. Fictional senders. No real phishing content is generated.**
+**No essential message lost in silence. No rule issued untested.**
 
-**Live report:** https://hisn-report.netlify.app/ (static, synthetic data; live demos run locally or in the ITU Sandbox)
+Team Sankalp · ITU AI for Good Lab Hackathon (UAE) · Telecommunications + Healthcare + Public services
+Eswar Panchakarla (team leader, engineering) · P. Prudhvi Krishna (knowledge base, policy, report) · eswarpnbs@gmail.com
+**Technical report:** [`docs/HISN_Submission_Team_Sankalp.pdf`](docs/HISN_Submission_Team_Sankalp.pdf) · **Live report:** https://hisn-report.netlify.app/ · Synthetic data only; fictional senders.
 
-## What it is
-AI filters and network AI now decide whether hospital and government messages reach citizens. HISN governs those decisions:
-- a deterministic **policy node** (ITU-T Y.3172 *P*) blocks only on verbatim, hash-pinned UAE legal clauses, and logs a **gap** when no provision exists;
-- **institutional agents** (TDRA, health authority, Federal AI & Data Authority) see only their own events, cite only retrieved evidence, and only propose: fixed code checks evidence, mandate, binding basis, competence and consistency;
-- a **gap engine** finds loopholes over an abstract tactic catalogue, re-runs the scenario with candidate provisions, and measures protection, access and the **MIZAN** balance score;
-- a **regulatory wind tunnel** gives every draft rule a test suite: plain-language draft -> validated mechanism mapping -> conflict scan against verified law (with hierarchy of norms) -> regression tests on public-interest invariants -> sealed Regulatory Impact Card;
-- a **named human** signs off; sign-off is refused without measured evidence and is recorded in ITU's own `kb_decisions` collection.
+The UAE plans to deliver half of its government services through AI agents. Security testing asks *is the agent safe?* Monitoring asks *what did it do?* HISN answers the two questions left over:
+
+1. **Is this action lawful, and under which clause?**
+2. **Did the citizen actually receive the outcome?**
+
+Decisions reach people as text messages, and those messages pass through AI gatekeepers such as an operator's SMS filter. HISN governs that last mile and tests the rules before they bind. It is designed to complement national testing and monitoring, not replace them.
+
+```mermaid
+flowchart LR
+    C["Citizen's handset<br/>receipt · verifier"] --- O["Operator's AI filter<br/>essential lane · Y.3173 level enforced"]
+    O --- I["Institutions<br/>TDRA · Health Authority · AI & Data Authority<br/>agents propose, named human decides"]
+    I --- L["Law-making<br/>wind tunnel · drafts tested in CI<br/>hierarchy of norms"]
+    L --- S["ITU standards<br/>policy-as-code schema<br/>authority record"]
+```
+
+## What HISN does
+
+| Capability | What you can run |
+|---|---|
+| **The right to be reached**: essential senders are never silently dropped; a held message goes to a named officer within a clinical limit; the sender gets an accountable receipt over real SMPP 3.4 | `python run_smpp.py`, then `python smpp_demo.py` |
+| **Both harms measured**: essential messages lost *and* scams delivered, as one MIZAN balance | `python run_gap_engine.py` |
+| **Crash-test the rule**: a draft is tested against verified law, the hierarchy of norms and nine public-interest invariants, and the wind tunnel says which instrument can carry it | `python wind_tunnel.py "<draft>" --level regulation` |
+| **Law as a pull request**: draft rules run through CI; a draft that fails is refused automatically | `drafts/`, `.github/workflows/wind-tunnel.yml` |
+| **Declared autonomy, enforced**: each component's ITU-T Y.3173 level is computed by the standard's method; a filter change that breaks it is held | `python run_demo.py --enforce-levels` |
+| **Approval that can't be faked**: a filter change needs a signed record, bound to that change, from a competent role, within its validity window, and from someone other than the requester (maker and checker). A typed name, an edited, copied or expired record, or a self-approval is held | `python run_approval_demo.py` |
+| **Live chain console**: inject events or type an SMS and watch each one move citizen → operator AI → institution → law → standards, ungoverned vs HISN, with receipts in English and Arabic | `python console.py`, then open http://127.0.0.1:8765 |
+| **Arabic, the authoritative text**: Arabic receipts; key UAE articles stored from the official Arabic PDFs and re-verified (`kb/arabic.py`); Arabic templates pending native review | `python kb/arabic.py verify` |
+| **Gaps found by the system**: when no provision covers an event, the agents log a gap (G5 and G7 were found this way) | `python run_agents.py --model qwen2.5:14b` |
+| **Portability, measured**: the same engine runs on UAE, India and Singapore packs | `python run_interop.py` |
+
+Standard safeguards underneath: a policy node that blocks only on a verified binding clause; agents that cite retrieved evidence and only propose (five fixed gates); named sign-off; a hash-chained audit log; every agent decision logged with its assessment, evidence, citations and uncertainty.
+
+## Results (every figure re-derived by `python selftest.py`; see docs/headline_numbers.md)
+
+| Measure | Result |
+|---|---|
+| Legitimate essential messages silently lost (twin run) | ungoverned **10 → 0** with HISN |
+| Offshore health-data transfers not blocked | **2 → 0** |
+| Harmful decisions on 33 gold items (qwen2.5:14b) | LLM alone 10 · fixed rules 10 · RAG without gates 9 · **HISN 1** |
+| Unsupported legal citations | LLM alone 41 · **HISN 0** |
+| Pre-registered held-out sets (gold committed before scoring, checked from git history) | 17/23 (about 54–87%) |
+| Agent decisions identical across repeated runs | 44/44 |
+| Sender authentication + verified lane (gap engine) | MIZAN 76.7 → **94.2**; a blunt fraud duty alone lowers it |
+| UAE–India decision agreement | 56% |
+| Knowledge base | 16 hash-pinned official records, 38 verbatim clauses, ITU reference ingest pipeline |
+| Tests | 94 passing |
+
+Accuracy intervals overlap, so we claim a difference in harm and citation support, not in accuracy. Known failure, disclosed: on held-out v4 one spoofed message was recommended for release; a named human must still act on any release.
+
+## Policy and standards gaps (docs/gap_register.yaml)
+
+G1 fraud and impersonation outside filtering duties · G2 no protected status for government and health senders · G3 no explicit legal basis for AI scanning of health SMS · G4 no emergency path for systematic AI-triggered failover · G5 no authority over operators' AI filter changes (found by the agents) · G6 no allocation of scam losses to operators · G7 essential-sender recognition does not cross borders (measured).
+Standards: a machine-readable policy-rule format (our YAML schema, offered to ITU); an authority record joining the declared Y.3173 level, the named approval and the cited clause; and a Readiness Framework gap: none of the 111 metrics in ITU's dimensions.json measures whether an agent's consequential action had verified authority (agents appear only as d11_m03, a user-interface metric).
+
+## See it
+
+![Live console: ungoverned vs HISN, receipts in English and Arabic](docs/fig/console_receipts.png)
+
+![Live console: ITU-T Y.3173 enforced; unapproved filter changes held](docs/fig/console_y3173_hold.png)
 
 ## Quick start
 ```bash
 bash setup.sh                    # venv, ITU reference repo, models, knowledge base, tests
 python run_demo.py               # governed vs ungoverned twin, same events
-python inject_console.py         # judge console: add events or type a custom SMS
+python console.py                # live chain console in the browser: http://127.0.0.1:8765
+python run_demo.py --enforce-levels   # Y.3173 levels enforced: unapproved filter changes held
+python run_approval_demo.py      # maker-checker: which approvals can unlock a filter change
+python inject_console.py         # terminal judge console: add events or type a custom SMS
 python run_agents.py --model qwen2.5:14b   # institutional agents + pre-registered evaluation
 python run_gap_engine.py         # loopholes, counterfactual provisions, load-bearing rules
 python run_baselines.py --model qwen2.5:14b  # rules vs LLM-only vs RAG-no-gate vs full HISN
@@ -31,19 +86,6 @@ python wind_tunnel.py "During a declared emergency, health message logs may be s
 python selftest.py               # re-derives every headline number -> docs/headline_numbers.md
 python build_dashboard.py && open docs/dashboard.html   # offline single-file dashboard
 ```
-
-## Headline results (provenance: docs/headline_numbers.md; re-derived by `python selftest.py`)
-- **Twin run (same events, with and without HISN):** legitimate essential messages silently lost **10 -> 0**; offshore health-data transfers not blocked **2 -> 0**.
-- **Baselines on 33 gold items (qwen2.5:14b, ITU reference model):** an LLM without knowledge base or gate scored 16/33 with 10 harmful decisions and 41 unsupported legal citations; fixed rules 23/33 with 10 harmful; RAG without gates 23/33 with 9 harmful; **full HISN 26/33 with 1 harmful decision and 0 unsupported citations** (docs/baselines.md). Accuracy intervals overlap (62-89% vs 53-83%), so we claim a difference in harm and citation support, not in accuracy.
-- **Development vs held-out:** development set 9/10. Pre-registered held-out sets (gold committed before any scored run, checked by `tools/verify_all.py`): v2 4/4, v3 1/2, v4 6/9, paraphrase 6/8; combined 17/23 (95% interval about 54-87%). These sets are small.
-- **Known failure (held-out v4):** all three errors were spoofed messages. For an unauthenticated message claiming to be a hospital and asking for an ID number, the agent recommended release by a named officer, which our pre-registered severity rule counts as harmful (the one harmful decision above). A second spoof was caught by the deterministic gate, and a third got a request for more information. The model relied on surface cues (no link, local route) that do not prove sender identity. A release recommendation only records a request for a named human; the prototype does not release messages on an agent's recommendation. We did not tune on the held-out set.
-- **Stability:** agent decisions were identical across repeated runs (44/44).
-- **Wind tunnel:** the same emergency-offshore draft is DO NOT ISSUE AS DRAFTED as a regulation (conflicts with Federal Law 2/2019 Art. 13) but READY FOR NAMED HUMAN REVIEW as a Health Authority resolution; sender authentication + verified lane fixes spoofing invariants I3, I7 and I9 with no regressions (docs/impact_cards/).
-- **Gap engine:** sender authentication + verified-sender lane raised the MIZAN balance score 76.7 -> 94.2; a blunt fraud duty lowered it by 0.5.
-- **UAE-India:** 56% decision agreement; the health-data localisation conflict is documented (docs/interoperability.md).
-- **Network evidence:** in 985,308 operator link-days (proxy), heat did not raise link failures (RR 0.54); rain did (RR 4.49).
-- **Retrieval:** hybrid retrieval is the default, adopted under a decision rule committed before running (pre-registered v3 set: Recall@5 11/12 hybrid vs 10/12 clause-first). On the 46-question set, clause-first scored Recall@1 21/46 and Recall@5 41/46.
-- **Gaps:** G1-G7 in docs/gap_register.yaml, each with its evidence status and source clauses; G7 (cross-border recognition of essential senders) is measured in docs/cross_border.md.
 
 ## Repository map
 | path | contents |
@@ -64,7 +106,7 @@ python build_dashboard.py && open docs/dashboard.html   # offline single-file da
 Source PDFs are **not redistributed**. `kb/manifest.csv` lists each official URL and SHA-256; download into `kb/sources/` and run `python kb/verify.py`. Only short verbatim clauses are stored, with article references. English versions of UAE laws are translations; the Arabic text is authoritative.
 
 ## Limitations (honest)
-Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Global examples in docs/global_examples.yaml were checked against official sources (30 Oct - 1 Nov 2026); two items are flagged for recheck (the EU regulation number and a regulator report cited for the Australian scam-SMS code). Comparators on the gap engine's candidate provisions are marked "verify text" or "verification: pending" and are illustrative only. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
+Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Global examples in docs/global_examples.yaml were checked against official sources (30 Oct - 1 Nov 2026); Regulation (EU) 2026/1881 is confirmed on EUR-Lex (7 Nov 2026); the Australian scam-SMS code is cited through an ACMA investigation report, which is flagged for replacement by the code's own text. Approval signatures use demo keys, not a production identity service. Arabic receipt and verifier wording is pending native review. Comparators on the gap engine's candidate provisions are marked "verify text" or "verification: pending" and are illustrative only. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
 
 ## Verify our claims yourself
 
