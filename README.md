@@ -43,7 +43,7 @@ python build_dashboard.py && open docs/dashboard.html   # offline single-file da
 - **UAE-India:** 56% decision agreement; the health-data localisation conflict is documented (docs/interoperability.md).
 - **Network evidence:** in 985,308 operator link-days (proxy), heat did not raise link failures (RR 0.54); rain did (RR 4.49).
 - **Retrieval:** hybrid retrieval is the default, adopted under a decision rule committed before running (pre-registered v3 set: Recall@5 11/12 hybrid vs 10/12 clause-first). On the 46-question set, clause-first scored Recall@1 21/46 and Recall@5 41/46.
-- **Gaps:** see docs/gap_register.yaml for the current list and evidence status of each.
+- **Gaps:** G1-G7 in docs/gap_register.yaml, each with its evidence status and source clauses; G7 (cross-border recognition of essential senders) is measured in docs/cross_border.md.
 
 ## Repository map
 | path | contents |
@@ -54,12 +54,17 @@ python build_dashboard.py && open docs/dashboard.html   # offline single-file da
 | `kb/` | manifest (SHA-256), verbatim clauses, rule packs, ingest via ITU pipeline, verify, retrieval eval |
 | `scenarios/` | Crisis Exploit (Acts 1–4), injects, pre-registered gold (dev, held-out), ground truth (dashboard only) |
 | `docs/` | evaluation logs, baselines, retrieval eval, counterfactual results, gap register, dashboard |
+| `app/windtunnel/` | regulatory wind tunnel: draft rule -> mechanism mapping -> conflict scan -> regression tests -> Regulatory Impact Card |
+| `app/smpp/` | SMPP 3.4 server for the SMS firewall demo |
+| `drafts/` | example draft rules used by the wind tunnel |
+| `open_kb/` | open knowledge-base package (checksums, datasheet, gap register copy, agent cards) |
+| `tools/` | verification, fairness, stability and report-building scripts (`verify_all.py`, `fairness_check.py`, ...) |
 
 ## Knowledge base and copyright
 Source PDFs are **not redistributed**. `kb/manifest.csv` lists each official URL and SHA-256; download into `kb/sources/` and run `python kb/verify.py`. Only short verbatim clauses are stored, with article references. English versions of UAE laws are translations; the Arabic text is authoritative.
 
 ## Limitations (honest)
-Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Comparator texts are marked "verify text" until checked. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
+Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Gap comparators in docs/gap_register.yaml marked "verify text" have not been checked against the source; only the entries in docs/global_examples.yaml are verified. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
 
 ## Verify our claims yourself
 
