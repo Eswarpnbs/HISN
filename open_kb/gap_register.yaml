@@ -73,7 +73,8 @@
   evidence:
   - SG-SRF-6.4
   status: comparator_discovered_uae_telecom_side_none
-  note: UAE bank-side compensation exists (CBUAE Consumer Protection Regulation, Circular 8/2020, Art. 6, cl. 6.2.2.4; verified on the CBUAE Rulebook, 30 Oct 2026). No telecom-side loss allocation found in the verified corpus.
+  note: UAE bank-side compensation exists (CBUAE Consumer Protection Regulation, Circular 8/2020, Art. 6, cl. 6.2.2.4; verified on the CBUAE Rulebook, 30 Oct 2026). No telecom-side loss allocation found in the verified corpus. Second search pass (7 Nov 2026) - the Central Bank was reported on 16 July 2026 to require banks to refund verified SMS-OTP scam losses; still no telecom-side allocation found.
+  second_pass_source: https://www.emirates247.com/business/uae-banks-must-refund-fraud-losses-linked-to-sms-otp-scams-says-central-bank/3699
 - id: G7
   title: Essential-sender recognition does not cross borders
   type: coordination

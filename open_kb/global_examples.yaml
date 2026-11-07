@@ -28,7 +28,8 @@ examples:
   url: https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1896266
   status: verified_official
   checked: '2026-10-30'
-  to_verify: regulation number 2026/1881 on EUR-Lex (minor)
+  url3: https://eur-lex.europa.eu/eli/reg/2026/1881/oj
+  number_verified: 'Regulation (EU) 2026/1881 listed on EUR-Lex (checked 2026-11-07)'
   url2: https://www.consilium.europa.eu/en/press/press-releases/2026/07/23/fighting-child-sexual-abuse-online-interim-measure-protecting-children-now-reinstated/
   design_principles: Processing only where strictly necessary and proportionate; text-scanning technologies may detect patterns but must not be able to deduce the substance of communications (European Parliament position).
 - gap: G4
