@@ -1,4 +1,5 @@
 """HISN demo: same scenario, ungoverned vs governed twin. Synthetic data only."""
+import sys
 from pathlib import Path
 from app.core.audit import AuditLog
 from app.core.gateway import PolicyGateway
@@ -6,13 +7,17 @@ from app.core.firewall import SmsFirewall
 from app.core.coordinator import Coordinator
 
 SC, REG, PACK = "scenarios/crisis_exploit.yaml", "kb/rulepacks/uae/senders.yaml", "kb/rulepacks/uae/rules.yaml"
+# --enforce-levels: hold filter changes that break the declared ITU-T Y.3173 level unless they carry a valid
+# signed approval record (app/core/approval.py). Off by default; headline numbers are computed with it off.
+ENFORCE = "--enforce-levels" in sys.argv
 
 def run(governed):
     p = Path(f"runs/{'governed' if governed else 'ungoverned'}.jsonl")
     if p.exists(): p.unlink()
     audit = AuditLog(p)
     gw = PolicyGateway(PACK, audit) if governed else None
-    return Coordinator(SC, audit, SmsFirewall(REG, audit, governed=governed), gw).run(), audit
+    return Coordinator(SC, audit, SmsFirewall(REG, audit, governed=governed), gw, enforce_levels=ENFORCE and governed,
+                       approval_mode="signed" if ENFORCE else "name").run(), audit
 
 def fmt(o):
     s = o["action"]

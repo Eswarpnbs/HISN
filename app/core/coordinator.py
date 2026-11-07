@@ -1,5 +1,6 @@
 import yaml
 from .events import Event, EventBus
+from . import approval as _approval
 
 REFERRALS = {"REFER_TO_TDRA": "tdra"}  # proposed action -> receiving institution
 
@@ -14,7 +15,8 @@ class Coordinator:
     event only to the agents in its audience, and routes escalations. gateway=None = ungoverned twin.
     tiers=None keeps the single sla_minutes limit; with tiers, each hold gets its clinical tier's limit."""
     def __init__(self, scenario_path, audit, firewall, gateway=None, step=5, agents=None, extra_events=None,
-                 sla_minutes=None, tiers=None, route_referrals=False, enforce_levels=False):
+                 sla_minutes=None, tiers=None, route_referrals=False, enforce_levels=False,
+                 approval_mode="name"):
         self.meta, events = load_scenario(scenario_path)
         self.bus = EventBus(audit); self.bus.load(list(events) + list(extra_events or []))
         self.audit, self.firewall, self.gateway, self.step = audit, firewall, gateway, step
@@ -22,6 +24,9 @@ class Coordinator:
         self.outcomes, self.agent_outputs = [], []
         self.sla, self.tiers, self.holds = sla_minutes, tiers, []
         self.route_referrals, self.enforce_levels = route_referrals, enforce_levels
+        # approval_mode "name": any approved_by string counts (original behaviour, used for headline figures).
+        # approval_mode "signed": only a valid signed approval record counts (app/core/approval.py).
+        self.approval_mode = approval_mode
 
     def run(self, until=None):
         end, now = (until if until is not None else self.meta.get("duration", 70)), 0
@@ -38,7 +43,16 @@ class Coordinator:
         elif e.kind == "filter_policy":
             # ITU-T Y.3173: the filter's demand mapping is declared "Human" (kb/automation_levels.yaml),
             # so every threshold change needs a named approval. Monitored always; enforced only if enforce_levels.
-            approved = e.payload.get("approved_by")
+            if self.approval_mode == "signed":
+                ok, why = _approval.verify(e.payload.get("approval"), e.id, "filter_policy",
+                                           e.payload.get("threshold"), now)
+                self.audit.write({"kind": "approval_check", "event_id": e.id, "mode": "signed",
+                                  "result": "APPROVED" if ok else "REJECTED", "reason": why,
+                                  "approver_id": (e.payload.get("approval") or {}).get("approver_id")
+                                  if isinstance(e.payload.get("approval"), dict) else None})
+                approved = ok
+            else:
+                approved = e.payload.get("approved_by")
             if not approved:
                 self.audit.write({"kind": "automation_level_violation", "event_id": e.id, "component": "filter_ai",
                                   "dimension": "demand_mapping", "declared": "Human (named approval)",

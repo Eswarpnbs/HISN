@@ -1,0 +1,19 @@
+# Fictional approver roster for the prototype (no real people). Roles say which changes each may approve.
+# Signatures use demo keys (see app/core/approval.py); a deployment would use the authority's own identity service.
+approvers:
+  - id: tdra-duty-officer
+    name: "TDRA duty officer (fictional)"
+    role: regulator_duty_officer
+    may_approve: [filter_policy]
+  - id: operator-change-board
+    name: "Operator change advisory board (fictional)"
+    role: operator_change_board
+    may_approve: [filter_policy]
+  - id: health-duty-officer
+    name: "Health Authority duty officer (fictional)"
+    role: health_duty_officer
+    may_approve: [message_release]
+  - id: vendor-ops
+    name: "Filter vendor operations (fictional)"
+    role: vendor
+    may_approve: []

@@ -1,10 +1,10 @@
-# Headline numbers (selftest, 2026-11-07 18:12)
+# Headline numbers (selftest, 2026-11-07 23:21)
 
 Every figure in the report traces to a row here.
 
 | figure | value | produced by |
 |---|---|---|
-| Unit tests | 76 passed, 2 warnings | `python -m pytest -q` |
+| Unit tests | 94 passed | `python -m pytest -q` |
 | Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
 | Hash-pinned records / verbatim clauses | 16 / 38 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
 | Legitimate essential messages silently lost | ungoverned 10 -> HISN 0 | `twin run (all injects, 15-min limit)` |
@@ -28,14 +28,3 @@ Every figure in the report traces to a row here.
 | Wind tunnel: emergency offshore as regulation | DO NOT ISSUE AS DRAFTED | unresolved conflicts 1 | `app/windtunnel (deterministic)` |
 | Wind tunnel: emergency offshore as health_authority_resolution | READY FOR NAMED HUMAN REVIEW | unresolved conflicts 0 | `app/windtunnel (deterministic)` |
 | Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7', 'I9'] broken [] | interop 58->42% | `app/windtunnel (deterministic)` |
-
-## Added 1 Nov 2026 (pre-registered before running)
-
-| Result | Value | Source |
-|---|---|---|
-| Agents held-out v4 (accuracy / harmful) | 6/9 (35-88%) / 1 | docs/eval_log_v3.md |
-| Agents paraphrase robustness (accuracy / harmful) | 6/8 (41-93%) / 0 | docs/eval_log_v3.md |
-| Retrieval HISN clause-first (pre-registered v3) | Recall@5 10/12 (55-95%), Recall@1 9/12, MRR 0.77 | docs/retrieval_eval.md |
-| Retrieval HISN hybrid (pre-registered v3) | Recall@5 11/12 (65-99%), Recall@1 8/12, MRR 0.74 | docs/retrieval_eval.md |
-| Retrieval decision (rule committed before running) | ADOPT hybrid as default (v3 Recall@5 11 >= 10) | docs/retrieval_decision_rule.md |
-| Run-to-run stability of agent decisions | 44/44 identical | docs/stability.md |

@@ -1,0 +1,5 @@
+# Authoritative Arabic text of key UAE clauses. Filled only from the official Arabic PDFs with
+# `python kb/arabic.py extract ...`; never typed from memory or machine-translated.
+# Priority list (fill in this order): UAE-FL-2-2019 Art. 13, 16, 24; UAE-TELECOM-2003 Art. 14; UAE-PDPL-2021 Art. 2;
+# UAE-CYBERCRIME-2021 Art. 40.
+clauses: []
