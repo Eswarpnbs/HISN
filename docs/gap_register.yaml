@@ -7,7 +7,7 @@
   - UAE-TDRA-UEC-11.1
   - UAE-CYBER-ART40
   absence_note: The term "fraud" returns zero hits in UEC Policy v1.1 (searched 2026-10-26).
-  comparator: Singapore Shared Responsibility Framework (telco duties to block unauthorised sender IDs / malicious URLs) - verify text
+  comparator: Australia Scams Prevention Framework Act 2025 and Industry Code C661:2022 (telco scam-prevention duties) - verified, see global_examples.yaml
   second_pass:
   - TDRA Consumer Protection Regulation
   - Federal Decree-Law 34/2021 (cybercrime)
@@ -20,7 +20,7 @@
   - UAE-TDRA-UEC-13
   - UAE-PDPL-ART2-2
   - UAE-TDRA-UEC-8.8
-  comparator: Singapore SMS Sender ID Registry; India TRAI DLT - verify text
+  comparator: Australia SMS Sender ID Register (labels unregistered senders, does not block); Singapore SSIR; India TRAI DLT - see global_examples.yaml and cross_border.md
   second_pass:
   - TDRA sender ID registration rules
   - digital government messaging standards
@@ -34,7 +34,7 @@
   - UAE-FL-2-2019-ART16
   - UAE-PDPL-ART2-2
   absence_note: Article 16 lists five exceptions; telecom fraud filtering is not among them.
-  comparator: GDPR / ePrivacy treatment of spam filtering - verify text
+  comparator: EU Regulation 2021/1232, a purpose-limited temporary legal basis for voluntary scanning; its subject (child sexual abuse material) differs, so only the legal-basis design transfers - verified, see global_examples.yaml
   second_pass:
   - Executive Regulation of Federal Law 2/2019
   - DoH/DHA data standards
@@ -46,7 +46,7 @@
   - UAE-FL-2-2019-ART13
   - UAE-FL-2-2019-ART24
   - UAE-CABRES-32-2020-ART6-3
-  comparator: GDPR vital-interests derogation - verify text
+  comparator: GDPR Article 49(1)(f) and EDPB Guidelines 2/2018 (vital-interests derogation is for specific occasional cases, not systematic transfers) - verified, see global_examples.yaml
   second_pass:
   - Ministerial Decision 51/2021 on cases of storing health data outside the State
   status: instrument_verified
@@ -60,7 +60,7 @@
   - runs/governed_agents.jsonl
   related:
   - G2
-  comparator: Singapore SRF allocation of telco duties - verify text
+  comparator: Australia Industry Code C661:2022 (partial - filter outcomes are reported to the ACMA, but no authority for approving filter changes before deployment was found); EU none found - verified, see global_examples.yaml
   second_pass:
   - TDRA Consumer Protection Regulation
   - Federal Decree-Law 3/2003 (Telecom Law) TDRA powers

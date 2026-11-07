@@ -64,7 +64,7 @@ python build_dashboard.py && open docs/dashboard.html   # offline single-file da
 Source PDFs are **not redistributed**. `kb/manifest.csv` lists each official URL and SHA-256; download into `kb/sources/` and run `python kb/verify.py`. Only short verbatim clauses are stored, with article references. English versions of UAE laws are translations; the Arabic text is authoritative.
 
 ## Limitations (honest)
-Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Gap comparators in docs/gap_register.yaml marked "verify text" have not been checked against the source; only the entries in docs/global_examples.yaml are verified. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
+Synthetic battery and scoring weights: results show direction, not real-world magnitudes. Global examples in docs/global_examples.yaml were checked against official sources (30 Oct - 1 Nov 2026); two items are flagged for recheck (the EU regulation number and a regulator report cited for the Australian scam-SMS code). The comparator on candidate provisions in the gap engine is marked "verify text" and is illustrative only. The 0.25 retrieval threshold does not transfer across embedding models and is not claimed as a safeguard. The SMS firewall accepts SMPP `submit_sm`-shaped messages; it is not a production SMSC.
 
 ## Verify our claims yourself
 
