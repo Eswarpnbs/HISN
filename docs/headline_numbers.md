@@ -1,4 +1,4 @@
-# Headline numbers (selftest, 2026-11-01 23:35)
+# Headline numbers (selftest, 2026-11-07 18:12)
 
 Every figure in the report traces to a row here.
 
@@ -33,8 +33,8 @@ Every figure in the report traces to a row here.
 
 | Result | Value | Source |
 |---|---|---|
-| Agents held-out v4 | not yet run | docs/eval_log_v3.md |
-| Agents paraphrase robustness | not yet run | docs/eval_log_v3.md |
+| Agents held-out v4 (accuracy / harmful) | 6/9 (35-88%) / 1 | docs/eval_log_v3.md |
+| Agents paraphrase robustness (accuracy / harmful) | 6/8 (41-93%) / 0 | docs/eval_log_v3.md |
 | Retrieval HISN clause-first (pre-registered v3) | Recall@5 10/12 (55-95%), Recall@1 9/12, MRR 0.77 | docs/retrieval_eval.md |
 | Retrieval HISN hybrid (pre-registered v3) | Recall@5 11/12 (65-99%), Recall@1 8/12, MRR 0.74 | docs/retrieval_eval.md |
 | Retrieval decision (rule committed before running) | ADOPT hybrid as default (v3 Recall@5 11 >= 10) | docs/retrieval_decision_rule.md |
