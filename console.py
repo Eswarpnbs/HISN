@@ -32,12 +32,18 @@ def run_once(governed, extra, enforce):
                       approval_mode="signed" if enforce else "name").run()
     return {o["event_id"]: o for o in out}, a.verify(), p
 
+LABEL = {"ALLOW": "delivered", "QUARANTINE": "held, not lost",
+         "BLOCK_OVERRIDABLE": "blocked as suspected scam (overridable)"}
+
 def chain(o, payload):
     act = o.get("action", "")
     stage = {"citizen": payload.get("source_addr") or payload.get("destination_country") or "", "filter": "",
              "institution": "", "law": "", "standards": ""}
     if o.get("kind") == "sms_submit":
-        stage["filter"] = act + (" (silent drop)" if o.get("silent_drop") else "")
+        stage["filter"] = LABEL.get(act, act)
+        if o.get("silent_drop"):
+            stage["filter"] += (" - essential message silently lost, nobody told" if o.get("essential_sender")
+                                else " (look-alike sender, dropped)")
         if o.get("escalate_to"): stage["institution"] = "held for " + o["escalate_to"]
     elif o.get("kind") == "filter_policy":
         stage["filter"] = f"threshold change -> {act}"
@@ -77,7 +83,7 @@ def run(body):
         pl = payloads.get(eid, {})
         rows.append({"t": g[eid]["t"], "id": eid, "kind": g[eid]["kind"], "injected": eid in {e.id for e in extra},
                      "ungoverned": chain(u[eid], pl), "hisn": chain(g[eid], pl), "receipt": receipt_for(g[eid], pl, hashes)})
-    lost = lambda d: sum(1 for o in d.values() if o.get("silent_drop"))
+    lost = lambda d: sum(1 for o in d.values() if o.get("silent_drop") and o.get("essential_sender"))
     approvals = [json.loads(l) for l in gp.read_text(encoding="utf-8").splitlines() if '"approval_check"' in l]
     return {"rows": rows, "verified": [gv, uv], "silently_lost": {"ungoverned": lost(u), "hisn": lost(g)},
             "approvals": approvals, "enforce": enforce}
@@ -92,7 +98,7 @@ main{padding:16px 20px;max-width:1300px}fieldset{border:1px solid var(--line);bo
 label{margin-right:12px;white-space:nowrap}input[type=text]{padding:5px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--fg)}
 button{background:var(--acc);color:#fff;border:0;border-radius:6px;padding:8px 16px;font-weight:600;cursor:pointer}
 .kpi{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}.kpi div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px}
-.kpi b{font-size:20px;display:block}table{width:100%;border-collapse:collapse;background:var(--card);font-size:12.5px}
+.kpi b{font-size:20px;display:block}.kpi small{font-size:13px;display:block;font-weight:600}table{width:100%;border-collapse:collapse;background:var(--card);font-size:12.5px}
 th,td{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}th{position:sticky;top:0;background:var(--card)}
 .inj{background:rgba(11,94,122,.08)}.bad{color:var(--bad);font-weight:600}.ok{color:var(--ok);font-weight:600}
 .rc{font-size:12px;color:var(--mut);margin-top:4px}.ar{direction:rtl;text-align:right;font-family:'Noto Naskh Arabic',serif}
@@ -110,11 +116,11 @@ th,td{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-a
 const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 fetch('/api/injects').then(r=>r.json()).then(l=>{document.getElementById('inj').innerHTML=l.map(n=>`<label><input type=checkbox value="${n}"> ${n}</label>`).join('')});
 function cell(s){const c=['filter','institution','law','standards'].map(k=>s[k]).filter(Boolean).join(' · ');
- const cls=/silent drop|ALLOW \\(no policy|APPLIED/.test(c)&&!/HELD/.test(c)?'bad':/QUARANTINE|BLOCK_PROHIBITED|held/i.test(c)?'ok':'';return `<span class="${cls}">${esc(c)}</span>`}
+ const cls=/silently lost|ALLOW \\(no policy|APPLIED/.test(c)&&!/HELD/.test(c)?'bad':/delivered|held|BLOCK_PROHIBITED/i.test(c)?'ok':'';return `<span class="${cls}">${esc(c)}</span>`}
 async function go(){const inj=[...document.querySelectorAll('#inj input:checked')].map(i=>i.value);
  const body={injects:inj,enforce:document.getElementById('enf').checked,custom:{sender:document.getElementById('snd').value,text:document.getElementById('txt').value,authenticated:document.getElementById('auth').checked}};
  const d=await (await fetch('/api/run',{method:'POST',body:JSON.stringify(body)})).json();
- document.getElementById('kpi').innerHTML=`<div>Essential messages silently lost<b><span class="bad">${d.silently_lost.ungoverned}</span> &rarr; <span class="ok">${d.silently_lost.hisn}</span></b></div><div>Audit chains verified<b>${d.verified.join(' / ')}</b></div><div>Y.3173 enforcement<b>${d.enforce?'on (signed)':'off'}</b></div>`+(d.approvals.length?`<div>Approval checks<b>${d.approvals.map(a=>esc(a.result+': '+a.reason)).join('<br>')}</b></div>`:'');
+ document.getElementById('kpi').innerHTML=`<div>Essential messages silently lost<b><span class="bad">${d.silently_lost.ungoverned}</span> &rarr; <span class="ok">${d.silently_lost.hisn}</span></b></div><div>Audit chains verified<b>${d.verified.join(' / ')}</b></div><div>Y.3173 enforcement<b>${d.enforce?'on (signed)':'off'}</b></div>`+(d.approvals.length?`<div>Approval checks<small>${d.approvals.map(a=>esc(a.event_id+' '+a.result+': '+a.reason)).join('<br>')}</small></div>`:'');
  document.getElementById('tb').innerHTML='<tr><th>t</th><th>event</th><th>sender / data</th><th>Ungoverned</th><th>HISN</th></tr>'+d.rows.map(r=>`<tr class="${r.injected?'inj':''}"><td>${r.t}</td><td>${esc(r.id)}<br><small>${esc(r.kind)}</small></td><td>${esc(r.hisn.citizen)}</td><td>${cell(r.ungoverned)}</td><td>${cell(r.hisn)}${r.receipt?`<div class="rc">${esc(r.receipt.en)}</div><div class="rc ar" lang="ar">${esc(r.receipt.ar)}</div>`:''}</td></tr>`).join('')}
 </script></body></html>"""
 
