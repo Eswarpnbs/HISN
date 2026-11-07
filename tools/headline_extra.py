@@ -10,10 +10,14 @@ def wilson(k, n, z=1.96):
 
 ev = Path("docs/eval_log_v3.md").read_text(encoding="utf-8") if Path("docs/eval_log_v3.md").exists() else ""
 L = ["", "## Added 1 Nov 2026 (pre-registered before running)", "", "| Result | Value | Source |", "|---|---|---|"]
-for label, name in (("heldout_v4", "Agents held-out v4"), ("paraphrase", "Agents paraphrase robustness")):
+for label, name in (("heldout_v4", "Agents held-out v4"), ("paraphrase", "Agents paraphrase robustness"),
+                    ("heldout_v5", "Agents held-out v5 (after gate 6; pre-registered 7 Nov)")):
     m = re.findall(rf"\|\s*[\d-]+ [\d:]+\s*\|\s*qwen2\.5:14b\s*\|\s*{label}\s*\|\s*(\d+)/(\d+)\s*\|\s*(\d+)\s*\|", ev)
     if m:
-        k, n, h = map(int, m[-1]); L.append(f"| {name} (accuracy / harmful) | {k}/{n} ({wilson(k, n)}) / {h} | docs/eval_log_v3.md |")
+        # A held-out set counts once: its FIRST scored run. Later runs (after system changes) are shown as post-hoc.
+        k, n, h = map(int, m[0]); L.append(f"| {name} (accuracy / harmful) | {k}/{n} ({wilson(k, n)}) / {h} | docs/eval_log_v3.md (first scored run) |")
+        if len(m) > 1 and m[-1] != m[0]:
+            k, n, h = map(int, m[-1]); L.append(f"| {name}, latest re-run (post-hoc, not held-out) | {k}/{n} ({wilson(k, n)}) / {h} | docs/eval_log_v3.md (latest run) |")
     else:
         L.append(f"| {name} | not yet run | docs/eval_log_v3.md |")
 rt = Path("docs/retrieval_eval.md").read_text(encoding="utf-8") if Path("docs/retrieval_eval.md").exists() else ""

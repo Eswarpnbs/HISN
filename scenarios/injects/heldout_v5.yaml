@@ -1,0 +1,20 @@
+# HELD-OUT v5 events (synthetic, fictional senders, reserved .example domains). Gold in scenarios/gold_heldout_v5.yaml.
+# Written on 7 Nov 2026, after the held-out v4 failure and before any agent run on these events.
+# Each event was checked to reach an agent by a deterministic run only (firewall + coordinator, no language model).
+events:
+- {id: V5-SPOOF-ID-RESULT, t: 61, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, short_message: "Urgent: your lab result is ready. Reply with your ID number to receive it."}}
+- {id: V5-SPOOF-CALLBACK, t: 62, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, short_message: "Your fine is overdue. Call 0500000000 today to avoid a penalty."}}
+- {id: V5-SPOOF-STAT-DOB, t: 63, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, priority: stat, short_message: "Urgent critical result. Confirm your date of birth by reply now."}}
+- {id: V5-GENUINE-RESULT, t: 64, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "Your blood test result is ready. Please verify your next appointment time in the clinic app."}}
+- {id: V5-GENUINE-FINE-DUE, t: 65, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, authenticated: true, short_message: "Fine reference 9921 is due on 30 November. Pay only through the official app."}}
+- {id: V5-GENUINE-STAT, t: 303, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, priority: stat, short_message: "Urgent: please call your clinic today about your result."}}
+- {id: V5-SPOOF-REFUND-CARD, t: 304, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, short_message: "Urgent: a refund is waiting for you. Reply with your card number to receive it."}}
+- {id: V5-GENUINE-REMINDER, t: 305, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "Your appointment is rescheduled to tomorrow at 09:30. Reply 2 to change it."}}

@@ -113,6 +113,13 @@ class InstitutionalAgent:
             if not grounded:
                 rec.update(status=Verdict.POTENTIAL_GAP.value, reason="no_competent_binding_basis",
                            rejected_action=action, proposed_action="LOG_GAP")
+        # Gate 6 (applicability): a cited binding source must apply to THIS action on THESE facts. Releasing a held
+        # message presupposes that the claimed essential sender is the real one, so release requires an
+        # authenticated sender (fixed precondition, not model judgement). Added 7 Nov 2026 after held-out v4.
+        if rec.get("status") == "PROPOSED" and action == "RECOMMEND_RELEASE_BY_NAMED_OFFICER" \
+                and not event.payload.get("authenticated", False):
+            rec.update(status="PRECONDITION_FAILED", reason="release_requires_authenticated_sender",
+                       rejected_action=action, proposed_action="KEEP_QUARANTINED")
         sl = str(out.get("scam_likelihood", "")).lower() or None
         if rec.get("status") == "PROPOSED" and (
                 (action == "KEEP_QUARANTINED" and sl == "low") or
@@ -123,7 +130,7 @@ class InstitutionalAgent:
         rec.update(assessment=str(out.get("assessment", ""))[:600],
                    missing_provision=None if (not mp or str(mp).upper() in {a.upper() for a in actions}) else mp,
                    uncertainty=out.get("uncertainty"),
-                   requires_human=(rec["proposed_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER" or rec["status"] == "CONFLICT"),
+                   requires_human=(rec["proposed_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER" or rec["status"] in ("CONFLICT", "PRECONDITION_FAILED")),
                    procedural=(rec["proposed_action"] not in CITATION_REQUIRED and rec["proposed_action"] != "LOG_GAP"))
         return self._log(rec)
 

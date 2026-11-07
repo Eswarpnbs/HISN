@@ -7,6 +7,8 @@ from app.agents.institution import InstitutionalAgent
 
 SC, REG, PACK = "scenarios/crisis_exploit.yaml", "kb/rulepacks/uae/senders.yaml", "kb/rulepacks/uae/rules.yaml"
 EV = Event(id="X", t=50, kind="escalation", audience=("health_authority",), payload={"source_addr": "HOSPITAL-A"})
+EV_AUTH = Event(id="Y", t=50, kind="escalation", audience=("health_authority",),
+                payload={"source_addr": "HOSPITAL-A", "authenticated": True})
 
 class StubRetriever:
     def __init__(self, sim=0.6): self.sim = sim
@@ -39,8 +41,17 @@ def test_action_outside_mandate_is_rejected(tmp_path):
 def test_valid_proposal_requires_named_human(tmp_path):
     ag, a = agent(tmp_path, StubLLM({"proposed_action": "RECOMMEND_RELEASE_BY_NAMED_OFFICER",
                                      "cited_ids": ["UAE-FL-2-2019-ART16"], "assessment": "ok"}))
-    r = ag.handle(EV, {}, 50)
+    r = ag.handle(EV_AUTH, {}, 50)
     assert r["status"] == "PROPOSED" and r["requires_human"] is True and a.verify()
+
+def test_release_of_unauthenticated_sender_fails_precondition(tmp_path):
+    # Gate 6: a binding source must apply to the action; release presupposes the real sender.
+    ag, a = agent(tmp_path, StubLLM({"proposed_action": "RECOMMEND_RELEASE_BY_NAMED_OFFICER",
+                                     "cited_ids": ["UAE-FL-2-2019-ART16"], "assessment": "no link, looks fine"}))
+    r = ag.handle(EV, {}, 50)
+    assert r["status"] == "PRECONDITION_FAILED" and r["reason"] == "release_requires_authenticated_sender"
+    assert r["proposed_action"] == "KEEP_QUARANTINED" and r["rejected_action"] == "RECOMMEND_RELEASE_BY_NAMED_OFFICER"
+    assert r["requires_human"] is True and a.verify()
 
 def test_escalation_reaches_health_authority_only_when_governed(tmp_path):
     def run(governed):
