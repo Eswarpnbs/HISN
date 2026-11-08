@@ -65,7 +65,10 @@ for gold, label in [("scenarios/gold_heldout_v2.yaml", "heldout_v2"), ("scenario
                     ("scenarios/gold_heldout_v4.yaml", "heldout_v4"), ("scenarios/gold_paraphrase.yaml", "paraphrase"),
                     ("scenarios/gold_heldout_v5.yaml", "heldout_v5"), ("scenarios/gold_heldout_v6.yaml", "heldout_v6"),
                     ("scenarios/gold_heldout_v7.yaml", "heldout_v7"),
-                    ("scenarios/gold_heldout_v8.yaml", "heldout_v8")]:
+                    ("scenarios/gold_heldout_v8.yaml", "heldout_v8"),
+                    ("scenarios/gold_heldout_real.yaml", "heldout_real")]:
+    if not Path(gold).exists():
+        report(f"Pre-registration {label}", True, "set not built yet"); continue
     g, s = first_commit(gold), first_scored(label)
     if g is None: report(f"Pre-registration {label}", False, "gold file not committed"); continue
     report(f"Pre-registration {label}: gold committed before first scored result", s is None or g < s,

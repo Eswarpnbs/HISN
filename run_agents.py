@@ -14,7 +14,7 @@ from app.agents.institution import InstitutionalAgent
 SC, REG, PACK = "scenarios/crisis_exploit.yaml", "kb/rulepacks/uae/senders.yaml", "kb/rulepacks/uae/rules.yaml"
 ap = argparse.ArgumentParser()
 ap.add_argument("--model", default=os.environ.get("HISN_LLM", "qwen2.5:7b"))
-ap.add_argument("--inject", nargs="*", default=available())
+ap.add_argument("--inject", nargs="*", default=available() + (["real/heldout_real"] if Path("scenarios/injects/real/heldout_real.yaml").exists() else []))
 ap.add_argument("--votes", type=int, default=1, help="majority vote over N model answers (1 = single answer, as before)")
 args = ap.parse_args()
 
@@ -71,7 +71,9 @@ with log.open("a", encoding="utf-8") as f:
                          (["scenarios/gold_heldout_v5.yaml"], "heldout_v5"),
                          (["scenarios/gold_heldout_v6.yaml"], "heldout_v6"),
                          (["scenarios/gold_heldout_v7.yaml"], "heldout_v7"),
-                         (["scenarios/gold_heldout_v8.yaml"], "heldout_v8")]:
+                         (["scenarios/gold_heldout_v8.yaml"], "heldout_v8"),
+                         (["scenarios/gold_heldout_real.yaml"], "heldout_real")]:
         cor, n, harm, cons, cau = evaluate(paths, label)
+        if n == 0: continue   # set not included in this run (e.g. --inject real/heldout_real): log nothing for it
         f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model}{f' vote{args.votes}' if args.votes > 1 else ''} | {label} | {cor}/{n} | {harm} | {cons} | {cau} |\n")
 print("\nlogged to docs/eval_log_v3.md")

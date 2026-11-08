@@ -20,7 +20,8 @@ SETS = [(["scenarios/gold.yaml", "scenarios/gold_dev_b.yaml"], "dev"), (["scenar
         (["scenarios/gold_paraphrase.yaml"], "paraphrase"), (["scenarios/gold_heldout_v5.yaml"], "heldout_v5"),
         (["scenarios/gold_heldout_v6.yaml"], "heldout_v6"),
         (["scenarios/gold_heldout_v7.yaml"], "heldout_v7"),
-        (["scenarios/gold_heldout_v8.yaml"], "heldout_v8")]
+        (["scenarios/gold_heldout_v8.yaml"], "heldout_v8"),
+        (["scenarios/gold_heldout_real.yaml"], "heldout_real")]
 
 def main():
     if not LOG.exists(): sys.exit("runs/governed_agents.jsonl not found: run python run_agents.py first")
