@@ -1,0 +1,20 @@
+# HELD-OUT v6 events (synthetic, fictional senders, reserved numbers). Gold in scenarios/gold_heldout_v6.yaml.
+# Written on 8 Nov 2026, after the v5 run and before the identity rule (prompt rule 6) and the new records were run.
+# Each event was checked to reach an agent by a deterministic run only (firewall + coordinator, no language model).
+events:
+- {id: V6-SPOOF-GOV-PAYAPP, t: 66, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, short_message: "Urgent: settle your fine today in the new payment app. Reply YES to get the link."}}
+- {id: V6-SPOOF-GOV-ID, t: 67, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-ID, route: local, short_message: "Urgent: your ID card will be suspended. Reply with your ID number to keep it active."}}
+- {id: V6-SPOOF-HOSP-CARD, t: 68, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, short_message: "Urgent: your insurance claim needs your card number to complete."}}
+- {id: V6-SPOOF-TOLL-CALL, t: 69, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-TOLL, route: local, short_message: "Unpaid toll. Call 0500000001 now to avoid a further fine."}}
+- {id: V6-GENUINE-POST, t: 70, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-POST, route: local, authenticated: true, short_message: "Your parcel could not be delivered. Please verify a new delivery time in the official app."}}
+- {id: V6-GENUINE-TOLL, t: 306, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-TOLL, route: local, authenticated: true, short_message: "Your toll balance is low. Please pay only through the official app."}}
+- {id: V6-GENUINE-PREP, t: 307, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "Urgent: please do not eat after midnight before tomorrow's procedure."}}
+- {id: V6-GENUINE-RESCHED, t: 308, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "Your scan is rescheduled to Monday at 10:00. No reply needed."}}

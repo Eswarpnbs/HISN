@@ -8,8 +8,10 @@ from server.knowledge.kb import KnowledgeBase
 from server.knowledge.ingest import ingest_file, ingest_framework_definitions, ingest_usecase_docs, embed_texts
 
 ROOT = pathlib.Path(__file__).resolve().parent
-COUNTRY = {"UAE": "United Arab Emirates", "IN": "India", "SG": "Singapore", "SA": "Saudi Arabia"}
-CATEGORY = {"UAE": "UAE_Health_Telecom_Policies", "IN": "India_Health_Telecom_Policies", "SG": "Singapore_Health_Telecom_Policies", "SA": "Saudi_Arabia_Historical"}
+COUNTRY = {"UAE": "United Arab Emirates", "IN": "India", "SG": "Singapore", "SA": "Saudi Arabia",
+           "AU": "Australia", "EU": "European Union"}
+CATEGORY = {"UAE": "UAE_Health_Telecom_Policies", "IN": "India_Health_Telecom_Policies", "SG": "Singapore_Health_Telecom_Policies", "SA": "Saudi_Arabia_Historical",
+            "AU": "Global_Examples", "EU": "Global_Examples"}
 pre = lambda rid: rid.split("-")[0]
 
 def main():

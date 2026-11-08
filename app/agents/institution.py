@@ -63,7 +63,8 @@ Rules:
 3. Your assessment must be consistent with your proposed_action. Rate scam_likelihood honestly from the FACTS (sender verification, route, URLs, firewall score and threshold).
 4. Decisive actions (RECOMMEND_RELEASE_BY_NAMED_OFFICER, KEEP_QUARANTINED, UPHOLD_BLOCK, DIRECT_OPERATOR, ASSIGN_OVERRIDE_AUTHORITY, ORDER_OPERATOR_WHITELIST) REQUIRE at least one EVIDENCE id in cited_ids, and at least one cited source must be binding (FEDERAL_LAW or REGULATOR_POLICY) and within your competence. SOFT_LAW can inform but never alone justify a decisive action.
 5. You only PROPOSE. Allowed proposed_action values for this event: {actions}.
-6. Reply with JSON only:
+6. Identity: a sender ID shown in a message is a claim, not proof. Only "authenticated": true in the FACTS proves who sent it. Exemptions or protections for government or health senders apply only to proven senders. A message that claims a protected sender without authentication must never be released; if it asks for personal data, an ID or card number, a payment, a reply or a call-back, keep it quarantined.
+7. Reply with JSON only:
 {{"assessment": "...", "proposed_action": "...", "cited_ids": ["..."], "missing_provision": null, "uncertainty": "low|medium|high", "scam_likelihood": "low|medium|high"}}"""
 
 class InstitutionalAgent:

@@ -34,6 +34,22 @@ DOCS = [
    "https://sso.agc.gov.sg/Act/PDPA2012", "official"),
   ("SA-CST-SPAM-2018", "Regulation for Reduction of SPAM (2018, draft English translation; Arabic prevails)", "Communications, Space and Technology Commission (CST)", "SA", "regulation", "REGULATOR_POLICY",
    "https://cst.gov.sa/ar/RulesandSystems/RegulatoryDocuments/ReductionofSPAM/Documents/IT%20008%20E%20-%20Regulation_For_The_Reduction_of_SPAM_Eng.pdf", "historical_draft_translation_possibly_superseded"),
+  # Added 8 Nov 2026: UAE instruments on telemarketing, electronic signatures and health-data security,
+  # and the global examples cited in the gap register, so each comparator is itself a hash-pinned record.
+  ("UAE-CABRES-56-2024", "Cabinet Resolution No. (56) of 2024 Concerning the Telemarketing Regulations", "UAE Cabinet", "AE", "cabinet_resolution", "CABINET_RESOLUTION",
+   "https://uaelegislation.gov.ae/en/legislations/2519/download", "official"),
+  ("UAE-FDL-46-2021", "Federal Decree-Law No. (46) of 2021 on Electronic Transactions and Trust Services", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/en/legislations/1539/download", "official"),
+  ("UAE-DOH-ADHICS-2019", "Abu Dhabi Healthcare Information and Cyber Security Standard (ADHICS)", "Department of Health Abu Dhabi", "AE-AZ", "standard", "REGULATOR_POLICY",
+   "https://www.doh.gov.ae/-/media/032019_ADHICS.ashx", "official"),
+  ("AU-SPF-ACT-2025", "Scams Prevention Framework Act 2025 (No. 15, 2025)", "Parliament of Australia (Federal Register of Legislation)", "AU", "national_law", "NATIONAL_LAW",
+   "https://www.legislation.gov.au/C2025A00015/asmade/downloads", "official_global_example"),
+  ("AU-C661-2022", "Industry Code C661:2022 Reducing Scam Calls and Scam SMs (registered by the ACMA)", "Communications Alliance / ACMA", "AU", "industry_code", "REGULATOR_POLICY",
+   "https://commsalliance.com.au/Documents/all/codes/c661", "official_global_example"),
+  ("EU-REG-2021-1232", "Regulation (EU) 2021/1232 on a temporary derogation from Directive 2002/58/EC (online child sexual abuse)", "European Parliament and Council", "EU", "regulation", "NATIONAL_LAW",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32021R1232", "official_global_example"),
+  ("EU-EDPB-GL-2-2018", "EDPB Guidelines 2/2018 on derogations of Article 49 under Regulation 2016/679", "European Data Protection Board", "EU", "guidelines", "REGULATOR_POLICY",
+   "https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-22018-derogations-article-49-under-regulation_en", "official_global_example"),
 ]
 
 src = pathlib.Path("kb/sources")

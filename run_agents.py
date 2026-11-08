@@ -67,7 +67,8 @@ with log.open("a", encoding="utf-8") as f:
                          (["scenarios/gold_heldout_v3.yaml"], "heldout_v3"),
                          (["scenarios/gold_heldout_v4.yaml"], "heldout_v4"),
                          (["scenarios/gold_paraphrase.yaml"], "paraphrase"),
-                         (["scenarios/gold_heldout_v5.yaml"], "heldout_v5")]:
+                         (["scenarios/gold_heldout_v5.yaml"], "heldout_v5"),
+                         (["scenarios/gold_heldout_v6.yaml"], "heldout_v6")]:
         cor, n, harm, cons, cau = evaluate(paths, label)
         f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model} | {label} | {cor}/{n} | {harm} | {cons} | {cau} |\n")
 print("\nlogged to docs/eval_log_v3.md")
