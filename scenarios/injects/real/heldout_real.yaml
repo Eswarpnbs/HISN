@@ -1,0 +1,2871 @@
+# HELD-OUT 'real': message texts from the SMS Phishing Dataset (Mishra and Soni 2022, CC BY 4.0), input SHA-256 649844f1c62a6b27e145eaf17a65f7010c56c390e11a794ea8329993a05ba71e.
+# Built by tools/make_heldout_real.py with SEED 20261109; selection rules in that file were committed before it first ran. Texts are real; sender IDs and authentication are simulated.
+events:
+- id: R-001-S
+  t: 100
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Uw ING bankieren app bevat verouderde plugins. klik hieronder om de beveiligde versie te downloaden http://mijn.ing-mobiel.com/update.apk
+- id: R-002-L
+  t: 100
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: I was wondering if it would be okay for you to call uncle john and let him know that things are not the same in nigeria as they r here. That &lt;#&gt; dollars is 2years sent and that you know its a strain but i plan to pay back every dime he gives. Every dime so for me to expect anything from you is not practical. Something like that.
+    authenticated: true
+- id: R-003-L
+  t: 101
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: As usual..iam fine, happy &amp; doing well..:) Howz u?
+    authenticated: true
+- id: R-004-S
+  t: 101
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.10,00,000 prize GUARANTEED. Call 8536074310. Claim Code K52. Valid 12hrs only.
+- id: R-005-S
+  t: 102
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: We have received a request from you for purchasing Paytm Payments Bank FASTag. Total amount to be paid is Rs 250/- (Tag Cost Rs. 100 Security Deposit Rs. 0, Threshold -Rs. 150). In case of any queries, please contact us at https://m.paytm.me/fastag-help
+- id: R-006-S
+  t: 102
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! Your Mobile No. was awarded £2000 Bonus Caller Prize on 5/9/03 This is our final try to contact U! Call from Landline 09064019788 BOX42WR29C, 150PPM
+- id: R-007-S
+  t: 103
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 6200992462
+- id: R-008-L
+  t: 103
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: She's fine. Sends her greetings
+    authenticated: true
+- id: R-009-L
+  t: 104
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Ok�that�s fine
+    authenticated: true
+- id: R-010-S
+  t: 104
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Message Important information for O2 user. Today is your lucky day! 2 find out why log onto http://www.urawinner.com there is a fantastic surprise awaiting you
+- id: R-011-L
+  t: 105
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: S'fine. Anytime. All the best with it.
+    authenticated: true
+- id: R-012-L
+  t: 105
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: The monthly amount is not that terrible and you will not pay anything till 6months after finishing school.
+    authenticated: true
+- id: R-013-S
+  t: 106
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Urgent! Please call 09061743811 from landline. Your ABTA complimentary 4* Tenerife Holiday or £5000 cash await collection SAE T&Cs Box 326 CW25WX 150ppm
+- id: R-014-L
+  t: 106
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Sorry, I'll call later..have an urgent meeting..
+    authenticated: true
+- id: R-015-L
+  t: 107
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: I had been hoping i would not have to send you this message. My rent is due and i dont have enough for it. My reserves are completely gone. Its a loan i need and was hoping you could her. The balance is &lt;#&gt; . Is there a way i could get that from you, till mid march when i hope to pay back.
+    authenticated: true
+- id: R-016-S
+  t: 107
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 6200992462 Your Paytm A/C will block within 24hr Thank you.
+- id: R-017-S
+  t: 108
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Urgent! Please call 09061213237 from landline. £5000 cash or a luxury 4* Canary Islands Holiday await collection. T&Cs SAE PO Box 177. M227XY. 150ppm. 16+
+- id: R-018-S
+  t: 108
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 8536074310
+- id: R-019-S
+  t: 109
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: 'Reminder: You have not downloaded the content you have already paid for. Goto http://doit. mymoby. tv/ to collect your content.'
+- id: R-020-S
+  t: 109
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790321 from land line. Claim 3030. Valid 12hrs only 150ppm
+- id: R-021-L
+  t: 110
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Yeah, that's fine! It's £6 to get in, is that ok?
+    authenticated: true
+- id: R-022-S
+  t: 110
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! Your mobile was awarded a £1,500 Bonus Caller Prize on 27/6/03. Our final attempt 2 contact U! Call 08714714011
+- id: R-023-L
+  t: 111
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Fine. Do you remember me.
+    authenticated: true
+- id: R-024-S
+  t: 111
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 6200992462 from land line. Claim 3030. Valid 12hrs only
+- id: R-025-S
+  t: 112
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded a <UKP>2000 prize GUARANTEED. Call 09061790125 from landline. Claim 3030. Valid 12hrs only 150ppm
+- id: R-026-L
+  t: 112
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Good Morning plz call me sir..I have an urgent work..
+    authenticated: true
+- id: R-027-L
+  t: 113
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: We'll you pay over like &lt;#&gt; yrs so its not too difficult
+    authenticated: true
+- id: R-028-L
+  t: 113
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Well, i'm gonna finish my bath now. Have a good...fine night.
+    authenticated: true
+- id: R-029-L
+  t: 114
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Also sir, i sent you an email about how to log into the usc payment portal. I.ll send you another message that should explain how things are back home. Have a great weekend.
+    authenticated: true
+- id: R-030-L
+  t: 114
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: It's fine, imma get a drink or somethin. Want me to come find you?
+    authenticated: true
+- id: R-031-L
+  t: 115
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Sorry, have urgent work..
+    authenticated: true
+- id: R-032-S
+  t: 115
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! This is the 2nd attempt to contact U!U have WON £1000CALL 09071512432 b4 300603t&csBCM4235WC1N3XX.callcost150ppmmobilesvary. max£7. 50
+- id: R-033-S
+  t: 116
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: HMRC GOVUK:0ur records show that your tax refund of �398.90 can now be claime. Please continue via:https://ukhmrc-tax-refund.com�to claim your refund.
+- id: R-034-S
+  t: 116
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Apple has detected an unauthorized sign-in to your Cloud account. If this message goes without reply, Apple will be forced to suspend your account. Please verify this iCloud device by sending your correct Apple ID and password via text message.
+- id: R-035-S
+  t: 117
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 6299257179 from land line. Claim 3030. Valid 12hrs only
+- id: R-036-L
+  t: 117
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Gud mrng dear have a nice day..hope u r fine�
+    authenticated: true
+- id: R-037-S
+  t: 118
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Urgent! call 09066350750 from your landline. Your complimentary 4* Ibiza Holiday or 10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+
+- id: R-038-S
+  t: 118
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Dear Voucher Holder, 2 claim this weeks offer, at your PC go to http://www.e-tlp.co.uk/expressoffer Ts&Cs app
+- id: R-039-S
+  t: 119
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 8927307655 from land line. Claim 3030. Valid 12hrs only
+- id: R-040-S
+  t: 119
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Congrats, Your Product Order at Paytm Mall Pvt. Ltd. Is accepted. Message Your Name Company and account number to PH 7679046492
+- id: R-041-L
+  t: 120
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Oh fine, I'll be by tonight
+    authenticated: true
+- id: R-042-L
+  t: 120
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: You have registered Sinco as Payee. Log in at icicibank.com and enter URN &lt;#&gt; to confirm. Beware of frauds. Do NOT share or disclose URN to anyone.
+    authenticated: true
+- id: R-043-S
+  t: 121
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: important information 4 orange user . today is your lucky day!2find out why log onto http://www.urawinner.com THERE'S A FANTASTIC SURPRISE AWAITING YOU!
+- id: R-044-S
+  t: 121
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Nationwide has noticed your debit card was recently used on 29-11-2016 15:04:43, at APPLE ONLINE STORE for 1267.00 GBP If not you please urgently call fraud prevention on 03303800231 or Int +443303800231. Do not reply by SMS http://www.Nationwide.co.uk
+- id: R-045-S
+  t: 122
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Dear PAYTM customer your paytm KYC has been suspended, paytm office PH 6291628992 Account will block within 24 hour. Thank you. PAYTM TEAM
+- id: R-046-L
+  t: 122
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Good Morning plz call me sir..I want to talk to u�something urgent�
+    authenticated: true
+- id: R-047-S
+  t: 123
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.8,00,000 prize GUARANTEED. Call 6200992462. Claim Code N32. Valid 12hrs only.
+- id: R-048-L
+  t: 123
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: i see. When we finish we have loads of loans to pay
+    authenticated: true
+- id: R-049-L
+  t: 124
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Also north carolina and texas atm, you would just go to the gre site and pay for the test results to be sent.
+    authenticated: true
+- id: R-050-L
+  t: 124
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Lil fever:) now fine:)
+    authenticated: true
+- id: R-051-S
+  t: 125
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001295 from land line. Claim A21. Valid 12hrs only
+- id: R-052-S
+  t: 125
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: BankOfAmerica Alert 137943. Please follow http://bit.do/cgjK-and re-activate
+- id: R-053-S
+  t: 126
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: A link to your picture has been sent. You can also use http://alto18.co.uk/wave/wave.asp?o=44345
+- id: R-054-L
+  t: 126
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: As usual..iam fine, happy &amp; doing well..:) what about u?
+    authenticated: true
+- id: R-055-S
+  t: 127
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT We are trying to contact you Last weekends draw shows u have won a £1000 prize GUARANTEED Call 09064017295 Claim code K52 Valid 12hrs 150p pm
+- id: R-056-L
+  t: 127
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: The message sent is askin for &lt;#&gt; dollars. Shoul i pay &lt;#&gt; or &lt;#&gt; ?
+    authenticated: true
+- id: R-057-L
+  t: 128
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: I'm fine. Hope you are also
+    authenticated: true
+- id: R-058-L
+  t: 128
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Ya they are well and fine., BBD(pooja) full pimples..even she become quite black..and ur rite here its too cold, wearing sweatter..
+    authenticated: true
+- id: R-059-L
+  t: 129
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Hiya , have u been paying money into my account? If so, thanks. Got a pleasant surprise when i checked my balance -u c, i don't get statements 4 that acc
+    authenticated: true
+- id: R-060-S
+  t: 129
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/reward. Ts&Cs apply.
+- id: R-061-S
+  t: 130
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: In the Open Lucky Draw Contest And You Are The Winner 0f Tata Saafari (12,60000). Contact-997330199 -2294871295. More Information https://bit.ly/32ZwcQ5
+- id: R-062-S
+  t: 130
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 7044518857 Your Paytm A/C will block within 24hr Thank you.
+- id: R-063-L
+  t: 131
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Pls send me a comprehensive mail about who i'm paying, when and how much.
+    authenticated: true
+- id: R-064-L
+  t: 131
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Good afternoon sexy buns! How goes the job search ? I wake and you are my first thought as always, my love. I wish your fine and happy and know I adore you!
+    authenticated: true
+- id: R-065-L
+  t: 132
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Ok Chinese food on its way. When I get fat you're paying for my lipo.
+    authenticated: true
+- id: R-066-S
+  t: 132
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09058094454 from land line. Claim 3030. Valid 12hrs only
+- id: R-067-L
+  t: 133
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Hello which the site to download songs its urgent pls
+    authenticated: true
+- id: R-068-S
+  t: 133
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 8536074310 from land line. Claim 3030. Valid 12hrs only
+- id: R-069-L
+  t: 134
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: I'm fine. Hope you are good. Do take care.
+    authenticated: true
+- id: R-070-L
+  t: 134
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Keep my payasam there if rinu brings
+    authenticated: true
+- id: R-071-S
+  t: 135
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: IMPORTANT INFORMATION 4 ORANGE USER 0796XXXXXX. TODAY IS UR LUCKY DAY!2 FIND OUT WHY LOG ONTO http://www.urawinner.com THERE'S A FANTASTIC PRIZEAWAITING YOU!
+- id: R-072-L
+  t: 135
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: I cant pick the phone right now. Message if urgent..
+    authenticated: true
+- id: R-073-S
+  t: 136
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 7679046492
+- id: R-074-L
+  t: 136
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: How much r ü willing to pay?
+    authenticated: true
+- id: R-075-L
+  t: 137
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Me fine..absolutly fine
+    authenticated: true
+- id: R-076-S
+  t: 137
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 8536074310 immediately to verify
+- id: R-077-S
+  t: 138
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Urgent Message for CIBC Account Holder, Kindly Login to our secure server to check your information�http://2cibc.mobileupdate.gram pianostudio.com/cibcfullz/Internet Support
+- id: R-078-L
+  t: 138
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: That means you got an A in epi, she.s fine. She.s here now.
+    authenticated: true
+- id: R-079-S
+  t: 139
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 8536074310 Your Paytm A/C will block within 24hr Thank you.
+- id: R-080-L
+  t: 139
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: She.s fine. I have had difficulties with her phone. It works with mine. Can you pls send her another friend request.
+    authenticated: true
+- id: R-081-S
+  t: 140
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001808 from land line. Claim M95. Valid12hrs only
+- id: R-082-S
+  t: 140
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Urgent! call 09066350760 from your landline. Your complimentary 4* Ibiza Holiday or 20,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+
+- id: R-083-L
+  t: 141
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Wa, ur openin sentence very formal... Anyway, i'm fine too, juz tt i'm eatin too much n puttin on weight...Haha... So anythin special happened?
+    authenticated: true
+- id: R-084-L
+  t: 141
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: I wnt to buy a BMW car urgently..its vry urgent.but hv a shortage of 2 Lacs.there is no source to arrange this amount.
+    authenticated: true
+- id: R-085-S
+  t: 142
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: GOV.UK ALERT CORONAVIRUS It has come to our attention that you have been out of the house more than once. Due to this irresponsible behaviour, we are issuing you a formal warning and �250 fine. If this continues, the fine could increase to a maximum of �5000 and/or an arrest. Payment will be taken automatically out of your account. Call 0800345 9999 for any enquiries or to appeal.
+- id: R-086-S
+  t: 142
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 7908807538 Your Paytm A/C will block within 24hr Thank you.
+- id: R-087-S
+  t: 143
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call 09058094507 from land line. Claim 3030. Valid 12hrs only
+- id: R-088-L
+  t: 143
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: IM FINE BABES AINT BEEN UP 2 MUCH THO! SAW SCARY MOVIE YEST ITS QUITE FUNNY! WANT 2MRW AFTERNOON? AT TOWN OR MALL OR SUMTHIN?xx
+    authenticated: true
+- id: R-089-S
+  t: 144
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: We have recalculated your vehicle tax. You are owed �48.84 due to over payment.Click the secure link http:// 103.208.86.96 to claim your refund.
+- id: R-090-L
+  t: 144
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Remember all those whom i hurt during days of satanic imposter in me.need to pay a price,so be it.may destiny keep me going and as u said pray that i get the mind to get over the same.
+    authenticated: true
+- id: R-091-L
+  t: 145
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: We are both fine. Thanks
+    authenticated: true
+- id: R-092-S
+  t: 145
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Your Bank of America online account has been suspended, log in to restore http://itdo/bankofamerica-session-user
+- id: R-093-L
+  t: 146
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: No we sell it all so we'll have tons if coins. Then sell our coins to someone thru paypal. Voila! Money back in life pockets:)
+    authenticated: true
+- id: R-094-S
+  t: 146
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: 'Courtsy reminder: payment on your NAB Visa Card is now overdue. Please refer to your statement for payment options or call 1300 2569 28 Thank you'
+- id: R-095-S
+  t: 147
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.5,00,000 prize GUARANTEED. Call 7044518857. Claim Code FLIP82. Valid 12hrs only.
+- id: R-096-L
+  t: 147
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: I cant pick the phone right now. Pls send a message if anything urgent..
+    authenticated: true
+- id: R-097-S
+  t: 148
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.7,00,000 prize GUARANTEED. Call 7679046492. Claim Code L92 Valid 12hrs only.
+- id: R-098-S
+  t: 148
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you won a £1000 prize GUARANTEED. Call 09064012160. Claim Code K52. Valid 12hrs only. 150ppm
+- id: R-099-S
+  t: 149
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Urgent! Please call 09061213237 from a landline. £5000 cash or a 4* holiday await collection. T &Cs SAE PO Box 177 M227XY. 16+
+- id: R-100-S
+  t: 149
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: 'URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: 81010 T&C www.dbuk.net LCCLTD POBOX 4403LDNW1A7RW18'
+- id: R-101-S
+  t: 150
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Nationwide has noticed your debit card was recently used on 23-05-2012 11:04:43, at APPLE ONLINE STORE for 1920.00 GBP If not you please urgently call fraud prevention on 03303800233 or Intl +443303800231. Do not reply by SMS http://www.nationwide.co.uk/
+- id: R-102-S
+  t: 150
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: 'Englishvocabulary ululate: to mourn loudly and shrilly AD: Unlimited FREE calls to any mobile try out today http://bit.ly/unlmtdfreecall share wid frnd'
+- id: R-103-S
+  t: 151
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 7044518857 from land line. Claim 3030. Valid 12hrs only
+- id: R-104-S
+  t: 151
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-7908807538 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+- id: R-105-L
+  t: 152
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Hey you can pay. With salary de. Only &lt;#&gt; .
+    authenticated: true
+- id: R-106-L
+  t: 152
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Yeah work is fine, started last week, all the same stuff as before, dull but easy and guys are fun!
+    authenticated: true
+- id: R-107-S
+  t: 153
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call 09066362231 ASAP! BOX97N7QP, 150PPM
+- id: R-108-S
+  t: 153
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: We would like to inform you that you have been recorded as leaving your home on 3 occasions yesterday. A fine of �35 has been added to your gov.uk�account. For further information please visit�gov.uk/ coronavirus-penalty-payment racking. Protect the NHS. Save lives
+- id: R-109-S
+  t: 154
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.6,00,000 prize GUARANTEED. Call 7908807538. Claim Code FLIP52. Valid 12hrs only.
+- id: R-110-L
+  t: 154
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Good evening Sir, Al Salam Wahleykkum.sharing a happy news.By the grace of God, i got an offer from Tayseer,TISSCO and i joined.Hope you are fine.Inshah Allah,meet you sometime.Rakhesh,visitor from India.
+    authenticated: true
+- id: R-111-S
+  t: 155
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Your iPhone ID is due to expire today, Please tap https://is.gd/AppVerify to update and prevent loss of services and Apps.
+- id: R-112-S
+  t: 155
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Urgent Please call 09066612661 from landline. £5000 cash or a luxury 4* Canary Islands Holiday await collection. T&Cs SAE award. 20M12AQ. 150ppm. 16+ “
+- id: R-113-L
+  t: 156
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Sorry, I'll call later..urgent work..
+    authenticated: true
+- id: R-114-S
+  t: 156
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: BMO have noticed unusual activites on your online account. You are required to verify your account details.www.97bmo.tk
+- id: R-115-S
+  t: 157
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to 87121 18+6*£1.50
+- id: R-116-S
+  t: 157
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: A transaction of AUD 590.3 was made with your bank account on 08/02/17 11:17:37 if unauthorised follow this link http://gommbanklogin:netbank.com
+- id: R-117-S
+  t: 158
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/expressoffer Ts&Cs apply. To stop texts, txt STOP to 80062
+- id: R-118-S
+  t: 158
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Urgent Ur £500 guaranteed award is still unclaimed! Call 09066368327 NOW closingdate04/09/02 claimcode M39M51 £1.50pmmorefrommobile2Bremoved-MobyPOBox734LS27YF
+- id: R-119-S
+  t: 159
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Your mobile No 077xxx WON a £2,000 Bonus Caller Prize on 02/06/03! This is the 2nd attempt to reach YOU! Call 09066362206 ASAP! BOX97N7QP, 150ppm
+- id: R-120-L
+  t: 159
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: It shall be fine. I have avalarr now. Will hollalater
+    authenticated: true
+- id: R-121-S
+  t: 160
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: '(Alert) Your Rbc Royal Bank has been suspended. To unlock your account, click here: http://reac.mobi/@mobile'
+- id: R-122-L
+  t: 160
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: No i'm not. I can't give you everything you want and need. You actually could do better for yourself on yor own--you've got more money than i do. I can't get work, i can't get a man, i can't pay the rent, i can't even fill my gas tank. yes, i'm stressed and depressed. I didn't even call home for thanksgiving cuz i'll have to tell them i,m up to nothing.
+    authenticated: true
+- id: R-123-L
+  t: 161
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Hi, can i please get a &lt;#&gt; dollar loan from you. I.ll pay you back by mid february. Pls.
+    authenticated: true
+- id: R-124-S
+  t: 161
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 7908807538
+- id: R-125-L
+  t: 162
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Howz pain?hope u r fine..
+    authenticated: true
+- id: R-126-L
+  t: 162
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: No message..no responce..what happend? Is everything fine?
+    authenticated: true
+- id: R-127-S
+  t: 163
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: 'Urgent! Please call 09061743810 from landline. Your ABTA complimentary 4* Tenerife Holiday or #5000 cash await collection SAE T&Cs Box 326 CW25WX 150 ppm'
+- id: R-128-L
+  t: 163
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: I taught that Ranjith sir called me. So only i sms like that. Becaus hes verifying about project. Prabu told today so only pa dont mistake me..
+    authenticated: true
+- id: R-129-L
+  t: 164
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Sir, I have been late in paying rent for the past few months and had to pay a $ &lt;#&gt; charge. I felt it would be inconsiderate of me to nag about something you give at great cost to yourself and that's why i didnt speak up. I however am in a recession and wont be able to pay the charge this month hence my askin well ahead of month's end. Can you please help. Thanks
+    authenticated: true
+- id: R-130-L
+  t: 164
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: She's fine. Good to hear from you. How are you my dear? Happy new year oh.
+    authenticated: true
+- id: R-131-S
+  t: 165
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT. Important information for 02 user. Today is your lucky day! 2 find out why , log onto http://www.urawinner.com there is a fantastic surprise awaiting you !
+- id: R-132-L
+  t: 165
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: What you doing?how are you? Hope everything is fine..
+    authenticated: true
+- id: R-133-S
+  t: 166
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Urgent -call 09066649731from Landline. Your complimentary 4* Ibiza Holiday or £10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150ppm 18+
+- id: R-134-S
+  t: 166
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: 'URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: 81010 T&C www.dbuk.net'
+- id: R-135-S
+  t: 167
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT, IMPORTANT INFORMATION FOR O2 USER. TODAY IS YOUR LUCKY DAY! 2 FIND OUT WHY LOG ONTO HTTP://WWW.URAWINNER.COM THERE IS A FANTASTIC SURPRISE AWAITING FOR YOU
+- id: R-136-L
+  t: 167
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: YEH I AM DEF UP4 SOMETHING SAT,JUST GOT PAYED2DAY & I HAVBEEN GIVEN A£50 PAY RISE 4MY WORK & HAVEBEEN MADE PRESCHOOLCO-ORDINATOR 2I AM FEELINGOOD LUV
+    authenticated: true
+- id: R-137-S
+  t: 168
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Collect 100 points& get 14,500 Pokecoins for Pokemon Gol" by clicking this link now�http://goo.gle/xxxx
+- id: R-138-S
+  t: 168
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 7908807538 from land line. Claim 3030. Valid 12hrs only
+- id: R-139-S
+  t: 169
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 Bonus Caller Prize. Call 09058095201 from land line. Valid 12hrs only
+- id: R-140-S
+  t: 169
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050003091 from land line. Claim C52. Valid12hrs only
+- id: R-141-S
+  t: 170
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: (Help-Center Canada) You received a Transfer from The Government due to the CoronaVirus pandemic, Click:http://23.254.215.52 to fill out your Application.
+- id: R-142-L
+  t: 170
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: I wnt to buy a car urgently..
+    authenticated: true
+- id: R-143-L
+  t: 171
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: That's fine, have him give me a call if he knows what he wants or has any questions
+    authenticated: true
+- id: R-144-S
+  t: 171
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to 87121 18+6*£1.50(moreFrmMob. ShrAcomOrSglSuplt)10, LS1 3AJ
+- id: R-145-L
+  t: 172
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Getting tickets 4 walsall tue 6 th march. My mate is getting me them on sat. ill pay my treat. Want 2 go. Txt bak .Terry
+    authenticated: true
+- id: R-146-S
+  t: 172
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Welcome to Paytm payment bank your re verification done successful in your wallet get 1205 cashback click in link and login your paytm http://7e4d6417.ngrok.io/paytm
+- id: R-147-L
+  t: 173
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: How much she payed. Suganya.
+    authenticated: true
+- id: R-148-S
+  t: 173
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: 'URGENT: IRELAND GOV has issued a payment of 350 � to all residents as part of its promise to battle COVID 19. Tap here to apply: http://url.ie/17j80'
+- id: R-149-L
+  t: 174
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Thanks for your message. I really appreciate your sacrifice. I'm not sure of the process of direct pay but will find out on my way back from the test tomorrow. I'm in class now. Do have a wonderful day.
+    authenticated: true
+- id: R-150-S
+  t: 174
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! We are trying to contact U Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050000460 from land line. Claim J89. po box245c2150pm
+- id: R-151-S
+  t: 175
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09058094455 from land line. Claim 3030. Valid 12hrs only
+- id: R-152-L
+  t: 175
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: This weekend is fine (an excuse not to do too much decorating)
+    authenticated: true
+- id: R-153-L
+  t: 176
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: 'Awesome question with a cute answer: Someone asked a boy "how is ur life?" . . He smiled &amp; answered: . . "She is fine!" Gudnite'
+    authenticated: true
+- id: R-154-S
+  t: 176
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: It's urgent please Contact me for an UNCLAIMED BEQUEST PAYMENT as the Assigned BENEFICIARY VIA EMAIL infogfreeman@gmail.com Regards Gordon
+- id: R-155-L
+  t: 177
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: As per your request 'Maangalyam (Alaipayuthe)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune
+    authenticated: true
+- id: R-156-S
+  t: 177
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-8927307655 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+- id: R-157-L
+  t: 178
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Nope thats fine. I might have a nap tho!
+    authenticated: true
+- id: R-158-S
+  t: 178
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! Your mobile number *************** WON a £2000 Bonus Caller prize on 10/06/03! This is the 2nd attempt to reach you! Call 09066368753 ASAP! Box 97N7QP, 150ppm
+- id: R-159-L
+  t: 179
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: I might come to kerala for 2 days.so you can be prepared to take a leave once i finalise .dont plan any travel during my visit.need to finish urgent works.
+    authenticated: true
+- id: R-160-S
+  t: 179
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Urgent! Please call 0906346330. Your ABTA complimentary 4* Spanish Holiday or £10,000 cash await collection SAE T&Cs BOX 47 PO19 2EZ 150ppm 18+
+- id: R-161-S
+  t: 180
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you have won a £900 prize GUARANTEED. Call 09061701851. Claim code K61. Valid 12hours only
+- id: R-162-S
+  t: 180
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! This is the 2nd attempt to contact U!U have WON £1250 CALL 09071512433 b4 050703 T&CsBCM4235WC1N3XX. callcost 150ppm mobilesvary. max£7. 50
+- id: R-163-S
+  t: 181
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Urgent! Please call 09066612661 from your landline, your complimentary 4* Lux Costa Del Sol holiday or £1000 CASH await collection. ppm 150 SAE T&Cs James 28, EH74RR
+- id: R-164-S
+  t: 181
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Please CALL 08712402779 immediately as there is an urgent message waiting for you
+- id: R-165-L
+  t: 182
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: If I was I wasn't paying attention
+    authenticated: true
+- id: R-166-S
+  t: 182
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 7679046492 from land line. Claim 3030. Valid 12hrs only
+- id: R-167-S
+  t: 183
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: WIN URGENT! Your mobile number has been awarded with a £2000 prize GUARANTEED call 09061790121 from land line. claim 3030 valid 12hrs only 150ppm
+- id: R-168-L
+  t: 183
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Whats that coming over the hill..... Is it a monster! Hope you have a great day. Things r going fine here, busy though!
+    authenticated: true
+- id: R-169-L
+  t: 184
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Anything lor but toa payoh got place 2 walk meh...
+    authenticated: true
+- id: R-170-S
+  t: 184
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/rewa
+- id: R-171-S
+  t: 185
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: 'URGENT! Last weekend''s draw shows that you have won £1000 cash or a Spanish holiday! CALL NOW 09050000332 to claim. T&C: RSTM, SW7 3SS. 150ppm'
+- id: R-172-L
+  t: 185
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Was a nice day and, impressively, i was sensible, went home early and now feel fine. Or am i just boring?! When's yours, i can't remember.
+    authenticated: true
+- id: R-173-L
+  t: 186
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: You should know now. So how's anthony. Are you bringing money. I've school fees to pay and rent and stuff like that. Thats why i need your help. A friend in need....|
+    authenticated: true
+- id: R-174-L
+  t: 186
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Thank You for calling.Forgot to say Happy Onam to you Sirji.I am fine here and remembered you when i met an insurance person.Meet You in Qatar Insha Allah.Rakhesh, ex Tata AIG who joined TISSCO,Tayseer.
+    authenticated: true
+- id: R-175-L
+  t: 187
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: I just made some payments so dont have that much. Sorry. Would you want it fedex or the other way.
+    authenticated: true
+- id: R-176-L
+  t: 187
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: They are just making it easy to pay back. I have &lt;#&gt; yrs to say but i can pay back earlier. You get?
+    authenticated: true
+- id: R-177-S
+  t: 188
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: 'URGENT: UKGOV has issued a payment of 458 GBP to all residents as part of its promise to battle COVID 19. TAP here https:/uk-covid-19.webredirect.org/to apply'
+- id: R-178-S
+  t: 188
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: IMPORTANT INFORMATION 4 ORANGE USER 0796XXXXXX. TODAY IS UR LUCKY DAY!2 FIND OUT WHY LOG ONTO http://www.urawinner.com
+- id: R-179-L
+  t: 189
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Nice. Wait...should you be texting right now? I'm not gonna pay your ticket, ya know!
+    authenticated: true
+- id: R-180-S
+  t: 189
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Dear Voucher holder Have your next meal on us. Use the following link on your pc 2 enjoy a 2 4 1 dining experiencehttp://www.vouch4me.com/etlp/dining.asp
+- id: R-181-L
+  t: 190
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: "Fine if that\x92s the way u feel. That\x92s the way its gota b"
+    authenticated: true
+- id: R-182-S
+  t: 190
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: <Forwarded from 448712404000>Please CALL 08712404000 immediately as there is an urgent message waiting for you.
+- id: R-183-L
+  t: 191
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Ok..dats fine..
+    authenticated: true
+- id: R-184-S
+  t: 191
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 7679046492 immediately to verify
+- id: R-185-S
+  t: 192
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Bloomberg -Message center +447797706009 Why wait? Apply for your future http://careers. bloomberg.com
+- id: R-186-S
+  t: 192
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: You are now unsubscribed all services. Get tons of sexy babes or hunks straight to your phone! go to http://gotbabes.co.uk. No subscriptions.
+- id: R-187-L
+  t: 193
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Went to pay rent. So i had to go to the bank to authorise the payment.
+    authenticated: true
+- id: R-188-L
+  t: 193
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Your board is working fine. The issue of overheating is also reslove. But still software inst is pending. I will come around 8'o clock.
+    authenticated: true
+- id: R-189-S
+  t: 194
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Urgent! call 09061749602 from Landline. Your complimentary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs BOX 528 HP20 1YF 150ppm 18+
+- id: R-190-S
+  t: 194
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: 'SMS. ac Blind Date 4U!: Rodds1 is 21/m from Aberdeen, United Kingdom. Check Him out http://img. sms. ac/W/icmb3cktz8r7!-4 no Blind Dates send HIDE'
+- id: R-191-S
+  t: 195
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Your SAM registration has been received! Click here to complete the process�http://rghst.xyz/NPHTmtb Reply STOP 2 opt out of future texts
+- id: R-192-L
+  t: 195
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Arms fine, how's Cardiff and uni?
+    authenticated: true
+- id: R-193-S
+  t: 196
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790121 from land line. Claim 3030. Valid 12hrs only 150ppm
+- id: R-194-S
+  t: 196
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Your Mobile No was awarded a £2,000 Bonus Caller Prize on 1/08/03! This is our 2nd attempt to contact YOU! Call 0871-4719-523 BOX95QU BT National Rate
+- id: R-195-S
+  t: 197
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW 09061702894
+- id: R-196-L
+  t: 197
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Sorry, I'll call later..I have some urgent work..
+    authenticated: true
+- id: R-197-S
+  t: 198
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 7908807538 immediately to verify
+- id: R-198-S
+  t: 198
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call 09066358361 from land line. Claim Y87. Valid 12hrs only
+- id: R-199-L
+  t: 199
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Ok lor. I ned 2 go toa payoh 4 a while 2 return smth u wan 2 send me there or wat?
+    authenticated: true
+- id: R-200-S
+  t: 199
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 7044518857 immediately to verify
+- id: R-201-S
+  t: 200
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Please CALL 08712402902 immediately as there is an urgent message waiting for you.
+- id: R-202-S
+  t: 200
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Your K.Y.C has been updated successfully, you will get 1205 cashback in your wallet, To get cashback click here Link http://8629a7f1.ngrok.io
+- id: R-203-S
+  t: 201
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 7679046492 Your Paytm A/C will block within 24hr Thank you.
+- id: R-204-L
+  t: 201
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Aldrine, rakhesh ex RTM here.pls call.urgent.
+    authenticated: true
+- id: R-205-L
+  t: 202
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Sorry, I'll call later�.message me if urgent�
+    authenticated: true
+- id: R-206-S
+  t: 202
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790126 from land line. Claim 3030. Valid 12hrs only 150ppm
+- id: R-207-L
+  t: 203
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Fine i miss you very much.
+    authenticated: true
+- id: R-208-S
+  t: 203
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Dear Voucher Holder, To claim this weeks offer, at your PC please go to http://www.wtlp.co.uk/text. Ts&Cs apply.
+- id: R-209-L
+  t: 204
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Sir, I am waiting for your call�I have an urgent meeting later on..
+    authenticated: true
+- id: R-210-S
+  t: 204
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.4,00,000 prize GUARANTEED. Call 8927307655. Claim Code LUCKY52. Valid 12hrs only.
+- id: R-211-S
+  t: 205
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: T-Mobile customer you may now claim your FREE CAMERA PHONE upgrade & a pay & go sim card for your loyalty. Call on 0845 021 3680.Offer ends 28thFeb.T&C's apply
+- id: R-212-S
+  t: 205
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 6299257179
+- id: R-213-L
+  t: 206
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: I'm home. Doc gave me pain meds says everything is fine.
+    authenticated: true
+- id: R-214-L
+  t: 206
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Yep then is fine 7.30 or 8.30 for ice age.
+    authenticated: true
+- id: R-215-S
+  t: 207
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 8927307655
+- id: R-216-L
+  t: 207
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Me fine..absolutly fine�.dont worry!!!
+    authenticated: true
+- id: R-217-S
+  t: 208
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Update Message to User,Log on to Verity your login and choose your Existing Questions and Answers correctly Click http://tdbankmobile.cleanbeautytalk.c om/tdmobile Internet support team.
+- id: R-218-S
+  t: 208
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW 09061702893. ACL03530150PM
+- id: R-219-L
+  t: 209
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: You have registered Shijo as Payee. Log in at icicibank.com and enter URN to confirm. Beware of frauds.
+    authenticated: true
+- id: R-220-L
+  t: 209
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: K..k..i'm also fine:)when will you complete the course? Then u can come here and search for job�
+    authenticated: true
+- id: R-221-L
+  t: 210
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Neither [in sterm voice] - i'm studying. All fine with me! Not sure the thing will be resolved, tho. Anyway. Have a fab hols
+    authenticated: true
+- id: R-222-L
+  t: 210
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Hello, my love! How goes that day ? I wish your well and fine babe and hope that you find some job prospects. I miss you, boytoy ... *a teasing kiss*
+    authenticated: true
+- id: R-223-L
+  t: 211
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: And that's fine, I got enough bud to last most of the night at least
+    authenticated: true
+- id: R-224-S
+  t: 211
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: 'URGENT!: Your Mobile No. was awarded a £2,000 Bonus Caller Prize on 02/09/03! This is our 2nd attempt to contact YOU! Call 0871-872-9755 BOX95QU'
+- id: R-225-S
+  t: 212
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Congratulations, Your entry into our contest last month made you a WINNER! Goto http://www.apple.com.text.won.com�to claim your prize! You have 24 hours to claim
+- id: R-226-S
+  t: 212
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Please CALL 08712402972 immediately as there is an urgent message waiting for you
+- id: R-227-L
+  t: 213
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Is there any movie theatre i can go to and watch unlimited movies and just pay once?
+    authenticated: true
+- id: R-228-S
+  t: 213
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: We regret to inform you that your NAB card is now locked. To unlock please update security details at http://www.nabmobile
+- id: R-229-S
+  t: 214
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you have won a £900 prize GUARANTEED. Call 09061701939. Claim code S89. Valid 12hrs only
+- id: R-230-S
+  t: 214
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.2,00,000 prize GUARANTEED. Call 6299257179. Claim Code FLIP02. Valid 12hrs only.
+- id: R-231-L
+  t: 215
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: I wnt to buy a BMW car urgently..its vry urgent.but hv a shortage of &lt;#&gt; Lacs.there is no source to arng dis amt. &lt;#&gt; lacs..thats my prob
+    authenticated: true
+- id: R-232-S
+  t: 215
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: 'Free Msg: Ringtone!From: http://tms. widelive.com/index. wml?id=1b6a5ecef91ff9*37819&first=true18:0430-JUL-05'
+- id: R-233-S
+  t: 216
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: URGENT! Your Mobile No 07808726822 was awarded a £2,000 Bonus Caller Prize on 02/09/03! This is our 2nd attempt to contact YOU! Call 0871-872-9758 BOX95QU
+- id: R-234-S
+  t: 216
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-6299257179 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+- id: R-235-S
+  t: 217
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: 09066362231 URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call 09066362231 ASAP!
+- id: R-236-S
+  t: 217
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Please CALL 08712402578 immediately as there is an urgent message waiting for you
+- id: R-237-S
+  t: 218
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: important information 4 orange user 0789xxxxxxx. today is your lucky day!2find out why log onto http://www.urawinner.com THERE'S A FANTASTIC SURPRISE AWAITING YOU!
+- id: R-238-S
+  t: 218
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Friendly reminder- don't forget to confirm your SAM update from the other day!�http://rghst.rocks/ GBs630y
+- id: R-239-S
+  t: 219
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Nationwide has noticed your debit card was recently used on 22-10-2016 15:04:43, at APPLE ONLINE STORE FOR 1500.00 GBP. If not you please urgently call fraud prevention on 03303800231 or intl +443303800231. Do not reply by sms http://ww.Nationwide.co.uk/
+- id: R-240-S
+  t: 219
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: complimentary 4 STAR Ibiza Holiday or £10,000 cash needs your URGENT collection. 09066364349 NOW from Landline not to lose out! Box434SK38WP150PPM18+
+- id: R-241-L
+  t: 220
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Dunno da next show aft 6 is 850. Toa payoh got 650.
+    authenticated: true
+- id: R-242-S
+  t: 220
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: 'Apple ID: [BUXCX7GBVwWCcOD Final Notification Your Apple 1D is due to expire today. Prevent this by confirming your Apple ID at�http://verifyapple.uk Apple Inc'
+- id: R-243-L
+  t: 221
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: So I pay first lar... Then when is da stock comin...
+    authenticated: true
+- id: R-244-S
+  t: 221
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: URGENT! Your mobile No *********** WON a £2,000 Bonus Caller Prize on 02/06/03! This is the 2nd attempt to reach YOU! Call 09066362220 ASAP! BOX97N7QP, 150ppm
+- id: R-245-L
+  t: 222
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Yes. that will be fine. Love you. Be safe.
+    authenticated: true
+- id: R-246-S
+  t: 222
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-6200992462 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+- id: R-247-S
+  t: 223
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: 'XXXMobileMovieClub: To use your credit, click the WAP link in the next txt message or click here>> http://wap. xxxmobilemovieclub.com?n=QJKGIGHJJGCBL'
+- id: R-248-L
+  t: 223
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: K.:)do it at evening da:)urgent:)
+    authenticated: true
+- id: R-249-L
+  t: 224
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Are you happy baby ? Are you alright ? Did you take that job ? I hope your fine. I send you a kiss to make you smile from across the sea ... *kiss* *kiss*
+    authenticated: true
+- id: R-250-S
+  t: 224
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: URGENT!! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins
+- id: R-251-L
+  t: 225
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: That's fine, I'll bitch at you about it later then
+    authenticated: true
+- id: R-252-L
+  t: 225
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: I cant pick the phone right now. Urgent?
+    authenticated: true
+- id: R-253-S
+  t: 226
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 6200992462 immediately to verify
+- id: R-254-L
+  t: 226
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: I cant keep talking to people if am not sure i can pay them if they agree to price. So pls tell me what you want to really buy and how much you are willing to pay
+    authenticated: true
+- id: R-255-L
+  t: 227
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Am also doing in cbe only. But have to pay.
+    authenticated: true
+- id: R-256-L
+  t: 227
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: This pay is &lt;DECIMAL&gt; lakhs:)
+    authenticated: true
+- id: R-257-S
+  t: 228
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Nationwide has noticed your debit card was recently used on 25-10-2015 13.04.43, at APPLE ONLINE STORE for 1976.00 GBP. If not you please urgently call fraud preventaion on 03303800232 or intl +443303800231. Do not reply by SMS http://www.Nationwide.co.uk/
+- id: R-258-S
+  t: 228
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Urgent Message for CIBC Account Holder, Kindly login to confirm your login information Login to our secure server to check your information http://cibc.mobileupdate.granpianostudio.com/cibcfullz/Internet Support
+- id: R-259-S
+  t: 229
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: Please Stay At Home. To encourage the notion of staying at home. All tax-paying citizens are entitled to �305.96 or more emergency refund. smsg.io/fCVbD
+- id: R-260-L
+  t: 229
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: K..k..i'm also fine:)when will you complete the course?
+    authenticated: true
+- id: R-261-L
+  t: 230
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Ok then i will come to ur home after half an hour..is that fine?
+    authenticated: true
+- id: R-262-S
+  t: 230
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-8536074310 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+- id: R-263-L
+  t: 231
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: As usual..iam fine, happy &amp; doing well..:) How r u?
+    authenticated: true
+- id: R-264-L
+  t: 231
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: I cant pick the phone right now. Anything urgent?
+    authenticated: true
+- id: R-265-S
+  t: 232
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Friendly reminder don't forget to confirm your SAM update from the other day!�http://rghst.us/Htcdlas Reply STOP to opt out
+- id: R-266-S
+  t: 232
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001809 from land line. Claim M95. Valid12hrs only
+- id: R-267-L
+  t: 233
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: R u saying i should re order the slippers cos i had to pay for returning it.
+    authenticated: true
+- id: R-268-L
+  t: 233
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: Hmm...my uncle just informed me that he's paying the school directly. So pls buy food.
+    authenticated: true
+- id: R-269-S
+  t: 234
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: you'hv completed a transaction for AUD 788.93 on 06/02/17 03-27-31 pm. Please follow the link if it is not done by you http://commbank.netban
+- id: R-270-L
+  t: 234
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: LOL that would be awesome payback.
+    authenticated: true
+- id: R-271-L
+  t: 235
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-FINES
+    route: local
+    short_message: Fine am simply sitting.
+    authenticated: true
+- id: R-272-S
+  t: 235
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-ID
+    route: local
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050003092 from land line. Claim C52. Valid 12hrs only
+- id: R-273-S
+  t: 236
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-TOLL
+    route: local
+    short_message: 'Urgent! call 09066612661 from landline. Your complementary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs PO Box 3 WA14 2PX 150ppm 18+ Sender: Hol Offer'
+- id: R-274-S
+  t: 236
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: GOV-POST
+    route: local
+    short_message: +449071512431 URGENT! This is the 2nd attempt to contact U!U have WON £1250 CALL 09071512433 b4 050703 T&CsBCM4235WC1N3XX. callcost 150ppm mobilesvary. max£7. 50
+- id: R-275-S
+  t: 237
+  act: 3
+  kind: sms_submit
+  audience:
+  - filter_ai
+  payload:
+    source_addr: HOSPITAL-A
+    route: local
+    short_message: Urgent Urgent! We have 800 FREE flights to Europe to give away, call B4 10th Sept & take a friend 4 FREE. Call now to claim on 09050000555. BA128NNFWFLY150ppm
