@@ -1,0 +1,21 @@
+# HELD-OUT v7 events (synthetic, fictional senders, reserved numbers). Gold in scenarios/gold_heldout_v7.yaml.
+# Written on 8 Nov 2026 together with the identity/content rule (prompt rule 6 a-c) and message_signals, and
+# committed BEFORE any agent run that includes them. New wording; no event reuses a v1-v6 message.
+# Each event was checked to reach an agent by a deterministic run only (firewall + coordinator, no language model).
+events:
+- {id: V7-GENUINE-ID-RENEW, t: 71, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-ID, route: local, authenticated: true, short_message: "Your ID card renewal is due. Please verify your details only in the official app."}}
+- {id: V7-GENUINE-FINE-DUE, t: 72, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, authenticated: true, short_message: "Fine reference 4471 is due on 15 December. Pay only through the official app or service centre."}}
+- {id: V7-SPOOF-POST-CARD, t: 73, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-POST, route: local, short_message: "Customs fee unpaid. Reply with your card number to release your parcel today."}}
+- {id: V7-SPOOF-ID-DOB, t: 74, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-ID, route: local, short_message: "Urgent: verify your identity. Reply with your date of birth to avoid suspension."}}
+- {id: V7-GENUINE-POST-FEE, t: 311, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-POST, route: local, authenticated: true, short_message: "Customs fee due for your parcel. Please pay in the official app to release it."}}
+- {id: V7-GENUINE-HOSP-CALL, t: 312, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "Urgent: your test result needs a follow-up call. Please call the clinic on its official number."}}
+- {id: V7-SPOOF-HOSP-INSURANCE, t: 313, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, short_message: "Urgent: confirm your insurance by replying with your ID number before your visit."}}
+- {id: V7-SPOOF-TOLL-LINK, t: 314, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-TOLL, route: local, short_message: "Unpaid toll. Reply PAY to receive the payment link."}}

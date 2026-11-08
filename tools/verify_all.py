@@ -63,7 +63,8 @@ def first_scored(label):
     return int(out[0]) if out else None
 for gold, label in [("scenarios/gold_heldout_v2.yaml", "heldout_v2"), ("scenarios/gold_heldout_v3.yaml", "heldout_v3"),
                     ("scenarios/gold_heldout_v4.yaml", "heldout_v4"), ("scenarios/gold_paraphrase.yaml", "paraphrase"),
-                    ("scenarios/gold_heldout_v5.yaml", "heldout_v5"), ("scenarios/gold_heldout_v6.yaml", "heldout_v6")]:
+                    ("scenarios/gold_heldout_v5.yaml", "heldout_v5"), ("scenarios/gold_heldout_v6.yaml", "heldout_v6"),
+                    ("scenarios/gold_heldout_v7.yaml", "heldout_v7")]:
     g, s = first_commit(gold), first_scored(label)
     if g is None: report(f"Pre-registration {label}", False, "gold file not committed"); continue
     report(f"Pre-registration {label}: gold committed before first scored result", s is None or g < s,

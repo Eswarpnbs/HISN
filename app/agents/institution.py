@@ -1,6 +1,7 @@
 """Institutional agents: the LLM proposes; deterministic code validates evidence, mandate and event fit."""
 import json
 from app.core.enums import Verdict
+from app.agents.signals import message_signals
 
 ROLE_SPECS = {
     "health_authority": {
@@ -63,7 +64,10 @@ Rules:
 3. Your assessment must be consistent with your proposed_action. Rate scam_likelihood honestly from the FACTS (sender verification, route, URLs, firewall score and threshold).
 4. Decisive actions (RECOMMEND_RELEASE_BY_NAMED_OFFICER, KEEP_QUARANTINED, UPHOLD_BLOCK, DIRECT_OPERATOR, ASSIGN_OVERRIDE_AUTHORITY, ORDER_OPERATOR_WHITELIST) REQUIRE at least one EVIDENCE id in cited_ids, and at least one cited source must be binding (FEDERAL_LAW or REGULATOR_POLICY) and within your competence. SOFT_LAW can inform but never alone justify a decisive action.
 5. You only PROPOSE. Allowed proposed_action values for this event: {actions}.
-6. Identity: a sender ID shown in a message is a claim, not proof. Only "authenticated": true in the FACTS proves who sent it. Exemptions or protections for government or health senders apply only to proven senders. A message that claims a protected sender without authentication must never be released; if it asks for personal data, an ID or card number, a payment, a reply or a call-back, keep it quarantined.
+6. Identity and content are two separate questions. WHO sent it: a sender ID shown in a message is a claim, not proof; only "authenticated": true proves it. WHAT it asks: read "message_signals" in the FACTS (fixed text checks). Decide in this order:
+ a) NOT authenticated and the sender claims a government or health entity: never release. KEEP_QUARANTINED if it asks for a secret, a reply, a payment or a call-back, or offers a link.
+ b) Authenticated, but it has an untrusted link, offers a link, or asks for a secret (ID, card, PIN, code, date of birth): KEEP_QUARANTINED; a proven sender does not ask for secrets by SMS.
+ c) Authenticated, no link, no request for a secret: this is normal public service even if it says urgent, pay, fine, fee, verify, renew or call, and even if it points to the official app, website, number or service centre. The firewall held it only for a keyword. Rate scam_likelihood low and RECOMMEND_RELEASE_BY_NAMED_OFFICER, citing binding evidence; if no binding evidence covers it, LOG_GAP. Do not keep it quarantined and do not ask for more information.
 7. Reply with JSON only:
 {{"assessment": "...", "proposed_action": "...", "cited_ids": ["..."], "missing_provision": null, "uncertainty": "low|medium|high", "scam_likelihood": "low|medium|high"}}"""
 
@@ -77,6 +81,8 @@ class InstitutionalAgent:
 
     def handle(self, event, outcome, now):
         facts = {"event_kind": event.kind, "payload": event.payload, "system_outcome": outcome}
+        if "short_message" in (event.payload or {}):
+            facts["message_signals"] = message_signals(event.payload)
         q = f"{QUERY_INTENTS.get((self.role, event.kind), QUERY_INTENTS.get(event.kind, event.kind))} | {json.dumps(event.payload, ensure_ascii=False)}"
         evidence = self.retriever(q)
         best = max((e["similarity"] for e in evidence), default=0.0)
