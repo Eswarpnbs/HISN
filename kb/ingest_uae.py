@@ -25,10 +25,13 @@ def main():
             if not pdf.exists() or not row["sha256"]:
                 print("SKIP", row["record_id"]); continue
             c = pre(row["record_id"])
-            extra = {"country": COUNTRY[c], "document_category": CATEGORY[c], "record_id": row["record_id"],
+            arabic = row["record_id"].endswith("-AR")
+            country = COUNTRY[c] + (" (Arabic)" if arabic else "")
+            category = "UAE_Arabic_Authoritative_Text" if arabic else CATEGORY[c]
+            extra = {"country": country, "document_category": category, "record_id": row["record_id"], "language": "ar" if arabic else "en",
                      "issuer": row["issuer"], "jurisdiction": row["jurisdiction"], "basis": row["basis"],
                      "verification": row["verification"], "sha256": row["sha256"]}
-            print(f"DOC   {row['record_id']:24s} {ingest_file(pdf, kb, extra_metadata=extra)} chunks ({COUNTRY[c]})")
+            print(f"DOC   {row['record_id']:24s} {ingest_file(pdf, kb, extra_metadata=extra)} chunks ({country})")
     clauses = yaml.safe_load(open(ROOT / "clauses" / "clauses.yaml", encoding="utf-8"))
     texts = [c["text"] for c in clauses]
     metas = [{"source_file": f"{c['record_id']}.pdf", "country": COUNTRY[pre(c["record_id"])],

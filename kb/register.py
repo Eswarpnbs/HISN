@@ -48,6 +48,28 @@ DOCS = [
    "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32021R1232", "official_global_example"),
   ("EU-EDPB-GL-2-2018", "EDPB Guidelines 2/2018 on derogations of Article 49 under Regulation 2016/679", "European Data Protection Board", "EU", "guidelines", "REGULATOR_POLICY",
    "https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-22018-derogations-article-49-under-regulation_en", "official_global_example"),
+  # Added 8 Nov 2026 (afternoon): more UAE instruments, and the authoritative ARABIC text of the UAE laws in the corpus.
+  # Arabic records end in -AR; they are ingested under "United Arab Emirates (Arabic)" so English retrieval is unchanged.
+  ("UAE-CONSUMER-15-2020", "Federal Law No. (15) of 2020 on Consumer Protection", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/en/legislations/1455/download", "official"),
+  ("UAE-DHA-AI-2022", "Policy for Use of Artificial Intelligence in Healthcare", "Dubai Health Authority", "AE-DU", "policy", "REGULATOR_POLICY",
+   "https://www.dha.gov.ae/uploads/082022/Artificial%20Intelligence%20Policy20228457.pdf", "official"),
+  ("UAE-FL-2-2019-AR", "القانون الاتحادي رقم (2) لسنة 2019 في شأن استخدام تقنية المعلومات والاتصالات في المجالات الصحية (النص العربي)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/ar/legislations/1209", "official_arabic_authoritative"),
+  ("UAE-CABRES-32-2020-AR", "قرار مجلس الوزراء رقم (32) لسنة 2020 (النص العربي)", "UAE Cabinet", "AE", "cabinet_resolution", "CABINET_RESOLUTION",
+   "https://uaelegislation.gov.ae/ar/legislations/1444", "official_arabic_authoritative"),
+  ("UAE-TELECOM-2003-AR", "المرسوم بقانون اتحادي رقم (3) لسنة 2003 بشأن تنظيم قطاع الاتصالات (النص العربي)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/ar/legislations/1132", "official_arabic_authoritative"),
+  ("UAE-CYBERCRIME-2021-AR", "المرسوم بقانون اتحادي رقم (34) لسنة 2021 في شأن مكافحة الشائعات والجرائم الإلكترونية (النص العربي)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/ar/legislations/1526", "official_arabic_authoritative"),
+  ("UAE-PDPL-2021-AR", "المرسوم بقانون اتحادي رقم (45) لسنة 2021 بشأن حماية البيانات الشخصية (النص العربي)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/ar/legislations/1972", "official_arabic_authoritative"),
+  ("UAE-CABRES-56-2024-AR", "قرار مجلس الوزراء رقم (56) لسنة 2024 في شأن ضوابط التسويق عبر الهاتف (النص العربي)", "UAE Cabinet", "AE", "cabinet_resolution", "CABINET_RESOLUTION",
+   "https://uaelegislation.gov.ae/ar/legislations/2519", "official_arabic_authoritative"),
+  ("UAE-FDL-46-2021-AR", "المرسوم بقانون اتحادي رقم (46) لسنة 2021 بشأن المعاملات الإلكترونية وخدمات الثقة (النص العربي)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/ar/legislations/1539", "official_arabic_authoritative"),
+  ("UAE-CONSUMER-15-2020-AR", "القانون الاتحادي رقم (15) لسنة 2020 في شأن حماية المستهلك (النص العربي)", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
+   "https://uaelegislation.gov.ae/ar/legislations/1455", "official_arabic_authoritative"),
 ]
 
 src = pathlib.Path("kb/sources")
