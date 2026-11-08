@@ -35,5 +35,8 @@ def test_itu_recommendation(monkeypatch):
     r = ident(monkeypatch, "INTERNATIONAL TELECOMMUNICATION UNION\nITU-T X.1242\n(02/2009)\nSERIES X ...")
     assert r["record_id"] == "ITU-T-X1242-2009" and r["basis"] == "SOFT_LAW" and "SMS" in r["title"]
 
+def test_a_cv_that_mentions_an_itu_recommendation_is_not_taken_for_it(monkeypatch):
+    assert ident(monkeypatch, "Curriculum vitae. Skills: network slicing, ITU-T Y.3061 study, Python") is None
+
 def test_unknown_document_is_not_guessed(monkeypatch):
     assert ident(monkeypatch, "Quarterly newsletter, nothing official here") is None

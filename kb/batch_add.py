@@ -101,7 +101,11 @@ def _kind(word):
 def identify(pdf):
     """Return a dict describing the PDF, or None if it cannot be identified from its own pages."""
     text = _page_text(pdf)
-    m = ITU_REC.search(text)
+    first = _page_text(pdf, pages=1)
+    # Only a real ITU-T Recommendation: its cover page carries the ITU name. A CV or paper that merely MENTIONS
+    # "ITU-T Y.3061" must not be taken for the standard itself.
+    itu_cover = re.search(r"INTERNATIONAL\s+TELECOMMUNICATION\s+UNION|TELECOMMUNICATION\s+STANDARDIZATION\s+SECTOR", first, re.I)
+    m = ITU_REC.search(first) if itu_cover else None
     if m:
         series, num = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
         rec = f"{series}.{num}"
@@ -162,11 +166,18 @@ def main():
     ap.add_argument("folder", nargs="+", help="folder(s) or PDF files to look at, e.g. ~/Downloads")
     ap.add_argument("--apply", action="store_true", help="copy into kb/sources and record them (default: dry run)")
     ap.add_argument("--skip", nargs="*", default=[], help="record ids NOT to add (e.g. off-topic laws)")
+    ap.add_argument("--since", help="only look at PDFs saved after this time today, HH:MM (keeps your other files out)")
     a = ap.parse_args()
     pdfs = []
     for f in a.folder:
         p = Path(f).expanduser()
         pdfs += sorted(p.glob("*.pdf")) if p.is_dir() else [p]
+    if a.since:
+        import datetime
+        h, mnt = map(int, a.since.split(":"))
+        cut = datetime.datetime.now().replace(hour=h, minute=mnt, second=0, microsecond=0).timestamp()
+        pdfs = [p for p in pdfs if p.stat().st_mtime >= cut]
+        print(f"looking only at {len(pdfs)} PDF(s) saved after {a.since} today")
     have = {hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.glob("*.pdf")}
     ids, new_rows, seen = known_ids(), [], set()
     for pdf in pdfs:
