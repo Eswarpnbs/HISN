@@ -51,7 +51,7 @@ def evaluate(paths, label):
         if decided and not ok:
             if o["proposed_action"] in CITATION_REQUIRED: harmful += 1
             else: conservative += 1
-        caught += o["status"] in ("INSUFFICIENT_EVIDENCE", "CONFLICT")
+        caught += o["status"] in ("INSUFFICIENT_EVIDENCE", "CONFLICT", "PRECONDITION_FAILED")  # a gate stopped the model's action
         tag = "PASS" if ok else ("HARM" if decided and o["proposed_action"] in CITATION_REQUIRED else "MISS")
         extra = f" (gate: {o['reason']})" if o.get("reason") else ""
         print(f"{tag}  {o['role']:<18} {o['event_id']:<18} got={o['proposed_action']:<34} want={g['acceptable']}{extra}")

@@ -47,13 +47,14 @@ Standard safeguards underneath: a policy node that blocks only on a verified bin
 | Harmful decisions on 33 gold items (qwen2.5:14b) | LLM alone 10 · fixed rules 10 · RAG without gates 9 · **HISN 1** |
 | Unsupported legal citations | LLM alone 41 · **HISN 0** |
 | Pre-registered held-out sets (gold committed before scoring, checked from git history) | 17/23 (about 54–87%) |
+| Held-out v5, after gate 6 (applicability) | model 4/8, **0 harmful**; all 4 genuine messages released, gate 6 stopped 2 spoof releases |
 | Agent decisions identical across repeated runs | 44/44 |
 | Sender authentication + verified lane (gap engine) | MIZAN 76.7 → **94.2**; a blunt fraud duty alone lowers it |
 | UAE–India decision agreement | 56% |
 | Knowledge base | 16 hash-pinned official records, 38 verbatim clauses, ITU reference ingest pipeline |
-| Tests | 94 passing |
+| Tests | 97 passing |
 
-Accuracy intervals overlap, so we claim a difference in harm and citation support, not in accuracy. Known failure, disclosed: on held-out v4 one spoofed message was recommended for release; a named human must still act on any release.
+Accuracy intervals overlap, so we claim a difference in harm and citation support, not in accuracy. Known failure, disclosed: on held-out v4 one spoofed message was recommended for release. Gate 6 now requires an authenticated sender for any release; held-out v5 (pre-registered) had 0 harmful decisions.
 
 ## Policy and standards gaps (docs/gap_register.yaml)
 

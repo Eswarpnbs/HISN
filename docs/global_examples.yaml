@@ -36,7 +36,7 @@ examples:
   jurisdiction: European Union
   instrument: GDPR Article 49(1)(f); EDPB Guidelines 2/2018
   summary: Transfers abroad may rely on vital interests when the person cannot consent, but derogations are a last resort for specific, occasional situations, not systematic or repetitive transfers.
-  url: https://www.edpb.europa.eu/sites/edpb/files/files/file1/edpb_guidelines_2_2018_derogations_en.pdf
+  url: https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-22018-derogations-article-49-under-regulation_en
   status: verified_official
   checked: '2026-10-30'
   note: Covers individual emergencies, not systematic AI-triggered failover.
