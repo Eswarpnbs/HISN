@@ -47,6 +47,7 @@ Standard safeguards underneath: a policy node that blocks only on a verified bin
 | Harmful decisions on 33 gold items (qwen2.5:14b) | LLM alone 10 · fixed rules 10 · RAG without gates 9 · **HISN 1** |
 | Unsupported legal citations | LLM alone 41 · **HISN 0** |
 | Pre-registered held-out sets (gold committed before scoring, checked from git history) | 17/23 (about 54–87%) |
+| **Real messages**: 5,574 real SMS (UCI SMS Spam Collection), threshold 0.5 → 0.2 | legitimate messages blocked **0 → 103**, spam caught 1 → 88 (docs/real_sms_eval.md) |
 | Held-out v5, after gate 6 (applicability) | model 4/8, **0 harmful**; all 4 genuine messages released, gate 6 stopped 2 spoof releases |
 | Agent decisions identical across repeated runs | 44/44 |
 | Sender authentication + verified lane (gap engine) | MIZAN 76.7 → **94.2**; a blunt fraud duty alone lowers it |
