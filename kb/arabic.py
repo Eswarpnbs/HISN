@@ -28,7 +28,7 @@ def normalise(s):
 def sha(s):
     return hashlib.sha256(normalise(s).encode("utf-8")).hexdigest()
 
-HEAD = re.compile(r"(?:ال)?مادة\s*[\(\[]?\s*(\d+)\s*[\)\]]?")
+HEAD = re.compile(r"(?:ال)?مادة\s*[\(\)\[\]]?\s*(\d+)\s*[\(\)\[\]]?")  # PDFs may extract brackets mirrored
 
 def find_article(text, number):
     """Return the normalised text of article `number`, from its heading up to the next article heading."""
@@ -67,14 +67,14 @@ def cmd_add(a):
     text = Path(a.text_file).read_text(encoding="utf-8")
     if a.pdf and not contains(_pdf_text(a.pdf), text):
         sys.exit("The text is not found in the PDF after normalisation; not stored.")
-    _store(a.record, a.article, text, a.pdf, "copied_unreviewed")
+    _store(a.record, a.article, text, a.pdf, "copied_unreviewed", a.source_url)
 
-def _store(record, article, text, pdf, status):
+def _store(record, article, text, pdf, status, source_url=None):
     data = load()
     data["clauses"] = [c for c in data["clauses"] if not (c["record_id"] == record and str(c["article"]) == str(article))]
     data["clauses"].append({"record_id": record, "article": str(article), "text_ar": normalise(text),
                             "sha256": sha(text), "source_pdf": Path(pdf).name if pdf else None,
-                            "status": status, "language": "ar (authoritative)"})
+                            "source_url": source_url, "status": status, "language": "ar (authoritative)"})
     save(data)
     print(f"stored {record} Art. {article} ({len(normalise(text))} chars), status {status}")
 
@@ -83,7 +83,8 @@ def cmd_verify(_a):
     for c in load()["clauses"]:
         ok = sha(c["text_ar"]) == c["sha256"]
         src = Path("kb/sources") / (c.get("source_pdf") or "")
-        if ok and c.get("source_pdf") and src.exists():
+        if ok and c.get("source_pdf") and src.exists() and not str(c["status"]).startswith(("ocr", "copied")):
+            # text-layer check only for extracted text; OCR/copied text is checked by hash and its stated method
             ok = contains(_pdf_text(src), c["text_ar"])
         print(("OK  " if ok else "FAIL"), c["record_id"], "Art.", c["article"], c["status"])
         bad += not ok
@@ -93,6 +94,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(); sp = ap.add_subparsers(dest="cmd", required=True)
     e = sp.add_parser("extract"); e.add_argument("--record", required=True); e.add_argument("--article", required=True); e.add_argument("--pdf", required=True)
     d = sp.add_parser("add"); d.add_argument("--record", required=True); d.add_argument("--article", required=True); d.add_argument("--text-file", required=True); d.add_argument("--pdf")
+    d.add_argument("--source-url", help="official page the text was copied from (when the PDF's fonts extract wrongly)")
     sp.add_parser("verify")
     a = ap.parse_args()
     {"extract": cmd_extract, "add": cmd_add, "verify": cmd_verify}[a.cmd](a)
