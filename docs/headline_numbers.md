@@ -28,3 +28,22 @@ Every figure in the report traces to a row here.
 | Wind tunnel: emergency offshore as regulation | DO NOT ISSUE AS DRAFTED | unresolved conflicts 1 | `app/windtunnel (deterministic)` |
 | Wind tunnel: emergency offshore as health_authority_resolution | READY FOR NAMED HUMAN REVIEW | unresolved conflicts 0 | `app/windtunnel (deterministic)` |
 | Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7', 'I9'] broken [] | interop 60->31% | `app/windtunnel (deterministic)` |
+
+## Added 1 Nov 2026 (pre-registered before running)
+
+| Result | Value | Source |
+|---|---|---|
+| Agents held-out v4 (accuracy / harmful) | 6/9 (35-88%) / 1 | docs/eval_log_v3.md (first scored run) |
+| Agents held-out v4, latest re-run (post-hoc, not held-out) | 9/9 (70-100%) / 0 | docs/eval_log_v3.md (latest run) |
+| Agents paraphrase robustness (accuracy / harmful) | 6/8 (41-93%) / 0 | docs/eval_log_v3.md (first scored run) |
+| Agents paraphrase robustness, latest re-run (post-hoc, not held-out) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (latest run) |
+| Agents held-out v5 (after gate 6; pre-registered 7 Nov) (accuracy / harmful) | 4/8 (22-78%) / 0 | docs/eval_log_v3.md (first scored run) |
+| Agents held-out v5 (after gate 6; pre-registered 7 Nov), latest re-run (post-hoc, not held-out) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (latest run) |
+| Agents held-out v6 (after identity rule and 8 Nov records; pre-registered 8 Nov) (accuracy / harmful) | 5/8 (31-86%) / 1 | docs/eval_log_v3.md (first scored run) |
+| Agents held-out v6 (after identity rule and 8 Nov records; pre-registered 8 Nov), latest re-run (post-hoc, not held-out) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (latest run) |
+| Agents held-out v7 (identity vs content rule + message signals; pre-registered 8 Nov) (accuracy / harmful) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (first scored run) |
+| Agents held-out v8 (majority vote, Arabic, larger KB; pre-registered 8 Nov) (accuracy / harmful) | 10/10 (72-100%) / 0 | docs/eval_log_v3.md (first scored run) |
+| Retrieval HISN clause-first (pre-registered v3) | Recall@5 10/12 (55-95%), Recall@1 9/12, MRR 0.77 | docs/retrieval_eval.md |
+| Retrieval HISN hybrid (pre-registered v3) | Recall@5 11/12 (65-99%), Recall@1 8/12, MRR 0.74 | docs/retrieval_eval.md |
+| Retrieval decision (rule committed before running) | ADOPT hybrid as default (v3 Recall@5 11 >= 10) | docs/retrieval_decision_rule.md |
+| Run-to-run stability of agent decisions | 44/44 identical | docs/stability.md |
