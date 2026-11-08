@@ -6,4 +6,6 @@ essential_senders:
   - {sender_id: GOV-TOLL,  category: government, escalation_role: ai_data_authority}
   - {sender_id: GOV-POST,  category: government, escalation_role: ai_data_authority}
 trusted_domains: [hospital-a.example, gov-fines.example]
-suspicious_keywords: [pay, unpaid, fine, rescheduled, verify, urgent]
+suspicious_keywords: [pay, unpaid, fine, rescheduled, verify, urgent,
+  # Arabic equivalents (added 8 Nov 2026; wording pending native review)
+  ادفع, دفع, سداد, غرامة, رسوم, تحقق, عاجل, تغير موعد, تغيير موعد, تأجيل]

@@ -8,18 +8,19 @@ from app.core.firewall import SmsFirewall
 from app.core.coordinator import Coordinator
 from app.core.injects import load_injects, available
 from app.agents.retriever import ItuRetriever
-from app.agents.llm import OllamaLLM
+from app.agents.llm import OllamaLLM, VotingLLM
 from app.agents.institution import InstitutionalAgent
 
 SC, REG, PACK = "scenarios/crisis_exploit.yaml", "kb/rulepacks/uae/senders.yaml", "kb/rulepacks/uae/rules.yaml"
 ap = argparse.ArgumentParser()
 ap.add_argument("--model", default=os.environ.get("HISN_LLM", "qwen2.5:7b"))
 ap.add_argument("--inject", nargs="*", default=available())
+ap.add_argument("--votes", type=int, default=1, help="majority vote over N model answers (1 = single answer, as before)")
 args = ap.parse_args()
 
 p = Path("runs/governed_agents.jsonl")
 if p.exists(): p.unlink()
-audit, retr, llm = AuditLog(p), ItuRetriever(), OllamaLLM(args.model)
+audit, retr, llm = AuditLog(p), ItuRetriever(), (VotingLLM.ollama(args.model, args.votes) if args.votes > 1 else OllamaLLM(args.model))
 agents = {r: InstitutionalAgent(r, retr, llm, audit) for r in ["health_authority", "tdra", "ai_data_authority"]}
 c = Coordinator(SC, audit, SmsFirewall(REG, audit, governed=True), PolicyGateway(PACK, audit),
                 agents=agents, extra_events=load_injects(args.inject), route_referrals=True)
@@ -69,7 +70,8 @@ with log.open("a", encoding="utf-8") as f:
                          (["scenarios/gold_paraphrase.yaml"], "paraphrase"),
                          (["scenarios/gold_heldout_v5.yaml"], "heldout_v5"),
                          (["scenarios/gold_heldout_v6.yaml"], "heldout_v6"),
-                         (["scenarios/gold_heldout_v7.yaml"], "heldout_v7")]:
+                         (["scenarios/gold_heldout_v7.yaml"], "heldout_v7"),
+                         (["scenarios/gold_heldout_v8.yaml"], "heldout_v8")]:
         cor, n, harm, cons, cau = evaluate(paths, label)
-        f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model} | {label} | {cor}/{n} | {harm} | {cons} | {cau} |\n")
+        f.write(f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {args.model}{f' vote{args.votes}' if args.votes > 1 else ''} | {label} | {cor}/{n} | {harm} | {cons} | {cau} |\n")
 print("\nlogged to docs/eval_log_v3.md")

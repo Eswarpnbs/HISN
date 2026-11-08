@@ -101,6 +101,8 @@ class InstitutionalAgent:
         except Exception as ex:
             rec.update(status=Verdict.INSUFFICIENT_EVIDENCE.value, reason=f"llm_error:{ex}", proposed_action="LOG_GAP")
             return self._log(rec)
+        if "_votes" in out:
+            rec["votes"] = out["_votes"]
         action = out.get("proposed_action")
         cited = [c for c in out.get("cited_ids", []) if isinstance(c, str)]
         allowed_ids = set(rec["evidence_ids"])

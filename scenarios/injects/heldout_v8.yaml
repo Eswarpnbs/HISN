@@ -1,0 +1,26 @@
+# HELD-OUT v8 events (synthetic, fictional senders, reserved numbers). Gold in scenarios/gold_heldout_v8.yaml.
+# Written on 8 Nov 2026 WHILE the v7 run was still running, before any v7 result was seen, and committed before any run
+# that includes them. Tests the majority vote (--votes 3), Arabic message checks and the larger knowledge base.
+# 6 of 10 messages are in Arabic (written by the team; wording pending native review). New wording throughout.
+# Each event was checked to reach an agent by a deterministic run only (firewall + coordinator, no language model).
+events:
+- {id: V8-AR-GENUINE-FINE, t: 75, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, authenticated: true, short_message: "مخالفة مرورية برقم 5521 مستحقة في 20 ديسمبر. يرجى السداد عبر التطبيق الرسمي فقط."}}
+- {id: V8-AR-SPOOF-FINE-LINK, t: 76, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-FINES, route: local, short_message: "عاجل: لديك غرامة غير مدفوعة. ادفع الآن عبر الرابط الذي سنرسله لك بعد الرد بكلمة نعم."}}
+- {id: V8-AR-GENUINE-ID, t: 77, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-ID, route: local, authenticated: true, short_message: "يرجى تحديث بياناتك قبل تجديد بطاقة الهوية. تحقق من التفاصيل في التطبيق الرسمي فقط."}}
+- {id: V8-EN-SPOOF-ID-CALL, t: 78, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-ID, route: local, short_message: "Urgent: your Emirates ID is blocked. Call 0500000003 to verify and unblock it."}}
+- {id: V8-EN-GENUINE-TOLL, t: 79, act: 3, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-TOLL, route: local, authenticated: true, short_message: "Toll charge for 3 December is due. Pay only through the official app; we never ask for card details by SMS."}}
+- {id: V8-AR-GENUINE-RESCHED, t: 315, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "تم تغيير موعد فحصك إلى يوم الأحد الساعة 11:00. لا داعي للرد."}}
+- {id: V8-AR-SPOOF-HOSP-ID, t: 316, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, short_message: "عاجل: نتيجة تحليلك جاهزة. أرسل رقم الهوية وتاريخ الميلاد للاطلاع عليها."}}
+- {id: V8-AR-SPOOF-POST-CARD, t: 317, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-POST, route: local, short_message: "شحنتك محتجزة. يرجى سداد رسوم الجمارك بالرد برقم بطاقتك."}}
+- {id: V8-EN-GENUINE-REFERRAL, t: 318, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: HOSPITAL-A, route: local, authenticated: true, short_message: "Urgent: please bring your referral letter to tomorrow's 08:30 appointment. No reply needed."}}
+- {id: V8-EN-SPOOF-POST-OTP, t: 319, act: 4, kind: sms_submit, audience: [filter_ai],
+   payload: {source_addr: GOV-POST, route: local, short_message: "Your parcel fee is unpaid. Send the one-time code you receive to confirm delivery."}}

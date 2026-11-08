@@ -15,7 +15,7 @@ Signals:
   points_to_official_channel  - sends the citizen only to the official app, website, number or service centre
   mentions_payment            - mentions paying, a fine, a fee or a balance
 """
-import re
+import re, unicodedata
 
 _SECRET = re.compile(r"\b(id(?: card)? number|emirates id number|card number|card details|cvv|pin|otp|one[- ]time code|"
                      r"verification code|password|date of birth|passport number|account number|iban)\b")
@@ -29,18 +29,40 @@ _OFFICIAL = re.compile(r"\bofficial (app|website|site|number|channel|portal)\b|\
 _PAY = re.compile(r"\b(pay|paid|payment|unpaid|fine|fee|balance|settle)\b")
 
 
+# Arabic (added 8 Nov 2026). Matched on normalised text: diacritics and tatweel removed, alef/ya/ta-marbuta unified.
+_AR_SECRET = re.compile(r"(رقم الهويه|رقم هويتك|رقم البطاقه|رقم بطاقتك|بيانات البطاقه|تاريخ الميلاد|تاريخ ميلادك|رمز التحقق|"
+                        r"الرمز السري|كلمه المرور|رقم الحساب|الايبان)")
+_AR_SECRET_ASK = re.compile(r"(ارسل|ارسال|رد |بالرد|ردا|الرد|زودنا|شارك|اكد|ادخل|يحتاج|يتطلب)")
+_AR_NO_REPLY = re.compile(r"(لا داعي للرد|لا حاجه للرد|لا ترد|دون الحاجه للرد)")
+_AR_REPLY = re.compile(r"(^|\s)(رد|ردا|بالرد|الرد)(\s|$|[.,،])")
+_AR_LINK = re.compile(r"رابط")
+_AR_OFFICIAL = re.compile(r"(التطبيق الرسمي|الموقع الرسمي|الرقم الرسمي|مركز الخدمه|مراكز الخدمه|القناه الرسميه)")
+_AR_PAY = re.compile(r"(ادفع|دفع|سداد|سدد|غرامه|رسوم|رصيد|مخالفه)")
+_AR_CALL = re.compile(r"(اتصل|اتصال|الاتصال)")
+_AR_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
+
+
+def _norm(s):
+    s = unicodedata.normalize("NFKC", s).translate(_AR_DIGITS).lower()
+    s = re.sub("[\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed]", "", s).replace("\u0640", "")
+    s = re.sub("[\u0622\u0623\u0625\u0671]", "\u0627", s).replace("\u0649", "\u064a").replace("\u0629", "\u0647")
+    return re.sub(r"\s+", " ", s)
+
+
 def message_signals(payload):
-    text = str((payload or {}).get("short_message", "")).lower()
-    no_reply = bool(_NO_REPLY.search(text))
-    secret = bool(_SECRET.search(text)) and bool(_SECRET_ASK.search(text))
+    text = _norm(str((payload or {}).get("short_message", "")))
+    no_reply = bool(_NO_REPLY.search(text) or _AR_NO_REPLY.search(text))
+    secret = (bool(_SECRET.search(text)) and bool(_SECRET_ASK.search(text))) or \
+             (bool(_AR_SECRET.search(text)) and bool(_AR_SECRET_ASK.search(text)))
     phone = bool(_PHONE.search(text))
+    calls = "call" in text or bool(_AR_CALL.search(text))
     return {
         "authenticated": bool((payload or {}).get("authenticated", False)),
         "untrusted_link": bool(_URL.search(text)),
-        "offers_link": bool(_LINK_OFFER.search(text)),
+        "offers_link": bool(_LINK_OFFER.search(text) or _AR_LINK.search(text)),
         "asks_for_secret": secret,
-        "asks_reply": bool(_REPLY.search(text)) and not no_reply,
-        "callback_number": phone and "call" in text,
-        "points_to_official_channel": bool(_OFFICIAL.search(text)),
-        "mentions_payment": bool(_PAY.search(text)),
+        "asks_reply": bool(_REPLY.search(text) or _AR_REPLY.search(text)) and not no_reply,
+        "callback_number": phone and calls,
+        "points_to_official_channel": bool(_OFFICIAL.search(text) or _AR_OFFICIAL.search(text)),
+        "mentions_payment": bool(_PAY.search(text) or _AR_PAY.search(text)),
     }

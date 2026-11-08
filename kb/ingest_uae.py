@@ -9,9 +9,9 @@ from server.knowledge.ingest import ingest_file, ingest_framework_definitions, i
 
 ROOT = pathlib.Path(__file__).resolve().parent
 COUNTRY = {"UAE": "United Arab Emirates", "IN": "India", "SG": "Singapore", "SA": "Saudi Arabia",
-           "AU": "Australia", "EU": "European Union"}
+           "AU": "Australia", "EU": "European Union", "ITU": "International (ITU-T)"}
 CATEGORY = {"UAE": "UAE_Health_Telecom_Policies", "IN": "India_Health_Telecom_Policies", "SG": "Singapore_Health_Telecom_Policies", "SA": "Saudi_Arabia_Historical",
-            "AU": "Global_Examples", "EU": "Global_Examples"}
+            "AU": "Global_Examples", "EU": "Global_Examples", "ITU": "Global_Examples"}
 pre = lambda rid: rid.split("-")[0]
 
 def main():
@@ -31,6 +31,13 @@ def main():
             extra = {"country": country, "document_category": category, "record_id": row["record_id"], "language": "ar" if arabic else "en",
                      "issuer": row["issuer"], "jurisdiction": row["jurisdiction"], "basis": row["basis"],
                      "verification": row["verification"], "sha256": row["sha256"]}
+            ocr = ROOT / "sources" / "ocr" / f"{row['record_id']}.txt"
+            if arabic and ocr.exists():   # readable OCR text (kb/ocr_arabic_all.py) instead of the broken text layer
+                extra["text_source"] = "ocr_tesseract_unreviewed"
+                print(f"DOC   {row['record_id']:24s} {ingest_file(ocr, kb, extra_metadata=extra)} chunks ({country}, OCR text)")
+                continue
+            if arabic:
+                print(f"WARN  {row['record_id']}: no OCR text yet, the PDF text layer may be garbled (run kb/ocr_arabic_all.py)")
             print(f"DOC   {row['record_id']:24s} {ingest_file(pdf, kb, extra_metadata=extra)} chunks ({country})")
     clauses = yaml.safe_load(open(ROOT / "clauses" / "clauses.yaml", encoding="utf-8"))
     texts = [c["text"] for c in clauses]

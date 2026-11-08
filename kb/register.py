@@ -72,6 +72,13 @@ DOCS = [
    "https://uaelegislation.gov.ae/ar/legislations/1455", "official_arabic_authoritative"),
 ]
 
+# Records added with kb/batch_add.py (identified from each PDF's own first page)
+extra = pathlib.Path("kb/register_extra.csv")
+if extra.exists():
+    import csv as _csv
+    for e in _csv.DictReader(open(extra, encoding="utf-8")):
+        DOCS.append((e["record_id"], e["title"], e["issuer"], e["jurisdiction"], e["instrument_type"], e["basis"], e["url"], e["how_obtained"]))
+
 src = pathlib.Path("kb/sources")
 today = datetime.date.today().isoformat()
 rows = []
