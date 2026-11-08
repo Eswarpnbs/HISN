@@ -47,7 +47,7 @@ ITU_TITLES = {
     "Y.3174": "Framework for data handling to enable machine learning in future networks including IMT-2020",
 }
 
-EN_KIND = re.compile(r"(federal\s+decree[\s-]*(?:by[\s-]*)?law|federal\s+law|cabinet\s+(?:resolution|decision))\s*"
+EN_KIND = re.compile(r"(federal\s+decree[\s-]*(?:by[\s-]*)?law|federal\s+law\s+by\s+decree|federal\s+law|cabinet\s+(?:resolution|decision))\s*"
                      r"(?:no\.?|number)\s*\(?\s*(\d+)\s*\)?\s*(?:of|for)\s*(?:the\s+year\s*)?(\d{4})", re.I)
 AR_NUM = re.compile(r"رقم\s*[\(\)]?\s*(\d+)\s*[\(\)]?\s*لسنة\s*(\d{4})")
 ITU_REC = re.compile(r"ITU-T\s+(?:Recommendation\s+)?([XY])\.\s?(\d{3,4})|Recommendation\s+ITU-T\s+([XY])\.\s?(\d{3,4})")
@@ -117,26 +117,39 @@ def identify(pdf):
                 "issuer": "ITU-T", "jurisdiction": "INT", "instrument_type": "itu_recommendation", "basis": "SOFT_LAW",
                 "url": f"https://www.itu.int/rec/T-REC-{rec}/en", "how_obtained": "official", "lang": "en"}
     arabic = _arabic_share(text) > 0.5
+    # The PDF's own text decides which laws are candidates. The official file name (uaelegislation.gov.ae names files
+    # by title) only chooses AMONG laws the text itself names, because a preamble cites older laws before or around
+    # the title (e.g. "Having reviewed Federal Law No. (1) of 1972"). A name the text does not contain is ignored.
+    name = Path(pdf).stem
     if not arabic:
         hits = sorted(EN_KIND.finditer(text), key=lambda x: x.start())
         if not hits:
             return None
-        h = hits[0]
+        want = next(((_kind(f.group(1)), int(f.group(2)), int(f.group(3))) for f in EN_KIND.finditer(name)), None)
+        h = next((x for x in hits if want and (_kind(x.group(1)), int(x.group(2)), int(x.group(3))) == want), hits[0])
         kind, n, y = _kind(h.group(1)), int(h.group(2)), int(h.group(3))
         rest = re.sub(r"\s+", " ", text[h.start(): h.start() + 260])
         title = re.split(r"\s(?:We,|We |The President|In the name|Having reviewed|After perusal)", rest)[0].strip(" ,.")[:200]
         lang = "en"
     else:
+        nm = _norm_ar(name)
+        fm = AR_NUM.search(nm)
+        want = (int(fm.group(1)), int(fm.group(2))) if fm else None
+        wkind = None
+        if fm:
+            b = nm[max(0, fm.start() - 40): fm.start()]
+            wkind = "CABRES" if "مجلس الوزراء" in b else ("FDL" if "مرسوم" in b else "FL")
         t = _norm_ar(text)
-        m = AR_NUM.search(t)
-        if not m:
-            t = _norm_ar(_ocr_first_page(pdf))
-            m = AR_NUM.search(t)
-        if not m:
+        ms = list(AR_NUM.finditer(t))
+        if not ms or (want and not any((int(x.group(1)), int(x.group(2))) == want for x in ms)):
+            t = t + " " + _norm_ar(_ocr_first_page(pdf))
+            ms = list(AR_NUM.finditer(t))
+        if not ms:
             return None
+        m = next((x for x in ms if want and (int(x.group(1)), int(x.group(2))) == want), ms[0])
         n, y = int(m.group(1)), int(m.group(2))
         before = t[max(0, m.start() - 40): m.start()]
-        kind = "CABRES" if "مجلس الوزراء" in before else ("FDL" if "مرسوم" in before else "FL")
+        kind = wkind if (want == (n, y) and wkind) else ("CABRES" if "مجلس الوزراء" in before else ("FDL" if "مرسوم" in before else "FL"))
         title = None
         lang = "ar"
     stem = ALIASES.get((kind, n, y), f"UAE-{kind}-{n}-{y}")

@@ -4,10 +4,10 @@ import importlib.util
 spec = importlib.util.spec_from_file_location("batch_add", "kb/batch_add.py")
 B = importlib.util.module_from_spec(spec); spec.loader.exec_module(B)
 
-def ident(monkeypatch, page, ocr=""):
+def ident(monkeypatch, page, ocr="", name="x.pdf"):
     monkeypatch.setattr(B, "_page_text", lambda pdf, pages=2: page)
     monkeypatch.setattr(B, "_ocr_first_page", lambda pdf: ocr)
-    return B.identify("x.pdf")
+    return B.identify(name)
 
 def test_english_federal_law_with_page_id(monkeypatch):
     r = ident(monkeypatch, "Federal Law No. (13) of 2020\nConcerning Public Health\n\nWe, Khalifa ...")
@@ -40,3 +40,20 @@ def test_a_cv_that_mentions_an_itu_recommendation_is_not_taken_for_it(monkeypatc
 
 def test_unknown_document_is_not_guessed(monkeypatch):
     assert ident(monkeypatch, "Quarterly newsletter, nothing official here") is None
+
+def test_file_name_chooses_among_laws_the_text_names(monkeypatch):
+    page = ("Having reviewed Federal Law No. (1) of 1972 concerning the Ministries ... "
+            "Federal Law by Decree No. (31) of 2021 Promulgating the Crimes and Penalties Law")
+    r = ident(monkeypatch, page, name="Federal Law by Decree No. (31) of 2021 Promulgating the Crimes and Penalties Law.pdf")
+    assert r["record_id"] == "UAE-FDL-31-2021"
+    page2 = "Federal Decree-Law No. (46) of 2021 ... Cabinet Resolution No. (52) of 2024 Concerning the Administrative Penalties"
+    assert ident(monkeypatch, page2, name="Cabinet Resolution No. (52) of 2024 Concerning the Administrative Penalties.pdf")["record_id"] == "UAE-CABRES-52-2024"
+
+def test_a_file_name_the_text_does_not_support_is_ignored(monkeypatch):
+    r = ident(monkeypatch, "Federal Law No. (13) of 2020 on the Public Health", name="Federal Law No. (99) of 2099 Fake.pdf")
+    assert r["record_id"] == "UAE-FL-13-2020"
+
+def test_arabic_file_name_chooses_cabinet_resolution_over_the_law_it_implements(monkeypatch):
+    page = "المرسوم بقانون اتحادي رقم (46) لسنة 2021 ... قرار مجلس الوزراء رقم (28) لسنة 2023 بشأن اللائحة التنفيذية"
+    r = ident(monkeypatch, page, name="قرار مجلس الوزراء رقم (28 ) لسنة 2023 بشأن اللائحة التنفيذية.pdf")
+    assert r["record_id"] == "UAE-CABRES-28-2023-AR"
