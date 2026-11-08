@@ -11,7 +11,6 @@ import pathlib, urllib.request
 DIRECT = {
     "UAE-CABRES-56-2024": "https://uaelegislation.gov.ae/en/legislations/2519/download",
     "UAE-FDL-46-2021": "https://uaelegislation.gov.ae/en/legislations/1539/download",
-    "UAE-DOH-ADHICS-2019": "https://www.doh.gov.ae/-/media/032019_ADHICS.ashx",
     "EU-REG-2021-1232": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32021R1232",
     "AU-SPF-ACT-2025": "https://www.ato.gov.au/law/view/pdf/acts/20250015.pdf",
 }
@@ -21,7 +20,6 @@ MANUAL = {
     "EU-EDPB-GL-2-2018": "https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-22018-derogations-article-49-under-regulation_en (English PDF)",
     "UAE-CABRES-56-2024": "https://uaelegislation.gov.ae/en/legislations/2519 (Download, English)",
     "UAE-FDL-46-2021": "https://uaelegislation.gov.ae/en/legislations/1539 (Download, English)",
-    "UAE-DOH-ADHICS-2019": "https://www.doh.gov.ae/-/media/032019_ADHICS.ashx",
     "EU-REG-2021-1232": "https://eur-lex.europa.eu/eli/reg/2021/1232/oj (PDF, English)",
 }
 src = pathlib.Path("kb/sources"); src.mkdir(parents=True, exist_ok=True)

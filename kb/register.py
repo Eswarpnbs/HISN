@@ -40,8 +40,6 @@ DOCS = [
    "https://uaelegislation.gov.ae/en/legislations/2519/download", "official"),
   ("UAE-FDL-46-2021", "Federal Decree-Law No. (46) of 2021 on Electronic Transactions and Trust Services", "UAE Federal Government", "AE", "federal_law", "FEDERAL_LAW",
    "https://uaelegislation.gov.ae/en/legislations/1539/download", "official"),
-  ("UAE-DOH-ADHICS-2019", "Abu Dhabi Healthcare Information and Cyber Security Standard (ADHICS)", "Department of Health Abu Dhabi", "AE-AZ", "standard", "REGULATOR_POLICY",
-   "https://www.doh.gov.ae/-/media/032019_ADHICS.ashx", "official"),
   ("AU-SPF-ACT-2025", "Scams Prevention Framework Act 2025 (No. 15, 2025)", "Parliament of Australia (Federal Register of Legislation)", "AU", "national_law", "NATIONAL_LAW",
    "https://www.legislation.gov.au/C2025A00015/asmade/downloads", "official_global_example"),
   ("AU-C661-2022", "Industry Code C661:2022 Reducing Scam Calls and Scam SMs (registered by the ACMA)", "Communications Alliance / ACMA", "AU", "industry_code", "REGULATOR_POLICY",
