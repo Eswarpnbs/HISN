@@ -4,7 +4,7 @@ Every figure in the report traces to a row here.
 
 | figure | value | produced by |
 |---|---|---|
-| Unit tests | 102 passed | `python -m pytest -q` |
+| Unit tests | 110 passed | `python -m pytest -q` |
 | Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
 | Hash-pinned records / verbatim clauses | 32 / 38 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
 | Legitimate essential messages silently lost | ungoverned 10 -> HISN 0 | `twin run (all injects, 15-min limit)` |
@@ -27,4 +27,4 @@ Every figure in the report traces to a row here.
 | Citizen verifier languages / reviewed | 6 / 3 | `kb/verifier_templates.yaml` |
 | Wind tunnel: emergency offshore as regulation | DO NOT ISSUE AS DRAFTED | unresolved conflicts 1 | `app/windtunnel (deterministic)` |
 | Wind tunnel: emergency offshore as health_authority_resolution | READY FOR NAMED HUMAN REVIEW | unresolved conflicts 0 | `app/windtunnel (deterministic)` |
-| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7', 'I9'] broken [] | interop 65->30% | `app/windtunnel (deterministic)` |
+| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7', 'I9'] broken [] | interop 60->31% | `app/windtunnel (deterministic)` |
