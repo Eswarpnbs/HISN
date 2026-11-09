@@ -7,15 +7,23 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from app.core.audit import AuditLog
 
 ok_all = True
-def report(name, ok, detail=""):
+def report(name, ok, detail="", skipped=False):
     global ok_all; ok_all &= ok
-    print(f"{'PASS' if ok else 'FAIL'}  {name}" + (f"  ({detail})" if detail else ""))
+    print(f"{'SKIP' if skipped else 'PASS' if ok else 'FAIL'}  {name}" + (f"  ({detail})" if detail else ""))
 
 # 1 source hashes
+# The official PDFs are not redistributed (see README > Knowledge base). A fresh clone has none: checks that need a
+# PDF are SKIPPED for the missing ones and say so; a PDF that IS present must match its pinned hash exactly.
 man = list(csv.DictReader(open("kb/manifest.csv", encoding="utf-8")))
-bad = [m["record_id"] for m in man if not Path(f"kb/sources/{m['record_id']}.pdf").exists()
-       or hashlib.sha256(Path(f"kb/sources/{m['record_id']}.pdf").read_bytes()).hexdigest() != m["sha256"]]
-report(f"Source files match pinned SHA-256 ({len(man)} records)", not bad, ", ".join(bad))
+present = [m for m in man if Path(f"kb/sources/{m['record_id']}.pdf").exists()]
+bad = [m["record_id"] for m in present
+       if hashlib.sha256(Path(f"kb/sources/{m['record_id']}.pdf").read_bytes()).hexdigest() != m["sha256"]]
+if present:
+    report(f"Source files match pinned SHA-256 ({len(present)} of {len(man)} records present)", not bad, ", ".join(bad))
+if len(present) < len(man):
+    report(f"Source files not present locally: {len(man) - len(present)} of {len(man)}", True,
+           "official PDFs are not redistributed; download them from the URLs in kb/manifest.csv into kb/sources/ "
+           "(or run python kb/fetch_more.py) to check their hashes", skipped=True)
 
 # 2 every clause verbatim in its source
 RULES = ["ligatures expanded (fi, fl, ff; the AI Charter font's Th ligature extracted as U+0407 or U+0457)",
@@ -35,16 +43,21 @@ def contains(src, text):
         if i < 0: return False
         pos = i + len(seg)
     return True
-import pymupdf
-cache, miss, recon = {}, [], []
+cache, miss, recon, absent = {}, [], [], []
 for c in yaml.safe_load(open("kb/clauses/clauses.yaml", encoding="utf-8")):
     rid = c["record_id"]
+    if not Path(f"kb/sources/{rid}.pdf").exists():
+        absent.append(c["clause_id"]); continue
     if rid not in cache:
+        import pymupdf
         cache[rid] = norm(" ".join(p.get_text() for p in pymupdf.open(f"kb/sources/{rid}.pdf")))
     if contains(cache[rid], c["text"]): continue
     (recon if "reconstructed" in str(c.get("article", "")).lower() else miss).append(c["clause_id"])
-n = sum(1 for _ in yaml.safe_load(open("kb/clauses/clauses.yaml", encoding="utf-8")))
-report(f"Clauses verbatim in their pinned source ({n - len(miss) - len(recon)}/{n} exact)", not miss,
+n = sum(1 for _ in yaml.safe_load(open("kb/clauses/clauses.yaml", encoding="utf-8"))) - len(absent)
+if absent:
+    report(f"Clauses whose source PDF is not present: {len(absent)}", True, "download the sources to check them", skipped=True)
+if n:
+  report(f"Clauses verbatim in their pinned source ({n - len(miss) - len(recon)}/{n} exact)", not miss,
        ("not found: " + ", ".join(miss)) if miss else (f"{len(recon)} with layout reconstructed from PDF extraction, declared in the article field: " + ", ".join(recon) if recon else ""))
 
 # 3 audit-log hash chains
