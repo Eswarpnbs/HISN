@@ -15,7 +15,7 @@ for label, name in (("heldout_v4", "Agents held-out v4"), ("paraphrase", "Agents
                     ("heldout_v6", "Agents held-out v6 (after identity rule and 8 Nov records; pre-registered 8 Nov)"),
                     ("heldout_v7", "Agents held-out v7 (identity vs content rule + message signals; pre-registered 8 Nov)"),
                     ("heldout_v8", "Agents held-out v8 (majority vote, Arabic, larger KB; pre-registered 8 Nov)"),
-                    ("heldout_real", "Agents held-out real (50 real SMS texts, random by fixed seed; pre-registered)")):
+                    ("heldout_real", "Agents held-out real (all 275 real SMS texts the filter holds; pre-registered)")):
     m = re.findall(rf"\|\s*[\d-]+ [\d:]+\s*\|\s*qwen2\.5:14b(?: vote\d+)?\s*\|\s*{label}\s*\|\s*(\d+)/(\d+)\s*\|\s*(\d+)\s*\|", ev)
     if m:
         # A held-out set counts once: its FIRST scored run. Later runs (after system changes) are shown as post-hoc.

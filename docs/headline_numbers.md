@@ -1,12 +1,12 @@
-# Headline numbers (selftest, 2026-11-08 20:59)
+# Headline numbers (selftest, 2026-11-09 22:08)
 
 Every figure in the report traces to a row here.
 
 | figure | value | produced by |
 |---|---|---|
-| Unit tests | 110 passed | `python -m pytest -q` |
+| Unit tests | 132 passed | `python -m pytest -q` |
 | Knowledge-base sources match manifest hashes | yes | `python kb/verify.py` |
-| Hash-pinned records / verbatim clauses | 32 / 38 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
+| Hash-pinned records / verbatim clauses | 84 / 38 | `kb/manifest.csv, kb/clauses/clauses.yaml` |
 | Legitimate essential messages silently lost | ungoverned 10 -> HISN 0 | `twin run (all injects, 15-min limit)` |
 | Offshore health-data transfers not blocked | ungoverned 2 -> HISN 0 | `twin run (all injects)` |
 | Audit chains verify (governed / ungoverned) | True / True | `AuditLog.verify()` |
@@ -14,10 +14,10 @@ Every figure in the report traces to a row here.
 | P-AUTH+P-VERIFIED (protection/access/MIZAN) | 96.7/91.7/94.2 | `app/gapengine (deterministic)` |
 | P-FRAUD alone MIZAN change | -0.5 | `app/gapengine (deterministic)` |
 | Art.13 rule load-bearing (transfers not blocked when removed) | 2 | `rule-removal re-run` |
-| Retrieval (HISN clause-first) | Recall@1 21/46 | Recall@5 41/46 | `python kb/eval_retrieval.py` |
-| Agents qwen2.5:14b dev (accuracy / harmful) | 10/10 (72-100%) / 0 | `docs/eval_log_v3.md (2026-11-08 20:23)` |
-| Agents qwen2.5:14b heldout_v2 (accuracy / harmful) | 4/4 (51-100%) / 0 | `docs/eval_log_v3.md (2026-11-08 20:23)` |
-| Agents qwen2.5:14b heldout_v3 (accuracy / harmful) | 2/2 (34-100%) / 0 | `docs/eval_log_v3.md (2026-11-08 20:23)` |
+| Retrieval (HISN clause-first) | Recall@1 21/46 | Recall@5 35/46 | `python kb/eval_retrieval.py` |
+| Agents qwen2.5:14b dev (accuracy / harmful) | 7/7 (65-100%) / 0 | `docs/eval_log_v3.md (2026-11-09 04:43)` |
+| Agents qwen2.5:14b heldout_v2 (accuracy / harmful) | 4/4 (51-100%) / 0 | `docs/eval_log_v3.md (2026-11-08 23:23)` |
+| Agents qwen2.5:14b heldout_v3 (accuracy / harmful) | 2/2 (34-100%) / 0 | `docs/eval_log_v3.md (2026-11-08 23:23)` |
 | Baseline B0 fixed rules (no AI) | acc 23/33 (53-83%) | held-out v2 3/4 (30-95%) | held-out v3 1/2 (9-91%) | harmful 10 | unsupported 0 | `docs/baselines.md` |
 | Baseline B1 LLM only (no KB, no gate) | acc 16/33 (33-65%) | held-out v2 1/4 (5-70%) | held-out v3 1/2 (9-91%) | harmful 10 | unsupported 41 | `docs/baselines.md` |
 | Baseline B2 LLM + KB (RAG, no gate) | acc 23/33 (53-83%) | held-out v2 3/4 (30-95%) | held-out v3 1/2 (9-91%) | harmful 9 | unsupported 0 | `docs/baselines.md` |
@@ -27,7 +27,7 @@ Every figure in the report traces to a row here.
 | Citizen verifier languages / reviewed | 6 / 3 | `kb/verifier_templates.yaml` |
 | Wind tunnel: emergency offshore as regulation | DO NOT ISSUE AS DRAFTED | unresolved conflicts 1 | `app/windtunnel (deterministic)` |
 | Wind tunnel: emergency offshore as health_authority_resolution | READY FOR NAMED HUMAN REVIEW | unresolved conflicts 0 | `app/windtunnel (deterministic)` |
-| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7', 'I9'] broken [] | interop 60->31% | `app/windtunnel (deterministic)` |
+| Wind tunnel: authentication + verified lane | READY FOR NAMED HUMAN REVIEW | fixed ['I3', 'I7', 'I9'] broken [] | interop 52->34% | `app/windtunnel (deterministic)` |
 
 ## Added 1 Nov 2026 (pre-registered before running)
 
@@ -43,8 +43,8 @@ Every figure in the report traces to a row here.
 | Agents held-out v6 (after identity rule and 8 Nov records; pre-registered 8 Nov), latest re-run (post-hoc, not held-out) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (latest run) |
 | Agents held-out v7 (identity vs content rule + message signals; pre-registered 8 Nov) (accuracy / harmful) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (first scored run) |
 | Agents held-out v8 (majority vote, Arabic, larger KB; pre-registered 8 Nov) (accuracy / harmful) | 10/10 (72-100%) / 0 | docs/eval_log_v3.md (first scored run) |
-| Agents held-out real (50 real SMS texts, random by fixed seed; pre-registered) (accuracy / harmful) | 251/275 (87-94%) / 18 | docs/eval_log_v3.md (first scored run) |
+| Agents held-out real (all 275 real SMS texts the filter holds; pre-registered) (accuracy / harmful) | 251/275 (87-94%) / 18 | docs/eval_log_v3.md (first scored run) |
 | Retrieval HISN clause-first (pre-registered v3) | Recall@5 10/12 (55-95%), Recall@1 9/12, MRR 0.77 | docs/retrieval_eval.md |
-| Retrieval HISN hybrid (pre-registered v3) | Recall@5 11/12 (65-99%), Recall@1 8/12, MRR 0.74 | docs/retrieval_eval.md |
-| Retrieval decision (rule committed before running) | ADOPT hybrid as default (v3 Recall@5 11 >= 10) | docs/retrieval_decision_rule.md |
+| Retrieval HISN hybrid (pre-registered v3) | Recall@5 10/12 (55-95%), Recall@1 8/12, MRR 0.72 | docs/retrieval_eval.md |
+| Retrieval decision (rule committed before running) | ADOPT hybrid as default (v3 Recall@5 10 >= 10) | docs/retrieval_decision_rule.md |
 | Run-to-run stability of agent decisions | 44/44 identical | docs/stability.md |
