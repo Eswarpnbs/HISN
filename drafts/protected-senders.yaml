@@ -1,0 +1,7 @@
+# Example pull request: a draft rule that passes the wind tunnel.
+draft: "Government and health sender IDs must be authenticated by the operator; authenticated government and health messages travel in a verified lane that does not depend on message content or language."
+instrument_level: regulation
+mechanisms:
+  - {id: sender_authentication}
+  - {id: verified_sender_lane}
+confirmed_by: "Synthetic reviewer (Team Sankalp)"
