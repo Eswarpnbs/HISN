@@ -49,6 +49,7 @@ def main():
                 harm += o["proposed_action"] in CITATION_REQUIRED; cons += o["proposed_action"] not in CITATION_REQUIRED
             caught += o["status"] in ("INSUFFICIENT_EVIDENCE", "CONFLICT", "PRECONDITION_FAILED")
             stopped += o["status"] == "PRECONDITION_FAILED" and o.get("rejected_action") == "RECOMMEND_RELEASE_BY_NAMED_OFFICER"
+        if n == 0: continue   # set not part of this run
         out.append(f"| {label} | {cor}/{n} | {harm} | {cons} | {caught} | {stopped} |")
     out += ["", "Model accuracy counts only decisions the model made itself; a decision changed by a gate is not counted as "
             "correct, even when the final action matches the gold answer. Held-out sets v2-v4 and paraphrase were already scored "

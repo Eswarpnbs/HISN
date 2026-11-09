@@ -49,3 +49,20 @@ def test_receipt_and_audit_never_contain_message_text(tmp_path):
     _, receipts, log = session(tmp_path, script(3, 1))
     assert "critical test result" not in str(receipts)
     assert "critical test result" not in log.read_text()
+def test_no_receipt_is_pushed_to_a_transmitter_only_bind(tmp_path):
+    """SMPP 3.4: deliver_sm goes only to receiver/transceiver sessions (found by the independent smpplib check)."""
+    import asyncio, yaml
+    from pathlib import Path
+    from app.core.audit import AuditLog
+    from app.core.firewall import SmsFirewall
+    from app.smpp.server import HisnSmppServer, send_with_receipts
+    a = AuditLog(tmp_path / "a.jsonl"); fw = SmsFirewall("kb/rulepacks/uae/senders.yaml", a, governed=True); fw.set_threshold(0.2, "t")
+    accounts = {"hospital-a-gw": {"password": "p1", "route": "local", "authorised_headers": ["HOSPITAL-A"]}}
+    srv = HisnSmppServer(fw, accounts, a)
+    async def go():
+        server = await asyncio.start_server(srv.handle, "127.0.0.1", 0); port = server.sockets[0].getsockname()[1]
+        async with server:
+            return await send_with_receipts("127.0.0.1", port, [bind_pdu(1, "hospital-a-gw", "p1", cmd=0x00000002),
+                submit_pdu(2, "HOSPITAL-A", "TESTDEST", "Your appointment is rescheduled.", registered_delivery=1), enquire_pdu(3), unbind_pdu(4)])
+    out, receipts = asyncio.run(go())
+    assert receipts == [] and any('"smpp_receipt_pending"' in l for l in (tmp_path / "a.jsonl").read_text().splitlines())

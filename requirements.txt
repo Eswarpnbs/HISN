@@ -3,6 +3,7 @@ pyyaml
 pydantic
 pytest
 certifi
+cryptography   # Ed25519 signed approvals
 python-pptx
 # ITU AI Readiness reference simulation (ingest pipeline, ChromaDB KB, Ollama client)
 -r ITU_REQUIREMENTS.txt

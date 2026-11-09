@@ -1,19 +1,24 @@
 # Fictional approver roster for the prototype (no real people). Roles say which changes each may approve.
-# Signatures use demo keys (see app/core/approval.py); a deployment would use the authority's own identity service.
+# Each approver's Ed25519 PUBLIC key is registered here; verification uses only these. The keys below come from the
+# prototype's demo private keys (app/core/approval.py); a deployment registers keys issued by the authority's identity service.
 approvers:
   - id: tdra-duty-officer
+    public_key: ae593c1e485eab59ca26c42100b4be2b6dc82f16ab1399091c79fe7d032c41ce
     name: "TDRA duty officer (fictional)"
     role: regulator_duty_officer
     may_approve: [filter_policy]
   - id: operator-change-board
+    public_key: 0570bd2e10b307b2f16669a4891dc45b8a6ec37786e47cf4e39d8ae703b52af5
     name: "Operator change advisory board (fictional)"
     role: operator_change_board
     may_approve: [filter_policy]
   - id: health-duty-officer
+    public_key: 21217beccbd3dc825a565439a0c82155e2b793228d8f3d5649254e4d1d9b1a7a
     name: "Health Authority duty officer (fictional)"
     role: health_duty_officer
     may_approve: [message_release]
   - id: vendor-ops
+    public_key: 27ad119a40e555533940ac8da5bc2a24ce9d82b56eb41796253315a970daeb72
     name: "Filter vendor operations (fictional)"
     role: vendor
     may_approve: []

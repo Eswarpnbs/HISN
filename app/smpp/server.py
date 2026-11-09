@@ -12,7 +12,7 @@ class HisnSmppServer:
         self.tiers, self.rseq = tiers or Tiers(), itertools.count(1)
 
     async def handle(self, reader, writer):
-        bound = None
+        bound, mode = None, None
         try:
             while True:
                 length, cmd, _, seq = struct.unpack(">IIII", await reader.readexactly(16))
@@ -22,6 +22,7 @@ class HisnSmppServer:
                     acc = self.accounts.get(sid)
                     ok = acc is not None and acc.get("password") == pw
                     bound = (sid, acc) if ok else None
+                    mode = BIND_IDS[cmd] if ok else None   # receiver | transmitter | transceiver
                     self.audit.write({"kind": "smpp_bind", "esme": sid, "ok": ok})
                     writer.write(pdu(cmd | 0x80000000, ROK if ok else RBINDFAIL, seq, b"HISN\x00" if ok else b"\x00"))
                 elif cmd == SUBMIT_SM:
@@ -43,7 +44,12 @@ class HisnSmppServer:
                                               "action": r["action"], "command_status": st, "message_id": mid,
                                               "tier": tier, "tier_reason": why})
                         writer.write(pdu(SUBMIT_SM | 0x80000000, st, seq, mid.encode() + b"\x00"))
-                        if r["action"] == "QUARANTINE" and m["registered_delivery"] & 0x01:
+                        if r["action"] == "QUARANTINE" and m["registered_delivery"] & 0x01 and mode == "transmitter":
+                            # SMPP 3.4: deliver_sm goes only to a receiver or transceiver session, never a transmitter.
+                            # The receipt is still recorded, to be fetched by the sender's receiver bind.
+                            self.audit.write({"kind": "smpp_receipt_pending", "message_id": mid,
+                                              "reason": "transmitter_bind_cannot_receive_deliver_sm"})
+                        elif r["action"] == "QUARANTINE" and m["registered_delivery"] & 0x01:
                             to = r.get("escalate_to") or "reviewer"
                             review, call = self.tiers.max_hold(tier), self.tiers.receipt_after(tier)
                             writer.write(receipt_pdu(next(self.rseq), mid, m["source_addr"], m["destination_addr"],

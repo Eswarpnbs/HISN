@@ -5,13 +5,16 @@ A name string is not an approval. An approval is a record that:
   * is bound to one change (event id, kind and the exact new value), so it cannot be reused or altered;
   * has a validity window (simulated minutes) and expires;
   * comes from someone other than the person who requested the change (maker != checker);
-  * carries an HMAC-SHA256 signature over a canonical form of all of the above.
+  * carries an Ed25519 public-key signature over a canonical form of all of the above.
 
-DEMO KEYS: keys are derived from the approver id unless HISN_KEY_<APPROVER_ID> is set in the environment.
-They are not secret and exist only so the prototype can show the verification boundary. A production
-deployment would use the authority's own PKI or identity service; HISN does not claim that integration.
+Public-key signatures (upgraded 9 Nov 2026 from shared-secret HMAC): the verifier holds ONLY each approver's public
+key, registered in kb/approvers.yaml, so whoever checks an approval cannot forge one. The private key stays with the
+approver (set HISN_PRIV_<APPROVER_ID> to a 32-byte hex key; tools/approver_keys.py makes a key pair).
+DEMO KEYS: without that variable the private key is derived from the approver id, so the prototype runs anywhere;
+those demo keys are public knowledge and prove nothing in production. A deployment registers keys issued by the
+authority's own identity service (for example a national PKI); HISN does not claim that integration.
 """
-import hashlib, hmac, json, os
+import hashlib, json, os
 from pathlib import Path
 import yaml
 
@@ -22,16 +25,28 @@ def load_roster(path=ROSTER_PATH):
     data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
     return {a["id"]: a for a in data["approvers"]}
 
-def _key(approver_id):
-    env = os.environ.get("HISN_KEY_" + approver_id.upper().replace("-", "_"))
-    return (env or ("hisn-demo-key:" + approver_id)).encode()
+def _ed():
+    try:
+        from cryptography.hazmat.primitives.asymmetric import ed25519
+        return ed25519
+    except ImportError as ex:
+        raise RuntimeError("signed approvals need the 'cryptography' package: pip install cryptography") from ex
+
+def _private(approver_id):
+    env = os.environ.get("HISN_PRIV_" + approver_id.upper().replace("-", "_"))
+    seed = bytes.fromhex(env) if env else hashlib.sha256(("hisn-demo-key:" + approver_id).encode()).digest()
+    return _ed().Ed25519PrivateKey.from_private_bytes(seed)
+
+def public_key_hex(approver_id):
+    from cryptography.hazmat.primitives import serialization as S
+    return _private(approver_id).public_key().public_bytes(S.Encoding.Raw, S.PublicFormat.Raw).hex()
 
 def canonical(rec):
     return json.dumps({k: rec.get(k) for k in FIELDS}, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 def sign(rec):
     out = dict(rec)
-    out["signature"] = hmac.new(_key(rec["approver_id"]), canonical(rec).encode(), hashlib.sha256).hexdigest()
+    out["signature"] = _private(rec["approver_id"]).sign(canonical(rec).encode()).hex()
     return out
 
 def make_approval(change_id, kind, value, approver_id, requested_by, issued_at, valid_minutes=60, roster=None):
@@ -48,8 +63,13 @@ def verify(approval, change_id, kind, value, now, roster=None):
     aid = approval.get("approver_id")
     if aid not in roster:
         return False, "approver_not_in_roster"
-    expected = hmac.new(_key(aid), canonical(approval).encode(), hashlib.sha256).hexdigest()
-    if not hmac.compare_digest(expected, str(approval.get("signature", ""))):
+    pub = roster[aid].get("public_key")
+    if not pub:
+        return False, "approver_has_no_registered_key"
+    try:
+        _ed().Ed25519PublicKey.from_public_bytes(bytes.fromhex(pub)).verify(
+            bytes.fromhex(str(approval.get("signature", ""))), canonical(approval).encode())
+    except Exception:
         return False, "signature_invalid"
     who = roster[aid]
     if approval.get("role") != who["role"]:

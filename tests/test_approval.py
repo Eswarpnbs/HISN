@@ -70,3 +70,23 @@ def test_default_mode_unchanged():
         fw = FW()
         out = Coordinator(str(sc), AuditLog(Path(tmp) / "a.jsonl"), fw, enforce_levels=True).run(until=0)
         assert fw.t == 0.2 and out[0]["action"] == "APPLIED"
+
+def test_verifier_needs_only_the_public_key_and_rejects_a_key_it_does_not_know():
+    roster = A.load_roster()
+    assert all(len(a["public_key"]) == 64 for a in roster.values())
+    a = good()
+    swapped = {k: dict(v) for k, v in roster.items()}
+    swapped["tdra-duty-officer"]["public_key"] = roster["operator-change-board"]["public_key"]
+    assert A.verify(a, "F1", "filter_policy", 0.2, now=10, roster=swapped) == (False, "signature_invalid")
+    nokey = {k: dict(v) for k, v in roster.items()}; nokey["tdra-duty-officer"].pop("public_key")
+    assert A.verify(a, "F1", "filter_policy", 0.2, now=10, roster=nokey) == (False, "approver_has_no_registered_key")
+
+def test_a_real_private_key_from_the_environment_is_used(monkeypatch):
+    from cryptography.hazmat.primitives.asymmetric import ed25519
+    from cryptography.hazmat.primitives import serialization as S
+    k = ed25519.Ed25519PrivateKey.generate()
+    monkeypatch.setenv("HISN_PRIV_TDRA_DUTY_OFFICER", k.private_bytes(S.Encoding.Raw, S.PrivateFormat.Raw, S.NoEncryption()).hex())
+    roster = A.load_roster(); roster["tdra-duty-officer"]["public_key"] = k.public_key().public_bytes(S.Encoding.Raw, S.PublicFormat.Raw).hex()
+    a = A.make_approval("F1", "filter_policy", 0.2, "tdra-duty-officer", "vendor-ops", issued_at=0, roster=roster)
+    assert A.verify(a, "F1", "filter_policy", 0.2, now=10, roster=roster) == (True, "approved")
+    assert A.verify(a, "F1", "filter_policy", 0.2, now=10) == (False, "signature_invalid")   # demo public key no longer matches
