@@ -5,7 +5,7 @@
 **No essential message lost in silence. No rule issued untested.**
 
 Team Sankalp · ITU AI for Good Lab Hackathon (UAE) · Telecommunications + Healthcare + Public services
-Eswar Panchakarla (team leader, engineering) · P. Prudhvi Krishna (knowledge base, policy, report) · eswarpnbs@gmail.com
+P. Prudhvi Krishna (team leader; knowledge base, policy, report) · Eswar Panchakarla (engineering) · krishna.prudhvi.01@gmail.com · eswarpnbs@gmail.com
 **Technical report:** [`docs/HISN_Submission_Team_Sankalp.pdf`](docs/HISN_Submission_Team_Sankalp.pdf) · **Live report:** https://hisn-report.netlify.app/ · Scenario messages are synthetic (fictional senders); four evaluations use real public data.
 
 The UAE plans to deliver half of its government services through AI agents. Security testing asks *is the agent safe?* Monitoring asks *what did it do?* HISN answers the two questions left over:
