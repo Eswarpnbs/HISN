@@ -69,6 +69,8 @@ Baseline accuracy intervals overlap, so we claim a difference in harm and citati
 G1 fraud and impersonation outside filtering duties · G2 no protected status for government and health senders · G3 no explicit legal basis for AI scanning of health SMS · G4 no emergency path for systematic AI-triggered failover · G5 no authority over operators' AI filter changes (found by the agents) · G6 no allocation of scam losses to operators · G7 essential-sender recognition does not cross borders (measured).
 Standards: a machine-readable policy-rule format (our YAML schema, offered to ITU); an authority record joining the declared Y.3173 level, the named approval and the cited clause; and a Readiness Framework gap: none of the 111 metrics in ITU's dimensions.json measures whether an agent's consequential action had verified authority (agents appear only as d11_m03, a user-interface metric).
 
+**Contributed to ITU's reference repository:** [#1 Arabic legal PDFs ingest as broken text; OCR fallback recovers them](https://github.com/CrashingGuru/ITUAIReadiness/issues/1) · [#2 a Readiness Framework metric for agent authority](https://github.com/CrashingGuru/ITUAIReadiness/issues/2) · [#3 a machine-readable policy-rule format bound to verified legal text](https://github.com/CrashingGuru/ITUAIReadiness/issues/3).
+
 ## See it
 
 ![Live console: ungoverned vs HISN, receipts in English and Arabic](docs/fig/console_receipts.png)
