@@ -43,6 +43,7 @@ Every figure in the report traces to a row here.
 | Agents held-out v6 (after identity rule and 8 Nov records; pre-registered 8 Nov), latest re-run (post-hoc, not held-out) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (latest run) |
 | Agents held-out v7 (identity vs content rule + message signals; pre-registered 8 Nov) (accuracy / harmful) | 8/8 (68-100%) / 0 | docs/eval_log_v3.md (first scored run) |
 | Agents held-out v8 (majority vote, Arabic, larger KB; pre-registered 8 Nov) (accuracy / harmful) | 10/10 (72-100%) / 0 | docs/eval_log_v3.md (first scored run) |
+| Agents held-out real (50 real SMS texts, random by fixed seed; pre-registered) (accuracy / harmful) | 251/275 (87-94%) / 18 | docs/eval_log_v3.md (first scored run) |
 | Retrieval HISN clause-first (pre-registered v3) | Recall@5 10/12 (55-95%), Recall@1 9/12, MRR 0.77 | docs/retrieval_eval.md |
 | Retrieval HISN hybrid (pre-registered v3) | Recall@5 11/12 (65-99%), Recall@1 8/12, MRR 0.74 | docs/retrieval_eval.md |
 | Retrieval decision (rule committed before running) | ADOPT hybrid as default (v3 Recall@5 11 >= 10) | docs/retrieval_decision_rule.md |
