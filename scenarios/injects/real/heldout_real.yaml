@@ -1,5 +1,9 @@
 # HELD-OUT 'real': message texts from the SMS Phishing Dataset (Mishra and Soni 2022, CC BY 4.0), input SHA-256 649844f1c62a6b27e145eaf17a65f7010c56c390e11a794ea8329993a05ba71e.
 # Built by tools/make_heldout_real.py with SEED 20261109; selection rules in that file were committed before it first ran. Texts are real; sender IDs and authentication are simulated.
+# MASKED COPY (9 Nov 2026): phone numbers, web addresses and e-mail addresses in the real texts are replaced by
+# [NUMBER], [URL] and [EMAIL], so the repository does not display live scam contact details. The scored run used
+# the original public texts (commit a39f07c; regenerate them with tools/make_heldout_real.py and the public
+# dataset). Gold (scenarios/gold_heldout_real.yaml) is unchanged.
 events:
 - id: R-001-S
   t: 100
@@ -10,7 +14,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Uw ING bankieren app bevat verouderde plugins. klik hieronder om de beveiligde versie te downloaden http://mijn.ing-mobiel.com/update.apk
+    short_message: Uw ING bankieren app bevat verouderde plugins. klik hieronder om de beveiligde versie te downloaden [URL]
 - id: R-002-L
   t: 100
   act: 3
@@ -42,7 +46,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.10,00,000 prize GUARANTEED. Call 8536074310. Claim Code K52. Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.10,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code K52. Valid 12hrs only.
 - id: R-005-S
   t: 102
   act: 3
@@ -52,7 +56,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: We have received a request from you for purchasing Paytm Payments Bank FASTag. Total amount to be paid is Rs 250/- (Tag Cost Rs. 100 Security Deposit Rs. 0, Threshold -Rs. 150). In case of any queries, please contact us at https://m.paytm.me/fastag-help
+    short_message: We have received a request from you for purchasing Paytm Payments Bank FASTag. Total amount to be paid is Rs 250/- (Tag Cost Rs. 100 Security Deposit Rs. 0, Threshold -Rs. 150). In case of any queries, please contact us at [URL]
 - id: R-006-S
   t: 102
   act: 3
@@ -62,7 +66,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! Your Mobile No. was awarded £2000 Bonus Caller Prize on 5/9/03 This is our final try to contact U! Call from Landline 09064019788 BOX42WR29C, 150PPM
+    short_message: URGENT! Your Mobile No. was awarded £2000 Bonus Caller Prize on 5/9/03 This is our final try to contact U! Call from Landline [NUMBER] BOX42WR29C, 150PPM
 - id: R-007-S
   t: 103
   act: 3
@@ -72,7 +76,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 6200992462
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH [NUMBER]
 - id: R-008-L
   t: 103
   act: 3
@@ -104,7 +108,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Message Important information for O2 user. Today is your lucky day! 2 find out why log onto http://www.urawinner.com there is a fantastic surprise awaiting you
+    short_message: Message Important information for O2 user. Today is your lucky day! 2 find out why log onto [URL] there is a fantastic surprise awaiting you
 - id: R-011-L
   t: 105
   act: 3
@@ -136,7 +140,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Urgent! Please call 09061743811 from landline. Your ABTA complimentary 4* Tenerife Holiday or £5000 cash await collection SAE T&Cs Box 326 CW25WX 150ppm
+    short_message: Urgent! Please call [NUMBER] from landline. Your ABTA complimentary 4* Tenerife Holiday or £5000 cash await collection SAE T&Cs Box 326 CW25WX 150ppm
 - id: R-014-L
   t: 106
   act: 3
@@ -168,7 +172,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 6200992462 Your Paytm A/C will block within 24hr Thank you.
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH [NUMBER] Your Paytm A/C will block within 24hr Thank you.
 - id: R-017-S
   t: 108
   act: 3
@@ -178,7 +182,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Urgent! Please call 09061213237 from landline. £5000 cash or a luxury 4* Canary Islands Holiday await collection. T&Cs SAE PO Box 177. M227XY. 150ppm. 16+
+    short_message: Urgent! Please call [NUMBER] from landline. £5000 cash or a luxury 4* Canary Islands Holiday await collection. T&Cs SAE PO Box 177. M227XY. 150ppm. 16+
 - id: R-018-S
   t: 108
   act: 3
@@ -188,7 +192,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 8536074310
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH [NUMBER]
 - id: R-019-S
   t: 109
   act: 3
@@ -198,7 +202,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: 'Reminder: You have not downloaded the content you have already paid for. Goto http://doit. mymoby. tv/ to collect your content.'
+    short_message: 'Reminder: You have not downloaded the content you have already paid for. Goto [URL] mymoby. tv/ to collect your content.'
 - id: R-020-S
   t: 109
   act: 3
@@ -208,7 +212,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790321 from land line. Claim 3030. Valid 12hrs only 150ppm
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only 150ppm
 - id: R-021-L
   t: 110
   act: 3
@@ -229,7 +233,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! Your mobile was awarded a £1,500 Bonus Caller Prize on 27/6/03. Our final attempt 2 contact U! Call 08714714011
+    short_message: URGENT! Your mobile was awarded a £1,500 Bonus Caller Prize on 27/6/03. Our final attempt 2 contact U! Call [NUMBER]
 - id: R-023-L
   t: 111
   act: 3
@@ -250,7 +254,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 6200992462 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-025-S
   t: 112
   act: 3
@@ -260,7 +264,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! Your Mobile number has been awarded a <UKP>2000 prize GUARANTEED. Call 09061790125 from landline. Claim 3030. Valid 12hrs only 150ppm
+    short_message: URGENT! Your Mobile number has been awarded a <UKP>2000 prize GUARANTEED. Call [NUMBER] from landline. Claim 3030. Valid 12hrs only 150ppm
 - id: R-026-L
   t: 112
   act: 3
@@ -336,7 +340,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! This is the 2nd attempt to contact U!U have WON £1000CALL 09071512432 b4 300603t&csBCM4235WC1N3XX.callcost150ppmmobilesvary. max£7. 50
+    short_message: URGENT! This is the 2nd attempt to contact U!U have WON £1000CALL [NUMBER] b[NUMBER]t&csBCM4235WC1N3XX.callcost150ppmmobilesvary. max£7. 50
 - id: R-033-S
   t: 116
   act: 3
@@ -346,7 +350,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: HMRC GOVUK:0ur records show that your tax refund of �398.90 can now be claime. Please continue via:https://ukhmrc-tax-refund.com�to claim your refund.
+    short_message: HMRC GOVUK:0ur records show that your tax refund of �398.90 can now be claime. Please continue via:[URL] claim your refund.
 - id: R-034-S
   t: 116
   act: 3
@@ -366,7 +370,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 6299257179 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-036-L
   t: 117
   act: 3
@@ -387,7 +391,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Urgent! call 09066350750 from your landline. Your complimentary 4* Ibiza Holiday or 10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+
+    short_message: Urgent! call [NUMBER] from your landline. Your complimentary 4* Ibiza Holiday or 10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+
 - id: R-038-S
   t: 118
   act: 3
@@ -397,7 +401,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Dear Voucher Holder, 2 claim this weeks offer, at your PC go to http://www.e-tlp.co.uk/expressoffer Ts&Cs app
+    short_message: Dear Voucher Holder, 2 claim this weeks offer, at your PC go to [URL] Ts&Cs app
 - id: R-039-S
   t: 119
   act: 3
@@ -407,7 +411,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 8927307655 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-040-S
   t: 119
   act: 3
@@ -417,7 +421,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Congrats, Your Product Order at Paytm Mall Pvt. Ltd. Is accepted. Message Your Name Company and account number to PH 7679046492
+    short_message: Congrats, Your Product Order at Paytm Mall Pvt. Ltd. Is accepted. Message Your Name Company and account number to PH [NUMBER]
 - id: R-041-L
   t: 120
   act: 3
@@ -438,7 +442,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: You have registered Sinco as Payee. Log in at icicibank.com and enter URN &lt;#&gt; to confirm. Beware of frauds. Do NOT share or disclose URN to anyone.
+    short_message: You have registered Sinco as Payee. Log in at [URL] and enter URN &lt;#&gt; to confirm. Beware of frauds. Do NOT share or disclose URN to anyone.
     authenticated: true
 - id: R-043-S
   t: 121
@@ -449,7 +453,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: important information 4 orange user . today is your lucky day!2find out why log onto http://www.urawinner.com THERE'S A FANTASTIC SURPRISE AWAITING YOU!
+    short_message: important information 4 orange user . today is your lucky day!2find out why log onto [URL] THERE'S A FANTASTIC SURPRISE AWAITING YOU!
 - id: R-044-S
   t: 121
   act: 3
@@ -459,7 +463,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Nationwide has noticed your debit card was recently used on 29-11-2016 15:04:43, at APPLE ONLINE STORE for 1267.00 GBP If not you please urgently call fraud prevention on 03303800231 or Int +443303800231. Do not reply by SMS http://www.Nationwide.co.uk
+    short_message: Nationwide has noticed your debit card was recently used on [NUMBER]:04:43, at APPLE ONLINE STORE for 1267.00 GBP If not you please urgently call fraud prevention on [NUMBER] or Int [NUMBER]. Do not reply by SMS [URL]
 - id: R-045-S
   t: 122
   act: 3
@@ -469,7 +473,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Dear PAYTM customer your paytm KYC has been suspended, paytm office PH 6291628992 Account will block within 24 hour. Thank you. PAYTM TEAM
+    short_message: Dear PAYTM customer your paytm KYC has been suspended, paytm office PH [NUMBER] Account will block within 24 hour. Thank you. PAYTM TEAM
 - id: R-046-L
   t: 122
   act: 3
@@ -490,7 +494,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.8,00,000 prize GUARANTEED. Call 6200992462. Claim Code N32. Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.8,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code N32. Valid 12hrs only.
 - id: R-048-L
   t: 123
   act: 3
@@ -533,7 +537,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001295 from land line. Claim A21. Valid 12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call [NUMBER] from land line. Claim A21. Valid 12hrs only
 - id: R-052-S
   t: 125
   act: 3
@@ -543,7 +547,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: BankOfAmerica Alert 137943. Please follow http://bit.do/cgjK-and re-activate
+    short_message: BankOfAmerica Alert [NUMBER]. Please follow [URL] re-activate
 - id: R-053-S
   t: 126
   act: 3
@@ -553,7 +557,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: A link to your picture has been sent. You can also use http://alto18.co.uk/wave/wave.asp?o=44345
+    short_message: A link to your picture has been sent. You can also use [URL]
 - id: R-054-L
   t: 126
   act: 3
@@ -574,7 +578,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT We are trying to contact you Last weekends draw shows u have won a £1000 prize GUARANTEED Call 09064017295 Claim code K52 Valid 12hrs 150p pm
+    short_message: URGENT We are trying to contact you Last weekends draw shows u have won a £1000 prize GUARANTEED Call [NUMBER] Claim code K52 Valid 12hrs 150p pm
 - id: R-056-L
   t: 127
   act: 3
@@ -628,7 +632,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/reward. Ts&Cs apply.
+    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to [URL] Ts&Cs apply.
 - id: R-061-S
   t: 130
   act: 3
@@ -638,7 +642,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: In the Open Lucky Draw Contest And You Are The Winner 0f Tata Saafari (12,60000). Contact-997330199 -2294871295. More Information https://bit.ly/32ZwcQ5
+    short_message: In the Open Lucky Draw Contest And You Are The Winner 0f Tata Saafari (12,60000). Contact-[NUMBER]. More Information [URL]
 - id: R-062-S
   t: 130
   act: 3
@@ -648,7 +652,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 7044518857 Your Paytm A/C will block within 24hr Thank you.
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH [NUMBER] Your Paytm A/C will block within 24hr Thank you.
 - id: R-063-L
   t: 131
   act: 3
@@ -691,7 +695,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09058094454 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-067-L
   t: 133
   act: 3
@@ -712,7 +716,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 8536074310 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-069-L
   t: 134
   act: 3
@@ -744,7 +748,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: IMPORTANT INFORMATION 4 ORANGE USER 0796XXXXXX. TODAY IS UR LUCKY DAY!2 FIND OUT WHY LOG ONTO http://www.urawinner.com THERE'S A FANTASTIC PRIZEAWAITING YOU!
+    short_message: IMPORTANT INFORMATION 4 ORANGE USER 0796XXXXXX. TODAY IS UR LUCKY DAY!2 FIND OUT WHY LOG ONTO [URL] THERE'S A FANTASTIC PRIZEAWAITING YOU!
 - id: R-072-L
   t: 135
   act: 3
@@ -765,7 +769,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 7679046492
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH [NUMBER]
 - id: R-074-L
   t: 136
   act: 3
@@ -797,7 +801,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 8536074310 immediately to verify
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� [NUMBER] immediately to verify
 - id: R-077-S
   t: 138
   act: 3
@@ -807,7 +811,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Urgent Message for CIBC Account Holder, Kindly Login to our secure server to check your information�http://2cibc.mobileupdate.gram pianostudio.com/cibcfullz/Internet Support
+    short_message: Urgent Message for CIBC Account Holder, Kindly Login to our secure server to check your information�[URL] [URL] Support
 - id: R-078-L
   t: 138
   act: 3
@@ -828,7 +832,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 8536074310 Your Paytm A/C will block within 24hr Thank you.
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH [NUMBER] Your Paytm A/C will block within 24hr Thank you.
 - id: R-080-L
   t: 139
   act: 3
@@ -849,7 +853,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001808 from land line. Claim M95. Valid12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call [NUMBER] from land line. Claim M95. Valid12hrs only
 - id: R-082-S
   t: 140
   act: 3
@@ -859,7 +863,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Urgent! call 09066350760 from your landline. Your complimentary 4* Ibiza Holiday or 20,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+
+    short_message: Urgent! call [NUMBER] from your landline. Your complimentary 4* Ibiza Holiday or 20,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+
 - id: R-083-L
   t: 141
   act: 3
@@ -891,7 +895,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: GOV.UK ALERT CORONAVIRUS It has come to our attention that you have been out of the house more than once. Due to this irresponsible behaviour, we are issuing you a formal warning and �250 fine. If this continues, the fine could increase to a maximum of �5000 and/or an arrest. Payment will be taken automatically out of your account. Call 0800345 9999 for any enquiries or to appeal.
+    short_message: '[URL] ALERT CORONAVIRUS It has come to our attention that you have been out of the house more than once. Due to this irresponsible behaviour, we are issuing you a formal warning and �250 fine. If this continues, the fine could increase to a maximum of �5000 and/or an arrest. Payment will be taken automatically out of your account. Call [NUMBER] for any enquiries or to appeal.'
 - id: R-086-S
   t: 142
   act: 3
@@ -901,7 +905,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 7908807538 Your Paytm A/C will block within 24hr Thank you.
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH [NUMBER] Your Paytm A/C will block within 24hr Thank you.
 - id: R-087-S
   t: 143
   act: 3
@@ -911,7 +915,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call 09058094507 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-088-L
   t: 143
   act: 3
@@ -932,7 +936,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: We have recalculated your vehicle tax. You are owed �48.84 due to over payment.Click the secure link http:// 103.208.86.96 to claim your refund.
+    short_message: We have recalculated your vehicle tax. You are owed �48.84 due to over [URL] the secure link [URL] to claim your refund.
 - id: R-090-L
   t: 144
   act: 3
@@ -964,7 +968,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Your Bank of America online account has been suspended, log in to restore http://itdo/bankofamerica-session-user
+    short_message: Your Bank of America online account has been suspended, log in to restore [URL]
 - id: R-093-L
   t: 146
   act: 3
@@ -985,7 +989,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: 'Courtsy reminder: payment on your NAB Visa Card is now overdue. Please refer to your statement for payment options or call 1300 2569 28 Thank you'
+    short_message: 'Courtsy reminder: payment on your NAB Visa Card is now overdue. Please refer to your statement for payment options or call [NUMBER] Thank you'
 - id: R-095-S
   t: 147
   act: 3
@@ -995,7 +999,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.5,00,000 prize GUARANTEED. Call 7044518857. Claim Code FLIP82. Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.5,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code FLIP82. Valid 12hrs only.
 - id: R-096-L
   t: 147
   act: 3
@@ -1016,7 +1020,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.7,00,000 prize GUARANTEED. Call 7679046492. Claim Code L92 Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.7,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code L92 Valid 12hrs only.
 - id: R-098-S
   t: 148
   act: 3
@@ -1026,7 +1030,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you won a £1000 prize GUARANTEED. Call 09064012160. Claim Code K52. Valid 12hrs only. 150ppm
+    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you won a £1000 prize GUARANTEED. Call [NUMBER]. Claim Code K52. Valid 12hrs only. 150ppm
 - id: R-099-S
   t: 149
   act: 3
@@ -1036,7 +1040,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Urgent! Please call 09061213237 from a landline. £5000 cash or a 4* holiday await collection. T &Cs SAE PO Box 177 M227XY. 16+
+    short_message: Urgent! Please call [NUMBER] from a landline. £5000 cash or a 4* holiday await collection. T &Cs SAE PO Box 177 M227XY. 16+
 - id: R-100-S
   t: 149
   act: 3
@@ -1046,7 +1050,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: 'URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: 81010 T&C www.dbuk.net LCCLTD POBOX 4403LDNW1A7RW18'
+    short_message: 'URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: [NUMBER] T&C [URL] LCCLTD POBOX 4403LDNW1A7RW18'
 - id: R-101-S
   t: 150
   act: 3
@@ -1056,7 +1060,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Nationwide has noticed your debit card was recently used on 23-05-2012 11:04:43, at APPLE ONLINE STORE for 1920.00 GBP If not you please urgently call fraud prevention on 03303800233 or Intl +443303800231. Do not reply by SMS http://www.nationwide.co.uk/
+    short_message: Nationwide has noticed your debit card was recently used on [NUMBER]:04:43, at APPLE ONLINE STORE for 1920.00 GBP If not you please urgently call fraud prevention on [NUMBER] or Intl [NUMBER]. Do not reply by SMS [URL]
 - id: R-102-S
   t: 150
   act: 3
@@ -1066,7 +1070,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: 'Englishvocabulary ululate: to mourn loudly and shrilly AD: Unlimited FREE calls to any mobile try out today http://bit.ly/unlmtdfreecall share wid frnd'
+    short_message: 'Englishvocabulary ululate: to mourn loudly and shrilly AD: Unlimited FREE calls to any mobile try out today [URL] share wid frnd'
 - id: R-103-S
   t: 151
   act: 3
@@ -1076,7 +1080,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 7044518857 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-104-S
   t: 151
   act: 3
@@ -1086,7 +1090,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-7908807538 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-[NUMBER] immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
 - id: R-105-L
   t: 152
   act: 3
@@ -1118,7 +1122,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call 09066362231 ASAP! BOX97N7QP, 150PPM
+    short_message: URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call [NUMBER] ASAP! BOX97N7QP, 150PPM
 - id: R-108-S
   t: 153
   act: 3
@@ -1128,7 +1132,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: We would like to inform you that you have been recorded as leaving your home on 3 occasions yesterday. A fine of �35 has been added to your gov.uk�account. For further information please visit�gov.uk/ coronavirus-penalty-payment racking. Protect the NHS. Save lives
+    short_message: We would like to inform you that you have been recorded as leaving your home on 3 occasions yesterday. A fine of �35 has been added to your [URL]�account. For further information please visit�[URL] coronavirus-penalty-payment racking. Protect the NHS. Save lives
 - id: R-109-S
   t: 154
   act: 3
@@ -1138,7 +1142,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.6,00,000 prize GUARANTEED. Call 7908807538. Claim Code FLIP52. Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.6,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code FLIP52. Valid 12hrs only.
 - id: R-110-L
   t: 154
   act: 3
@@ -1148,7 +1152,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Good evening Sir, Al Salam Wahleykkum.sharing a happy news.By the grace of God, i got an offer from Tayseer,TISSCO and i joined.Hope you are fine.Inshah Allah,meet you sometime.Rakhesh,visitor from India.
+    short_message: Good evening Sir, Al Salam Wahleykkum.sharing a happy news.By the grace of God, i got an offer from Tayseer,TISSCO and i joined.Hope you are [URL]shah Allah,meet you sometime.Rakhesh,visitor from India.
     authenticated: true
 - id: R-111-S
   t: 155
@@ -1159,7 +1163,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Your iPhone ID is due to expire today, Please tap https://is.gd/AppVerify to update and prevent loss of services and Apps.
+    short_message: Your iPhone ID is due to expire today, Please tap [URL] to update and prevent loss of services and Apps.
 - id: R-112-S
   t: 155
   act: 3
@@ -1169,7 +1173,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Urgent Please call 09066612661 from landline. £5000 cash or a luxury 4* Canary Islands Holiday await collection. T&Cs SAE award. 20M12AQ. 150ppm. 16+ “
+    short_message: Urgent Please call [NUMBER] from landline. £5000 cash or a luxury 4* Canary Islands Holiday await collection. T&Cs SAE award. 20M12AQ. 150ppm. 16+ “
 - id: R-113-L
   t: 156
   act: 3
@@ -1190,7 +1194,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: BMO have noticed unusual activites on your online account. You are required to verify your account details.www.97bmo.tk
+    short_message: BMO have noticed unusual activites on your online account. You are required to verify your account details.[URL]
 - id: R-115-S
   t: 157
   act: 3
@@ -1200,7 +1204,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to 87121 18+6*£1.50
+    short_message: Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to [NUMBER]+6*£1.50
 - id: R-116-S
   t: 157
   act: 3
@@ -1210,7 +1214,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: A transaction of AUD 590.3 was made with your bank account on 08/02/17 11:17:37 if unauthorised follow this link http://gommbanklogin:netbank.com
+    short_message: A transaction of AUD 590.3 was made with your bank account on 08/02/[NUMBER]:17:37 if unauthorised follow this link [URL]
 - id: R-117-S
   t: 158
   act: 3
@@ -1220,7 +1224,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/expressoffer Ts&Cs apply. To stop texts, txt STOP to 80062
+    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to [URL] Ts&Cs apply. To stop texts, txt STOP to [NUMBER]
 - id: R-118-S
   t: 158
   act: 3
@@ -1230,7 +1234,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Urgent Ur £500 guaranteed award is still unclaimed! Call 09066368327 NOW closingdate04/09/02 claimcode M39M51 £1.50pmmorefrommobile2Bremoved-MobyPOBox734LS27YF
+    short_message: Urgent Ur £500 guaranteed award is still unclaimed! Call [NUMBER] NOW closingdate04/09/02 claimcode M39M51 £1.50pmmorefrommobile2Bremoved-MobyPOBox734LS27YF
 - id: R-119-S
   t: 159
   act: 3
@@ -1240,7 +1244,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Your mobile No 077xxx WON a £2,000 Bonus Caller Prize on 02/06/03! This is the 2nd attempt to reach YOU! Call 09066362206 ASAP! BOX97N7QP, 150ppm
+    short_message: URGENT! Your mobile No 077xxx WON a £2,000 Bonus Caller Prize on 02/06/03! This is the 2nd attempt to reach YOU! Call [NUMBER] ASAP! BOX97N7QP, 150ppm
 - id: R-120-L
   t: 159
   act: 3
@@ -1261,7 +1265,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: '(Alert) Your Rbc Royal Bank has been suspended. To unlock your account, click here: http://reac.mobi/@mobile'
+    short_message: '(Alert) Your Rbc Royal Bank has been suspended. To unlock your account, click here: [URL]'
 - id: R-122-L
   t: 160
   act: 3
@@ -1293,7 +1297,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 7908807538
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH [NUMBER]
 - id: R-125-L
   t: 162
   act: 3
@@ -1325,7 +1329,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: 'Urgent! Please call 09061743810 from landline. Your ABTA complimentary 4* Tenerife Holiday or #5000 cash await collection SAE T&Cs Box 326 CW25WX 150 ppm'
+    short_message: 'Urgent! Please call [NUMBER] from landline. Your ABTA complimentary 4* Tenerife Holiday or #5000 cash await collection SAE T&Cs Box 326 CW25WX 150 ppm'
 - id: R-128-L
   t: 163
   act: 3
@@ -1368,7 +1372,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT. Important information for 02 user. Today is your lucky day! 2 find out why , log onto http://www.urawinner.com there is a fantastic surprise awaiting you !
+    short_message: URGENT. Important information for 02 user. Today is your lucky day! 2 find out why , log onto [URL] there is a fantastic surprise awaiting you !
 - id: R-132-L
   t: 165
   act: 3
@@ -1389,7 +1393,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Urgent -call 09066649731from Landline. Your complimentary 4* Ibiza Holiday or £10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150ppm 18+
+    short_message: Urgent -call [NUMBER]from Landline. Your complimentary 4* Ibiza Holiday or £10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150ppm 18+
 - id: R-134-S
   t: 166
   act: 3
@@ -1399,7 +1403,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: 'URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: 81010 T&C www.dbuk.net'
+    short_message: 'URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: [NUMBER] T&C [URL]'
 - id: R-135-S
   t: 167
   act: 3
@@ -1409,7 +1413,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT, IMPORTANT INFORMATION FOR O2 USER. TODAY IS YOUR LUCKY DAY! 2 FIND OUT WHY LOG ONTO HTTP://WWW.URAWINNER.COM THERE IS A FANTASTIC SURPRISE AWAITING FOR YOU
+    short_message: URGENT, IMPORTANT INFORMATION FOR O2 USER. TODAY IS YOUR LUCKY DAY! 2 FIND OUT WHY LOG ONTO [URL] THERE IS A FANTASTIC SURPRISE AWAITING FOR YOU
 - id: R-136-L
   t: 167
   act: 3
@@ -1430,7 +1434,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Collect 100 points& get 14,500 Pokecoins for Pokemon Gol" by clicking this link now�http://goo.gle/xxxx
+    short_message: Collect 100 points& get 14,500 Pokecoins for Pokemon Gol" by clicking this link now�[URL]
 - id: R-138-S
   t: 168
   act: 3
@@ -1440,7 +1444,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 7908807538 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-139-S
   t: 169
   act: 3
@@ -1450,7 +1454,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a £2000 Bonus Caller Prize. Call 09058095201 from land line. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 Bonus Caller Prize. Call [NUMBER] from land line. Valid 12hrs only
 - id: R-140-S
   t: 169
   act: 3
@@ -1460,7 +1464,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050003091 from land line. Claim C52. Valid12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call [NUMBER] from land line. Claim C52. Valid12hrs only
 - id: R-141-S
   t: 170
   act: 3
@@ -1470,7 +1474,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: (Help-Center Canada) You received a Transfer from The Government due to the CoronaVirus pandemic, Click:http://23.254.215.52 to fill out your Application.
+    short_message: (Help-Center Canada) You received a Transfer from The Government due to the CoronaVirus pandemic, Click:[URL] to fill out your Application.
 - id: R-142-L
   t: 170
   act: 3
@@ -1502,7 +1506,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to 87121 18+6*£1.50(moreFrmMob. ShrAcomOrSglSuplt)10, LS1 3AJ
+    short_message: Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to [NUMBER]+6*£1.50(moreFrmMob. ShrAcomOrSglSuplt)10, LS1 3AJ
 - id: R-145-L
   t: 172
   act: 3
@@ -1523,7 +1527,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Welcome to Paytm payment bank your re verification done successful in your wallet get 1205 cashback click in link and login your paytm http://7e4d6417.ngrok.io/paytm
+    short_message: Welcome to Paytm payment bank your re verification done successful in your wallet get 1205 cashback click in link and login your paytm [URL]
 - id: R-147-L
   t: 173
   act: 3
@@ -1544,7 +1548,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: 'URGENT: IRELAND GOV has issued a payment of 350 � to all residents as part of its promise to battle COVID 19. Tap here to apply: http://url.ie/17j80'
+    short_message: 'URGENT: IRELAND GOV has issued a payment of 350 � to all residents as part of its promise to battle COVID 19. Tap here to apply: [URL]'
 - id: R-149-L
   t: 174
   act: 3
@@ -1565,7 +1569,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! We are trying to contact U Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050000460 from land line. Claim J89. po box245c2150pm
+    short_message: URGENT! We are trying to contact U Todays draw shows that you have won a £800 prize GUARANTEED. Call [NUMBER] from land line. Claim J89. po box245c2150pm
 - id: R-151-S
   t: 175
   act: 3
@@ -1575,7 +1579,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09058094455 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-152-L
   t: 175
   act: 3
@@ -1607,7 +1611,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: It's urgent please Contact me for an UNCLAIMED BEQUEST PAYMENT as the Assigned BENEFICIARY VIA EMAIL infogfreeman@gmail.com Regards Gordon
+    short_message: It's urgent please Contact me for an UNCLAIMED BEQUEST PAYMENT as the Assigned BENEFICIARY VIA EMAIL [EMAIL] Regards Gordon
 - id: R-155-L
   t: 177
   act: 3
@@ -1628,7 +1632,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-8927307655 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-[NUMBER] immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
 - id: R-157-L
   t: 178
   act: 3
@@ -1649,7 +1653,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! Your mobile number *************** WON a £2000 Bonus Caller prize on 10/06/03! This is the 2nd attempt to reach you! Call 09066368753 ASAP! Box 97N7QP, 150ppm
+    short_message: URGENT! Your mobile number *************** WON a £2000 Bonus Caller prize on 10/06/03! This is the 2nd attempt to reach you! Call [NUMBER] ASAP! Box 97N7QP, 150ppm
 - id: R-159-L
   t: 179
   act: 3
@@ -1670,7 +1674,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Urgent! Please call 0906346330. Your ABTA complimentary 4* Spanish Holiday or £10,000 cash await collection SAE T&Cs BOX 47 PO19 2EZ 150ppm 18+
+    short_message: Urgent! Please call [NUMBER]. Your ABTA complimentary 4* Spanish Holiday or £10,000 cash await collection SAE T&Cs BOX 47 PO19 2EZ 150ppm 18+
 - id: R-161-S
   t: 180
   act: 3
@@ -1680,7 +1684,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you have won a £900 prize GUARANTEED. Call 09061701851. Claim code K61. Valid 12hours only
+    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you have won a £900 prize GUARANTEED. Call [NUMBER]. Claim code K61. Valid 12hours only
 - id: R-162-S
   t: 180
   act: 3
@@ -1690,7 +1694,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! This is the 2nd attempt to contact U!U have WON £1250 CALL 09071512433 b4 050703 T&CsBCM4235WC1N3XX. callcost 150ppm mobilesvary. max£7. 50
+    short_message: URGENT! This is the 2nd attempt to contact U!U have WON £1250 CALL [NUMBER] b[NUMBER] T&CsBCM4235WC1N3XX. callcost 150ppm mobilesvary. max£7. 50
 - id: R-163-S
   t: 181
   act: 3
@@ -1700,7 +1704,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Urgent! Please call 09066612661 from your landline, your complimentary 4* Lux Costa Del Sol holiday or £1000 CASH await collection. ppm 150 SAE T&Cs James 28, EH74RR
+    short_message: Urgent! Please call [NUMBER] from your landline, your complimentary 4* Lux Costa Del Sol holiday or £1000 CASH await collection. ppm 150 SAE T&Cs James 28, EH74RR
 - id: R-164-S
   t: 181
   act: 3
@@ -1710,7 +1714,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Please CALL 08712402779 immediately as there is an urgent message waiting for you
+    short_message: Please CALL [NUMBER] immediately as there is an urgent message waiting for you
 - id: R-165-L
   t: 182
   act: 3
@@ -1731,7 +1735,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call 7679046492 from land line. Claim 3030. Valid 12hrs only
+    short_message: URGENT! Your Mobile number has been awarded with a INR.2,00,000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only
 - id: R-167-S
   t: 183
   act: 3
@@ -1741,7 +1745,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: WIN URGENT! Your mobile number has been awarded with a £2000 prize GUARANTEED call 09061790121 from land line. claim 3030 valid 12hrs only 150ppm
+    short_message: WIN URGENT! Your mobile number has been awarded with a £2000 prize GUARANTEED call [NUMBER] from land line. claim 3030 valid 12hrs only 150ppm
 - id: R-168-L
   t: 183
   act: 3
@@ -1773,7 +1777,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/rewa
+    short_message: Dear Voucher Holder, To claim this weeks offer, at you PC please go to [URL]
 - id: R-171-S
   t: 185
   act: 3
@@ -1783,7 +1787,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: 'URGENT! Last weekend''s draw shows that you have won £1000 cash or a Spanish holiday! CALL NOW 09050000332 to claim. T&C: RSTM, SW7 3SS. 150ppm'
+    short_message: 'URGENT! Last weekend''s draw shows that you have won £1000 cash or a Spanish holiday! CALL NOW [NUMBER] to claim. T&C: RSTM, SW7 3SS. 150ppm'
 - id: R-172-L
   t: 185
   act: 3
@@ -1815,7 +1819,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Thank You for calling.Forgot to say Happy Onam to you Sirji.I am fine here and remembered you when i met an insurance person.Meet You in Qatar Insha Allah.Rakhesh, ex Tata AIG who joined TISSCO,Tayseer.
+    short_message: Thank You for calling.Forgot to say Happy Onam to you Sirji.I am fine here and remembered you when i met an insurance [URL]et You in Qatar Insha Allah.Rakhesh, ex Tata AIG who joined TISSCO,Tayseer.
     authenticated: true
 - id: R-175-L
   t: 187
@@ -1848,7 +1852,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: 'URGENT: UKGOV has issued a payment of 458 GBP to all residents as part of its promise to battle COVID 19. TAP here https:/uk-covid-19.webredirect.org/to apply'
+    short_message: 'URGENT: UKGOV has issued a payment of 458 GBP to all residents as part of its promise to battle COVID 19. TAP here [URL] apply'
 - id: R-178-S
   t: 188
   act: 3
@@ -1858,7 +1862,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: IMPORTANT INFORMATION 4 ORANGE USER 0796XXXXXX. TODAY IS UR LUCKY DAY!2 FIND OUT WHY LOG ONTO http://www.urawinner.com
+    short_message: IMPORTANT INFORMATION 4 ORANGE USER 0796XXXXXX. TODAY IS UR LUCKY DAY!2 FIND OUT WHY LOG ONTO [URL]
 - id: R-179-L
   t: 189
   act: 3
@@ -1879,7 +1883,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Dear Voucher holder Have your next meal on us. Use the following link on your pc 2 enjoy a 2 4 1 dining experiencehttp://www.vouch4me.com/etlp/dining.asp
+    short_message: Dear Voucher holder Have your next meal on us. Use the following link on your pc 2 enjoy a [NUMBER] dining experience[URL]
 - id: R-181-L
   t: 190
   act: 3
@@ -1900,7 +1904,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: <Forwarded from 448712404000>Please CALL 08712404000 immediately as there is an urgent message waiting for you.
+    short_message: <Forwarded from [NUMBER]>Please CALL [NUMBER] immediately as there is an urgent message waiting for you.
 - id: R-183-L
   t: 191
   act: 3
@@ -1921,7 +1925,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 7679046492 immediately to verify
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� [NUMBER] immediately to verify
 - id: R-185-S
   t: 192
   act: 3
@@ -1931,7 +1935,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Bloomberg -Message center +447797706009 Why wait? Apply for your future http://careers. bloomberg.com
+    short_message: Bloomberg -Message center [NUMBER] Why wait? Apply for your future [URL] [URL]
 - id: R-186-S
   t: 192
   act: 3
@@ -1941,7 +1945,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: You are now unsubscribed all services. Get tons of sexy babes or hunks straight to your phone! go to http://gotbabes.co.uk. No subscriptions.
+    short_message: You are now unsubscribed all services. Get tons of sexy babes or hunks straight to your phone! go to [URL] No subscriptions.
 - id: R-187-L
   t: 193
   act: 3
@@ -1973,7 +1977,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Urgent! call 09061749602 from Landline. Your complimentary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs BOX 528 HP20 1YF 150ppm 18+
+    short_message: Urgent! call [NUMBER] from Landline. Your complimentary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs BOX 528 HP20 1YF 150ppm 18+
 - id: R-190-S
   t: 194
   act: 3
@@ -1983,7 +1987,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: 'SMS. ac Blind Date 4U!: Rodds1 is 21/m from Aberdeen, United Kingdom. Check Him out http://img. sms. ac/W/icmb3cktz8r7!-4 no Blind Dates send HIDE'
+    short_message: 'SMS. ac Blind Date 4U!: Rodds1 is 21/m from Aberdeen, United Kingdom. Check Him out [URL] sms. ac/W/icmb3cktz8r7!-4 no Blind Dates send HIDE'
 - id: R-191-S
   t: 195
   act: 3
@@ -1993,7 +1997,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Your SAM registration has been received! Click here to complete the process�http://rghst.xyz/NPHTmtb Reply STOP 2 opt out of future texts
+    short_message: Your SAM registration has been received! Click here to complete the process�[URL] Reply STOP 2 opt out of future texts
 - id: R-192-L
   t: 195
   act: 3
@@ -2014,7 +2018,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790121 from land line. Claim 3030. Valid 12hrs only 150ppm
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only 150ppm
 - id: R-194-S
   t: 196
   act: 3
@@ -2024,7 +2028,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Your Mobile No was awarded a £2,000 Bonus Caller Prize on 1/08/03! This is our 2nd attempt to contact YOU! Call 0871-4719-523 BOX95QU BT National Rate
+    short_message: URGENT! Your Mobile No was awarded a £2,000 Bonus Caller Prize on 1/08/03! This is our 2nd attempt to contact YOU! Call [NUMBER] BOX95QU BT National Rate
 - id: R-195-S
   t: 197
   act: 3
@@ -2034,7 +2038,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW 09061702894
+    short_message: URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW [NUMBER]
 - id: R-196-L
   t: 197
   act: 3
@@ -2055,7 +2059,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 7908807538 immediately to verify
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� [NUMBER] immediately to verify
 - id: R-198-S
   t: 198
   act: 3
@@ -2065,7 +2069,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call 09066358361 from land line. Claim Y87. Valid 12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim Y87. Valid 12hrs only
 - id: R-199-L
   t: 199
   act: 3
@@ -2086,7 +2090,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 7044518857 immediately to verify
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� [NUMBER] immediately to verify
 - id: R-201-S
   t: 200
   act: 3
@@ -2096,7 +2100,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Please CALL 08712402902 immediately as there is an urgent message waiting for you.
+    short_message: Please CALL [NUMBER] immediately as there is an urgent message waiting for you.
 - id: R-202-S
   t: 200
   act: 3
@@ -2106,7 +2110,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Your K.Y.C has been updated successfully, you will get 1205 cashback in your wallet, To get cashback click here Link http://8629a7f1.ngrok.io
+    short_message: Your K.Y.C has been updated successfully, you will get 1205 cashback in your wallet, To get cashback click here Link [URL]
 - id: R-203-S
   t: 201
   act: 3
@@ -2116,7 +2120,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH 7679046492 Your Paytm A/C will block within 24hr Thank you.
+    short_message: Dear (paytm)customer your paytm KYC has been suspended PAY-TM office PH [NUMBER] Your Paytm A/C will block within 24hr Thank you.
 - id: R-204-L
   t: 201
   act: 3
@@ -2148,7 +2152,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790126 from land line. Claim 3030. Valid 12hrs only 150ppm
+    short_message: URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call [NUMBER] from land line. Claim 3030. Valid 12hrs only 150ppm
 - id: R-207-L
   t: 203
   act: 3
@@ -2169,7 +2173,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Dear Voucher Holder, To claim this weeks offer, at your PC please go to http://www.wtlp.co.uk/text. Ts&Cs apply.
+    short_message: Dear Voucher Holder, To claim this weeks offer, at your PC please go to [URL] Ts&Cs apply.
 - id: R-209-L
   t: 204
   act: 3
@@ -2190,7 +2194,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.4,00,000 prize GUARANTEED. Call 8927307655. Claim Code LUCKY52. Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.4,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code LUCKY52. Valid 12hrs only.
 - id: R-211-S
   t: 205
   act: 3
@@ -2200,7 +2204,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: T-Mobile customer you may now claim your FREE CAMERA PHONE upgrade & a pay & go sim card for your loyalty. Call on 0845 021 3680.Offer ends 28thFeb.T&C's apply
+    short_message: T-Mobile customer you may now claim your FREE CAMERA PHONE upgrade & a pay & go sim card for your loyalty. Call on [NUMBER].Offer ends 28thFeb.T&C's apply
 - id: R-212-S
   t: 205
   act: 3
@@ -2210,7 +2214,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 6299257179
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH [NUMBER]
 - id: R-213-L
   t: 206
   act: 3
@@ -2242,7 +2246,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH 8927307655
+    short_message: WE WILL HOLD YOUR PAYTM AMOUNT AFTER SOMETIME COMPLETE YOUR PAYTM KYC PAYTM OFFICE PH [NUMBER]
 - id: R-216-L
   t: 207
   act: 3
@@ -2263,7 +2267,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Update Message to User,Log on to Verity your login and choose your Existing Questions and Answers correctly Click http://tdbankmobile.cleanbeautytalk.c om/tdmobile Internet support team.
+    short_message: Update Message to User,Log on to Verity your login and choose your Existing Questions and Answers correctly Click [URL] om/tdmobile Internet support team.
 - id: R-218-S
   t: 208
   act: 3
@@ -2273,7 +2277,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW 09061702893. ACL03530150PM
+    short_message: URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW [NUMBER]. ACL[NUMBER]PM
 - id: R-219-L
   t: 209
   act: 3
@@ -2283,7 +2287,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: You have registered Shijo as Payee. Log in at icicibank.com and enter URN to confirm. Beware of frauds.
+    short_message: You have registered Shijo as Payee. Log in at [URL] and enter URN to confirm. Beware of frauds.
     authenticated: true
 - id: R-220-L
   t: 209
@@ -2338,7 +2342,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: 'URGENT!: Your Mobile No. was awarded a £2,000 Bonus Caller Prize on 02/09/03! This is our 2nd attempt to contact YOU! Call 0871-872-9755 BOX95QU'
+    short_message: 'URGENT!: Your Mobile No. was awarded a £2,000 Bonus Caller Prize on 02/09/03! This is our 2nd attempt to contact YOU! Call [NUMBER] BOX95QU'
 - id: R-225-S
   t: 212
   act: 3
@@ -2348,7 +2352,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Congratulations, Your entry into our contest last month made you a WINNER! Goto http://www.apple.com.text.won.com�to claim your prize! You have 24 hours to claim
+    short_message: Congratulations, Your entry into our contest last month made you a WINNER! Goto [URL] claim your prize! You have 24 hours to claim
 - id: R-226-S
   t: 212
   act: 3
@@ -2358,7 +2362,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Please CALL 08712402972 immediately as there is an urgent message waiting for you
+    short_message: Please CALL [NUMBER] immediately as there is an urgent message waiting for you
 - id: R-227-L
   t: 213
   act: 3
@@ -2379,7 +2383,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: We regret to inform you that your NAB card is now locked. To unlock please update security details at http://www.nabmobile
+    short_message: We regret to inform you that your NAB card is now locked. To unlock please update security details at [URL]
 - id: R-229-S
   t: 214
   act: 3
@@ -2389,7 +2393,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you have won a £900 prize GUARANTEED. Call 09061701939. Claim code S89. Valid 12hrs only
+    short_message: URGENT! We are trying to contact you. Last weekends draw shows that you have won a £900 prize GUARANTEED. Call [NUMBER]. Claim code S89. Valid 12hrs only
 - id: R-230-S
   t: 214
   act: 3
@@ -2399,7 +2403,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.2,00,000 prize GUARANTEED. Call 6299257179. Claim Code FLIP02. Valid 12hrs only.
+    short_message: URGENT! Dear FL1PKART Customer, We are trying to contact you. Last weekends draw shows that you w0n a Rs.2,00,000 prize GUARANTEED. Call [NUMBER]. Claim Code FLIP02. Valid 12hrs only.
 - id: R-231-L
   t: 215
   act: 3
@@ -2420,7 +2424,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: 'Free Msg: Ringtone!From: http://tms. widelive.com/index. wml?id=1b6a5ecef91ff9*37819&first=true18:0430-JUL-05'
+    short_message: 'Free Msg: Ringtone!From: [URL] [URL] wml?id=1b6a5ecef91ff9*[NUMBER]&first=true18:0430-JUL-05'
 - id: R-233-S
   t: 216
   act: 3
@@ -2430,7 +2434,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: URGENT! Your Mobile No 07808726822 was awarded a £2,000 Bonus Caller Prize on 02/09/03! This is our 2nd attempt to contact YOU! Call 0871-872-9758 BOX95QU
+    short_message: URGENT! Your Mobile No [NUMBER] was awarded a £2,000 Bonus Caller Prize on 02/09/03! This is our 2nd attempt to contact YOU! Call [NUMBER] BOX95QU
 - id: R-234-S
   t: 216
   act: 3
@@ -2440,7 +2444,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-6299257179 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-[NUMBER] immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
 - id: R-235-S
   t: 217
   act: 3
@@ -2450,7 +2454,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: 09066362231 URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call 09066362231 ASAP!
+    short_message: '[NUMBER] URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call [NUMBER] ASAP!'
 - id: R-236-S
   t: 217
   act: 3
@@ -2460,7 +2464,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Please CALL 08712402578 immediately as there is an urgent message waiting for you
+    short_message: Please CALL [NUMBER] immediately as there is an urgent message waiting for you
 - id: R-237-S
   t: 218
   act: 3
@@ -2470,7 +2474,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: important information 4 orange user 0789xxxxxxx. today is your lucky day!2find out why log onto http://www.urawinner.com THERE'S A FANTASTIC SURPRISE AWAITING YOU!
+    short_message: important information 4 orange user 0789xxxxxxx. today is your lucky day!2find out why log onto [URL] THERE'S A FANTASTIC SURPRISE AWAITING YOU!
 - id: R-238-S
   t: 218
   act: 3
@@ -2480,7 +2484,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Friendly reminder- don't forget to confirm your SAM update from the other day!�http://rghst.rocks/ GBs630y
+    short_message: Friendly reminder- don't forget to confirm your SAM update from the other day!�[URL] GBs630y
 - id: R-239-S
   t: 219
   act: 3
@@ -2490,7 +2494,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: Nationwide has noticed your debit card was recently used on 22-10-2016 15:04:43, at APPLE ONLINE STORE FOR 1500.00 GBP. If not you please urgently call fraud prevention on 03303800231 or intl +443303800231. Do not reply by sms http://ww.Nationwide.co.uk/
+    short_message: Nationwide has noticed your debit card was recently used on [NUMBER]:04:43, at APPLE ONLINE STORE FOR 1500.00 GBP. If not you please urgently call fraud prevention on [NUMBER] or intl [NUMBER]. Do not reply by sms [URL]
 - id: R-240-S
   t: 219
   act: 3
@@ -2500,7 +2504,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: complimentary 4 STAR Ibiza Holiday or £10,000 cash needs your URGENT collection. 09066364349 NOW from Landline not to lose out! Box434SK38WP150PPM18+
+    short_message: complimentary 4 STAR Ibiza Holiday or £10,000 cash needs your URGENT collection. [NUMBER] NOW from Landline not to lose out! Box434SK38WP150PPM18+
 - id: R-241-L
   t: 220
   act: 3
@@ -2521,7 +2525,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: 'Apple ID: [BUXCX7GBVwWCcOD Final Notification Your Apple 1D is due to expire today. Prevent this by confirming your Apple ID at�http://verifyapple.uk Apple Inc'
+    short_message: 'Apple ID: [BUXCX7GBVwWCcOD Final Notification Your Apple 1D is due to expire today. Prevent this by confirming your Apple ID at�[URL] Apple Inc'
 - id: R-243-L
   t: 221
   act: 3
@@ -2542,7 +2546,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: URGENT! Your mobile No *********** WON a £2,000 Bonus Caller Prize on 02/06/03! This is the 2nd attempt to reach YOU! Call 09066362220 ASAP! BOX97N7QP, 150ppm
+    short_message: URGENT! Your mobile No *********** WON a £2,000 Bonus Caller Prize on 02/06/03! This is the 2nd attempt to reach YOU! Call [NUMBER] ASAP! BOX97N7QP, 150ppm
 - id: R-245-L
   t: 222
   act: 3
@@ -2563,7 +2567,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-6200992462 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-[NUMBER] immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
 - id: R-247-S
   t: 223
   act: 3
@@ -2573,7 +2577,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: 'XXXMobileMovieClub: To use your credit, click the WAP link in the next txt message or click here>> http://wap. xxxmobilemovieclub.com?n=QJKGIGHJJGCBL'
+    short_message: 'XXXMobileMovieClub: To use your credit, click the WAP link in the next txt message or click here>> [URL] [URL]?n=QJKGIGHJJGCBL'
 - id: R-248-L
   t: 223
   act: 3
@@ -2605,7 +2609,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: URGENT!! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins
+    short_message: URGENT!! Your 4* Costa Del Sol Holiday or £5000 await collection. Call [NUMBER] Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins
 - id: R-251-L
   t: 225
   act: 3
@@ -2637,7 +2641,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� 6200992462 immediately to verify
+    short_message: Dear customer your PAY2TMKYC has been expired, It�s will be bl0cked within 24 hour, please contact customer! Care ph� [NUMBER] immediately to verify
 - id: R-254-L
   t: 226
   act: 3
@@ -2680,7 +2684,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Nationwide has noticed your debit card was recently used on 25-10-2015 13.04.43, at APPLE ONLINE STORE for 1976.00 GBP. If not you please urgently call fraud preventaion on 03303800232 or intl +443303800231. Do not reply by SMS http://www.Nationwide.co.uk/
+    short_message: Nationwide has noticed your debit card was recently used on [NUMBER].04.43, at APPLE ONLINE STORE for 1976.00 GBP. If not you please urgently call fraud preventaion on [NUMBER] or intl [NUMBER]. Do not reply by SMS [URL]
 - id: R-258-S
   t: 228
   act: 3
@@ -2690,7 +2694,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: Urgent Message for CIBC Account Holder, Kindly login to confirm your login information Login to our secure server to check your information http://cibc.mobileupdate.granpianostudio.com/cibcfullz/Internet Support
+    short_message: Urgent Message for CIBC Account Holder, Kindly login to confirm your login information Login to our secure server to check your information [URL] Support
 - id: R-259-S
   t: 229
   act: 3
@@ -2732,7 +2736,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-8536074310 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
+    short_message: Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-[NUMBER] immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.
 - id: R-263-L
   t: 231
   act: 3
@@ -2764,7 +2768,7 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Friendly reminder don't forget to confirm your SAM update from the other day!�http://rghst.us/Htcdlas Reply STOP to opt out
+    short_message: Friendly reminder don't forget to confirm your SAM update from the other day!�[URL] Reply STOP to opt out
 - id: R-266-S
   t: 232
   act: 3
@@ -2774,7 +2778,7 @@ events:
   payload:
     source_addr: GOV-FINES
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001809 from land line. Claim M95. Valid12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call [NUMBER] from land line. Claim M95. Valid12hrs only
 - id: R-267-L
   t: 233
   act: 3
@@ -2806,7 +2810,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: you'hv completed a transaction for AUD 788.93 on 06/02/17 03-27-31 pm. Please follow the link if it is not done by you http://commbank.netban
+    short_message: you'hv completed a transaction for AUD 788.93 on 06/02/[NUMBER] pm. Please follow the link if it is not done by you [URL]
 - id: R-270-L
   t: 234
   act: 3
@@ -2838,7 +2842,7 @@ events:
   payload:
     source_addr: GOV-ID
     route: local
-    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050003092 from land line. Claim C52. Valid 12hrs only
+    short_message: URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call [NUMBER] from land line. Claim C52. Valid 12hrs only
 - id: R-273-S
   t: 236
   act: 3
@@ -2848,7 +2852,7 @@ events:
   payload:
     source_addr: GOV-TOLL
     route: local
-    short_message: 'Urgent! call 09066612661 from landline. Your complementary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs PO Box 3 WA14 2PX 150ppm 18+ Sender: Hol Offer'
+    short_message: 'Urgent! call [NUMBER] from landline. Your complementary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs PO Box 3 WA14 2PX 150ppm 18+ Sender: Hol Offer'
 - id: R-274-S
   t: 236
   act: 3
@@ -2858,7 +2862,7 @@ events:
   payload:
     source_addr: GOV-POST
     route: local
-    short_message: +449071512431 URGENT! This is the 2nd attempt to contact U!U have WON £1250 CALL 09071512433 b4 050703 T&CsBCM4235WC1N3XX. callcost 150ppm mobilesvary. max£7. 50
+    short_message: '[NUMBER] URGENT! This is the 2nd attempt to contact U!U have WON £1250 CALL [NUMBER] b[NUMBER] T&CsBCM4235WC1N3XX. callcost 150ppm mobilesvary. max£7. 50'
 - id: R-275-S
   t: 237
   act: 3
@@ -2868,4 +2872,4 @@ events:
   payload:
     source_addr: HOSPITAL-A
     route: local
-    short_message: Urgent Urgent! We have 800 FREE flights to Europe to give away, call B4 10th Sept & take a friend 4 FREE. Call now to claim on 09050000555. BA128NNFWFLY150ppm
+    short_message: Urgent Urgent! We have 800 FREE flights to Europe to give away, call B4 10th Sept & take a friend 4 FREE. Call now to claim on [NUMBER]. BA128NNFWFLY150ppm
