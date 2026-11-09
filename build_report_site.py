@@ -99,14 +99,28 @@ def outcome(o):
 acc = lambda c: round(100 * int(c[1].split("/")[0]) / int(c[1].split("/")[1]))
 
 b1, b3, b0 = B.get("B1"), B.get("B3"), B.get("B0")
+def first_run(label):
+    """First scored row for a held-out set in docs/eval_log_v3.md: (correct/n, harmful)."""
+    for l in (Path("docs/eval_log_v3.md").read_text(encoding="utf-8").splitlines() if ex("docs/eval_log_v3.md") else []):
+        c = [x.strip() for x in l.strip("|").split("|")]
+        if len(c) > 4 and c[2] == label: return c[3], c[4]
+    return "-", "-"
+def grab(path, pattern, default="-"):
+    m = re.search(pattern, Path(path).read_text(encoding="utf-8")) if ex(path) else None
+    return m.group(1) if m else default
+RV7, RV8, RREAL = first_run("heldout_v7"), first_run("heldout_v8"), first_run("heldout_real")
+SMI = grab("docs/real_smishing_eval.md", r"\| smishing \| \d+/\d+ = ([\d.]+%)")
+HAM = grab("docs/real_smishing_eval.md", r"\| ham \| \d+/\d+ = ([\d.]+%)")
+OFFICIAL = grab("docs/retrieval_official.md", r"HISN hybrid \(default\) \| [^|]+\| (\d+/\d+)")
 findings = [
+    f"On every real SMS text the filter holds (<b>275</b>, from a public research dataset, answers committed before the run) the agents scored <b>{RREAL[0]}</b>, and the system released <b>none of 157 real scams</b>. On new held-out sets written before running, v7 scored <b>{RV7[0]}</b> and v8 (6 of 10 in Arabic) <b>{RV8[0]}</b>, with {RV7[1]} and {RV8[1]} harmful decisions. On 5,971 real SMS the message checks flag <b>{SMI}</b> of real smishing and <b>{HAM}</b> of legitimate messages.",
     f"Without governance, <b>{HU['lost']}</b> genuine health and government messages were silently lost and <b>{HU['off']}</b> health-data transfers left the country. With HISN: <b>{HG['lost']}</b> and <b>{HG['off']}</b>; held messages reach a named human, then a second reviewer within 15 minutes.",
-    f"On ITU's reference model, an ungoverned LLM scored <b>{b1[1] if b1 else '-'}</b> with <b>{b1[5] if b1 else '-'}</b> unsupported legal citations, below fixed rules ({b0[1] if b0 else '-'}). HISN scored <b>{b3[1] if b3 else '-'}</b> (held-out v2 {b3[2] if b3 else '-'}{(', v3 ' + b3[7]) if b3 and len(b3) > 7 else ''}) with <b>zero</b> harmful decisions.",
+    f"On ITU's reference model, an ungoverned LLM scored <b>{b1[1] if b1 else '-'}</b> with <b>{b1[5] if b1 else '-'}</b> unsupported legal citations, below fixed rules ({b0[1] if b0 else '-'}). HISN scored <b>{b3[1] if b3 else '-'}</b> (held-out v2 {b3[2] if b3 else '-'}{(', v3 ' + b3[7]) if b3 and len(b3) > 7 else ''}) with <b>{b3[3] if b3 else '-'}</b> harmful decision(s), against {b1[3] if b1 else '-'} for the LLM alone.",
     f"Testing candidate rules: sender authentication with a verified-sender lane raised the MIZAN balance from <b>{BASE['mizan']}</b> to <b>{BEST['mizan']}</b>; a blunt fraud duty lowered it ({FRAUD['mizan']}), over-blocking legitimate businesses.",
     "The regulatory wind tunnel tests draft rules before issuance: the same emergency-offshore provision is <b>rejected as a regulation</b> (conflicts with Federal Law No. 2 of 2019, Art. 13) and <b>compatible as a Health Authority resolution</b>, the route Article 13 itself provides.",
     f"<b>{len(GAPS)}</b> domain-level policy gaps were identified, one discovered by the agents; four are shared or only partly addressed in India (UAE-India decision agreement {AGREE})."]
 tiles = [(f"{HU['lost']} &rarr; {HG['lost']}", "Essential messages silently lost"), (f"{b1[3] if b1 else '-'} &rarr; {b3[3] if b3 else '-'}", "Harmful AI decisions (ITU reference model)"),
-         (f"{BASE['mizan']} &rarr; {BEST['mizan']}", "MIZAN balance under tested rule"), (f"{NCL} / {len(MAN)}", "Verbatim clauses / hash-pinned records")]
+         (f"{RREAL[0]}", "Real SMS texts decided correctly (0 of 157 real scams released)"), (f"{NCL} / {len(MAN)}", "Verbatim clauses / hash-pinned records")]
 S = []
 S.append(section("1", "summary", "Executive summary", "<ol class='findings'>" + "".join(f"<li>{f}</li>" for f in findings) + "</ol>"))
 S.append(section("2", "indicators", "Key indicators", "<div class='tiles'>" + "".join(f"<div class='tile'><div class='v'>{v}</div><div class='l'>{l}</div></div>" for v, l in tiles) + "</div>"))
@@ -167,12 +181,12 @@ S.append(section("7", "standards", "Standards alignment and global evidence",
       f"<a href='{GH}docs/y3172_mapping.md'>Y.3172 nine-node mapping</a> &middot; <a href='{GH}docs/readiness_mapping.md'>Readiness 2.0 mapping</a> &middot; "
       f"<a href='{GH}open_kb/'>open knowledge-base contribution</a> &middot; <a href='{GH}docs/agent_cards/'>agent cards</a></p>"))
 S.append(section("8", "evidence", "Evidence base",
-    f"<p>{len(MAN)} records (official instruments from the UAE, India and Singapore, plus one Saudi historical draft) pinned by SHA-256 and {NCL} verbatim clauses, ingested through the ITU AI Readiness reference pipeline. Retrieval on 46 answerable policy questions (50 with out-of-corpus checks): Recall@5 {RET[2]}, Recall@1 {RET[0]}, MRR {RET[3]}. "
+    f"<p>{len(MAN)} official records (UAE laws and regulations in English and authoritative Arabic, ITU-T Recommendations, and comparators from India, Singapore, Saudi Arabia, Australia and the EU) pinned by SHA-256 and {NCL} verbatim clauses, ingested through the ITU AI Readiness reference pipeline; the Arabic texts are read by OCR. Retrieval on 13 descriptions the UAE Government publishes on u.ae: right law in the top 5 for {OFFICIAL}. Retrieval on 46 answerable policy questions (50 with out-of-corpus checks): Recall@5 {RET[2]}, Recall@1 {RET[0]}, MRR {RET[3]}. "
     f"Network evidence ({NP.get('n_link_days', '-')} real operator link-days, used as proxy): rain raised link-failure risk {NP.get('relative_risk_rain', '-')}x; heat did not ({NP.get('relative_risk_hot', '-')}x).</p>"
     + details("Show knowledge-base records", table(["Record", "Title", "Issuer", "Basis", "Verification", "SHA-256"],
               [[E(m["record_id"]), E(m["title"]), E(m["issuer"]), E(m["basis"]), E(m["verification"]), f"<code>{E(m['sha256'][:12])}</code>"] for m in MAN]))))
 S.append(section("9", "limits", "Method and limitations",
-    "<ul><li>Synthetic data and scoring weights: results show direction, not real-world magnitudes.</li><li>Accuracies are shown with 95% Wilson confidence intervals; with samples this small the intervals are wide.</li><li>Pre-registered expectations committed to version control before each held-out run; a smaller model overfitted the development set, the reference model did not.</li>"
+    "<ul><li>Scenario messages are synthetic; four evaluations use real public data. In the real SMS set, sender IDs and authentication are simulated (no public data has them). Arabic legal texts are OCR and Arabic checks await native review.</li><li>Accuracies are shown with 95% Wilson confidence intervals; with samples this small the intervals are wide.</li><li>Pre-registered expectations committed to version control before each held-out run; a smaller model overfitted the development set, the reference model did not.</li>"
     "<li>A similarity threshold copied from the ITU reference agent did not transfer to this embedding model and is not claimed as a safeguard.</li><li>Comparator texts and the wind tunnel's conflict table require legal review; India institutional agents are future work.</li>"
     "<li>This is a sandbox prototype for pre-issuance testing, not a production system.</li></ul>"))
 S.append(section("A", "annex", "Annex: sign-off record and document control",
@@ -213,8 +227,8 @@ page = (f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name=
         f"<div class='layout'><aside><div class='t'>Contents</div>{toc}</aside><main>"
         f"<h1>Governing the telecom AI that decides which health and government messages reach citizens</h1>"
         f"<p class='lead'>Assurance report on a working prototype, with pre-issuance testing of draft rules against verified UAE law.</p>"
-        f"<div class='chips'><span>ITU AI for Good Lab Hackathon, UAE 2026</span><span>Team Sankalp</span><span>Synthetic data</span><span>Audit chains verified</span></div>"
-        f"<div class='notice'>Independent hackathon prototype. This is not an official government publication and is not affiliated with or endorsed by any UAE or Indian government entity. All senders and data are synthetic.</div>"
+        f"<div class='chips'><span>ITU AI for Good Lab Hackathon, UAE 2026</span><span>Team Sankalp</span><span>Synthetic scenarios, real-data evaluation</span><span>Audit chains verified</span></div>"
+        f"<div class='notice'>Independent hackathon prototype. This is not an official government publication and is not affiliated with or endorsed by any UAE or Indian government entity. Scenario senders are fictional; evaluations use public research datasets.</div>"
         + "".join(S) + "</main></div>"
         f"<footer><div class='in'>HISN &middot; Team Sankalp &middot; Every figure is reproducible with <code>python selftest.py</code> &middot; Source commit {E(COMMIT)}</div></footer></body></html>")
 Path("docs/index.html").write_text(page, encoding="utf-8")

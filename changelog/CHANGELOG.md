@@ -160,3 +160,11 @@
 - New candidate gap G6 (loss allocation when telecom anti-scam duties fail), comparator-discovered from SRF 6.4; UAE absence to confirm
 - Saudi CST 2018 regulation registered as historical (draft translation, possibly superseded): background only
 - run_interop generalised to N countries (pairwise agreement matrix)
+
+## v3.6 — 2026-11-09
+- Identity vs content: deterministic message checks (English and Arabic) given to agents as facts; held-out v7 8/8 and v8 10/10 (6 in Arabic, majority vote of 3), 0 harmful, answers committed before running
+- Real data: all 275 real SMS texts the filter holds (Mishra and Soni 2022) through the agents, 251/275, 0 of 157 real scams released; message checks on 5,971 real SMS and 13,240 real Arabic messages
+- Knowledge base 84 records (UAE laws and regulations in English and Arabic, ITU-T X.1231-X.1247 and Y.3174); Arabic texts read by OCR, all 1,443 English article numbers found; UAE legislation included in the repository (not protected by copyright, Federal Decree-Law 38/2021 Art. 3)
+- Retrieval on the UAE Government's own descriptions of its laws (u.ae): 12/13 in top 5
+- Ed25519 public-key approvals; SMPP checked with an independent client (smpplib), one protocol error fixed
+- CI runs tests and verify_all on every push; three issues contributed to ITU's reference repository
