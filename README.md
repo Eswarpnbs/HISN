@@ -28,7 +28,7 @@ flowchart LR
 | Capability | What you can run |
 |---|---|
 | **The right to be reached**: essential senders are never silently dropped; a held message goes to a named officer within a clinical limit; the sender gets an accountable receipt over real SMPP 3.4 | `python run_smpp.py`, then `python smpp_demo.py` |
-| **Both harms measured**: essential messages lost *and* scams delivered, as one MIZAN balance | `python run_gap_engine.py` |
+| **Both harms measured**: essential messages lost *and* scams delivered, as one MIZAN balance (ميزان, Arabic for "balance": the average of protection, the share of scam attempts not delivered, and access, the share of legitimate messages delivered, on a fixed set of 84 test messages, 60 scam attempts and 24 legitimate; baseline (86.7 + 66.7) / 2 = 76.7) | `python run_gap_engine.py` |
 | **Crash-test the rule**: a draft is tested against verified law, the hierarchy of norms and nine public-interest invariants, and the wind tunnel says which instrument can carry it | `python wind_tunnel.py "<draft>" --level regulation` |
 | **Law as a pull request**: draft rules run through CI; a draft that fails is refused automatically | `drafts/`, `.github/workflows/wind-tunnel.yml` |
 | **Declared autonomy, enforced**: each component's ITU-T Y.3173 level is computed by the standard's method; a filter change that breaks it is held | `python run_demo.py --enforce-levels` |
