@@ -15,6 +15,25 @@ The UAE plans to deliver half of its government services through AI agents. Secu
 
 Decisions reach people as text messages, and those messages pass through AI gatekeepers such as an operator's SMS filter. HISN governs that last mile and tests the rules before they bind. It is designed to complement national testing and monitoring, not replace them.
 
+## For judges: HISN in 60 seconds
+
+A go-live check decides whether an AI agent may launch. **HISN governs what agents and AI filters do once they are live:** each consequential action is checked against binding law, signed by a named official, and its outcome is delivered to the citizen with a receipt.
+
+| ITU criterion | What HISN shows | Check it |
+|---|---|---|
+| **Knowledge base** | 84 official records, SHA-256 pinned: 35 UAE instruments in English, 29 in authoritative Arabic, 10 ITU-T Recommendations, 10 comparators. 38 verbatim clauses re-checked against their sources. Right law in the top 5 for 12 of 13 official u.ae descriptions | [`kb/manifest.csv`](kb/manifest.csv), [`kb/clauses/clauses.yaml`](kb/clauses/clauses.yaml), [`docs/retrieval_official.md`](docs/retrieval_official.md) |
+| **Agent capability** | Language-model agents (qwen2.5:14b, majority vote of 3) scored against gold answers committed before the run. On all 275 real SMS the filter holds: 251/275, and **0 of 157 real scams released**. New held-out sets v7 + v8: 18/18 | [`docs/eval_rescore_real.md`](docs/eval_rescore_real.md), [`docs/eval_log_v3.md`](docs/eval_log_v3.md) |
+| **Policy and standards gaps** | 7 domain-level gaps with verbatim evidence and verified global examples (Australia, India, Singapore, EU); G5 and G7 were found by the agents and by measurement. 4 standards gaps | [`docs/gap_register.yaml`](docs/gap_register.yaml), [`docs/global_examples.yaml`](docs/global_examples.yaml) |
+| **Auditability** | Hash-chained audit log; every agent decision logged with its evidence, citations and uncertainty; Ed25519-signed approvals; one command re-checks the source hashes, every verbatim clause and the pre-registration order from git history | [`tools/verify_all.py`](tools/verify_all.py) |
+| **ITU standards** | All 9 ITU-T Y.3172 nodes; 19 AI Readiness metric IDs checked against ITU's `dimensions.json`; ITU-T Y.3173 autonomy levels enforced; 3 issues contributed to ITU's reference repository | [`docs/y3172_mapping.md`](docs/y3172_mapping.md), [`docs/readiness_mapping.md`](docs/readiness_mapping.md), [ITU issues](https://github.com/CrashingGuru/ITUAIReadiness/issues) |
+
+**Check it in two minutes** (no model or API key needed):
+```bash
+git clone https://github.com/Eswarpnbs/HISN && cd HISN
+pip install pyyaml pytest cryptography pymupdf
+python -m pytest -q && python tools/verify_all.py
+```
+
 ```mermaid
 flowchart LR
     C["Citizen's handset<br/>receipt · verifier"] --- O["Operator's AI filter<br/>essential lane · Y.3173 level enforced"]
